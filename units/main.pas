@@ -6,17 +6,25 @@ interface
 
 uses
       Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-			Menus;
+			Menus, StdCtrls,
+      {own units}
+      sim;
+
+// Todo:
+// * each simulation has its own window?
+// all results and controls are in the main window
 
 type
 
 			{ TForm1 }
 
       TForm1 = class(TForm)
-						MainMenu1: TMainMenu;
-						PaintBox1: TPaintBox;
+			  Button1: TButton;
+				MainMenu1: TMainMenu;
+				procedure Button1Click(Sender: TObject);
       private
             { private declarations }
+        FSim: TSimulation;
       public
             { public declarations }
       end;
@@ -27,6 +35,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TForm1 }
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  FSim := TSimulation.Create;
+end;
 
 end.
 

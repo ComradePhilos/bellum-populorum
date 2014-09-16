@@ -24,8 +24,7 @@
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="48" Y="15"/>
-        <ComponentState Value="1"/>
+        <CursorPos X="42" Y="27"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -34,10 +33,12 @@
         <Filename Value="units\sim.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="sim"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="3" Y="11"/>
+        <CursorPos X="14" Y="32"/>
         <UsageCount Value="25"/>
+        <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="units\class_dec.pas"/>
@@ -49,18 +50,6 @@
         <UsageCount Value="25"/>
       </Unit3>
       <Unit4>
-        <Filename Value="units\sim.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="sim"/>
-        <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="3" Y="34"/>
-        <UsageCount Value="25"/>
-        <Loaded Value="True"/>
-      </Unit4>
-      <Unit5>
         <Filename Value="units\funcs.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="funcs"/>
@@ -70,8 +59,8 @@
         <CursorPos X="46" Y="13"/>
         <UsageCount Value="25"/>
         <Loaded Value="True"/>
-      </Unit5>
-      <Unit6>
+      </Unit4>
+      <Unit5>
         <Filename Value="units\peoples.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="peoples"/>
@@ -81,19 +70,20 @@
         <CursorPos X="7" Y="16"/>
         <UsageCount Value="24"/>
         <Loaded Value="True"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="units\citizens.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="citizens"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="50" Y="20"/>
         <UsageCount Value="23"/>
         <Loaded Value="True"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="units\tasks.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="tasks"/>
@@ -103,12 +93,26 @@
         <CursorPos X="7" Y="19"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SimulationWindow"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="29" Y="27"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit8>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>
     </General>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="7" HistoryIndex="6">
       <Position1>
         <Filename Value="units\main.pas"/>
         <Caret Line="1" Column="1" TopLine="1"/>
@@ -121,6 +125,22 @@
         <Filename Value="units\citizens.pas"/>
         <Caret Line="38" Column="3" TopLine="1"/>
       </Position3>
+      <Position4>
+        <Filename Value="units\sim.pas"/>
+        <Caret Line="36" Column="14" TopLine="1"/>
+      </Position4>
+      <Position5>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="4" Column="34" TopLine="1"/>
+      </Position5>
+      <Position6>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="16" Column="15" TopLine="1"/>
+      </Position6>
+      <Position7>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="23" Column="29" TopLine="1"/>
+      </Position7>
     </JumpHistory>
   </ProjectSession>
   <EditorMacros Count="0"/>

@@ -5,7 +5,7 @@ unit sim;
 interface
 
 uses
-      Classes, SysUtils;
+      Classes, SysUtils, SimulationWindow;
 
 type
   TSimulation = Class
@@ -13,11 +13,13 @@ type
       FRound: Integer;                        // Round-Counter
       FRoundLimit: Integer;                   // optional round limit
       //FMap: TMap;
-      //FPeoples:                             // Peoples
+      //FPeoples:
+      FForm: TForm2;
       FTimeMod: Double;                       // Mutliplier for time
       FDuration: Integer;                     // Milliseconds since start
     public
       constructor Create;
+      destructor Destroy;
 
       procedure NextStep;
 	end;
@@ -26,7 +28,13 @@ implementation
 
 constructor TSimulation.Create;
 begin
+  FForm := TForm2.Create(nil);
+  FForm.Show;
+end;
 
+destructor TSimulation.Destroy;
+begin
+  FForm.Free;
 end;
 
 procedure TSimulation.NextStep;

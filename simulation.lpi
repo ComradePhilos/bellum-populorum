@@ -58,29 +58,31 @@
         <UnitName Value="class_dec"/>
       </Unit3>
       <Unit4>
-        <Filename Value="units\sim.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="sim"/>
-      </Unit4>
-      <Unit5>
         <Filename Value="units\funcs.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="funcs"/>
-      </Unit5>
-      <Unit6>
+      </Unit4>
+      <Unit5>
         <Filename Value="units\peoples.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="peoples"/>
-      </Unit6>
-      <Unit7>
+      </Unit5>
+      <Unit6>
         <Filename Value="units\citizens.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="citizens"/>
-      </Unit7>
-      <Unit8>
+      </Unit6>
+      <Unit7>
         <Filename Value="units\tasks.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="tasks"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SimulationWindow"/>
       </Unit8>
     </Units>
   </ProjectOptions>
@@ -92,7 +94,7 @@
     </Target>
     <SearchPaths>
       <IncludeFiles Value="$(ProjOutDir)"/>
-      <OtherUnitFiles Value="units"/>
+      <OtherUnitFiles Value="units;forms"/>
       <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <CodeGeneration>

@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 356
-  Height = 630
-  Top = 172
-  Width = 748
+  Left = 78
+  Height = 619
+  Top = 304
+  Width = 725
   Caption = 'Form1'
-  ClientHeight = 630
-  ClientWidth = 748
+  ClientHeight = 0
+  ClientWidth = 0
   Menu = MainMenu1
   LCLVersion = '1.2.2.0'
   object PaintBox1: TPaintBox

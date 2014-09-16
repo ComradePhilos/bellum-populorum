@@ -1,0 +1,50 @@
+unit sim;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+      Classes, SysUtils;
+
+type
+  TSimulation = Class
+    private
+      FRound: Integer;                        // Round-Counter
+      FRoundLimit: Integer;                   // optional round limit
+      //FMap: TMap;
+      //FPeoples:                             // Peoples
+      FTimeMod: Double;                       // Mutliplier for time
+      FDuration: Integer;                     // Milliseconds since start
+    public
+      constructor Create;
+
+      procedure Start;
+      procedure Pause;
+      procedure Stop;
+	end;
+
+implementation
+
+constructor TSimulation.Create;
+begin
+
+end;
+
+procedure TSimulation.Start;
+begin
+
+end;
+
+procedure TSimulation.Pause;
+begin
+
+end;
+
+procedure TSimulation.Stop;
+begin
+
+end;
+
+end.
+

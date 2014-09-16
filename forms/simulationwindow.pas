@@ -12,7 +12,7 @@ type
 			{ TForm2 }
 
       TForm2 = class(TForm)
-						Edit1: TEdit;
+						Memo1: TMemo;
       private
             { private declarations }
       public

@@ -22,6 +22,7 @@ type
 			  Button1: TButton;
 				MainMenu1: TMainMenu;
 				procedure Button1Click(Sender: TObject);
+				procedure FormDestroy(Sender: TObject);
       private
             { private declarations }
         FSim: TSimulation;
@@ -41,6 +42,11 @@ implementation
 procedure TForm1.Button1Click(Sender: TObject);
 begin
   FSim := TSimulation.Create;
+end;
+
+procedure TForm1.FormDestroy(Sender: TObject);
+begin
+  FSim.Free;
 end;
 
 end.

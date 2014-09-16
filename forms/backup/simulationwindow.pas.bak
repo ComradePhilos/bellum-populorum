@@ -5,10 +5,14 @@ unit SimulationWindow;
 interface
 
 uses
-      Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs;
+      Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
 
 type
+
+			{ TForm2 }
+
       TForm2 = class(TForm)
+						Memo1: TMemo;
       private
             { private declarations }
       public

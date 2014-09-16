@@ -5,26 +5,27 @@ unit citizens;
 interface
 
 uses
-      Classes, SysUtils;
+      Classes, SysUtils, fgl;
 
 type
 
   TCitizen = Class
     private
-      FHP: Integer;
-      //FColor: TColor;
-      FPosX, FPosY: Integer;
-      FAge: Integer;
-      FMaxAge: Integer;
-      FStrength: Integer;
+      FHP: Integer;                                         // Health Points
+      //FColor: TColor;                                     // Color shown on map
+      FPosX, FPosY: Integer;                                // Coordinates of the map
+      FAge: Integer;                                        // After several years/rounds a person dies
+      FMaxAge: Integer;                                     // random individual max life time
+      FStrength: Integer;                                   // For fights
       FHunger: Integer;
 
     public
       constructor Create;
       procedure Move(x, y: Integer);
-
-
 	end;
+
+  TCitizenList = specialize TFPGObjectList<TCitizen>;
+
 
 implementation
 

@@ -24,6 +24,7 @@ TMap = Class
     procedure Generate(width, height: Integer);
     procedure ToImage(AImage: TImage; AImageList: TImageList);
     function ToText: TStringList;
+
     property TileSize: Integer read FTileSize write FTileSize;
     property Tiles: TTiles read FTiles write FTiles;
 end;
@@ -88,7 +89,7 @@ begin
     begin
       img.Picture.Bitmap.Clear;
       AImageList.GetBitmap(Integer(FTiles[x,y]), img.Picture.Bitmap);
-      AImage.Canvas.Draw(x*8, y*8, img.Picture.Bitmap );
+      AImage.Canvas.Draw(x*FTileSize, y*FTileSize, img.Picture.Bitmap );
 		end;
 	end;
 end;

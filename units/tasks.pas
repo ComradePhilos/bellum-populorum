@@ -16,7 +16,6 @@ type
       FType: TTaskType;
       FTargetX, FTargetY: Integer;
       FPriority: Integer;
-
 	end;
 
 implementation

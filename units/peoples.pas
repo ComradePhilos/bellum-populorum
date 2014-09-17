@@ -16,6 +16,8 @@ type
   TPeople = Class
     private
       FName: String;
+      FStrengthBonus: Integer;
+      FPopulationBonus: Integer;
       FCitizens: TCitizenList;
     public
       constructor Create;

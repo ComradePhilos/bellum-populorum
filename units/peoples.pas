@@ -19,6 +19,7 @@ type
       FCitizens: TCitizenList;
     public
       constructor Create;
+      destructor Destroy;
 	end;
 
   TRoman = Class(TPeople)
@@ -39,7 +40,12 @@ implementation
 
 constructor TPeople.Create;
 begin
-  FCitizens := TCitizenList.Create(true);
+  FCitizens := TCitizenList.Create;
+end;
+
+destructor TPeople.Destroy;
+begin
+  FCitizens.Free;
 end;
 
 end.

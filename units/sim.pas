@@ -6,7 +6,7 @@ interface
 
 uses
       Classes, SysUtils,
-      SimulationWindow, peoples, funcs;
+      peoples, world;
 
 type
 
@@ -16,7 +16,6 @@ type
       FRoundLimit: Integer;                   // optional round limit
       FMap: TMap;
       FPeoples: TPeoplesList;
-      FForm: TForm2;
       FTimeMod: Double;                       // Mutliplier for time
       FDuration: Integer;                     // Milliseconds since start
     public
@@ -24,26 +23,23 @@ type
       destructor Destroy;
 
       procedure NextStep;
+
+      property Map: TMap read FMap write FMap;
 	end;
 
 implementation
 
 constructor TSimulation.Create;
 begin
-  FForm := TForm2.Create(nil);
-  FForm.Show;
 
-  FPeoples := TPeoplesList.Create(true);
-  FMap := TMap.Create(20,20);
-  FForm.Memo1.Clear;
-  FForm.Memo1.Lines.AddStrings(FMap.ToText);
+  FPeoples := TPeoplesList.Create;
+  FMap := TMap.Create(1,1);
 end;
 
 destructor TSimulation.Destroy;
 begin
   FPeoples.Free;
   FMap.Free;
-  FForm.Free;
 end;
 
 procedure TSimulation.NextStep;

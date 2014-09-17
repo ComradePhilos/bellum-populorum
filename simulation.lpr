@@ -7,7 +7,8 @@ uses
       cthreads,
       {$ENDIF}{$ENDIF}
       Interfaces, // this includes the LCL widgetset
-      Forms, main, sim, funcs, peoples, citizens, tasks, SimulationWindow;
+      Forms, main, sim, funcs, peoples, citizens, tasks, SimulationWindow,
+			world;
 
 {$R *.res}
 

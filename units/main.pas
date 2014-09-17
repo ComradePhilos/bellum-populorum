@@ -8,7 +8,7 @@ uses
       Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
 			Menus, StdCtrls,
       {own units}
-      sim;
+      sim, simulationwindow;
 
 // Todo:
 // * each simulation has its own window?
@@ -25,7 +25,8 @@ type
 				procedure FormDestroy(Sender: TObject);
       private
             { private declarations }
-        FSim: TSimulation;
+        //FSim: TSimulation;
+        FForm: TForm2;
       public
             { public declarations }
       end;
@@ -41,12 +42,15 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  FSim := TSimulation.Create;
+  //FSim := TSimulation.Create;
+  FForm := TForm2.Create(self);
+  FForm.Show;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  FSim.Free;
+  //FSim.Free;
+  FForm.Free;
 end;
 
 end.

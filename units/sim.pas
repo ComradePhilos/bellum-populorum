@@ -12,6 +12,7 @@ type
 
   TSimulation = Class
     private
+      FID: Integer;
       FRound: Integer;                        // Round-Counter
       FRoundLimit: Integer;                   // optional round limit
       FMap: TMap;

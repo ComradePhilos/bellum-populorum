@@ -53,7 +53,7 @@ begin
   begin
     for x := 0 to width - 1 do
     begin
-      FTiles[x,y] := TTileType(Random(7));
+      FTiles[x,y] := TTileType(Random(6));
     end;
   end;
 end;
@@ -78,14 +78,17 @@ end;
 procedure TMap.ToImage(AImage: TImage; AImageList: TImageList);
 var
   x,y: Integer;
-  cnv: TCanvas;
+  img: TImage;
 begin
+  img := TImage.Create(nil);
+
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
     begin
-      cnv := AImage.Canvas;
-      AImageList.Draw(cnv, x*FTileSize, y*FTileSize, 1, false);
+      img.Picture.Bitmap.Clear;
+      AImageList.GetBitmap(Integer(FTiles[x,y]), img.Picture.Bitmap);
+      AImage.Canvas.Draw(x*8, y*8, img.Picture.Bitmap );
 		end;
 	end;
 end;

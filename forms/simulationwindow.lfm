@@ -1,19 +1,20 @@
 object Form2: TForm2
   Left = 266
-  Height = 560
+  Height = 527
   Top = 225
   Width = 848
   Caption = 'Form2'
-  ClientHeight = 560
+  ClientHeight = 527
   ClientWidth = 848
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   LCLVersion = '1.2.2.0'
   object BitBtn1: TBitBtn
-    Left = 544
+    Left = 728
     Height = 30
-    Top = 8
+    Top = 16
     Width = 75
+    Anchors = [akTop, akRight]
     Caption = 'Generate!'
     OnClick = BitBtn1Click
     TabOrder = 0
@@ -23,23 +24,27 @@ object Form2: TForm2
     Height = 218
     Top = 302
     Width = 312
+    Anchors = [akRight, akBottom]
     Lines.Strings = (
       'Memo1'
     )
     TabOrder = 1
   end
   object Image1: TImage
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Side = asrBottom
     Left = 8
     Height = 512
     Top = 8
     Width = 512
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnResize = Image1Resize
   end
   object Image2: TImage
-    Left = 720
+    Left = 504
     Height = 8
     Top = 16
     Width = 8
-    OnClick = Image2Click
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963B800000089504E47
       0D0A1A0A0000000D49484452000000080000000808020000004B6D29DC000000
@@ -50,6 +55,75 @@ object Form2: TForm2
       C7671637BA9704BE0000000049454E44AE426082
     }
     Visible = False
+  end
+  object LabeledEdit1: TLabeledEdit
+    Left = 536
+    Height = 23
+    Top = 24
+    Width = 80
+    Anchors = [akTop, akRight]
+    EditLabel.AnchorSideLeft.Control = LabeledEdit1
+    EditLabel.AnchorSideRight.Control = LabeledEdit1
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit1
+    EditLabel.Left = 536
+    EditLabel.Height = 15
+    EditLabel.Top = 6
+    EditLabel.Width = 80
+    EditLabel.Caption = 'width'
+    EditLabel.ParentColor = False
+    TabOrder = 2
+    Text = '100'
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 632
+    Height = 23
+    Top = 24
+    Width = 80
+    Anchors = [akTop, akRight]
+    EditLabel.AnchorSideLeft.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit2
+    EditLabel.Left = 632
+    EditLabel.Height = 15
+    EditLabel.Top = 6
+    EditLabel.Width = 80
+    EditLabel.Caption = 'height'
+    EditLabel.ParentColor = False
+    TabOrder = 3
+    Text = '100'
+  end
+  object Label1: TLabel
+    Left = 536
+    Height = 15
+    Top = 232
+    Width = 116
+    Anchors = [akRight, akBottom]
+    Caption = 'Round Duration in ms'
+    ParentColor = False
+  end
+  object TrackBar1: TTrackBar
+    Left = 528
+    Height = 25
+    Top = 256
+    Width = 224
+    Frequency = 500
+    Max = 10000
+    Min = 100
+    OnChange = TrackBar1Change
+    Position = 10000
+    Anchors = [akRight, akBottom]
+    TabOrder = 4
+  end
+  object Edit1: TEdit
+    Left = 760
+    Height = 23
+    Top = 256
+    Width = 80
+    Anchors = [akRight, akBottom]
+    OnChange = Edit1Change
+    TabOrder = 5
   end
   object ImageList1: TImageList
     Height = 8
@@ -107,5 +181,11 @@ object Form2: TForm2
       1FFF797979FF313131FF1B6526FF1B6526FF313131FF313131FF313131FF3131
       31FF313131FF313131FF1B6526FF
     }
+  end
+  object Timer1: TTimer
+    Interval = 300
+    OnTimer = Timer1Timer
+    left = 16
+    top = 16
   end
 end

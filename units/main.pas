@@ -26,7 +26,6 @@ type
 				procedure FormDestroy(Sender: TObject);
       private
             { private declarations }
-        //FSim: TSimulation;
         FForm: TForm2;
       public
             { public declarations }
@@ -43,14 +42,12 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  //FSim := TSimulation.Create;
   FForm := TForm2.Create(self);
   FForm.Show;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
-  //FSim.Free;
   FForm.Free;
 end;
 

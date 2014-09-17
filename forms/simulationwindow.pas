@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Buttons,
+  ExtCtrls, Buttons, ComCtrls,
   world, sim;
 
 type
@@ -15,16 +15,26 @@ type
 
   TForm2 = class(TForm)
     BitBtn1: TBitBtn;
+		Edit1: TEdit;
 		Image1: TImage;
 		Image2: TImage;
 		ImageList1: TImageList;
+		Label1: TLabel;
+		LabeledEdit1: TLabeledEdit;
+		LabeledEdit2: TLabeledEdit;
     Memo1: TMemo;
+		Timer1: TTimer;
+		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
+		procedure Edit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-		procedure Image2Click(Sender: TObject);
+		procedure Image1Resize(Sender: TObject);
+		procedure Timer1Timer(Sender: TObject);
+		procedure TrackBar1Change(Sender: TObject);
   private
     { private declarations }
+    FDuration: Integer;
 
   public
     FSim: TSimulation;
@@ -44,27 +54,30 @@ procedure TForm2.BitBtn1Click(Sender: TObject);
 var
   x,y: Integer;
 begin
-  FSim.Map.Generate(20, 20);
+  x := StrToInt(LabeledEdit1.Text);
+  y := StrToInt(LabeledEdit2.Text);
+  FSim.Map.Generate(x, y);
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
-  //FSim.Map.ToImage(Image1, ImageList1);
-  for y := 0 to 20 - 1 do
+  FSim.Map.ToImage(Image1, ImageList1);
+end;
+
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+  if TryStrToInt(Edit1.Text, FDuration) then
   begin
-    for x := 0 to 20 - 1 do
-    begin
-      Image2.Canvas.Clear;
-      ImageList1.GetBitmap(Integer(FSim.Map.Tiles[x,y])-1, Image2.Picture.Bitmap);
-      Image1.Canvas.Draw(x*8, y*8, Image2.Picture.Bitmap );//Image2.Picture.Bitmap);
-		end;
+    Trackbar1.Position := FDuration;
+    Timer1.Interval := FDuration;
 	end;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   FSim := TSimulation.Create;
-  //Image1.Canvas.Brush.Color := clBlack;
-  //Image1.Canvas.FillRect(0,0,Image1.Width, Image1.Height);
   FSim.Map.TileSize := 8;
+  FDuration := 10000;
+  Trackbar1.Position := FDuration;
+  Edit1.Text := IntToStr(FDuration);
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
@@ -72,9 +85,19 @@ begin
   FSim.Free;
 end;
 
-procedure TForm2.Image2Click(Sender: TObject);
+procedure TForm2.Image1Resize(Sender: TObject);
 begin
+  Image1.Picture.Bitmap.SetSize(Image1.Width, Image1.Height);
+end;
 
+procedure TForm2.Timer1Timer(Sender: TObject);
+begin
+  FSim.Map.ToImage(Image1, ImageList1);
+end;
+
+procedure TForm2.TrackBar1Change(Sender: TObject);
+begin
+  Edit1.Text := IntToStr(TrackBar1.Position);
 end;
 
 

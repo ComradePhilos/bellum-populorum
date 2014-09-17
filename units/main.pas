@@ -12,7 +12,8 @@ uses
 
 // Todo:
 // * each simulation has its own window?
-// all results and controls are in the main window
+// * all results and controls are in the main window
+// * main form: tab with statistics for each simulation
 
 type
 

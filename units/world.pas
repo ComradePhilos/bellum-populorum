@@ -5,15 +5,16 @@ unit world;
 interface
 
 uses
-      Classes, SysUtils;
+      Classes, SysUtils, ExtCtrls, Controls, Graphics;
 type
 
 TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
+TTiles = array of array of TTileType;
 
 TMap = Class
   private
     FWidth, FHeight: Integer;
-    FTiles : array of array of TTileType;
+    FTiles : TTiles;
     FTileSize: Integer;
 
   public
@@ -21,7 +22,10 @@ TMap = Class
     constructor Create(width, height: Integer); overload;
 
     procedure Generate(width, height: Integer);
+    procedure ToImage(AImage: TImage; AImageList: TImageList);
     function ToText: TStringList;
+    property TileSize: Integer read FTileSize write FTileSize;
+    property Tiles: TTiles read FTiles write FTiles;
 end;
 
 
@@ -49,7 +53,7 @@ begin
   begin
     for x := 0 to width - 1 do
     begin
-      FTiles[x,y] := TTileType(Random(5));
+      FTiles[x,y] := TTileType(Random(7));
     end;
   end;
 end;
@@ -68,6 +72,21 @@ begin
       line := line + IntToStr(Integer(FTiles[x,y])) + ',  ';
 		end;
     Result.Add(line);
+	end;
+end;
+
+procedure TMap.ToImage(AImage: TImage; AImageList: TImageList);
+var
+  x,y: Integer;
+  cnv: TCanvas;
+begin
+  for y := 0 to FHeight - 1 do
+  begin
+    for x := 0 to FWidth - 1 do
+    begin
+      cnv := AImage.Canvas;
+      AImageList.Draw(cnv, x*FTileSize, y*FTileSize, 1, false);
+		end;
 	end;
 end;
 

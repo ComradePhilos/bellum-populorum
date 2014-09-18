@@ -17,11 +17,9 @@ type
     FWidth, FHeight: integer;
     FTiles: TTiles;
     FTileSize: integer;
-    FTreeCount: integer;
 
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    //private Generate
 
   public
     constructor Create;
@@ -33,7 +31,6 @@ type
 
     property TileSize: integer read FTileSize write FTileSize;
     property Tiles: TTiles read FTiles write FTiles;
-    property TreeCount: integer read FTreeCount write FTreeCount;
   end;
 
 
@@ -54,7 +51,6 @@ procedure TMap.Generate(Width, Height: integer);
 var
   x, y: integer;
 begin
-  FTreeCount := 0;
   SetLength(FTiles, Width, Height);
   FWidth := Width;
   FHeight := Height;
@@ -62,7 +58,9 @@ begin
   begin
     for x := 0 to Width - 1 do
     begin
-      FTiles[x, y] := TTileType.ttGrass;//TTileType(Random(6));
+      FTiles[x, y] := TTileType.ttGrass;
+      if (Random(100) > 98) then
+        GenerateRocks(x, y);
       if (Random(100) > 95) then
         GenerateForest(x, y);
     end;
@@ -115,7 +113,6 @@ begin
   extent := random(10)+1;
   Count := Random(80) + 15;
   FTiles[x, y] := TTileType.ttTree;
-  Inc(FTreeCount);
 
   for I := 0 to Count - 1 do
   begin
@@ -131,7 +128,6 @@ begin
         if (FTiles[newx, newy] = TTileType.ttGrass) then
         begin
           FTiles[newx, newy] := TTileType.ttTree;
-          Inc(FTreeCount);
         end;
 				end;
 			end;
@@ -140,8 +136,36 @@ begin
 end;
 
 procedure TMap.GenerateRocks(x, y: integer);
+var
+  extent: integer;    // extent of the rocks
+  Count: integer;     // number of rocks
+  I: integer;
+  newx, newy: integer;
+  dist: Integer;
 begin
+  extent := random(5)+1;
+  Count := Random(15) + 3;
+  FTiles[x, y] := TTileType.ttRock;
 
+  for I := 0 to Count - 1 do
+  begin
+    newx := x + Random(extent) - 3;
+    newy := y + Random(extent) - 3;
+    if (newx < self.FWidth) and (newy < self.FHeight) then
+    begin
+      if (newx >= 0) and (newy >= 0) then
+      begin
+        dist := round(power((x-newx),2)) + round(power((y-newy),2));
+        if (dist <= extent) then
+        begin
+        if (FTiles[newx, newy] = TTileType.ttGrass) then
+        begin
+          FTiles[newx, newy] := TTileType.ttRock;
+        end;
+				end;
+			end;
+    end;
+  end;
 end;
 
 end.

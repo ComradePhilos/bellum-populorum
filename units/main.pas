@@ -11,9 +11,9 @@ uses
       sim, simulationwindow;
 
 // Todo:
-// * each simulation has its own window?
 // * all results and controls are in the main window
 // * main form: tab with statistics for each simulation
+// * call ToImage func. of TMap as few as possible
 
 type
 

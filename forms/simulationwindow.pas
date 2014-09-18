@@ -20,6 +20,7 @@ type
 		Image2: TImage;
 		ImageList1: TImageList;
 		Label1: TLabel;
+		Label2: TLabel;
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
     Memo1: TMemo;
@@ -60,6 +61,7 @@ begin
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
   FSim.Map.ToImage(Image1, ImageList1);
+  Label2.Caption := 'Trees: ' + IntToStr(FSim.Map.TreeCount);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -75,7 +77,7 @@ procedure TForm2.FormCreate(Sender: TObject);
 begin
   FSim := TSimulation.Create;
   FSim.Map.TileSize := 8;
-  FDuration := 10000;
+  FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
 end;
@@ -92,7 +94,10 @@ end;
 
 procedure TForm2.Timer1Timer(Sender: TObject);
 begin
-  FSim.Map.ToImage(Image1, ImageList1);
+  if self.Visible then
+  begin
+    FSim.Map.ToImage(Image1, ImageList1);
+	end;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);

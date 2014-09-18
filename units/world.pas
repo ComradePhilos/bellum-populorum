@@ -108,9 +108,9 @@ var
   Count: integer;     // number of trees
   I: integer;
   newx, newy: integer;
-  dist: Integer;
+  dist: integer;
 begin
-  extent := random(10)+1;
+  extent := random(10) + 1;
   Count := Random(80) + 15;
   FTiles[x, y] := TTileType.ttTree;
 
@@ -122,15 +122,15 @@ begin
     begin
       if (newx >= 0) and (newy >= 0) then
       begin
-        dist := round(power((x-newx),2)) + round(power((y-newy),2));
+        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
         begin
-        if (FTiles[newx, newy] = TTileType.ttGrass) then
-        begin
-          FTiles[newx, newy] := TTileType.ttTree;
+          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          begin
+            FTiles[newx, newy] := TTileType.ttTree;
+          end;
         end;
-				end;
-			end;
+      end;
     end;
   end;
 end;
@@ -141,9 +141,9 @@ var
   Count: integer;     // number of rocks
   I: integer;
   newx, newy: integer;
-  dist: Integer;
+  dist: integer;
 begin
-  extent := random(5)+1;
+  extent := random(5) + 1;
   Count := Random(15) + 3;
   FTiles[x, y] := TTileType.ttRock;
 
@@ -155,15 +155,15 @@ begin
     begin
       if (newx >= 0) and (newy >= 0) then
       begin
-        dist := round(power((x-newx),2)) + round(power((y-newy),2));
+        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
         begin
-        if (FTiles[newx, newy] = TTileType.ttGrass) then
-        begin
-          FTiles[newx, newy] := TTileType.ttRock;
+          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          begin
+            FTiles[newx, newy] := TTileType.ttRock;
+          end;
         end;
-				end;
-			end;
+      end;
     end;
   end;
 end;

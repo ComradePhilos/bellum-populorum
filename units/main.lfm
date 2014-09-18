@@ -13,8 +13,8 @@ object Form1: TForm1
     Left = 24
     Height = 25
     Top = 576
-    Width = 75
-    Caption = 'Button1'
+    Width = 112
+    Caption = 'New Simulation'
     OnClick = Button1Click
     TabOrder = 0
   end

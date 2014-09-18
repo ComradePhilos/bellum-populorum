@@ -5,7 +5,7 @@ unit world;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Controls, Graphics;
+  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math;
 
 type
 
@@ -20,7 +20,7 @@ type
     FTreeCount: integer;
 
     procedure GenerateForest(x, y: integer);
-    procedure GenerateHills(x, y: integer);
+    procedure GenerateRocks(x, y: integer);
     //private Generate
 
   public
@@ -63,7 +63,7 @@ begin
     for x := 0 to Width - 1 do
     begin
       FTiles[x, y] := TTileType.ttGrass;//TTileType(Random(6));
-      if (Random(100) > 98) then
+      if (Random(100) > 95) then
         GenerateForest(x, y);
     end;
   end;
@@ -110,31 +110,36 @@ var
   Count: integer;     // number of trees
   I: integer;
   newx, newy: integer;
+  dist: Integer;
 begin
   extent := random(10)+1;
-  Count := Random(50) + 15;
+  Count := Random(80) + 15;
   FTiles[x, y] := TTileType.ttTree;
   Inc(FTreeCount);
 
   for I := 0 to Count - 1 do
   begin
-    newx := Random(extent) - 5;
-    newy := Random(extent) - 5;
-    if (x + newx < self.FWidth) and (y + newy < self.FHeight) then
+    newx := x + Random(extent) - 5;
+    newy := y + Random(extent) - 5;
+    if (newx < self.FWidth) and (newy < self.FHeight) then
     begin
-      if (x + newx >= 0) and (y + newy >= 0) then
+      if (newx >= 0) and (newy >= 0) then
       begin
-        if (FTiles[x + newx, y + newy] = TTileType.ttGrass) then
+        dist := round(power((x-newx),2)) + round(power((y-newy),2));
+        if (dist <= extent) then
         begin
-          FTiles[x + newx, y + newy] := TTileType.ttTree;
+        if (FTiles[newx, newy] = TTileType.ttGrass) then
+        begin
+          FTiles[newx, newy] := TTileType.ttTree;
           Inc(FTreeCount);
         end;
-      end;
+				end;
+			end;
     end;
   end;
 end;
 
-procedure TMap.GenerateHills(x, y: integer);
+procedure TMap.GenerateRocks(x, y: integer);
 begin
 
 end;

@@ -131,6 +131,7 @@ object Form2: TForm2
     Height = 15
     Top = 80
     Width = 34
+    Anchors = [akTop, akRight]
     Caption = 'Label2'
     ParentColor = False
   end

@@ -27,6 +27,7 @@ type
       private
             { private declarations }
         FForm: TForm2;
+
       public
             { public declarations }
       end;

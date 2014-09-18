@@ -36,26 +36,25 @@ type
       property Map: TMap write FMap;
 	end;
 
-  TRoman = Class(TPeople)
+  TRomans = Class(TPeople)
     private
       procedure BuildHouse(x,y: Integer);
     public
 	end;
 
-  TGerman = Class(TPeople)
+  TGermans = Class(TPeople)
     private
       procedure BuildHouse(x,y: Integer);
     public
 	end;
 
-  TSlavonic = Class(TPeople)
+  TSlavonics = Class(TPeople)
     private
       procedure BuildHouse(x,y: Integer);
     public
 	end;
 
   TPeoplesList = specialize TFPGObjectList<TPeople>;
-
 
 implementation
 
@@ -77,7 +76,7 @@ begin
   FCitizens.Free;
 end;
 
-procedure TRoman.BuildHouse(x,y: Integer);
+procedure TRomans.BuildHouse(x,y: Integer);
 begin
   if (FRessources.Wood >= 100) then
   begin
@@ -89,7 +88,7 @@ begin
 	end;
 end;
 
-procedure TGerman.BuildHouse(x,y: Integer);
+procedure TGermans.BuildHouse(x,y: Integer);
 begin
   if (FRessources.Wood >= 100) then
   begin
@@ -101,7 +100,7 @@ begin
 	end;
 end;
 
-procedure TSlavonic.BuildHouse(x,y: Integer);
+procedure TSlavonics.BuildHouse(x,y: Integer);
 begin
   if (FRessources.Wood >= 100) then
   begin

@@ -1,11 +1,13 @@
 object Form2: TForm2
   Left = 221
   Height = 674
-  Top = 312
+  Top = 272
   Width = 1152
+  BorderIcons = []
+  BorderStyle = bsSingle
   Caption = 'Form2'
-  ClientHeight = 654
-  ClientWidth = 1152
+  ClientHeight = 0
+  ClientWidth = 0
   Menu = MainMenu1
   OnClose = FormClose
   OnCreate = FormCreate

@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 516
+  Left = 311
   Height = 619
-  Top = 457
+  Top = 237
   Width = 725
   Caption = 'bellum populorum'
-  ClientHeight = 599
-  ClientWidth = 725
+  ClientHeight = 0
+  ClientWidth = 0
   Menu = MainMenu1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
@@ -107,7 +107,6 @@ object Form1: TForm1
           FF07FFFFFF09FFFFFF09FFFFFF08FFFFFF04FFFFFF01FFFFFF00FFFFFF00FFFF
           FF00FFFFFF00FFFFFF00
         }
-        OnClick = MenuItem2Click
       end
     end
     object MenuItem3: TMenuItem

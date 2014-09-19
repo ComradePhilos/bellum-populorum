@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, StdCtrls, ComCtrls,
+  Menus, StdCtrls, ComCtrls, fgl,
   {own units}
   sim, simulationwindow;
 
@@ -18,6 +18,8 @@ uses
 type
 
   { TForm1 }
+
+  TSimList = specialize TFPGObjectList<TForm2>;
 
   TForm1 = class(TForm)
     Button1: TButton;
@@ -33,12 +35,13 @@ type
 		TabControl1: TTabControl;
     procedure Button1Click(Sender: TObject);
 		procedure Button2Click(Sender: TObject);
+		procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 		procedure MenuItem2Click(Sender: TObject);
   private
     { private declarations }
     FForm: TForm2;
-    FSimList: array of TForm2;
+    FSimList: TSimList;
     procedure EnableButtons;
 
   public
@@ -56,19 +59,34 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-  TabControl1.Tabs.Add('Simulation');
-  FForm := TForm2.Create(self);
-  FForm.Show;
+
+  FSimList.Add(TForm2.Create(self));
+  FSimList[FSimList.Count-1].Show;
+  FSimList[FSimList.Count-1].Caption := 'Simulation ' + IntToStr(FSimList.Count);
+  TabControl1.Tabs.Add('Simulation' + IntToStr(FSimList.Count));
+  //FForm := TForm2.Create(self);
+  //FForm.Show;
   EnableButtons;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
 begin
+  if (FSimList.Count > 0) then
+  begin
+    FSimList.Delete(TabControl1.TabIndex);
+    TabControl1.Tabs.Delete(TabControl1.TabIndex);
+	end;
+  EnableButtons;
+end;
 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  FSimList := TSimList.Create;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
 begin
+  FSimlist.Free;
   FForm.Free;
 end;
 

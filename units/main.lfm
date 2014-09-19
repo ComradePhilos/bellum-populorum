@@ -7,6 +7,7 @@ object Form1: TForm1
   ClientHeight = 599
   ClientWidth = 725
   Menu = MainMenu1
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   LCLVersion = '1.2.2.0'
   object Button1: TButton
@@ -29,7 +30,7 @@ object Form1: TForm1
       Height = 25
       Top = 512
       Width = 75
-      Caption = 'End'
+      Caption = 'Close'
       OnClick = Button2Click
       TabOrder = 1
     end

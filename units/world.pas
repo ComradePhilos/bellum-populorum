@@ -59,45 +59,10 @@ begin
     for x := 0 to Width - 1 do
     begin
       FTiles[x, y] := TTileType.ttGrass;
-      if (Random(100) > 98) then
+      if (Random(1000) > 995) then
         GenerateRocks(x, y);
       if (Random(100) > 95) then
         GenerateForest(x, y);
-    end;
-  end;
-end;
-
-function TMap.ToText: TStringList;
-var
-  x, y: integer;
-  line: string;
-begin
-  Result := TStringList.Create;
-  for y := 0 to FHeight - 1 do
-  begin
-    line := '';
-    for x := 0 to FWidth - 1 do
-    begin
-      line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
-    end;
-    Result.Add(line);
-  end;
-end;
-
-procedure TMap.ToImage(AImage: TImage; AImageList: TImageList);
-var
-  x, y: integer;
-  img: TImage;
-begin
-  img := TImage.Create(nil);
-
-  for y := 0 to FHeight - 1 do
-  begin
-    for x := 0 to FWidth - 1 do
-    begin
-      img.Picture.Bitmap.Clear;
-      AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
-      AImage.Canvas.Draw(x * FTileSize, y * FTileSize, img.Picture.Bitmap);
     end;
   end;
 end;
@@ -166,6 +131,42 @@ begin
       end;
     end;
   end;
+end;
+
+function TMap.ToText: TStringList;
+var
+  x, y: integer;
+  line: string;
+begin
+  Result := TStringList.Create;
+  for y := 0 to FHeight - 1 do
+  begin
+    line := '';
+    for x := 0 to FWidth - 1 do
+    begin
+      line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
+    end;
+    Result.Add(line);
+  end;
+end;
+
+procedure TMap.ToImage(AImage: TImage; AImageList: TImageList);
+var
+  x, y: integer;
+  img: TImage;
+begin
+  img := TImage.Create(nil);
+
+  for y := 0 to FHeight - 1 do
+  begin
+    for x := 0 to FWidth - 1 do
+    begin
+      img.Picture.Bitmap.Clear;
+      AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
+      AImage.Canvas.Draw(x * FTileSize, y * FTileSize, img.Picture.Bitmap);
+    end;
+  end;
+  img.Free;
 end;
 
 end.

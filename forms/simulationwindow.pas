@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Buttons, ComCtrls,
+  ExtCtrls, Buttons, ComCtrls, Menus,
   world, sim;
 
 type
@@ -22,7 +22,15 @@ type
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
+		MainMenu1: TMainMenu;
     Memo1: TMemo;
+		MenuItem1: TMenuItem;
+		MenuItem2: TMenuItem;
+		MenuItem3: TMenuItem;
+		MenuItem4: TMenuItem;
+		MenuItem5: TMenuItem;
+		MenuItem6: TMenuItem;
+		MenuItem7: TMenuItem;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
@@ -78,6 +86,7 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
+  FSim.Map.ToImage(Image1, ImageList1);
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
@@ -94,8 +103,9 @@ procedure TForm2.Timer1Timer(Sender: TObject);
 begin
   if self.Visible then
   begin
-    Image1.Picture.Clear;
-    FSim.Map.ToImage(Image1, ImageList1);
+    //Image1.Picture.Clear;
+    //FSim.Map.ToImage(Image1, ImageList1);
+    Image1.Repaint;
 	end;
 end;
 

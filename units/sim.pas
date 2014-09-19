@@ -5,8 +5,9 @@ unit sim;
 interface
 
 uses
-      Classes, SysUtils,
-      peoples, world;
+  Classes, SysUtils, Graphics,
+  {own units}
+  peoples, world;
 
 type
 
@@ -14,38 +15,42 @@ type
 
   TSimSettings = record
     Peoples: array of TPeopleType;
-    ProbabilityForest: Integer;
-    ProbabilityRocks: Integer;
-	end;
+    Colors: array of TColor;
+    ProbForest: integer;
+    ProbRocks: integer;
+  end;
 
-  TSimulation = Class
-    private
-      FID: Integer;
-      FRound: Integer;                        // Round-Counter
-      FRoundLimit: Integer;                   // optional round limit
-      FMap: TMap;
-      FPeoples: TPeoplesList;
-      FTimeMod: Double;                       // Mutliplier for time
-      FDuration: Integer;                     // Milliseconds since start
-    public
-      constructor Create;
-      destructor Destroy;
+  TSimulation = class
+  private
+    FID: integer;
+    FRound: integer;                        // Round-Counter
+    FRoundLimit: integer;                   // optional round limit
+    FMap: TMap;
+    FPeoples: TPeoplesList;
+    FTimeMod: double;                       // Mutliplier for time
+    FDuration: integer;                     // Milliseconds since start
+  public
+    constructor Create;
+    destructor Destroy;
 
-      procedure GeneratePeople(APeopleType: TPeopleType);
-      procedure GenerateRomans;
-      procedure GenerateGermans;
-      procedure GenerateSlavonics;
-      procedure Initialize(ASimSettings: TSimSettings);
+    procedure GenerateRomans(AColor: TColor);
+    procedure GenerateGermans(AColor: TColor);
+    procedure GenerateSlavonics(AColor: TColor);
+    procedure Initialize(ASimSettings: TSimSettings);
 
-      property Map: TMap read FMap write FMap;
-	end;
+    property Map: TMap read FMap write FMap;
+  end;
 
 implementation
+
+const
+  defWidth = 100;
+  defHeight = 80;
 
 constructor TSimulation.Create;
 begin
   FPeoples := TPeoplesList.Create;
-  FMap := TMap.Create(1,1);
+  FMap := TMap.Create(0, 0);
 end;
 
 destructor TSimulation.Destroy;
@@ -54,30 +59,39 @@ begin
   FMap.Free;
 end;
 
-procedure TSimulation.GeneratePeople(APeopleType: TPeopleType);
-begin
-  case APeopleType of
-    ptRoman: GenerateRomans;
-	end;
-end;
-
-procedure TSimulation.GenerateRomans;
+procedure TSimulation.GenerateRomans(AColor: TColor);
 begin
   FPeoples.Add(TRomans.Create);
+  FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
-procedure TSimulation.GenerateGermans;
+procedure TSimulation.GenerateGermans(AColor: TColor);
 begin
   FPeoples.Add(TGermans.Create);
+  FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
-procedure TSimulation.GenerateSlavonics;
+procedure TSimulation.GenerateSlavonics(AColor: TColor);
 begin
   FPeoples.Add(TSlavonics.Create);
+  FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.Initialize(ASimSettings: TSimSettings);
+var
+  I: integer;
 begin
+  with ASimSettings do
+  begin
+    for I := 0 to High(Peoples) - 1 do
+    begin
+      case Peoples[I] of
+        ptRoman: GenerateRomans(Colors[I]);
+        ptGerman: GenerateGermans(Colors[I]);
+        ptSlavonic: GenerateSlavonics(Colors[I]);
+      end;
+    end;
+  end;
 
 end;
 

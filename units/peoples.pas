@@ -5,7 +5,7 @@ unit peoples;
 interface
 
 uses
-      Classes, SysUtils, fgl,
+      Classes, SysUtils, fgl, Graphics,
       {own units}
       citizens, world;
 
@@ -20,6 +20,7 @@ type
   TPeople = Class
     private
       FName: String;
+      FColor: TColor;
       FStrengthBonus: Integer;
       FPopulationBonus: Integer;
       FCitizens: TCitizenList;
@@ -34,6 +35,7 @@ type
       destructor Destroy;
 
       property Map: TMap write FMap;
+      property Color: TColor read FColor write FColor;
 	end;
 
   TRomans = Class(TPeople)

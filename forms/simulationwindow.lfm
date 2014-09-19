@@ -94,7 +94,7 @@ object Form2: TForm2
     EditLabel.Caption = 'height'
     EditLabel.ParentColor = False
     TabOrder = 3
-    Text = '100'
+    Text = '70'
   end
   object Label1: TLabel
     Left = 840

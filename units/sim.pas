@@ -5,7 +5,7 @@ unit sim;
 interface
 
 uses
-  Classes, SysUtils, Graphics,
+  Classes, SysUtils, Graphics, fgl,
   {own units}
   peoples, world;
 
@@ -41,6 +41,8 @@ type
     property Map: TMap read FMap write FMap;
   end;
 
+  TSimulationList = specialize TFPGObjectList<TSimulation>;
+
 implementation
 
 const
@@ -50,7 +52,7 @@ const
 constructor TSimulation.Create;
 begin
   FPeoples := TPeoplesList.Create;
-  FMap := TMap.Create(0, 0);
+  FMap := TMap.Create;
 end;
 
 destructor TSimulation.Destroy;

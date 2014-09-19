@@ -12,24 +12,31 @@ type
   TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
   TTiles = array of array of TTileType;
 
+  TMapSettings = record
+    Width: integer;
+    Height: integer;
+    TileSize: Integer;
+    ProbForest: integer;
+    ProbRocks: integer;
+  end;
+
   TMap = class
   private
-    FWidth, FHeight: integer;
+    FMapSettings: TMapSettings;
     FTiles: TTiles;
-    FTileSize: integer;
 
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
 
   public
     constructor Create;
-    constructor Create(Width, Height: integer); overload;
+    constructor Create(AMapSettings: TMapSettings); overload;
 
-    procedure Generate(Width, Height: integer);
+    procedure Generate;
     procedure ToImage(AImage: TImage; AImageList: TImageList);
     function ToText: TStringList;
 
-    property TileSize: integer read FTileSize write FTileSize;
+    property MapSettings: TMapSettings read FMapSettings write FMapSettings;
     property Tiles: TTiles read FTiles write FTiles;
   end;
 
@@ -38,31 +45,33 @@ implementation
 
 constructor TMap.Create;
 begin
+  Randomize;
   SetLength(FTiles, 0, 0);
 end;
 
-constructor TMap.Create(Width, Height: integer);
+constructor TMap.Create(AMapSettings: TMapSettings);
 begin
-  self.Generate(Width, Height);
   Randomize;
+  Generate;
 end;
 
-procedure TMap.Generate(Width, Height: integer);
+procedure TMap.Generate;
 var
   x, y: integer;
 begin
-  SetLength(FTiles, Width, Height);
-  FWidth := Width;
-  FHeight := Height;
-  for y := 0 to Height - 1 do
+  with FMapSettings do
   begin
-    for x := 0 to Width - 1 do
+    SetLength(FTiles, Width, Height);
+    for y := 0 to Height - 1 do
     begin
-      FTiles[x, y] := TTileType.ttGrass;
-      if (Random(1000) > 995) then
-        GenerateRocks(x, y);
-      if (Random(100) > 95) then
-        GenerateForest(x, y);
+      for x := 0 to Width - 1 do
+      begin
+        FTiles[x, y] := TTileType.ttGrass;
+        if (Random(1000) > 995) then
+          GenerateRocks(x, y);
+        if (Random(100) > 95) then
+          GenerateForest(x, y);
+      end;
     end;
   end;
 end;
@@ -79,20 +88,23 @@ begin
   Count := Random(80) + 15;
   FTiles[x, y] := TTileType.ttTree;
 
-  for I := 0 to Count - 1 do
+  with FMapSettings do
   begin
-    newx := x + Random(extent) - 5;
-    newy := y + Random(extent) - 5;
-    if (newx < self.FWidth) and (newy < self.FHeight) then
+    for I := 0 to Count - 1 do
     begin
-      if (newx >= 0) and (newy >= 0) then
+      newx := x + Random(extent) - 5;
+      newy := y + Random(extent) - 5;
+      if (newx < Width) and (newy < Height) then
       begin
-        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
-        if (dist <= extent) then
+        if (newx >= 0) and (newy >= 0) then
         begin
-          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
+          if (dist <= extent) then
           begin
-            FTiles[newx, newy] := TTileType.ttTree;
+            if (FTiles[newx, newy] = TTileType.ttGrass) then
+            begin
+              FTiles[newx, newy] := TTileType.ttTree;
+            end;
           end;
         end;
       end;
@@ -112,20 +124,23 @@ begin
   Count := Random(15) + 3;
   FTiles[x, y] := TTileType.ttRock;
 
-  for I := 0 to Count - 1 do
+  with FMapSettings do
   begin
-    newx := x + Random(extent) - 3;
-    newy := y + Random(extent) - 3;
-    if (newx < self.FWidth) and (newy < self.FHeight) then
+    for I := 0 to Count - 1 do
     begin
-      if (newx >= 0) and (newy >= 0) then
+      newx := x + Random(extent) - 3;
+      newy := y + Random(extent) - 3;
+      if (newx < Width) and (newy < Height) then
       begin
-        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
-        if (dist <= extent) then
+        if (newx >= 0) and (newy >= 0) then
         begin
-          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
+          if (dist <= extent) then
           begin
-            FTiles[newx, newy] := TTileType.ttRock;
+            if (FTiles[newx, newy] = TTileType.ttGrass) then
+            begin
+              FTiles[newx, newy] := TTileType.ttRock;
+            end;
           end;
         end;
       end;
@@ -139,10 +154,10 @@ var
   line: string;
 begin
   Result := TStringList.Create;
-  for y := 0 to FHeight - 1 do
+  for y := 0 to FMapSettings.Height - 1 do
   begin
     line := '';
-    for x := 0 to FWidth - 1 do
+    for x := 0 to FMapSettings.Width - 1 do
     begin
       line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
     end;
@@ -157,16 +172,19 @@ var
 begin
   img := TImage.Create(nil);
 
-  for y := 0 to FHeight - 1 do
+  with FMapSettings do
   begin
-    for x := 0 to FWidth - 1 do
+  for y := 0 to FMapSettings.Height - 1 do
+  begin
+    for x := 0 to FMapSettings.Width - 1 do
     begin
       img.Picture.Bitmap.Clear;
       AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
-      AImage.Canvas.Draw(x * FTileSize, y * FTileSize, img.Picture.Bitmap);
+      AImage.Canvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
     end;
   end;
-  img.Free;
+	end;
+	img.Free;
 end;
 
 end.

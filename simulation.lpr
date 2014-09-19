@@ -8,7 +8,7 @@ uses
       {$ENDIF}{$ENDIF}
       Interfaces, // this includes the LCL widgetset
       Forms, main, sim, funcs, peoples, citizens, tasks, SimulationWindow,
-			world;
+			world, houses;
 
 {$R *.res}
 

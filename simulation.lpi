@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="10">
+    <Units Count="11">
       <Unit0>
         <Filename Value="simulation.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -90,6 +90,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="world"/>
       </Unit9>
+      <Unit10>
+        <Filename Value="units\houses.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="houses"/>
+      </Unit10>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

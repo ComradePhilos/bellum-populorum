@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 516
   Height = 619
-  Top = 417
+  Top = 457
   Width = 725
   Caption = 'bellum populorum'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 599
+  ClientWidth = 725
   Menu = MainMenu1
   OnDestroy = FormDestroy
   LCLVersion = '1.2.2.0'
@@ -18,9 +18,25 @@ object Form1: TForm1
     OnClick = Button1Click
     TabOrder = 0
   end
+  object TabControl1: TTabControl
+    Left = 3
+    Height = 544
+    Top = 8
+    Width = 722
+    TabOrder = 1
+    object Button2: TButton
+      Left = 8
+      Height = 25
+      Top = 512
+      Width = 75
+      Caption = 'End'
+      OnClick = Button2Click
+      TabOrder = 1
+    end
+  end
   object MainMenu1: TMainMenu
-    left = 24
-    top = 16
+    left = 136
+    top = 560
     object MenuItem1: TMenuItem
       Caption = 'File'
       object MenuItem2: TMenuItem

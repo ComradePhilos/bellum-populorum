@@ -61,10 +61,16 @@ implementation
 procedure TForm2.BitBtn1Click(Sender: TObject);
 var
   x,y: Integer;
+  mapsettings: TMapSettings;
 begin
   x := StrToInt(LabeledEdit1.Text);
   y := StrToInt(LabeledEdit2.Text);
-  FSim.Map.Generate(x, y);
+  mapsettings.Width := x;
+  mapsettings.Height := y;
+  mapsettings.TileSize := 8;
+  FSim.Map.MapSettings := mapsettings;
+  FSim.Map.Generate;
+
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
   FSim.Map.ToImage(Image1, ImageList1);
@@ -82,7 +88,6 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   FSim := TSimulation.Create;
-  FSim.Map.TileSize := 8;
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);

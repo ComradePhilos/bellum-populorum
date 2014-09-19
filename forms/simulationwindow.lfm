@@ -1,12 +1,13 @@
 object Form2: TForm2
   Left = 221
   Height = 674
-  Top = 272
+  Top = 312
   Width = 1152
   Caption = 'Form2'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 654
+  ClientWidth = 1152
   Menu = MainMenu1
+  OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   ShowInTaskBar = stAlways

@@ -11,6 +11,8 @@ uses
 
 type
 
+  TMyOnDestroyEvent = procedure(Sender: TObject) of object;
+
   { TForm2 }
 
   TForm2 = class(TForm)
@@ -35,6 +37,7 @@ type
 		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
+		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
@@ -43,9 +46,15 @@ type
   private
     { private declarations }
     FDuration: Integer;
+    FSim: TSimulation;
+    FID: Integer;
+
+    FMyOnDestroy: TMyOnDestroyEvent;
 
   public
-    FSim: TSimulation;
+    property Sim: TSimulation read FSim write FSim;
+    property ID: Integer read FID write FID;
+    property MyOnDestroy: TMyOnDestroyEvent read FMyOnDestroy write FMyOnDestroy;
 
   end;
 
@@ -82,6 +91,14 @@ begin
   begin
     Trackbar1.Position := FDuration;
     Timer1.Interval := FDuration;
+	end;
+end;
+
+procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
+begin
+  if Assigned(FMyOnDestroy) then
+  begin
+    FMyOnDestroy(self);
 	end;
 end;
 

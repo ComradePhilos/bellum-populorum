@@ -42,7 +42,9 @@ type
     { private declarations }
     FForm: TForm2;
     FSimList: TSimList;
+    FSimCounter: Integer;
     procedure EnableButtons;
+    procedure RemoveSim(Sender: TObject);
 
   public
     { public declarations }
@@ -59,13 +61,13 @@ implementation
 
 procedure TForm1.Button1Click(Sender: TObject);
 begin
-
+  inc(FSimCounter);
   FSimList.Add(TForm2.Create(self));
+  FSimList[FSimList.Count-1].ID := FSimCounter;
   FSimList[FSimList.Count-1].Show;
-  FSimList[FSimList.Count-1].Caption := 'Simulation ' + IntToStr(FSimList.Count);
-  TabControl1.Tabs.Add('Simulation' + IntToStr(FSimList.Count));
-  //FForm := TForm2.Create(self);
-  //FForm.Show;
+  FSimList[FSimList.Count-1].Caption := 'Simulation ' + IntToStr(FSimCounter);
+  FSimList[FSimList.Count-1].MyOnDestroy := @RemoveSim;
+  TabControl1.Tabs.Add('Simulation' + IntToStr(FSimCounter));
   EnableButtons;
 end;
 
@@ -82,6 +84,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   FSimList := TSimList.Create;
+  FSimCounter := 0;
+  EnableButtons;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -98,6 +102,21 @@ end;
 procedure TForm1.EnableButtons;
 begin
   Button2.Enabled := (TabControl1.Tabs.Count > 0);
+end;
+
+procedure TForm1.RemoveSim(Sender: TObject);
+var
+  I: Integer;
+begin
+
+  for I := 0 to FSimList.Count-1 do
+  begin
+    if (FSimList[I].ID = TForm2(Sender).ID) then
+    begin
+      TabControl1.Tabs.Delete(I);
+		end;
+	end;
+
 end;
 
 end.

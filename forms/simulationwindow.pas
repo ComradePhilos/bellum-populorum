@@ -100,7 +100,7 @@ procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 begin
   if Assigned(FMyOnDestroy) then
   begin
-    FMyOnDestroy(self);
+    //FMyOnDestroy(self);
 	end;
 end;
 

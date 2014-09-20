@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, StdCtrls, ComCtrls,
+  Menus, StdCtrls, ComCtrls, Buttons,
   {own units}
   sim, simulationwindow;
 
@@ -20,8 +20,9 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+				BitBtn1: TBitBtn;
+				BitBtn2: TBitBtn;
     Button1: TButton;
-    Button2: TButton;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -31,16 +32,18 @@ type
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     TabControl1: TTabControl;
+		procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+		procedure TabControl1Change(Sender: TObject);
   private
     { private declarations }
     FForm: TForm2;
     FSimFormList: TSimFormList;
     FSimCounter: integer;
-    procedure EnableButtons;
+    procedure UpdateWindow;
     procedure RemoveSim(Sender: TObject);
     procedure SimFormListToTabs(ATabControl: TTabControl; ASimFormList: TSimFormList);
 
@@ -66,7 +69,16 @@ begin
   FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
-  EnableButtons;
+  UpdateWindow;
+end;
+
+procedure TForm1.BitBtn1Click(Sender: TObject);
+begin
+  if (FSimFormList.Count > 0) then
+  begin
+    FSimFormList[TabControl1.TabIndex].Show;
+	end;
+  UpdateWindow;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -74,16 +86,15 @@ begin
   if (FSimFormList.Count > 0) then
   begin
     FSimFormList.Delete(TabControl1.TabIndex);
-    //TabControl1.Tabs.Delete(TabControl1.TabIndex);
   end;
-  EnableButtons;
+  UpdateWindow;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   FSimFormList := TSimFormList.Create(true);
   FSimCounter := 0;
-  EnableButtons;
+  UpdateWindow;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
@@ -92,9 +103,15 @@ begin
   FForm.Free;
 end;
 
-procedure TForm1.EnableButtons;
+procedure TForm1.TabControl1Change(Sender: TObject);
 begin
-  Button2.Enabled := (TabControl1.Tabs.Count > 0);
+  //FSimFormList[TabControl1.TabIndex].Show;
+end;
+
+procedure TForm1.UpdateWindow;
+begin
+  BitBtn1.Enabled := (FSimFormList.Count > 0);
+  BitBtn2.Enabled := (FSimFormList.Count > 0);
   SimFormListToTabs(TabControl1, FSimFormList);
 end;
 
@@ -106,13 +123,11 @@ begin
   begin
     if (FSimFormList[I].ID = TForm2(Sender).ID) then
     begin
-      Application.MessageBox(PChar('ID: ' + IntToStr(TForm2(Sender).ID) + ' Index: ' + IntToStr(I)), 'test',0);
+      //Application.MessageBox(PChar('ID: ' + IntToStr(TForm2(Sender).ID) + ' Index: ' + IntToStr(I)), 'test',0);
       FSimFormList.Delete(I);
-      EnableButtons;
     end;
   end;
-
-
+  UpdateWindow;
 end;
 
 procedure TForm1.SimFormListToTabs(ATabControl: TTabControl; ASimFormList: TSimFormList);
@@ -120,7 +135,7 @@ var
   I: Integer;
 begin
   ATabControl.Tabs.Clear;
-  for I := 0 to ASimFormList.Count - 1 do
+	for I := 0 to ASimFormList.Count - 1 do
   begin
     ATabControl.Tabs.Add('Simulation ' + IntToStr(ASimFormList[I].ID));
 	end;

@@ -5,14 +5,15 @@ object Form2: TForm2
   Width = 1152
   BorderStyle = bsSingle
   Caption = 'Form2'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 674
+  ClientWidth = 1152
   Menu = MainMenu1
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object BitBtn1: TBitBtn
     Left = 1032
     Height = 30
@@ -62,7 +63,7 @@ object Form2: TForm2
   end
   object LabeledEdit1: TLabeledEdit
     Left = 840
-    Height = 23
+    Height = 27
     Top = 24
     Width = 80
     Anchors = [akTop, akRight]
@@ -71,8 +72,8 @@ object Form2: TForm2
     EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = LabeledEdit1
     EditLabel.Left = 840
-    EditLabel.Height = 15
-    EditLabel.Top = 6
+    EditLabel.Height = 17
+    EditLabel.Top = 4
     EditLabel.Width = 80
     EditLabel.Caption = 'width'
     EditLabel.ParentColor = False
@@ -81,7 +82,7 @@ object Form2: TForm2
   end
   object LabeledEdit2: TLabeledEdit
     Left = 936
-    Height = 23
+    Height = 27
     Top = 24
     Width = 80
     Anchors = [akTop, akRight]
@@ -90,8 +91,8 @@ object Form2: TForm2
     EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = LabeledEdit2
     EditLabel.Left = 936
-    EditLabel.Height = 15
-    EditLabel.Top = 6
+    EditLabel.Height = 17
+    EditLabel.Top = 4
     EditLabel.Width = 80
     EditLabel.Caption = 'height'
     EditLabel.ParentColor = False
@@ -99,18 +100,18 @@ object Form2: TForm2
     Text = '70'
   end
   object Label1: TLabel
-    Left = 840
-    Height = 15
-    Top = 359
-    Width = 116
+    Left = 813
+    Height = 17
+    Top = 357
+    Width = 143
     Anchors = [akRight, akBottom]
     Caption = 'Round Duration in ms'
     ParentColor = False
   end
   object TrackBar1: TTrackBar
     Left = 832
-    Height = 25
-    Top = 383
+    Height = 46
+    Top = 362
     Width = 224
     Frequency = 500
     Max = 10000
@@ -122,8 +123,8 @@ object Form2: TForm2
   end
   object Edit1: TEdit
     Left = 1064
-    Height = 23
-    Top = 383
+    Height = 27
+    Top = 379
     Width = 80
     Anchors = [akRight, akBottom]
     OnChange = Edit1Change

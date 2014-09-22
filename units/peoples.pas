@@ -17,9 +17,12 @@ type
     Food: Integer;
 	end;
 
+  TPeopleType = (ptRoman, ptGerman, ptSlavonic);
+
   TPeople = Class
     private
       FName: String;
+      FPeopleType: TPeopleType;
       FColor: TColor;
       FStrengthBonus: Integer;
       FPopulationBonus: Integer;
@@ -27,33 +30,16 @@ type
       FRessources: TRessources;
       FMap: TMap;                                                               // reference to the map of the sim.
 
-      procedure BuildHouse(x,y: Integer); virtual; abstract;        // This is only the method to set a house on the map
+      procedure BuildHouse(x,y: Integer);        // This is only the method to set a house on the map
                                                                     // actually a house must be created by 2 citizens
 
     public
       constructor Create;
       destructor Destroy;
 
+      property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
-	end;
-
-  TRomans = Class(TPeople)
-    private
-      procedure BuildHouse(x,y: Integer);
-    public
-	end;
-
-  TGermans = Class(TPeople)
-    private
-      procedure BuildHouse(x,y: Integer);
-    public
-	end;
-
-  TSlavonics = Class(TPeople)
-    private
-      procedure BuildHouse(x,y: Integer);
-    public
 	end;
 
   TPeoplesList = specialize TFPGObjectList<TPeople>;
@@ -78,37 +64,17 @@ begin
   FCitizens.Free;
 end;
 
-procedure TRomans.BuildHouse(x,y: Integer);
+procedure TPeople.BuildHouse(x,y: Integer);
 begin
   if (FRessources.Wood >= 100) then
   begin
     if (FMap.Tiles[x,y] = TTileType.ttGrass) then
     begin
-      FMap.Tiles[x,y] := TTileType.ttRomanHouse;
-      FRessources.Wood -= 100;
-		end;
-	end;
-end;
-
-procedure TGermans.BuildHouse(x,y: Integer);
-begin
-  if (FRessources.Wood >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      FMap.Tiles[x,y] := TTileType.ttGermanHouse;
-      FRessources.Wood -= 100;
-		end;
-	end;
-end;
-
-procedure TSlavonics.BuildHouse(x,y: Integer);
-begin
-  if (FRessources.Wood >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
+      case FPeopleType of
+        ptRoman: FMap.Tiles[x,y] := TTileType.ttRomanHouse;
+        ptGerman: FMap.Tiles[x,y] := TTileType.ttGermanHouse;
+        ptSlavonic: FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
+      end;
       FRessources.Wood -= 100;
 		end;
 	end;

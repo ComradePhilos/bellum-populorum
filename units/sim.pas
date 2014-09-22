@@ -11,7 +11,7 @@ uses
 
 type
 
-  TPeopleType = (ptRoman, ptGerman, ptSlavonic);
+
 
   TSimSettings = record
     Peoples: array of TPeopleType;
@@ -63,19 +63,19 @@ end;
 
 procedure TSimulation.GenerateRomans(AColor: TColor);
 begin
-  FPeoples.Add(TRomans.Create);
+  FPeoples.Add(TPeople.Create);
   FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.GenerateGermans(AColor: TColor);
 begin
-  FPeoples.Add(TGermans.Create);
+  FPeoples.Add(TPeople.Create);
   FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.GenerateSlavonics(AColor: TColor);
 begin
-  FPeoples.Add(TSlavonics.Create);
+  FPeoples.Add(TPeople.Create);
   FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 

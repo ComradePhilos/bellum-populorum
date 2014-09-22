@@ -180,7 +180,6 @@ begin
     begin
       img.Picture.Bitmap.Clear;
       AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
-      //AImage.Canvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
       ACanvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
     end;
   end;

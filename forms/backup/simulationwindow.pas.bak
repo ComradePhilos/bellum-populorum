@@ -41,7 +41,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 		procedure FormPaint(Sender: TObject);
-		procedure Image1Resize(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
     { private declarations }

@@ -20,8 +20,8 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-				BitBtn1: TBitBtn;
-				BitBtn2: TBitBtn;
+    BitBtn1: TBitBtn;
+    BitBtn2: TBitBtn;
     Button1: TButton;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
@@ -32,12 +32,12 @@ type
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     TabControl1: TTabControl;
-		procedure BitBtn1Click(Sender: TObject);
+    procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-		procedure TabControl1Change(Sender: TObject);
+
   private
     { private declarations }
     FForm: TForm2;
@@ -70,6 +70,7 @@ begin
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
   UpdateWindow;
+  TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject);
@@ -77,8 +78,7 @@ begin
   if (FSimFormList.Count > 0) then
   begin
     FSimFormList[TabControl1.TabIndex].Show;
-	end;
-  UpdateWindow;
+  end;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -92,7 +92,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  FSimFormList := TSimFormList.Create(true);
+  FSimFormList := TSimFormList.Create(True);
   FSimCounter := 0;
   UpdateWindow;
 end;
@@ -101,11 +101,6 @@ procedure TForm1.FormDestroy(Sender: TObject);
 begin
   FSimFormList.Free;
   FForm.Free;
-end;
-
-procedure TForm1.TabControl1Change(Sender: TObject);
-begin
-  //FSimFormList[TabControl1.TabIndex].Show;
 end;
 
 procedure TForm1.UpdateWindow;
@@ -123,7 +118,6 @@ begin
   begin
     if (FSimFormList[I].ID = TForm2(Sender).ID) then
     begin
-      //Application.MessageBox(PChar('ID: ' + IntToStr(TForm2(Sender).ID) + ' Index: ' + IntToStr(I)), 'test',0);
       FSimFormList.Delete(I);
     end;
   end;
@@ -132,13 +126,13 @@ end;
 
 procedure TForm1.SimFormListToTabs(ATabControl: TTabControl; ASimFormList: TSimFormList);
 var
-  I: Integer;
+  I: integer;
 begin
   ATabControl.Tabs.Clear;
-	for I := 0 to ASimFormList.Count - 1 do
+  for I := 0 to ASimFormList.Count - 1 do
   begin
     ATabControl.Tabs.Add('Simulation ' + IntToStr(ASimFormList[I].ID));
-	end;
+  end;
 end;
 
 end.

@@ -11,9 +11,7 @@ uses
   sim, simulationwindow;
 
 // Todo:
-// * all results and controls are in the main window
-// * main form: tab with statistics for each simulation
-// * call ToImage func. of TMap as few as possible
+// * all results and some controls are in the main window
 
 type
 
@@ -22,7 +20,8 @@ type
   TForm1 = class(TForm)
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    Button1: TButton;
+		BitBtn3: TBitBtn;
+		BitBtn4: TBitBtn;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -65,7 +64,6 @@ begin
   Inc(FSimCounter);
   FSimFormList.Add(TForm2.Create(nil));
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
-  FSimFormList[FSimFormList.Count - 1].Show;
   FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));

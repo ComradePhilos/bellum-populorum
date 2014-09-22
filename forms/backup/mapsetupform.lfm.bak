@@ -1,0 +1,122 @@
+object Form3: TForm3
+  Left = 431
+  Height = 284
+  Top = 206
+  Width = 399
+  Caption = 'Simulation Setup'
+  ClientHeight = 284
+  ClientWidth = 399
+  LCLVersion = '1.2.2.0'
+  object GroupBox1: TGroupBox
+    Left = 8
+    Height = 153
+    Top = 8
+    Width = 384
+    Caption = 'Map Settings'
+    ClientHeight = 135
+    ClientWidth = 380
+    TabOrder = 0
+    object LabeledEdit1: TLabeledEdit
+      Left = 16
+      Height = 23
+      Top = 24
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit1
+      EditLabel.AnchorSideRight.Control = LabeledEdit1
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit1
+      EditLabel.Left = 16
+      EditLabel.Height = 15
+      EditLabel.Top = 6
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Width'
+      EditLabel.ParentColor = False
+      TabOrder = 0
+    end
+    object LabeledEdit3: TLabeledEdit
+      Left = 40
+      Height = 23
+      Top = 72
+      Width = 104
+      EditLabel.AnchorSideLeft.Control = LabeledEdit3
+      EditLabel.AnchorSideRight.Control = LabeledEdit3
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit3
+      EditLabel.Left = 40
+      EditLabel.Height = 15
+      EditLabel.Top = 54
+      EditLabel.Width = 104
+      EditLabel.Caption = 'Propability Forest'
+      EditLabel.ParentColor = False
+      TabOrder = 1
+    end
+    object Image1: TImage
+      Left = 16
+      Height = 20
+      Top = 72
+      Width = 20
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B47726170686963C800000089504E47
+        0D0A1A0A0000000D4948445200000008000000080806000000C40FBE8B000000
+        017352474200AECE1CE90000000467414D410000B18F0BFC6105000000097048
+        597300000EC400000EC401952B0E1B0000005D49444154285363544B95FECF00
+        04B74E3D05512840CD4C9A01AC002CA905150581E750FA3D030323833EC37FB0
+        244C1019001530419938016E0540DD2037308108866B1001140C05705F8080F5
+        5516307D54FB0F980601026E6060000075BF1922FDB8BC190000000049454E44
+        AE426082
+      }
+      Stretch = True
+    end
+    object Image2: TImage
+      Left = 160
+      Height = 20
+      Top = 72
+      Width = 20
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B47726170686963CA00000089504E47
+        0D0A1A0A0000000D4948445200000008000000080806000000C40FBE8B000000
+        017352474200AECE1CE90000000467414D410000B18F0BFC6105000000097048
+        597300000EC400000EC401952B0E1B0000005F49444154285363544B95FECF00
+        0562D715A12C0686579AF7C134138860E662864B26262632B8BABAC2F960057F
+        BFFD057340924F9E3C01B36100AC00A61A5D1224CE846C3432005903026013B0
+        190D036005F800A38D8D0DDC9B98808101009B5D1CDB0711E9DA000000004945
+        4E44AE426082
+      }
+      Stretch = True
+    end
+  end
+  object LabeledEdit2: TLabeledEdit
+    Left = 120
+    Height = 23
+    Top = 48
+    Width = 80
+    EditLabel.AnchorSideLeft.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Control = LabeledEdit2
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit2
+    EditLabel.Left = 120
+    EditLabel.Height = 15
+    EditLabel.Top = 30
+    EditLabel.Width = 80
+    EditLabel.Caption = 'Height'
+    EditLabel.ParentColor = False
+    TabOrder = 1
+  end
+  object LabeledEdit4: TLabeledEdit
+    Left = 200
+    Height = 23
+    Top = 96
+    Width = 104
+    EditLabel.AnchorSideLeft.Control = LabeledEdit4
+    EditLabel.AnchorSideRight.Control = LabeledEdit4
+    EditLabel.AnchorSideRight.Side = asrBottom
+    EditLabel.AnchorSideBottom.Control = LabeledEdit4
+    EditLabel.Left = 200
+    EditLabel.Height = 15
+    EditLabel.Top = 78
+    EditLabel.Width = 104
+    EditLabel.Caption = 'Propability Rocks'
+    EditLabel.ParentColor = False
+    TabOrder = 2
+  end
+end

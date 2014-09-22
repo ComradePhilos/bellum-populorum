@@ -33,7 +33,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="12">
       <Unit0>
         <Filename Value="simulation.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -95,6 +95,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="houses"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="forms\mapsetupform.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form3"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="mapsetupform"/>
+      </Unit11>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

@@ -1,21 +1,20 @@
 object Form2: TForm2
-  Left = 221
-  Height = 674
-  Top = 272
-  Width = 1152
-  BorderStyle = bsSingle
+  Left = 224
+  Height = 452
+  Top = 282
+  Width = 715
   Caption = 'Form2'
-  ClientHeight = 674
-  ClientWidth = 1152
+  ClientHeight = 432
+  ClientWidth = 715
   Menu = MainMenu1
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.2.0'
   object BitBtn1: TBitBtn
-    Left = 1032
+    Left = 595
     Height = 30
     Top = 16
     Width = 75
@@ -25,25 +24,15 @@ object Form2: TForm2
     TabOrder = 0
   end
   object Memo1: TMemo
-    Left = 832
+    Left = 395
     Height = 218
-    Top = 429
+    Top = 187
     Width = 312
     Anchors = [akRight, akBottom]
     Lines.Strings = (
       'Memo1'
     )
     TabOrder = 1
-  end
-  object Image1: TImage
-    AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Side = asrBottom
-    Left = 8
-    Height = 639
-    Top = 8
-    Width = 816
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    OnResize = Image1Resize
   end
   object Image2: TImage
     Left = 1128
@@ -62,8 +51,8 @@ object Form2: TForm2
     Visible = False
   end
   object LabeledEdit1: TLabeledEdit
-    Left = 840
-    Height = 27
+    Left = 403
+    Height = 23
     Top = 24
     Width = 80
     Anchors = [akTop, akRight]
@@ -71,9 +60,9 @@ object Form2: TForm2
     EditLabel.AnchorSideRight.Control = LabeledEdit1
     EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = LabeledEdit1
-    EditLabel.Left = 840
-    EditLabel.Height = 17
-    EditLabel.Top = 4
+    EditLabel.Left = 403
+    EditLabel.Height = 15
+    EditLabel.Top = 6
     EditLabel.Width = 80
     EditLabel.Caption = 'width'
     EditLabel.ParentColor = False
@@ -81,8 +70,8 @@ object Form2: TForm2
     Text = '100'
   end
   object LabeledEdit2: TLabeledEdit
-    Left = 936
-    Height = 27
+    Left = 499
+    Height = 23
     Top = 24
     Width = 80
     Anchors = [akTop, akRight]
@@ -90,9 +79,9 @@ object Form2: TForm2
     EditLabel.AnchorSideRight.Control = LabeledEdit2
     EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = LabeledEdit2
-    EditLabel.Left = 936
-    EditLabel.Height = 17
-    EditLabel.Top = 4
+    EditLabel.Left = 499
+    EditLabel.Height = 15
+    EditLabel.Top = 6
     EditLabel.Width = 80
     EditLabel.Caption = 'height'
     EditLabel.ParentColor = False
@@ -100,18 +89,18 @@ object Form2: TForm2
     Text = '70'
   end
   object Label1: TLabel
-    Left = 813
-    Height = 17
-    Top = 357
-    Width = 143
+    Left = 403
+    Height = 15
+    Top = 117
+    Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Round Duration in ms'
     ParentColor = False
   end
   object TrackBar1: TTrackBar
-    Left = 832
+    Left = 395
     Height = 46
-    Top = 362
+    Top = 140
     Width = 224
     Frequency = 500
     Max = 10000
@@ -122,13 +111,20 @@ object Form2: TForm2
     TabOrder = 4
   end
   object Edit1: TEdit
-    Left = 1064
-    Height = 27
-    Top = 379
+    Left = 627
+    Height = 23
+    Top = 141
     Width = 80
     Anchors = [akRight, akBottom]
     OnChange = Edit1Change
     TabOrder = 5
+  end
+  object PaintBox1: TPaintBox
+    Left = 8
+    Height = 416
+    Top = 8
+    Width = 384
+    Anchors = [akTop, akLeft, akRight, akBottom]
   end
   object ImageList1: TImageList
     Height = 8

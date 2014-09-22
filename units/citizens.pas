@@ -5,7 +5,8 @@ unit citizens;
 interface
 
 uses
-      Classes, SysUtils, fgl;
+      Classes, SysUtils, fgl,
+      houses;
 
 type
 

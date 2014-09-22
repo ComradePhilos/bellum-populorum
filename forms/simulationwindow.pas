@@ -18,7 +18,6 @@ type
   TForm2 = class(TForm)
     BitBtn1: TBitBtn;
 		Edit1: TEdit;
-		Image1: TImage;
 		Image2: TImage;
 		ImageList1: TImageList;
 		Label1: TLabel;
@@ -33,6 +32,7 @@ type
 		MenuItem5: TMenuItem;
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
+		PaintBox1: TPaintBox;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
@@ -84,7 +84,7 @@ begin
 
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
-  FSim.Map.ToImage(Image1, ImageList1);
+  FSim.Map.ToPaintBox(PaintBox1, ImageList1);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -110,7 +110,7 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
-  FSim.Map.ToImage(Image1, ImageList1);
+  FSim.Map.ToPaintBox(PaintBox1, ImageList1);
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
@@ -120,7 +120,10 @@ end;
 
 procedure TForm2.Image1Resize(Sender: TObject);
 begin
-  Image1.Picture.Bitmap.SetSize(Image1.Width, Image1.Height);
+  //PaintBox1.Picture.Bitmap.SetSize(Image1.Width, Image1.Height);
+  //PaintBox1.Canvas.Width := PaintBox1.Width;
+  //PaintBox1.Canvas.Height := PaintBox1.Height;
+  //PaintBox1.;
 end;
 
 procedure TForm2.Timer1Timer(Sender: TObject);
@@ -128,8 +131,10 @@ begin
   if self.Visible then
   begin
     //Image1.Picture.Clear;
-    //FSim.Map.ToImage(Image1, ImageList1);
-    Image1.Repaint;
+    //FSim.Map.ToPaintBox(PaintBox1, ImageList1);
+    //Image1.Picture.
+    //Image1.Canvas.Refresh;
+    PaintBox1.Refresh;
 	end;
 end;
 

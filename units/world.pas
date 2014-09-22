@@ -33,7 +33,7 @@ type
     constructor Create(AMapSettings: TMapSettings); overload;
 
     procedure Generate;
-    procedure ToImage(AImage: TImage; AImageList: TImageList);
+    procedure ToPaintBox(APaintBox: TPaintBox; AImageList: TImageList);
     function ToText: TStringList;
 
     property MapSettings: TMapSettings read FMapSettings write FMapSettings;
@@ -165,7 +165,7 @@ begin
   end;
 end;
 
-procedure TMap.ToImage(AImage: TImage; AImageList: TImageList);
+procedure TMap.ToPaintBox(APaintBox: TPaintBox; AImageList: TImageList);
 var
   x, y: integer;
   img: TImage;
@@ -180,7 +180,8 @@ begin
     begin
       img.Picture.Bitmap.Clear;
       AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
-      AImage.Canvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
+      //AImage.Canvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
+      APaintBox.Canvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
     end;
   end;
 	end;

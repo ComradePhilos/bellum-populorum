@@ -121,7 +121,7 @@ var
   dist: integer;
 begin
   extent := random(5) + 1;
-  Count := Random(28) + 3;
+  Count := Random(15) + 3;
   FTiles[x, y] := TTileType.ttRock;
 
   with FMapSettings do

@@ -96,11 +96,12 @@
         <UnitName Value="houses"/>
       </Unit10>
       <Unit11>
-        <Filename Value="forms\mapsetupform.pas"/>
+        <Filename Value="forms\SimulationSetupWindow.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form3"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="mapsetupform"/>
+        <UnitName Value="SimulationSetupWindow"/>
       </Unit11>
     </Units>
   </ProjectOptions>

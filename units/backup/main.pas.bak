@@ -102,7 +102,6 @@ procedure TForm1.FormDestroy(Sender: TObject);
 begin
   FSimFormList.Free;
   FForm.Free;
-  FSetupForm.Free;
 end;
 
 procedure TForm1.UpdateWindow;

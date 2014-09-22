@@ -6,13 +6,14 @@ interface
 
 uses
       Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-			StdCtrls;
+			StdCtrls, Buttons;
 
 type
 
 			{ TForm3 }
 
       TForm3 = class(TForm)
+						BitBtn1: TBitBtn;
 						GroupBox1: TGroupBox;
 						Image1: TImage;
 						Image2: TImage;

@@ -171,11 +171,11 @@ object Form2: TForm2
     Height = 46
     Top = 132
     Width = 224
-    Frequency = 500
-    Max = 10000
-    Min = 100
+    Frequency = 1000
+    Max = 8000
+    Min = 500
     OnChange = TrackBar1Change
-    Position = 10000
+    Position = 8000
     Anchors = [akRight, akBottom]
     TabOrder = 4
   end
@@ -195,6 +195,8 @@ object Form2: TForm2
     Width = 400
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Panel1'
+    Color = clBlack
+    ParentColor = False
     TabOrder = 6
   end
   object ImageList1: TImageList

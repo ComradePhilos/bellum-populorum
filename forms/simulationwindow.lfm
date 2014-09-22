@@ -10,6 +10,7 @@ object Form2: TForm2
   OnClose = FormClose
   OnCreate = FormCreate
   OnDestroy = FormDestroy
+  OnPaint = FormPaint
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.2.2.0'
@@ -119,12 +120,14 @@ object Form2: TForm2
     OnChange = Edit1Change
     TabOrder = 5
   end
-  object PaintBox1: TPaintBox
+  object Panel1: TPanel
     Left = 8
-    Height = 416
+    Height = 408
     Top = 8
     Width = 384
     Anchors = [akTop, akLeft, akRight, akBottom]
+    Caption = 'Panel1'
+    TabOrder = 6
   end
   object ImageList1: TImageList
     Height = 8
@@ -185,7 +188,6 @@ object Form2: TForm2
   end
   object Timer1: TTimer
     Interval = 300
-    OnTimer = Timer1Timer
     left = 16
     top = 16
   end

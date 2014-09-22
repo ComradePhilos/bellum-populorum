@@ -32,7 +32,7 @@ type
 		MenuItem5: TMenuItem;
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
-		PaintBox1: TPaintBox;
+		Panel1: TPanel;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
@@ -40,8 +40,8 @@ type
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
+		procedure FormPaint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
-		procedure Timer1Timer(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
     { private declarations }
@@ -50,6 +50,8 @@ type
     FID: Integer;
 
     FMyOnDestroy: TMyOnDestroyEvent;
+
+    procedure DrawMap;
 
   public
     property Sim: TSimulation read FSim write FSim;
@@ -84,7 +86,7 @@ begin
 
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
-  FSim.Map.ToPaintBox(PaintBox1, ImageList1);
+  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -110,7 +112,8 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
-  FSim.Map.ToPaintBox(PaintBox1, ImageList1);
+  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
+  Panel1.OnPaint := @FormPaint;
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
@@ -118,24 +121,9 @@ begin
   FSim.Free;
 end;
 
-procedure TForm2.Image1Resize(Sender: TObject);
+procedure TForm2.FormPaint(Sender: TObject);
 begin
-  //PaintBox1.Picture.Bitmap.SetSize(Image1.Width, Image1.Height);
-  //PaintBox1.Canvas.Width := PaintBox1.Width;
-  //PaintBox1.Canvas.Height := PaintBox1.Height;
-  //PaintBox1.;
-end;
-
-procedure TForm2.Timer1Timer(Sender: TObject);
-begin
-  if self.Visible then
-  begin
-    //Image1.Picture.Clear;
-    FSim.Map.ToPaintBox(PaintBox1, ImageList1);
-    //Image1.Picture.
-    //Image1.Canvas.Refresh;
-    //PaintBox1.Repaint;
-	end;
+  DrawMap;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);
@@ -143,6 +131,10 @@ begin
   Edit1.Text := IntToStr(TrackBar1.Position);
 end;
 
+procedure TForm2.DrawMap;
+begin
+  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
+end;
 
 end.
 

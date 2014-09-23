@@ -1,11 +1,11 @@
 object Form1: TForm1
   Left = 316
   Height = 619
-  Top = 235
+  Top = 195
   Width = 725
   Caption = 'bellum populorum'
-  ClientHeight = 599
-  ClientWidth = 725
+  ClientHeight = 0
+  ClientWidth = 0
   Icon.Data = {
     BE2500000000010001003030000001002000A825000016000000280000003000
     0000600000000100200000000000002400006400000064000000000000000000

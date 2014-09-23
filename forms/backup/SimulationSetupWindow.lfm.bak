@@ -1,11 +1,11 @@
 object Form3: TForm3
   Left = 431
   Height = 470
-  Top = 166
-  Width = 489
+  Top = 206
+  Width = 431
   Caption = 'Simulation Setup'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 470
+  ClientWidth = 431
   Icon.Data = {
     7E04000000000100010010100000010020006804000016000000280000001000
     0000200000000100200000000000000400006400000064000000000000000000
@@ -51,10 +51,10 @@ object Form3: TForm3
     Left = 7
     Height = 129
     Top = 56
-    Width = 474
+    Width = 418
     Caption = 'Map Settings'
     ClientHeight = 111
-    ClientWidth = 470
+    ClientWidth = 414
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
       Left = 16
@@ -164,7 +164,7 @@ object Form3: TForm3
     Text = '0.5'
   end
   object BitBtn1: TBitBtn
-    Left = 401
+    Left = 344
     Height = 30
     Top = 432
     Width = 80
@@ -252,58 +252,208 @@ object Form3: TForm3
     Left = 7
     Height = 232
     Top = 192
-    Width = 474
+    Width = 417
     Caption = 'Peoples'
     ClientHeight = 214
-    ClientWidth = 470
+    ClientWidth = 413
     TabOrder = 4
-    object DrawGrid1: TDrawGrid
-      Left = 8
-      Height = 168
-      Top = 32
-      Width = 456
-      ColCount = 7
-      Columns = <      
-        item
-          Title.Caption = '#'
-        end      
-        item
-          Title.Caption = 'Type'
-        end      
-        item
-          Title.Caption = 'Citizens'
-        end      
-        item
-          Title.Caption = 'Food'
-        end      
-        item
-          Title.Caption = 'Wood'
-        end      
-        item
-          Title.Caption = 'Iron'
-        end      
-        item
-          Title.Caption = 'Color'
-        end>
-      ExtendedSelect = False
-      FixedCols = 0
-      RowCount = 2
-      TabOrder = 0
-    end
     object ColorButton1: TColorButton
-      Left = 72
-      Height = 30
-      Top = 0
-      Width = 43
+      Left = 336
+      Height = 27
+      Top = 38
+      Width = 72
       BorderWidth = 2
       ButtonColorSize = 16
       ButtonColor = clBlack
+    end
+    object StringGrid1: TStringGrid
+      Left = 7
+      Height = 168
+      Top = 40
+      Width = 121
+      ColCount = 2
+      Columns = <      
+        item
+          Title.Alignment = taCenter
+          Title.Caption = '#'
+          Width = 40
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Caption = 'Type'
+          Width = 80
+        end>
+      FixedCols = 0
+      RowCount = 2
+      ScrollBars = ssNone
+      TabOrder = 0
+      ColWidths = (
+        40
+        80
+      )
+    end
+    object LabeledEdit6: TLabeledEdit
+      Left = 248
+      Height = 23
+      Top = 40
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit6
+      EditLabel.AnchorSideRight.Control = LabeledEdit6
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit6
+      EditLabel.Left = 248
+      EditLabel.Height = 15
+      EditLabel.Top = 22
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Citizens'
+      EditLabel.ParentColor = False
+      TabOrder = 1
+    end
+    object ComboBox1: TComboBox
+      Left = 136
+      Height = 23
+      Top = 40
+      Width = 100
+      ItemHeight = 15
+      ItemIndex = 0
+      Items.Strings = (
+        'Romans'
+        'Germans'
+        'Slavonics'
+      )
+      TabOrder = 2
+      Text = 'Romans'
+    end
+    object LabeledEdit7: TLabeledEdit
+      Left = 136
+      Height = 23
+      Top = 96
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit7
+      EditLabel.AnchorSideRight.Control = LabeledEdit7
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit7
+      EditLabel.Left = 136
+      EditLabel.Height = 15
+      EditLabel.Top = 78
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Wood'
+      EditLabel.ParentColor = False
+      TabOrder = 3
+    end
+    object LabeledEdit8: TLabeledEdit
+      Left = 232
+      Height = 23
+      Top = 96
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit8
+      EditLabel.AnchorSideRight.Control = LabeledEdit8
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit8
+      EditLabel.Left = 232
+      EditLabel.Height = 15
+      EditLabel.Top = 78
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Food'
+      EditLabel.ParentColor = False
+      TabOrder = 4
+    end
+    object LabeledEdit9: TLabeledEdit
+      Left = 328
+      Height = 23
+      Top = 96
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit9
+      EditLabel.AnchorSideRight.Control = LabeledEdit9
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit9
+      EditLabel.Left = 328
+      EditLabel.Height = 15
+      EditLabel.Top = 78
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Iron'
+      EditLabel.ParentColor = False
+      TabOrder = 5
+    end
+    object BitBtn4: TBitBtn
+      Left = 136
+      Height = 30
+      Top = 176
+      Width = 104
+      Caption = 'Randomize'
+      Glyph.Data = {
+        C6070000424DC607000000000000360000002800000016000000160000000100
+        2000000000009007000064000000640000000000000000000000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00000000040000000D0000001700000024000000310000
+        003F0000004B0000004D00000044000000380000002B0000001F000000140000
+        000900000001FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000
+        00110000002300000036150B0550512C1393663819BF7A4520E6854920FB8249
+        21F973411EE35A3215BE41230F950100005A0000004700000036000000230000
+        0009FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000000000C6839
+        1857864A21EDA87C5CF7CCB09CFEE3D3C8FFF6F1EDFFF6F1EDFFE4D4C9FFCCB1
+        9DFDA57859F8824922D641240F440000001B0000000CFFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00874A200C884B21A08F562EF4D9C4B4FFF4EE
+        E9FFDCC7B7FFCFB199FFC49D7EFFC7A283FFD7BAA3FFE4D1C1FFF7F2EEFFDAC5
+        B5FE8E552CF4884B216AFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00874B21BBA67858F9F3ECE7FFDBC5B5FFB38562FFB68863FFBC8F
+        6BFFC19673FFC59C79FFC8A07DFFC9A17FFFCAA483FFE7D7C9FFF5EFEAFFA576
+        55F5884B216AFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A205E8F56
+        2EF5F2ECE7FFC09B80FFAC7B55FFB3835FFFB98C68FFF5EEE9FFFFFFFFFFFFFF
+        FFFFD6B598FFD0AA89FFCFA886FFCAA380FFD7BBA4FFF4EEE9FF8D532CF4874A
+        2021FFFFFF00FFFFFF00FFFFFF00874A201A874A20F3D5BFAFFFD6C0AFFFA774
+        4EFFAE7D57FFB48661FFBB8E6AFFF5EFE9FFFFFFFFFFFFFFFFFFDABB9FFFD7B3
+        92FFD4AF8EFFCEA886FFC89F7DFFE7D6C8FFD8C2B2FE894D23CB874A2001FFFF
+        FF00FFFFFF00874A2091A67958FCF2EBE6FFA4714CFFA7744EFFAE7D58FFB586
+        62FFBC8F6BFFEBDED3FFF5EDE7FFF6EFE9FFDCBC9FFFDDBB9BFFD7B392FFD0AA
+        88FFC9A17EFFC59D7CFFF7F2EEFFA47555F5874A2048FFFFFF00FFFFFF00874A
+        20D0C5A894FFD1B8A6FFA06B44FFA7744EFFAE7D57FFB48561FFBB8E6AFFC399
+        77FFC9A281FFCFAA89FFD4AF8EFFD6B291FFD4AF8DFFCEA786FFC89F7DFFC197
+        73FFE2D0C1FFC9AC97FD874A2080FFFFFF00874A2002874A20F8DDCBBEFFBB96
+        7CFF9F6942FFA5724CFFAC7B55FFB3835EFFB98B67FFF1E9E1FFFFFFFFFFFFFF
+        FFFFD8B99EFFD0A988FFCEA785FFCAA280FFC59B78FFBF9370FFD3B69FFFDFCE
+        C1FF894D23BEFFFFFF00874A202B874A20F4F3EDE8FFA47450FF9D6740FFA36F
+        49FFAA7852FFB0805AFFB68763FFDBC5B2FFFFFFFFFFFFFFFFFFF2E8E0FFCBA4
+        83FFC89F7CFFC59B78FFC09572FFBB8F6BFFC29A7CFFF3ECE7FF884B22EEFFFF
+        FF00874A2037874A20F2F2ECE7FFA2714EFF9A643CFFA16C45FFA7744DFFAC7B
+        55FFB2825DFFB78964FFE7D7CBFFFFFFFFFFFFFFFFFFF1E8E1FFC39977FFBF93
+        70FFBB8E6BFFB78964FFBE9677FFF2EBE6FF874B21F6FFFFFF00874A2008874A
+        20FBDAC7BAFFB69176FF976038FF9D6740FFA36F48FFA87650FFAD7C57FFB282
+        5DFFB68864FFE8D9CEFFFFFFFFFFFFFFFFFFE3D1C2FFB98B67FFB58762FFB282
+        5DFFCBAD96FFDDCBBDFF884C22CDFFFFFF00FFFFFF00874A20DDC1A28CFFCCB2
+        A0FF945B33FF99623AFF9F6942FFA5724BFFA87650FFAC7B55FFB07F5AFFB88D
+        6BFFFFFFFFFFFFFFFFFFF7F3F0FFB2835EFFAF7F5AFFAC7B55FFDBC6B6FFC5A7
+        90FE874A208FFFFFFF00FFFFFF00874A20A3A07150FFF1EAE5FF955E37FF955D
+        34FF9A633BFFD2BAA8FFDBC7B8FFBD977BFFB38866FFD4BAA6FFFFFFFFFFFFFF
+        FFFFF5F0ECFFAC7A54FFA97751FFAB7C58FFF5F0ECFFA27352F4874A2057FFFF
+        FF00FFFFFF00874A2037874A20F5CDB4A3FFD0B9A8FF90562DFF955C34FFD2BA
+        A9FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFD4BCA9FFA571
+        4BFFA36F48FFDBC8BAFFD0B8A6FF874B21E9874A200CFFFFFF00FFFFFF00FFFF
+        FF00874A208F8C5229F5EEE6E0FFB0886CFF90562DFFAD8162FFD8C4B5FFF0E8
+        E3FFFBF9F8FFF8F5F3FFECE2DAFFC7A992FF9F6B44FF9E6941FFBF9C82FFEFE6
+        E0FF8C5129F4874A2041FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A2007874A
+        20DF9E6C4AFEEEE5DFFFD1B9A9FF945C35FF91572FFF945B33FF965E36FF9860
+        38FF996139FF99623AFF9F6B46FFD9C4B5FFEEE6E0FFA06E4DF8874A209BFFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A2029874A20DE8B51
+        29F4CCB2A0FFF1EBE6FFCEB5A4FFB79378FFA1714EFFA37250FFBB967DFFD2BA
+        A9FFF3EDE9FFCDB3A1FF8C5129F3874A20B4874A200AFFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A2006874A208D874A20F49F6E
+        4CFFBE9D87FFD6C1B3FFEEE6E0FFEEE6E0FFD7C2B4FFBE9E87FF9E6E4CFA874A
+        20F1874A205AFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A2037874A20A1874A20DB874A
+        20FA874A20F2874A20F4874A20F6874A20CD874A208E874A201AFFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00874A2006874A2032874A
+        2024874A2001FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00
+      }
+      Spacing = 3
+      TabOrder = 6
     end
   end
   object BitBtn2: TBitBtn
     Left = 15
     Height = 30
-    Top = 208
+    Top = 211
     Width = 32
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
@@ -387,7 +537,7 @@ object Form3: TForm3
   object BitBtn3: TBitBtn
     Left = 47
     Height = 30
-    Top = 208
+    Top = 211
     Width = 32
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
@@ -472,7 +622,7 @@ object Form3: TForm3
     Left = 8
     Height = 23
     Top = 24
-    Width = 473
+    Width = 416
     EditLabel.AnchorSideLeft.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Side = asrBottom
@@ -480,7 +630,7 @@ object Form3: TForm3
     EditLabel.Left = 8
     EditLabel.Height = 15
     EditLabel.Top = 6
-    EditLabel.Width = 473
+    EditLabel.Width = 416
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
     TabOrder = 7

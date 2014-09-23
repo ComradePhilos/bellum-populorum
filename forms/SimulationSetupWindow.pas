@@ -17,8 +17,9 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
+		BitBtn4: TBitBtn;
 		ColorButton1: TColorButton;
-		DrawGrid1: TDrawGrid;
+		ComboBox1: TComboBox;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     Image1: TImage;
@@ -28,6 +29,11 @@ type
     LabeledEdit3: TLabeledEdit;
     LabeledEdit4: TLabeledEdit;
 		LabeledEdit5: TLabeledEdit;
+		LabeledEdit6: TLabeledEdit;
+		LabeledEdit7: TLabeledEdit;
+		LabeledEdit8: TLabeledEdit;
+		LabeledEdit9: TLabeledEdit;
+		StringGrid1: TStringGrid;
 		procedure BitBtn1Click(Sender: TObject);
   private
     { private declarations }

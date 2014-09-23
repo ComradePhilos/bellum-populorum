@@ -100,7 +100,7 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  Caption := ProgrammeName + '   ' + ProgrammeVersion;
+  Caption := ProgrammeName + '  ' + ProgrammeVersion;
   FSimFormList := TSimFormList.Create(True);
   FSimCounter := 0;
   UpdateWindow;

@@ -29,10 +29,10 @@ type
     constructor Create;
     destructor Destroy;
 
-    procedure GenerateRomans(AColor: TColor);
+    procedure GenerateRomans(AColor: TColor);                          // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
-    procedure Initialize(ASimSettings: TSimSetup);
+    procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
 
     property Map: TMap read FMap write FMap;
   end;
@@ -75,12 +75,13 @@ begin
   FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
-procedure TSimulation.Initialize(ASimSettings: TSimSetup);
+procedure TSimulation.Initialize(ASimSetup: TSimSetup);
 var
   I: integer;
 begin
-  with ASimSettings do
+  with ASimSetup do
   begin
+    FMap.MapSettings := MapSetup;
     for I := 0 to High(PeopleSetup.Peoples) - 1 do
     begin
       case PeopleSetup.Peoples[I] of

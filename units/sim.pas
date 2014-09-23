@@ -11,13 +11,9 @@ uses
 
 type
 
-
-
-  TSimSettings = record
-    Peoples: array of TPeopleType;
-    Colors: array of TColor;
-    ProbForest: integer;
-    ProbRocks: integer;
+  TSimSetup = record
+    MapSetup: TMapSetup;
+    PeopleSetup: TPeopleSetup;
   end;
 
   TSimulation = class
@@ -36,7 +32,7 @@ type
     procedure GenerateRomans(AColor: TColor);
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
-    procedure Initialize(ASimSettings: TSimSettings);
+    procedure Initialize(ASimSettings: TSimSetup);
 
     property Map: TMap read FMap write FMap;
   end;
@@ -79,18 +75,18 @@ begin
   FPeoples[FPeoples.Count - 1].Color := AColor;
 end;
 
-procedure TSimulation.Initialize(ASimSettings: TSimSettings);
+procedure TSimulation.Initialize(ASimSettings: TSimSetup);
 var
   I: integer;
 begin
   with ASimSettings do
   begin
-    for I := 0 to High(Peoples) - 1 do
+    for I := 0 to High(PeopleSetup.Peoples) - 1 do
     begin
-      case Peoples[I] of
-        ptRoman: GenerateRomans(Colors[I]);
-        ptGerman: GenerateGermans(Colors[I]);
-        ptSlavonic: GenerateSlavonics(Colors[I]);
+      case PeopleSetup.Peoples[I] of
+        ptRoman: GenerateRomans(PeopleSetup.Colors[I]);
+        ptGerman: GenerateGermans(PeopleSetup.Colors[I]);
+        ptSlavonic: GenerateSlavonics(PeopleSetup.Colors[I]);
       end;
     end;
   end;

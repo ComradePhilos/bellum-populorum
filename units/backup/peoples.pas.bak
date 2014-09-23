@@ -42,25 +42,6 @@ type
       property Color: TColor read FColor write FColor;
 	end;
 
-  {
-  TRomans = Class(TPeople)
-    private
-      //procedure BuildHouse(x,y: Integer);
-    public
-	end;
-
-  TGermans = Class(TPeople)
-    private
-      //procedure BuildHouse(x,y: Integer);
-    public
-	end;
-
-  TSlavonics = Class(TPeople)
-    private
-      //procedure BuildHouse(x,y: Integer);
-    public
-	end;     }
-
   TPeoplesList = specialize TFPGObjectList<TPeople>;
 
 implementation
@@ -98,43 +79,6 @@ begin
 		end;
 	end;
 end;
-
-{
-procedure TRomans.BuildHouse(x,y: Integer);
-begin
-  if (FRessources.Wood >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      FMap.Tiles[x,y] := TTileType.ttRomanHouse;
-      FRessources.Wood -= 100;
-		end;
-	end;
-end;
-
-procedure TGermans.BuildHouse(x,y: Integer);
-begin
-  if (FRessources.Wood >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      FMap.Tiles[x,y] := TTileType.ttGermanHouse;
-      FRessources.Wood -= 100;
-		end;
-	end;
-end;
-
-procedure TSlavonics.BuildHouse(x,y: Integer);
-begin
-  if (FRessources.Wood >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
-      FRessources.Wood -= 100;
-		end;
-	end;
-end;   }
 
 end.
 

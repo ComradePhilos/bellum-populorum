@@ -112,7 +112,7 @@ begin
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
   FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
-  //Panel1.OnPaint := @FormPaint;
+  Panel1.OnPaint := @FormPaint;
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);

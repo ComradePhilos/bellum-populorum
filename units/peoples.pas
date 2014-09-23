@@ -19,6 +19,13 @@ type
 
   TPeopleType = (ptRoman, ptGerman, ptSlavonic);
 
+  TPeopleSetup = record
+    Peoples: array of TPeopleType;
+    Names: TStringList;
+    Colors: array of TColor;
+    Ressources: array of TRessources;
+	end;
+
   TPeople = Class
     private
       FName: String;

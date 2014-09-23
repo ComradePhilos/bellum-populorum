@@ -12,7 +12,7 @@ type
   TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
   TTiles = array of array of TTileType;
 
-  TMapSettings = record
+  TMapSetup = record
     Width: integer;
     Height: integer;
     TileSize: Integer;
@@ -22,7 +22,7 @@ type
 
   TMap = class
   private
-    FMapSettings: TMapSettings;
+    FMapSettings: TMapSetup;
     FTiles: TTiles;
 
     procedure GenerateForest(x, y: integer);
@@ -30,13 +30,13 @@ type
 
   public
     constructor Create;
-    constructor Create(AMapSettings: TMapSettings); overload;
+    constructor Create(AMapSettings: TMapSetup); overload;
 
     procedure Generate;
     procedure DrawToCanvas(ACanvas: TCanvas; AImageList: TImageList);
     function ToText: TStringList;
 
-    property MapSettings: TMapSettings read FMapSettings write FMapSettings;
+    property MapSettings: TMapSetup read FMapSettings write FMapSettings;
     property Tiles: TTiles read FTiles write FTiles;
   end;
 
@@ -49,7 +49,7 @@ begin
   SetLength(FTiles, 0, 0);
 end;
 
-constructor TMap.Create(AMapSettings: TMapSettings);
+constructor TMap.Create(AMapSettings: TMapSetup);
 begin
   Randomize;
   Generate;

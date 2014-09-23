@@ -6,7 +6,8 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, Grids;
+  StdCtrls, Buttons, Grids,
+  world, peoples, sim;
 
 type
 
@@ -16,6 +17,7 @@ type
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
+		ColorButton1: TColorButton;
 		DrawGrid1: TDrawGrid;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
@@ -26,8 +28,10 @@ type
     LabeledEdit3: TLabeledEdit;
     LabeledEdit4: TLabeledEdit;
 		LabeledEdit5: TLabeledEdit;
+		procedure BitBtn1Click(Sender: TObject);
   private
     { private declarations }
+    FSimSetup: TSimSetup;
   public
     { public declarations }
   end;
@@ -38,6 +42,13 @@ var
 implementation
 
 {$R *.lfm}
+
+{ TForm3 }
+
+procedure TForm3.BitBtn1Click(Sender: TObject);
+begin
+  self.Visible := False;
+end;
 
 end.
 

@@ -73,7 +73,7 @@ implementation
 procedure TForm2.BitBtn1Click(Sender: TObject);
 var
   x,y: Integer;
-  mapsettings: TMapSettings;
+  mapsettings: TMapSetup;
 begin
   x := StrToInt(LabeledEdit1.Text);
   y := StrToInt(LabeledEdit2.Text);

@@ -42,6 +42,7 @@ type
     FForm: TForm2;
     FSetupForm: TForm3;
     FSimFormList: TSimFormList;
+    FSimSetupList: TSimSetupList;
     FSimCounter: integer;
     procedure UpdateWindow;
     procedure RemoveSim(Sender: TObject);
@@ -59,9 +60,8 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.2';
-  VersionDate = '23.09.2014';
-
+  ProgrammeVersion = '0.0.3';
+  VersionDate = '24.09.2014';
 
 {$R *.lfm}
 
@@ -75,10 +75,11 @@ begin
   FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
+  FSimSetupList.Add(TForm3.Create(nil));
+  FSimSetupList[FSimSetupList.Count-1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
+  FSimSetupList[FSimSetupList.Count-1].Show;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
-  FSetupForm := TForm3.Create(nil);
-  FSetupForm.Show;
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject);
@@ -102,13 +103,17 @@ procedure TForm1.FormCreate(Sender: TObject);
 begin
   Caption := ProgrammeName + '  ' + ProgrammeVersion;
   FSimFormList := TSimFormList.Create(True);
+  FSimSetupList := TSimSetupList.Create(True);
   FSimCounter := 0;
   UpdateWindow;
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
+var
+  I: Integer;
 begin
-  FSimFormList.Free;
+	FSimFormList.Free;
+  FSimSetupList.Free;
   FForm.Free;
   FSetupForm.Free;
 end;

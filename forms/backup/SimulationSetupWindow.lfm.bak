@@ -1,11 +1,11 @@
 object Form3: TForm3
-  Left = 431
+  Left = 175
   Height = 470
-  Top = 206
+  Top = 174
   Width = 431
   Caption = 'Simulation Setup'
-  ClientHeight = 470
-  ClientWidth = 431
+  ClientHeight = 0
+  ClientWidth = 0
   Icon.Data = {
     7E04000000000100010010100000010020006804000016000000280000001000
     0000200000000100200000000000000400006400000064000000000000000000
@@ -45,6 +45,7 @@ object Form3: TForm3
     0000000000000000000000000000000000000000000000000000000000000000
     0000
   }
+  OnDestroy = FormDestroy
   Position = poMainFormCenter
   LCLVersion = '1.2.2.0'
   object GroupBox1: TGroupBox
@@ -163,7 +164,7 @@ object Form3: TForm3
     TabOrder = 2
     Text = '0.5'
   end
-  object BitBtn1: TBitBtn
+  object ApplyButton: TBitBtn
     Left = 344
     Height = 30
     Top = 432
@@ -245,7 +246,7 @@ object Form3: TForm3
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000
     }
-    OnClick = BitBtn1Click
+    OnClick = ApplyButtonClick
     TabOrder = 3
   end
   object GroupBox2: TGroupBox

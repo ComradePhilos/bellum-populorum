@@ -117,7 +117,7 @@ end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
-  FSim.Free;
+  //FSim.Free;
 end;
 
 procedure TForm2.FormPaint(Sender: TObject);

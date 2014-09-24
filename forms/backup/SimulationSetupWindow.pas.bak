@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls, Buttons, Grids,
+  StdCtrls, Buttons, Grids, fgl,
   world, peoples, sim;
 
 type
@@ -14,7 +14,7 @@ type
   { TForm3 }
 
   TForm3 = class(TForm)
-    BitBtn1: TBitBtn;
+    ApplyButton: TBitBtn;
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
 		BitBtn4: TBitBtn;
@@ -34,13 +34,19 @@ type
 		LabeledEdit8: TLabeledEdit;
 		LabeledEdit9: TLabeledEdit;
 		StringGrid1: TStringGrid;
-		procedure BitBtn1Click(Sender: TObject);
+		procedure ApplyButtonClick(Sender: TObject);
+		procedure FormDestroy(Sender: TObject);
   private
     { private declarations }
     FSimSetup: TSimSetup;
+    FSim: TSimulation;
   public
     { public declarations }
+    property SimSetup: TSimSetup read FSimSetup write FSimSetup;
+    property Sim: TSimulation read FSim write FSim;
   end;
+
+  TSetupList = specialize TFPGObjectList<TForm3>;
 
 var
   Form3: TForm3;
@@ -51,9 +57,18 @@ implementation
 
 { TForm3 }
 
-procedure TForm3.BitBtn1Click(Sender: TObject);
+procedure TForm3.ApplyButtonClick(Sender: TObject);
 begin
+  FSimSetup.MapSetup.Width := StrToInt(LabeledEdit1.Text);
+  FSimSetup.MapSetup.Height := StrToInt(LabeledEdit2.Text);
+  FSimSetup.MapSetup.TileSize := 8;
+  FSim.Map.Generate(FSimSetup.MapSetup);
   self.Visible := False;
+end;
+
+procedure TForm3.FormDestroy(Sender: TObject);
+begin
+  //FSim.Free;
 end;
 
 end.

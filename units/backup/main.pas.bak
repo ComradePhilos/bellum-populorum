@@ -59,8 +59,8 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.2';
-  VersionDate = '23.09.2014';
+  ProgrammeVersion = '0.0.3';
+  VersionDate = '24.09.2014';
 
 
 {$R *.lfm}
@@ -75,10 +75,11 @@ begin
   FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
+  FSetupForm := TForm3.Create(nil);
+  FSetupForm.Sim := FSimFormList[FSimFormList.Count - 1].Sim;
+  FSetupForm.Show;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
-  FSetupForm := TForm3.Create(nil);
-  FSetupForm.Show;
 end;
 
 procedure TForm1.BitBtn1Click(Sender: TObject);
@@ -107,8 +108,14 @@ begin
 end;
 
 procedure TForm1.FormDestroy(Sender: TObject);
+var
+  I: Integer;
 begin
-  FSimFormList.Free;
+  for I := 0 to FSimFormList.Count-1 do
+  begin
+    FSimFormList[I].Sim.Free;
+	end;
+	FSimFormList.Free;
   FForm.Free;
   FSetupForm.Free;
 end;

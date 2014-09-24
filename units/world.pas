@@ -32,7 +32,8 @@ type
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
 
-    procedure Generate;
+    procedure Generate; overload;
+    procedure Generate(AMapSettings: TMapSetup);
     procedure DrawToCanvas(ACanvas: TCanvas; AImageList: TImageList);
     function ToText: TStringList;
 
@@ -74,6 +75,12 @@ begin
       end;
     end;
   end;
+end;
+
+procedure TMap.Generate(AMapSettings: TMapSetup);
+begin
+  FMapSettings := AMapSettings;
+  Generate;
 end;
 
 procedure TMap.GenerateForest(x, y: integer);

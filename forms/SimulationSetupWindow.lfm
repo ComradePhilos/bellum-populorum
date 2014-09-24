@@ -1,11 +1,11 @@
 object Form3: TForm3
-  Left = 175
+  Left = 306
   Height = 470
-  Top = 174
+  Top = 141
   Width = 431
   Caption = 'Simulation Setup'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 470
+  ClientWidth = 431
   Icon.Data = {
     7E04000000000100010010100000010020006804000016000000280000001000
     0000200000000100200000000000000400006400000064000000000000000000
@@ -45,14 +45,16 @@ object Form3: TForm3
     0000000000000000000000000000000000000000000000000000000000000000
     0000
   }
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object GroupBox1: TGroupBox
     Left = 7
     Height = 129
     Top = 56
     Width = 418
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Map Settings'
     ClientHeight = 111
     ClientWidth = 414
@@ -169,6 +171,7 @@ object Form3: TForm3
     Height = 30
     Top = 432
     Width = 80
+    Anchors = [akRight, akBottom]
     Caption = 'Apply'
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
@@ -254,6 +257,7 @@ object Form3: TForm3
     Height = 232
     Top = 192
     Width = 417
+    Anchors = [akTop, akLeft, akRight]
     Caption = 'Peoples'
     ClientHeight = 214
     ClientWidth = 413
@@ -624,6 +628,7 @@ object Form3: TForm3
     Height = 23
     Top = 24
     Width = 416
+    Anchors = [akTop, akLeft, akRight]
     EditLabel.AnchorSideLeft.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Side = asrBottom

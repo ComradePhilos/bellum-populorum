@@ -9,6 +9,8 @@ uses
 
 type
 
+  TOnChangeEvent = procedure(Sender: TObject) of object;
+
   TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
   TTiles = array of array of TTileType;
 

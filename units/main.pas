@@ -12,6 +12,7 @@ uses
 
 // Todo:
 // * all results and some controls are in the main window
+// * Try TBitmap instead of Panels
 
 type
 

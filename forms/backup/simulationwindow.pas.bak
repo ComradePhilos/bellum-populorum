@@ -18,6 +18,7 @@ type
   TForm2 = class(TForm)
     BitBtn1: TBitBtn;
 		Edit1: TEdit;
+		Image1: TImage;
 		Image2: TImage;
 		ImageList1: TImageList;
 		Label1: TLabel;
@@ -32,7 +33,6 @@ type
 		MenuItem5: TMenuItem;
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
-		Panel1: TPanel;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
     procedure BitBtn1Click(Sender: TObject);
@@ -85,7 +85,7 @@ begin
 
   Memo1.Clear;
   Memo1.Lines.AddStrings(FSim.Map.ToText);
-  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
+  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -111,18 +111,21 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
-  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
-  Panel1.OnPaint := @FormPaint;
+  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+  Image1.OnPaint := @FormPaint;
+
+  Image1.Picture.Bitmap.Width := Image1.Width;
+  Image1.Picture.Bitmap.Height := Image1.Height;
 end;
 
 procedure TForm2.FormDestroy(Sender: TObject);
 begin
-  FSim.Free;
+  //FSim.Free;
 end;
 
 procedure TForm2.FormPaint(Sender: TObject);
 begin
-  DrawMap;
+  //DrawMap;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);
@@ -132,7 +135,7 @@ end;
 
 procedure TForm2.DrawMap;
 begin
-  FSim.Map.DrawToCanvas(Panel1.Canvas, ImageList1);
+  FSim.Map.DrawToCanvas(Image1.Canvas, ImageList1);
 end;
 
 end.

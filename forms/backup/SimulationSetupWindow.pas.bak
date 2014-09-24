@@ -46,7 +46,7 @@ type
     property Sim: TSimulation read FSim write FSim;
   end;
 
-  TSetupList = specialize TFPGObjectList<TForm3>;
+  TSimSetupList = specialize TFPGObjectList<TForm3>;
 
 var
   Form3: TForm3;

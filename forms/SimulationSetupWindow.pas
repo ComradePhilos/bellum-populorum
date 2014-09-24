@@ -35,6 +35,7 @@ type
 		LabeledEdit9: TLabeledEdit;
 		StringGrid1: TStringGrid;
 		procedure ApplyButtonClick(Sender: TObject);
+		procedure FormCreate(Sender: TObject);
 		procedure FormDestroy(Sender: TObject);
   private
     { private declarations }
@@ -64,6 +65,12 @@ begin
   FSimSetup.MapSetup.TileSize := 8;
   FSim.Map.Generate(FSimSetup.MapSetup);
   self.Visible := False;
+end;
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+  self.Constraints.MinWidth := self.Width;
+  self.Constraints.MinHeight := self.Height;
 end;
 
 procedure TForm3.FormDestroy(Sender: TObject);

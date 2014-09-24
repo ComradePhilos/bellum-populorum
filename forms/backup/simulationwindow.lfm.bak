@@ -1,10 +1,10 @@
 object Form2: TForm2
   Left = 289
-  Height = 444
+  Height = 434
   Top = 279
   Width = 731
   Caption = 'Simulation'
-  ClientHeight = 424
+  ClientHeight = 414
   ClientWidth = 731
   Icon.Data = {
     2608000000000100010016160000010020001008000016000000280000001600
@@ -81,7 +81,7 @@ object Form2: TForm2
   OnPaint = FormPaint
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.2.0'
+  LCLVersion = '1.2.4.0'
   object BitBtn1: TBitBtn
     Left = 611
     Height = 30
@@ -95,7 +95,7 @@ object Form2: TForm2
   object Memo1: TMemo
     Left = 411
     Height = 218
-    Top = 179
+    Top = 169
     Width = 312
     Anchors = [akRight, akBottom]
     Lines.Strings = (
@@ -160,7 +160,7 @@ object Form2: TForm2
   object Label1: TLabel
     Left = 419
     Height = 15
-    Top = 109
+    Top = 99
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Round Duration in ms'
@@ -169,7 +169,7 @@ object Form2: TForm2
   object TrackBar1: TTrackBar
     Left = 411
     Height = 46
-    Top = 132
+    Top = 122
     Width = 224
     Frequency = 1000
     Max = 8000
@@ -182,22 +182,18 @@ object Form2: TForm2
   object Edit1: TEdit
     Left = 643
     Height = 23
-    Top = 133
+    Top = 123
     Width = 80
     Anchors = [akRight, akBottom]
     OnChange = Edit1Change
     TabOrder = 5
   end
-  object Panel1: TPanel
-    Left = 8
-    Height = 400
-    Top = 8
-    Width = 400
-    Anchors = [akTop, akLeft, akRight, akBottom]
-    Caption = 'Panel1'
-    Color = clBlack
-    ParentColor = False
-    TabOrder = 6
+  object Image1: TImage
+    Left = -1
+    Height = 408
+    Top = -1
+    Width = 408
+    AntialiasingMode = amOff
   end
   object ImageList1: TImageList
     Height = 8

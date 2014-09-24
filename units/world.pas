@@ -26,6 +26,7 @@ type
   private
     FMapSettings: TMapSetup;
     FTiles: TTiles;
+    FOnChange: TOnChangeEvent;
 
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
@@ -40,6 +41,7 @@ type
     function ToText: TStringList;
 
     property MapSettings: TMapSetup read FMapSettings write FMapSettings;
+    property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Tiles: TTiles read FTiles write FTiles;
   end;
 
@@ -77,6 +79,11 @@ begin
       end;
     end;
   end;
+
+  if Assigned(FOnChange) then
+  begin
+    FOnChange(self);
+	end;
 end;
 
 procedure TMap.Generate(AMapSettings: TMapSetup);

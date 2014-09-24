@@ -9,6 +9,8 @@ uses
 
 type
 
+  TOnChangeEvent = procedure(Sender: TObject) of object;
+
   TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
   TTiles = array of array of TTileType;
 
@@ -24,6 +26,7 @@ type
   private
     FMapSettings: TMapSetup;
     FTiles: TTiles;
+    FOnChange: TOnChangeEvent;
 
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
@@ -38,6 +41,7 @@ type
     function ToText: TStringList;
 
     property MapSettings: TMapSetup read FMapSettings write FMapSettings;
+    property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Tiles: TTiles read FTiles write FTiles;
   end;
 

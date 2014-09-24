@@ -50,7 +50,7 @@ type
 
     FMyOnDestroy: TMyOnDestroyEvent;
 
-    procedure DrawMap;
+    procedure DrawMap(Sender: TObject);
 
   public
     property Sim: TSimulation read FSim write FSim;
@@ -111,9 +111,9 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
-  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+  //FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+  FSim.Map.OnChange := @DrawMap;
   Image1.OnPaint := @FormPaint;
-
   Image1.Picture.Bitmap.Width := Image1.Width;
   Image1.Picture.Bitmap.Height := Image1.Height;
 end;
@@ -125,7 +125,7 @@ end;
 
 procedure TForm2.FormPaint(Sender: TObject);
 begin
-  //DrawMap;
+  DrawMap;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);
@@ -133,7 +133,7 @@ begin
   Edit1.Text := IntToStr(TrackBar1.Position);
 end;
 
-procedure TForm2.DrawMap;
+procedure TForm2.DrawMap(Sender: TObject);
 begin
   FSim.Map.DrawToCanvas(Image1.Canvas, ImageList1);
 end;

@@ -15,13 +15,13 @@ type
   TOnApplyEvent = procedure(Sender: TObject) of Object;
 
   TForm3 = class(TForm)
-    ApplyButton: TBitBtn;
-    BitBtn2: TBitBtn;
-    BitBtn3: TBitBtn;
-		BitBtn4: TBitBtn;
+    ButtonApply: TBitBtn;
+    ButtonAddPeople: TBitBtn;
+    ButtonRemovePeople: TBitBtn;
+		ButtonRandomize: TBitBtn;
 		CheckBox1: TCheckBox;
-		ColorButton1: TColorButton;
-		ComboBox1: TComboBox;
+		ButtonColor: TColorButton;
+		PeopleBox: TComboBox;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
     Image1: TImage;
@@ -31,14 +31,15 @@ type
     LabeledEdit3: TLabeledEdit;
     LabeledEdit4: TLabeledEdit;
 		LabeledEdit5: TLabeledEdit;
-		LabeledEdit6: TLabeledEdit;
-		LabeledEdit7: TLabeledEdit;
-		LabeledEdit8: TLabeledEdit;
-		LabeledEdit9: TLabeledEdit;
-		StringGrid1: TStringGrid;
-		procedure ApplyButtonClick(Sender: TObject);
+		EditCitizens: TLabeledEdit;
+		EditWood: TLabeledEdit;
+		EditFood: TLabeledEdit;
+		EditIron: TLabeledEdit;
+		PeopleGrid: TStringGrid;
+		procedure ButtonAddPeopleClick(Sender: TObject);
+    procedure ButtonApplyClick(Sender: TObject);
 		procedure FormCreate(Sender: TObject);
-		procedure FormDestroy(Sender: TObject);
+		procedure ButtonRandomizeClick(Sender: TObject);
   private
     { private declarations }
     FSimSetup: TSimSetup;
@@ -64,7 +65,7 @@ implementation
 
 { TForm3 }
 
-procedure TForm3.ApplyButtonClick(Sender: TObject);
+procedure TForm3.ButtonApplyClick(Sender: TObject);
 begin
   FSimSetup.MapSetup.Width := StrToInt(LabeledEdit1.Text);
   FSimSetup.MapSetup.Height := StrToInt(LabeledEdit2.Text);
@@ -87,15 +88,28 @@ begin
 	end;
 end;
 
+procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
+begin
+  PeopleGrid.RowCount := PeopleGrid.RowCount + 1;
+  PeopleGrid.Cells[0,PeopleGrid.RowCount-1] := IntToStr(PeopleGrid.RowCount-1);
+  PeopleGrid.Cells[1,PeopleGrid.RowCount-1] := PeopleBox.Items[PeopleBox.ItemIndex];
+end;
+
 procedure TForm3.FormCreate(Sender: TObject);
 begin
   self.Constraints.MinWidth := self.Width;
   self.Constraints.MinHeight := self.Height;
+  Randomize;
 end;
 
-procedure TForm3.FormDestroy(Sender: TObject);
+procedure TForm3.ButtonRandomizeClick(Sender: TObject);
 begin
-  //FSim.Free;
+  PeopleBox.ItemIndex := Random(3);
+  EditCitizens.Text := IntToStr(Random(9)+1);
+  EditWood.Text := IntToStr(Random(400)+100);
+  EditFood.Text := IntToStr(Random(400)+100);
+  EditIron.Text := IntToStr(Random(400)+100);
+  ButtonColor.ButtonColor := Random(clWhite);      // Good thing Colors are Integers
 end;
 
 end.

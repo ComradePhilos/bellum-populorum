@@ -12,7 +12,7 @@ uses
 
 // Todo:
 // * all results and some controls are in the main window
-// * change the name of the tabs
+// * delete tabs when simulation settings are aborted
 
 
 type
@@ -20,10 +20,11 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-    BitBtn1: TBitBtn;
-    BitBtn2: TBitBtn;
-		BitBtn3: TBitBtn;
+    ShowButton: TBitBtn;
+    CloseButton: TBitBtn;
+		StartButton: TBitBtn;
 		BitBtn4: TBitBtn;
+		SetupButton: TBitBtn;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -33,7 +34,8 @@ type
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     TabControl1: TTabControl;
-    procedure BitBtn1Click(Sender: TObject);
+    procedure ShowButtonClick(Sender: TObject);
+		procedure SetupButtonClick(Sender: TObject);
     procedure NewClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -77,23 +79,27 @@ begin
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
   FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
-  TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
+
   FSimSetupList.Add(TForm3.Create(nil));
   FSimSetupList[FSimSetupList.Count-1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
   FSimSetupList[FSimSetupList.Count-1].SimForm := FSimFormList[FSimFormList.Count - 1];
   FSimSetupList[FSimSetupList.Count-1].LabeledEdit5.Text := 'Simulation ' + IntToStr(FSimCounter);
   FSimSetupList[FSimSetupList.Count-1].OnApply := @SetupDone;
   FSimSetupList[FSimSetupList.Count-1].Show;
-  UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
 end;
 
-procedure TForm1.BitBtn1Click(Sender: TObject);
+procedure TForm1.ShowButtonClick(Sender: TObject);
 begin
   if (FSimFormList.Count > 0) then
   begin
     FSimFormList[TabControl1.TabIndex].Show;
   end;
+end;
+
+procedure TForm1.SetupButtonClick(Sender: TObject);
+begin
+  FSimSetupList[TabControl1.TabIndex].Show;
 end;
 
 procedure TForm1.Button2Click(Sender: TObject);
@@ -126,8 +132,9 @@ end;
 
 procedure TForm1.UpdateWindow;
 begin
-  BitBtn1.Enabled := (FSimFormList.Count > 0);
-  BitBtn2.Enabled := (FSimFormList.Count > 0);
+  ShowButton.Enabled := (FSimFormList.Count > 0);
+  CloseButton.Enabled := (FSimFormList.Count > 0);
+  SetupButton.Enabled := (FSimFormList.Count > 0);
   SimFormListToTabs(TabControl1, FSimFormList);
 end;
 
@@ -158,7 +165,9 @@ end;
 
 procedure TForm1.SetupDone(Sender: TObject);
 begin
-  SimFormListToTabs(TabControl1, FSimFormList);
+  //SimFormListToTabs(TabControl1, FSimFormList);
+  UpdateWindow;
+  TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
 end;
 
 end.

@@ -39,8 +39,6 @@ type
 		procedure Edit1Change(Sender: TObject);
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
-		procedure FormPaint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
@@ -117,19 +115,8 @@ begin
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
   FSim.Map.OnChange := @DrawMap;
-  Image1.OnPaint := @FormPaint;
   Image1.Picture.Bitmap.Width := Image1.Width;
   Image1.Picture.Bitmap.Height := Image1.Height;
-end;
-
-procedure TForm2.FormDestroy(Sender: TObject);
-begin
-  //FSim.Free;
-end;
-
-procedure TForm2.FormPaint(Sender: TObject);
-begin
-  //DrawMap;
 end;
 
 procedure TForm2.Image1Resize(Sender: TObject);

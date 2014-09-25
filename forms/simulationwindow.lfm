@@ -77,8 +77,6 @@ object Form2: TForm2
   Menu = MainMenu1
   OnClose = FormClose
   OnCreate = FormCreate
-  OnDestroy = FormDestroy
-  OnPaint = FormPaint
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
@@ -166,6 +164,7 @@ object Form2: TForm2
     Min = 500
     OnChange = TrackBar1Change
     Position = 8000
+    Reversed = True
     Anchors = [akRight, akBottom]
     TabOrder = 3
   end

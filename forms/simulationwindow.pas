@@ -41,6 +41,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
 		procedure FormPaint(Sender: TObject);
+		procedure Image1Resize(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
     { private declarations }
@@ -80,6 +81,8 @@ begin
   mapsettings.Width := x;
   mapsettings.Height := y;
   mapsettings.TileSize := 8;
+  mapsettings.ProbForest := 50;
+  mapsettings.ProbRocks := 4;
   FSim.Map.MapSettings := mapsettings;
   FSim.Map.Generate;
 
@@ -111,7 +114,6 @@ begin
   FDuration := 3000;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
-  //FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
   FSim.Map.OnChange := @DrawMap;
   Image1.OnPaint := @FormPaint;
   Image1.Picture.Bitmap.Width := Image1.Width;
@@ -126,6 +128,12 @@ end;
 procedure TForm2.FormPaint(Sender: TObject);
 begin
   //DrawMap;
+end;
+
+procedure TForm2.Image1Resize(Sender: TObject);
+begin
+  Image1.Picture.Bitmap.Width := Image1.Width;
+  Image1.Picture.Bitmap.Height := Image1.Height;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);

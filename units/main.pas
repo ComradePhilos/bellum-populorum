@@ -12,7 +12,8 @@ uses
 
 // Todo:
 // * all results and some controls are in the main window
-// * Try TBitmap instead of Panels
+// * change the name of the tabs
+
 
 type
 
@@ -46,6 +47,7 @@ type
     FSimSetupList: TSimSetupList;
     FSimCounter: integer;
     procedure UpdateWindow;
+    procedure SetupDone(Sender: TObject);
     procedure RemoveSim(Sender: TObject);
     procedure SimFormListToTabs(ATabControl: TTabControl; ASimFormList: TSimFormList);
 
@@ -62,7 +64,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.3';
-  VersionDate = '24.09.2014';
+  VersionDate = '25.09.2014';
 
 {$R *.lfm}
 
@@ -78,6 +80,9 @@ begin
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
   FSimSetupList.Add(TForm3.Create(nil));
   FSimSetupList[FSimSetupList.Count-1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
+  FSimSetupList[FSimSetupList.Count-1].SimForm := FSimFormList[FSimFormList.Count - 1];
+  FSimSetupList[FSimSetupList.Count-1].LabeledEdit5.Text := 'Simulation ' + IntToStr(FSimCounter);
+  FSimSetupList[FSimSetupList.Count-1].OnApply := @SetupDone;
   FSimSetupList[FSimSetupList.Count-1].Show;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
@@ -147,8 +152,13 @@ begin
   ATabControl.Tabs.Clear;
   for I := 0 to ASimFormList.Count - 1 do
   begin
-    ATabControl.Tabs.Add('Simulation ' + IntToStr(ASimFormList[I].ID));
+    ATabControl.Tabs.Add(FSimFormList[I].Sim.Name);
   end;
+end;
+
+procedure TForm1.SetupDone(Sender: TObject);
+begin
+  SimFormListToTabs(TabControl1, FSimFormList);
 end;
 
 end.

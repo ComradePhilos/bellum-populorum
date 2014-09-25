@@ -18,6 +18,7 @@ type
 
   TSimulation = class
   private
+    FName: String;
     FID: integer;
     FRound: integer;                        // Round-Counter
     FRoundLimit: integer;                   // optional round limit
@@ -35,6 +36,7 @@ type
     procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
 
     property Map: TMap read FMap write FMap;
+    property Name: String read FName write FName;
   end;
 
   TSimulationList = specialize TFPGObjectList<TSimulation>;

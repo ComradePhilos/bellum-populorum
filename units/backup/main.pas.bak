@@ -12,6 +12,8 @@ uses
 
 // Todo:
 // * all results and some controls are in the main window
+// * change the name of the tabs
+
 
 type
 
@@ -77,6 +79,8 @@ begin
   TabControl1.Tabs.Add('Simulation ' + IntToStr(FSimCounter));
   FSimSetupList.Add(TForm3.Create(nil));
   FSimSetupList[FSimSetupList.Count-1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
+  FSimSetupList[FSimSetupList.Count-1].SimForm := FSimFormList[FSimFormList.Count - 1];
+  FSimSetupList[FSimSetupList.Count-1].LabeledEdit5.Text := 'Simulation ' + IntToStr(FSimCounter);
   FSimSetupList[FSimSetupList.Count-1].Show;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
@@ -146,7 +150,7 @@ begin
   ATabControl.Tabs.Clear;
   for I := 0 to ASimFormList.Count - 1 do
   begin
-    ATabControl.Tabs.Add('Simulation ' + IntToStr(ASimFormList[I].ID));
+    ATabControl.Tabs.Add(FSimFormList[I].Sim.Name);
   end;
 end;
 

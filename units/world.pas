@@ -72,9 +72,9 @@ begin
       for x := 0 to Width - 1 do
       begin
         FTiles[x, y] := TTileType.ttGrass;
-        if (Random(1000) > 995) then
+        if (Random(1000) > (1000-ProbRocks)) then
           GenerateRocks(x, y);
-        if (Random(100) > 95) then
+        if (Random(1000) > (1000-ProbForest)) then
           GenerateForest(x, y);
       end;
     end;
@@ -137,7 +137,7 @@ var
   dist: integer;
 begin
   extent := random(5) + 1;
-  Count := Random(28) + 3;
+  Count := Random(28) + 6;
   FTiles[x, y] := TTileType.ttRock;
 
   with FMapSettings do

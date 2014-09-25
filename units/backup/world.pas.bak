@@ -72,13 +72,18 @@ begin
       for x := 0 to Width - 1 do
       begin
         FTiles[x, y] := TTileType.ttGrass;
-        if (Random(1000) > 995) then
+        if (Random(1000) > (1000-ProbRocks)) then
           GenerateRocks(x, y);
-        if (Random(100) > 95) then
+        if (Random(1000) > (1000-ProbForest)) then
           GenerateForest(x, y);
       end;
     end;
   end;
+
+  if Assigned(FOnChange) then
+  begin
+    FOnChange(self);
+	end;
 end;
 
 procedure TMap.Generate(AMapSettings: TMapSetup);

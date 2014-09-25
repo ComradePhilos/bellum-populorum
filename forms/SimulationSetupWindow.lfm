@@ -93,7 +93,7 @@ object Form3: TForm3
       EditLabel.Caption = 'Probability Forest'
       EditLabel.ParentColor = False
       TabOrder = 1
-      Text = '5'
+      Text = '50'
     end
     object Image1: TImage
       Left = 16
@@ -164,7 +164,7 @@ object Form3: TForm3
     EditLabel.Caption = 'Probability Rocks'
     EditLabel.ParentColor = False
     TabOrder = 2
-    Text = '0.5'
+    Text = '4'
   end
   object ApplyButton: TBitBtn
     Left = 344

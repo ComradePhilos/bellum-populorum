@@ -29,10 +29,10 @@ type
     constructor Create;
     destructor Destroy;
 
-    procedure GenerateRomans(AColor: TColor);
+    procedure GenerateRomans(AColor: TColor);                          // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
-    procedure Initialize(ASimSetup: TSimSetup);
+    procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
 
     property Map: TMap read FMap write FMap;
   end;

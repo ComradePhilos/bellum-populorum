@@ -194,6 +194,8 @@ object Form2: TForm2
     Top = -1
     Width = 408
     AntialiasingMode = amOff
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    OnResize = Image1Resize
   end
   object ImageList1: TImageList
     Height = 8

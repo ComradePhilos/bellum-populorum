@@ -79,6 +79,7 @@ object Form2: TForm2
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnPaint = FormPaint
+  OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.2.4.0'
@@ -91,17 +92,6 @@ object Form2: TForm2
     Caption = 'Generate!'
     OnClick = GenerateButtonClick
     TabOrder = 0
-  end
-  object Memo1: TMemo
-    Left = 411
-    Height = 218
-    Top = 169
-    Width = 312
-    Anchors = [akRight, akBottom]
-    Lines.Strings = (
-      'Memo1'
-    )
-    TabOrder = 1
   end
   object Image2: TImage
     Left = 1128
@@ -135,7 +125,7 @@ object Form2: TForm2
     EditLabel.Width = 80
     EditLabel.Caption = 'width'
     EditLabel.ParentColor = False
-    TabOrder = 2
+    TabOrder = 1
     Text = '50'
   end
   object LabeledEdit2: TLabeledEdit
@@ -154,22 +144,22 @@ object Form2: TForm2
     EditLabel.Width = 80
     EditLabel.Caption = 'height'
     EditLabel.ParentColor = False
-    TabOrder = 3
+    TabOrder = 2
     Text = '50'
   end
   object Label1: TLabel
-    Left = 419
+    Left = 424
     Height = 15
-    Top = 99
+    Top = 80
     Width = 116
     Anchors = [akRight, akBottom]
     Caption = 'Round Duration in ms'
     ParentColor = False
   end
   object TrackBar1: TTrackBar
-    Left = 411
+    Left = 416
     Height = 46
-    Top = 122
+    Top = 96
     Width = 224
     Frequency = 1000
     Max = 8000
@@ -177,16 +167,16 @@ object Form2: TForm2
     OnChange = TrackBar1Change
     Position = 8000
     Anchors = [akRight, akBottom]
-    TabOrder = 4
+    TabOrder = 3
   end
   object Edit1: TEdit
-    Left = 643
+    Left = 640
     Height = 23
-    Top = 123
+    Top = 99
     Width = 80
     Anchors = [akRight, akBottom]
     OnChange = Edit1Change
-    TabOrder = 5
+    TabOrder = 4
   end
   object Image1: TImage
     Left = -1

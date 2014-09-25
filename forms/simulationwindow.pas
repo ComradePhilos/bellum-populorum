@@ -25,7 +25,6 @@ type
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
 		MainMenu1: TMainMenu;
-    Memo1: TMemo;
 		MenuItem1: TMenuItem;
 		MenuItem2: TMenuItem;
 		MenuItem3: TMenuItem;
@@ -35,6 +34,7 @@ type
 		MenuItem7: TMenuItem;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
+		procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -85,9 +85,12 @@ begin
   FSim.Map.MapSettings := tmp;
   FSim.Map.Generate;
 
-  Memo1.Clear;
-  Memo1.Lines.AddStrings(FSim.Map.ToText);
   FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+end;
+
+procedure TForm2.FormResize(Sender: TObject);
+begin
+  DrawMap(nil);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);

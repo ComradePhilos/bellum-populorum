@@ -642,4 +642,12 @@ object Form3: TForm3
     TabOrder = 7
     Text = 'Simulation'
   end
+  object CheckBox1: TCheckBox
+    Left = 16
+    Height = 19
+    Top = 432
+    Width = 126
+    Caption = 'Show when finished'
+    TabOrder = 8
+  end
 end

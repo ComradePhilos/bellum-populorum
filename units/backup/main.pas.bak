@@ -47,6 +47,7 @@ type
     FSimSetupList: TSimSetupList;
     FSimCounter: integer;
     procedure UpdateWindow;
+    procedure SetupDone(Sender: TObject);
     procedure RemoveSim(Sender: TObject);
     procedure SimFormListToTabs(ATabControl: TTabControl; ASimFormList: TSimFormList);
 
@@ -63,7 +64,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.3';
-  VersionDate = '24.09.2014';
+  VersionDate = '25.09.2014';
 
 {$R *.lfm}
 
@@ -81,6 +82,7 @@ begin
   FSimSetupList[FSimSetupList.Count-1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
   FSimSetupList[FSimSetupList.Count-1].SimForm := FSimFormList[FSimFormList.Count - 1];
   FSimSetupList[FSimSetupList.Count-1].LabeledEdit5.Text := 'Simulation ' + IntToStr(FSimCounter);
+  FSimSetupList[FSimSetupList.Count-1].OnApply := @SetupDone;
   FSimSetupList[FSimSetupList.Count-1].Show;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
@@ -152,6 +154,11 @@ begin
   begin
     ATabControl.Tabs.Add(FSimFormList[I].Sim.Name);
   end;
+end;
+
+procedure TForm1.SetupDone(Sender: TObject);
+begin
+  SimFormListToTabs(TabControl1, FSimFormList);
 end;
 
 end.

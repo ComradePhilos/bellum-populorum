@@ -19,6 +19,7 @@ type
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
 		BitBtn4: TBitBtn;
+		CheckBox1: TCheckBox;
 		ColorButton1: TColorButton;
 		ComboBox1: TComboBox;
     GroupBox1: TGroupBox;
@@ -74,12 +75,15 @@ begin
   FSim.Name := LabeledEdit5.Text;
   FSim.Map.Generate(FSimSetup.MapSetup);
   FSimForm.Caption := FSim.Name;
-  FSimForm.Show;
   self.Visible := False;
 
   if Assigned(FOnApply) then
   begin
     FOnApply(self);
+	end;
+  if (CheckBox1.Checked) then
+  begin
+    FSimForm.Show;
 	end;
 end;
 

@@ -19,6 +19,7 @@ type
     BitBtn2: TBitBtn;
     BitBtn3: TBitBtn;
 		BitBtn4: TBitBtn;
+		CheckBox1: TCheckBox;
 		ColorButton1: TColorButton;
 		ComboBox1: TComboBox;
     GroupBox1: TGroupBox;
@@ -77,7 +78,7 @@ begin
   FSimForm.Show;
   self.Visible := False;
 
-  if Assgined(FOnApply) then
+  if Assigned(FOnApply) then
   begin
     FOnApply(self);
 	end;

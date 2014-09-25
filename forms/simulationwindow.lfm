@@ -82,14 +82,14 @@ object Form2: TForm2
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.2.4.0'
-  object BitBtn1: TBitBtn
+  object GenerateButton: TBitBtn
     Left = 611
     Height = 30
     Top = 16
     Width = 75
     Anchors = [akTop, akRight]
     Caption = 'Generate!'
-    OnClick = BitBtn1Click
+    OnClick = GenerateButtonClick
     TabOrder = 0
   end
   object Memo1: TMemo

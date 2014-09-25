@@ -16,7 +16,7 @@ type
   { TForm2 }
 
   TForm2 = class(TForm)
-    BitBtn1: TBitBtn;
+    GenerateButton: TBitBtn;
 		Edit1: TEdit;
 		Image1: TImage;
 		Image2: TImage;
@@ -35,7 +35,7 @@ type
 		MenuItem7: TMenuItem;
 		Timer1: TTimer;
 		TrackBar1: TTrackBar;
-    procedure BitBtn1Click(Sender: TObject);
+    procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -71,19 +71,18 @@ implementation
 
 { TForm2 }
 
-procedure TForm2.BitBtn1Click(Sender: TObject);
+procedure TForm2.GenerateButtonClick(Sender: TObject);
 var
   x,y: Integer;
-  mapsettings: TMapSetup;
+  tmp: TMapSetup;
 begin
+  tmp := FSim.Map.MapSettings;
+
   x := StrToInt(LabeledEdit1.Text);
   y := StrToInt(LabeledEdit2.Text);
-  mapsettings.Width := x;
-  mapsettings.Height := y;
-  mapsettings.TileSize := 8;
-  mapsettings.ProbForest := 50;
-  mapsettings.ProbRocks := 4;
-  FSim.Map.MapSettings := mapsettings;
+  tmp.Width := x;
+  tmp.Height := y;
+  FSim.Map.MapSettings := tmp;
   FSim.Map.Generate;
 
   Memo1.Clear;

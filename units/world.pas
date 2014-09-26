@@ -25,6 +25,7 @@ type
   TMapObject = class
     private
       FX, FY: Integer;                                              // Position on Map ( like tiles )
+      FHP: Integer;
 
     public
       constructor Create; overload;                                 // normal constructor
@@ -34,6 +35,19 @@ type
 
       procedure place(posx, posy: Integer);                         // tries to place the object -> maybe function?
 
+      property x: Integer read FX write FX;
+      property y: Integer read FY write FY;
+      property HP: Integer read FHP write FHP;
+
+	end;
+
+  TMapTree = class(TMapObject)
+    private
+      FPossessedBy: TObject;                                    // Holds a reference to the owner(people)
+    public
+      procedure Spore;                                          // will create a new tree in the area.
+
+      property PossessedBy: TPeople read FPossessedBy write FPossessedBy;
 	end;
 
   TMap = class
@@ -259,6 +273,13 @@ begin
 end;
 
 procedure TMapObject.place(posx, posy: Integer);
+begin
+
+end;
+
+
+
+procedure TMapTree.place(posx, posy: Integer);
 begin
 
 end;

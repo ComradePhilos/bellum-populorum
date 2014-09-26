@@ -13,6 +13,7 @@ uses
 // Todo:
 // * all results and some controls are in the main window
 // * delete tabs when simulation settings are aborted
+// * try a class based of the map and its objects? -> instead of tiles
 
 
 type

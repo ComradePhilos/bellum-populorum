@@ -34,6 +34,7 @@ type
   public
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
+    procedure Clear;
 
     procedure Generate; overload;
     procedure Generate(AMapSettings: TMapSetup);
@@ -58,6 +59,19 @@ constructor TMap.Create(AMapSettings: TMapSetup);
 begin
   Randomize;
   Generate;
+end;
+
+procedure TMap.Clear;
+begin
+  SetLength(FTiles,0,0);
+  with FMapSettings do
+  begin
+    Width := 0;
+    Height := 0;
+    TileSize := 0;
+    ProbForest := 0;
+    ProbRocks := 0;
+  end;
 end;
 
 procedure TMap.Generate;
@@ -91,6 +105,7 @@ begin
   FMapSettings := AMapSettings;
   Generate;
 end;
+
 
 procedure TMap.GenerateForest(x, y: integer);
 var

@@ -6,7 +6,7 @@ interface
 
 uses
       Classes, SysUtils, fgl,
-      houses;
+      houses, world;
 
 type
 
@@ -23,6 +23,7 @@ type
     public
       constructor Create;
       procedure Move(x, y: Integer);
+
 	end;
 
   TCitizenList = specialize TFPGObjectList<TCitizen>;
@@ -39,6 +40,7 @@ procedure TCitizen.Move(x, y: Integer);
 begin
 
 end;
+
 
 end.
 

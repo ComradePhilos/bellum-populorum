@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 409
+  Left = 497
   Height = 470
-  Top = 149
+  Top = 214
   Width = 431
   Caption = 'Simulation Setup'
   ClientHeight = 470
@@ -325,7 +325,7 @@ object Form3: TForm3
     end
     object PeopleBox: TComboBox
       Left = 144
-      Height = 23
+      Height = 24
       Top = 40
       Width = 80
       ItemHeight = 16

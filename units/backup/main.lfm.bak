@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 457
+  Left = 254
   Height = 619
-  Top = 189
+  Top = 177
   Width = 725
   Caption = 'bellum populorum'
-  ClientHeight = 599
-  ClientWidth = 725
+  ClientHeight = 0
+  ClientWidth = 0
   Font.CharSet = ANSI_CHARSET
   Font.Height = -12
   Font.Name = 'Ubuntu'

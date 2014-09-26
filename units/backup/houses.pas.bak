@@ -20,7 +20,7 @@ type
       constructor Create;
 
       function CreateCitizen: Boolean;
-      function NeedsFood: Integer;
+      function FoodNeeded: Integer;
 	end;
 
 implementation
@@ -30,12 +30,12 @@ begin
   FX := 0;
   FY := 0;
   FInhabitants := 0;
-  FMaxInhabitants := 3;
+  FMaxInhabitants := 4;
   FFood := 0;
-  FMaxFood := 400;
+  FMaxFood := 500;
 end;
 
-function THouse.NeedsFood: Integer;
+function THouse.FoodNeeded: Integer;
 begin
   Result := FMaxFood - FFood;
 end;

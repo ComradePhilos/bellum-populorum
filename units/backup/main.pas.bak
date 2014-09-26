@@ -12,7 +12,7 @@ uses
 
 // Todo:
 // * all results and some controls are in the main window
-// * change the name of the tabs
+// * delete tabs when simulation settings are aborted
 
 
 type

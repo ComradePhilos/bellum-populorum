@@ -18,32 +18,34 @@ type
 
   TSimulation = class
   private
+    FName: String;
     FID: integer;
     FRound: integer;                        // Round-Counter
     FRoundLimit: integer;                   // optional round limit
     FMap: TMap;
     FPeoples: TPeoplesList;
-    FTimeMod: double;                       // Mutliplier for time
-    FDuration: integer;                     // Milliseconds since start
+    FTimePerRound: Integer;
+
   public
     constructor Create;
     destructor Destroy;
+    procedure Clear;
 
     procedure GenerateRomans(AColor: TColor);                          // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
     procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
 
+    procedure
+
     property Map: TMap read FMap write FMap;
+    property Name: String read FName write FName;
+    property TimePerRound: Integer read FTimePerRound write FTimePerRound;
   end;
 
   TSimulationList = specialize TFPGObjectList<TSimulation>;
 
 implementation
-
-const
-  defWidth = 100;
-  defHeight = 80;
 
 constructor TSimulation.Create;
 begin
@@ -55,6 +57,16 @@ destructor TSimulation.Destroy;
 begin
   FPeoples.Free;
   FMap.Free;
+end;
+
+procedure TSimulation.Clear;
+begin
+  FMap.Clear;
+  FName := '';
+  FRound := 0;
+  FRoundLimit := 0;
+  FTimePerRound := 0;
+  FPeoples.Clear;
 end;
 
 procedure TSimulation.GenerateRomans(AColor: TColor);

@@ -5,7 +5,7 @@ unit houses;
 interface
 
 uses
-      Classes, SysUtils;
+      Classes, SysUtils, fgl;
 
 type
   THouse = class
@@ -22,6 +22,8 @@ type
       function CreateCitizen: Boolean;
       function FoodNeeded: Integer;
 	end;
+
+  THouseList = specialize TFPGObjectList<THouse>;
 
 implementation
 

@@ -136,7 +136,7 @@ var
   newx, newy: integer;
   dist: integer;
 begin
-  extent := random(5) + 1;
+  extent := random(5) + 2;
   Count := Random(28) + 6;
   FTiles[x, y] := TTileType.ttRock;
 

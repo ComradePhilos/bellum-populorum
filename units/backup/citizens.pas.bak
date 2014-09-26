@@ -5,7 +5,8 @@ unit citizens;
 interface
 
 uses
-      Classes, SysUtils, fgl;
+      Classes, SysUtils, fgl,
+      houses, world;
 
 type
 
@@ -22,6 +23,8 @@ type
     public
       constructor Create;
       procedure Move(x, y: Integer);
+
+      procedure Expand(AMap: TMap);
 	end;
 
   TCitizenList = specialize TFPGObjectList<TCitizen>;

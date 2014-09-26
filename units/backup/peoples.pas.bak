@@ -19,9 +19,17 @@ type
 
   TPeopleType = (ptRoman, ptGerman, ptSlavonic);
 
+  TPeopleSetup = record
+    Peoples: array of TPeopleType;
+    Names: TStringList;
+    Colors: array of TColor;
+    Ressources: array of TRessources;
+	end;
+
   TPeople = Class
     private
       FName: String;
+      FCityX, FCityY
       FPeopleType: TPeopleType;
       FColor: TColor;
       FStrengthBonus: Integer;
@@ -37,7 +45,7 @@ type
       constructor Create;
       destructor Destroy;
 
-      property PeopleType: TPeopleType read FPeopleType write FPeopleType;
+      //property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;

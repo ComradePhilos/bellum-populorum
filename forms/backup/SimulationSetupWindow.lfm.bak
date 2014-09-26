@@ -1,11 +1,11 @@
 object Form3: TForm3
-  Left = 409
+  Left = 347
   Height = 470
   Top = 149
   Width = 431
   Caption = 'Simulation Setup'
-  ClientHeight = 470
-  ClientWidth = 431
+  ClientHeight = 0
+  ClientWidth = 0
   Font.CharSet = ANSI_CHARSET
   Font.Height = -12
   Font.Name = 'Ubuntu'
@@ -57,11 +57,11 @@ object Form3: TForm3
     Left = 7
     Height = 129
     Top = 56
-    Width = 418
+    Width = 0
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Map Settings'
     ClientHeight = 111
-    ClientWidth = 414
+    ClientWidth = 0
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
       Left = 16
@@ -171,9 +171,9 @@ object Form3: TForm3
     Text = '4'
   end
   object ButtonApply: TBitBtn
-    Left = 344
+    Left = -87
     Height = 30
-    Top = 432
+    Top = -38
     Width = 80
     Anchors = [akRight, akBottom]
     Caption = 'Apply'
@@ -260,11 +260,11 @@ object Form3: TForm3
     Left = 7
     Height = 232
     Top = 192
-    Width = 417
+    Width = 0
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Peoples'
     ClientHeight = 214
-    ClientWidth = 413
+    ClientWidth = 0
     TabOrder = 4
     object ButtonColor: TColorButton
       Left = 320
@@ -325,7 +325,7 @@ object Form3: TForm3
     end
     object PeopleBox: TComboBox
       Left = 144
-      Height = 23
+      Height = 24
       Top = 40
       Width = 80
       ItemHeight = 16
@@ -390,9 +390,9 @@ object Form3: TForm3
       TabOrder = 5
     end
     object ButtonRandomize: TBitBtn
-      Left = 136
+      Left = 144
       Height = 30
-      Top = 176
+      Top = 178
       Width = 104
       Caption = 'Randomize'
       Glyph.Data = {
@@ -638,7 +638,7 @@ object Form3: TForm3
     Left = 8
     Height = 24
     Top = 24
-    Width = 416
+    Width = 0
     Anchors = [akTop, akLeft, akRight]
     EditLabel.AnchorSideLeft.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Control = LabeledEdit5
@@ -647,7 +647,7 @@ object Form3: TForm3
     EditLabel.Left = 8
     EditLabel.Height = 16
     EditLabel.Top = 5
-    EditLabel.Width = 416
+    EditLabel.Width = 0
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
     TabOrder = 7

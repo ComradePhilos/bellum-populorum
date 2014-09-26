@@ -22,6 +22,20 @@ type
     ProbRocks: integer;
   end;
 
+  TMapObject = class
+    private
+      FX, FY: Integer;                                              // Position on Map ( like tiles )
+
+    public
+      constructor Create; overload;                                 // normal constructor
+      constructor Create(AMapObject: TMapObject);                   // Copy-Constructor
+      procedure Assign(AMapObject: TMapObject);
+      destructor Destroy;
+
+      procedure place(posx, posy: Integer);                         // tries to place the object -> maybe function?
+
+	end;
+
   TMap = class
   private
     FMapSettings: TMapSetup;
@@ -48,6 +62,9 @@ type
 
 
 implementation
+
+
+// #################################################### TMAP ###########################################################
 
 constructor TMap.Create;
 begin
@@ -216,6 +233,34 @@ begin
   end;
 	end;
 	img.Free;
+end;
+
+
+// ################################################# TMapObject ########################################################
+constructor TMapObject.Create;
+begin
+
+end;
+
+constructor TMapObject.Create(AMapObject: TMapObject);
+begin
+  Assign(AMapObject);
+end;
+
+destructor TMapObject.Destroy;
+begin
+
+end;
+
+procedure TMapObject.Assign(AMapObject: TMapObject);
+begin
+  self.FX := AMapObject.FX;
+  self.FY := AMapObject.FY;
+end;
+
+procedure TMapObject.place(posx, posy: Integer);
+begin
+
 end;
 
 end.

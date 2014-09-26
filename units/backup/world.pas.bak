@@ -5,8 +5,7 @@ unit world;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math,
-  //peoples;
+  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math;
 
 type
 
@@ -44,11 +43,11 @@ type
 
   TMapTree = class(TMapObject)
     private
-      FPossessedBy: TObject;
+      FPossessedBy: TObject;                                    // Holds a reference to the owner(people)
     public
       procedure Spore;                                          // will create a new tree in the area.
 
-      property PossessedBy: TPeople read FPossessedBy write FPossessedBy;
+      property PossessedBy: TObject read FPossessedBy write FPossessedBy;
 	end;
 
   TMap = class
@@ -278,11 +277,5 @@ begin
 
 end;
 
-
-
-procedure TMapTree.place(posx, posy: Integer);
-begin
-
-end;
 
 end.

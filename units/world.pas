@@ -47,7 +47,7 @@ type
     public
       procedure Spore;                                          // will create a new tree in the area.
 
-      property PossessedBy: TPeople read FPossessedBy write FPossessedBy;
+      property PossessedBy: TObject read FPossessedBy write FPossessedBy;
 	end;
 
   TMap = class
@@ -278,8 +278,7 @@ begin
 end;
 
 
-
-procedure TMapTree.place(posx, posy: Integer);
+procedure TMapTree.Spore;
 begin
 
 end;

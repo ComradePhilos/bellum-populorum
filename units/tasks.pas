@@ -5,20 +5,19 @@ unit tasks;
 interface
 
 uses
-      Classes, SysUtils;
+  Classes, SysUtils;
 
 type
 
   TTaskType = (ttMove, ttGather, ttAttack);
 
-  TTask = Class
-    private
-      FType: TTaskType;
-      FTargetX, FTargetY: Integer;
-      FPriority: Integer;
-	end;
+  TTask = class
+  private
+    FType: TTaskType;
+    FTargetX, FTargetY: integer;
+    FPriority: integer;
+  end;
 
 implementation
 
 end.
-

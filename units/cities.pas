@@ -5,23 +5,24 @@ unit cities;
 interface
 
 uses
-      Classes, SysUtils,
-      peoples, houses, world;
+  Classes, SysUtils,
+  peoples, houses, world;
 
 type
   TCity = class
-    private
-      FX, FY: Integer;                                                // city centre
-      FPeople: TPeopleType;                                           // what nationality?
-      FHouseList: THouseList;
+  private
+    FX, FY: integer;                                                // city centre
+    FPeople: TPeopleType;
+    // what nationality?
+    FHouseList: THouseList;
 
-    public
-      constructor Create;
-      destructor Destroy;
+  public
+    constructor Create;
+    destructor Destroy;
 
 
-      procedure Expand(AMap: TMap);               // Tries to Build a house
-	end;
+    procedure Expand(AMap: TMap);               // Tries to Build a house
+  end;
 
 implementation
 
@@ -41,4 +42,3 @@ begin
 end;
 
 end.
-

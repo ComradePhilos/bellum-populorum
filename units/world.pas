@@ -237,7 +237,8 @@ var
   img: TImage;
 begin
   img := TImage.Create(nil);
-
+  ACanvas.Brush.Color := clBlack;
+  ACanvas.FillRect(0,0,ACanvas.Width, ACanvas.Height);
   with FMapSettings do
   begin
     for y := 0 to FMapSettings.Height - 1 do

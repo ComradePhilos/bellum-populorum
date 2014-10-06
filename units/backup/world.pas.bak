@@ -17,38 +17,42 @@ type
   TMapSetup = record
     Width: integer;
     Height: integer;
-    TileSize: Integer;
+    TileSize: integer;
     ProbForest: integer;
     ProbRocks: integer;
   end;
 
   TMapObject = class
-    private
-      FX, FY: Integer;                                              // Position on Map ( like tiles )
-      FHP: Integer;
+  private
+    FX, FY: integer;
+    // Position on Map ( like tiles )
+    FHP: integer;
 
-    public
-      constructor Create; overload;                                 // normal constructor
-      constructor Create(AMapObject: TMapObject);                   // Copy-Constructor
-      procedure Assign(AMapObject: TMapObject);
-      destructor Destroy;
+  public
+    constructor Create; overload;                                 // normal constructor
+    constructor Create(AMapObject: TMapObject);                   // Copy-Constructor
+    procedure Assign(AMapObject: TMapObject);
+    destructor Destroy;
 
-      procedure place(posx, posy: Integer);                         // tries to place the object -> maybe function?
+    procedure place(posx, posy: integer);
+    // tries to place the object -> maybe function?
 
-      property x: Integer read FX write FX;
-      property y: Integer read FY write FY;
-      property HP: Integer read FHP write FHP;
+    property x: integer read FX write FX;
+    property y: integer read FY write FY;
+    property HP: integer read FHP write FHP;
 
-	end;
+  end;
 
   TMapTree = class(TMapObject)
-    private
-      FPossessedBy: TObject;                                    // Holds a reference to the owner(people)
-    public
-      procedure Spore;                                          // will create a new tree in the area.
+  private
+    FPossessedBy: TObject;
+    // Holds a reference to the owner(people)
+  public
+    procedure Spore;
+    // will create a new tree in the area.
 
-      property PossessedBy: TObject read FPossessedBy write FPossessedBy;
-	end;
+    property PossessedBy: TObject read FPossessedBy write FPossessedBy;
+  end;
 
   TMap = class
   private
@@ -94,7 +98,7 @@ end;
 
 procedure TMap.Clear;
 begin
-  SetLength(FTiles,0,0);
+  SetLength(FTiles, 0, 0);
   with FMapSettings do
   begin
     Width := 0;
@@ -117,9 +121,9 @@ begin
       for x := 0 to Width - 1 do
       begin
         FTiles[x, y] := TTileType.ttGrass;
-        if (Random(1000) > (1000-ProbRocks)) then
+        if (Random(1000) > (1000 - ProbRocks)) then
           GenerateRocks(x, y);
-        if (Random(1000) > (1000-ProbForest)) then
+        if (Random(1000) > (1000 - ProbForest)) then
           GenerateForest(x, y);
       end;
     end;
@@ -128,7 +132,7 @@ begin
   if Assigned(FOnChange) then
   begin
     FOnChange(self);
-	end;
+  end;
 end;
 
 procedure TMap.Generate(AMapSettings: TMapSetup);
@@ -233,20 +237,20 @@ var
   img: TImage;
 begin
   img := TImage.Create(nil);
-
+  ACanvas.Clear;
   with FMapSettings do
   begin
-  for y := 0 to FMapSettings.Height - 1 do
-  begin
-    for x := 0 to FMapSettings.Width - 1 do
+    for y := 0 to FMapSettings.Height - 1 do
     begin
-      img.Picture.Bitmap.Clear;
-      AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
-      ACanvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
+      for x := 0 to FMapSettings.Width - 1 do
+      begin
+        img.Picture.Bitmap.Clear;
+        AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
+        ACanvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
+      end;
     end;
   end;
-	end;
-	img.Free;
+  img.Free;
 end;
 
 
@@ -272,10 +276,15 @@ begin
   self.FY := AMapObject.FY;
 end;
 
-procedure TMapObject.place(posx, posy: Integer);
+procedure TMapObject.place(posx, posy: integer);
 begin
 
 end;
 
+
+procedure TMapTree.Spore;
+begin
+
+end;
 
 end.

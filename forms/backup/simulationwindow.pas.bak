@@ -32,7 +32,9 @@ type
 		MenuItem5: TMenuItem;
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
+		StatusBar1: TStatusBar;
 		Timer1: TTimer;
+		Timer2: TTimer;
 		TrackBar1: TTrackBar;
 		procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
@@ -40,6 +42,7 @@ type
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
+		procedure Timer2Timer(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
     { private declarations }
@@ -74,6 +77,8 @@ var
   x,y: Integer;
   tmp: TMapSetup;
 begin
+  GenerateButton.Enabled := False;
+  Application.ProcessMessages;
   tmp := FSim.Map.MapSettings;
 
   x := StrToInt(LabeledEdit1.Text);
@@ -84,11 +89,15 @@ begin
   FSim.Map.Generate;
 
   FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+  GenerateButton.Enabled := True;
+
 end;
 
 procedure TForm2.FormResize(Sender: TObject);
 begin
-  DrawMap(nil);
+  Image1.Visible := False;
+  Timer2.Enabled := False;
+  Timer2.Enabled := True;
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -110,6 +119,7 @@ end;
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
+  self.DoubleBuffered := True;
   FSim := TSimulation.Create;
   FDuration := 3000;
   Trackbar1.Position := FDuration;
@@ -123,6 +133,13 @@ procedure TForm2.Image1Resize(Sender: TObject);
 begin
   Image1.Picture.Bitmap.Width := Image1.Width;
   Image1.Picture.Bitmap.Height := Image1.Height;
+end;
+
+procedure TForm2.Timer2Timer(Sender: TObject);
+begin
+  Image1.Visible := True;
+  DrawMap(nil);
+  Timer2.Enabled := False;
 end;
 
 procedure TForm2.TrackBar1Change(Sender: TObject);

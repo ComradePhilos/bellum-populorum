@@ -11,9 +11,8 @@ uses
   sim, SimulationWindow, SimulationSetupWindow;
 
 // Todo:
-// * all results and some controls are in the main window
 // * delete tabs when simulation settings are aborted
-// * try a class based of the map and its objects? -> instead of tiles
+// * try a class based version of the map and its objects? -> instead of tiles
 // * maybe add manipulable growing-rate for each people
 
 

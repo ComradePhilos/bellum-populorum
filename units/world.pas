@@ -261,7 +261,6 @@ end;
 procedure TMap.DrawToCanvas(ACanvas: TCanvas);
 var
   x, y: integer;
-  img: TImage;
 begin
   ACanvas.Brush.Color := clBlack;
   ACanvas.FillRect(0,0,ACanvas.Width, ACanvas.Height);
@@ -273,11 +272,10 @@ begin
       for x := 0 to FMapSettings.Width - 1 do
       begin
         case (FTiles[x, y])  of
-          ttGrass: img := ImageGrass;
-          ttTree: img := ImageTree;
-          ttRock: img := ImageRock;
+          ttGrass: ACanvas.Draw(x * TileSize, y * TileSize, ImageGrass.Picture.Bitmap);
+          ttTree: ACanvas.Draw(x * TileSize, y * TileSize, ImageTree.Picture.Bitmap);
+          ttRock: ACanvas.Draw(x * TileSize, y * TileSize, ImageRock.Picture.Bitmap);
 				end;
-        ACanvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
 			end;
     end;
   end;

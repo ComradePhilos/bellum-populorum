@@ -12,7 +12,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="32" Y="5"/>
-        <UsageCount Value="131"/>
+        <UsageCount Value="139"/>
       </Unit0>
       <Unit1>
         <Filename Value="units\main.pas"/>
@@ -24,9 +24,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="31"/>
-        <CursorPos X="28" Y="70"/>
-        <UsageCount Value="131"/>
+        <TopLine Value="118"/>
+        <CursorPos X="9" Y="13"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -38,7 +38,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="28"/>
         <CursorPos X="41" Y="82"/>
-        <UsageCount Value="131"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -48,7 +48,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="18" Y="10"/>
-        <UsageCount Value="131"/>
+        <UsageCount Value="139"/>
       </Unit3>
       <Unit4>
         <Filename Value="units\funcs.pas"/>
@@ -58,7 +58,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
-        <UsageCount Value="131"/>
+        <UsageCount Value="139"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -69,7 +69,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="35"/>
         <CursorPos X="26" Y="46"/>
-        <UsageCount Value="130"/>
+        <UsageCount Value="138"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -80,7 +80,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="43"/>
-        <UsageCount Value="129"/>
+        <UsageCount Value="137"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -91,7 +91,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="26" Y="18"/>
-        <UsageCount Value="127"/>
+        <UsageCount Value="135"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -105,7 +105,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="79"/>
         <CursorPos X="23" Y="100"/>
-        <UsageCount Value="126"/>
+        <UsageCount Value="134"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -115,9 +115,9 @@
         <UnitName Value="world"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="171"/>
-        <CursorPos X="64" Y="260"/>
-        <UsageCount Value="120"/>
+        <TopLine Value="1"/>
+        <CursorPos X="13" Y="278"/>
+        <UsageCount Value="128"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -128,7 +128,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="50" Y="26"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -142,7 +142,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="37"/>
         <CursorPos X="13" Y="70"/>
-        <UsageCount Value="63"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit11>
@@ -154,7 +154,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="55" Y="13"/>
-        <UsageCount Value="29"/>
+        <UsageCount Value="37"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -163,7 +163,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="11"/>
-        <UsageCount Value="14"/>
+        <UsageCount Value="13"/>
       </Unit13>
       <Unit14>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
@@ -171,7 +171,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1796"/>
         <CursorPos X="14" Y="764"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit14>
       <Unit15>
         <Filename Value="forms\mapsetupform.pas"/>
@@ -181,7 +181,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="37" Y="30"/>
-        <UsageCount Value="19"/>
+        <UsageCount Value="18"/>
       </Unit15>
     </Units>
     <General>

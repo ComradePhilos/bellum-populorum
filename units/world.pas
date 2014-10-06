@@ -56,21 +56,28 @@ type
 
   TMap = class
   private
+    ImageGrass: TImage;
+    ImageTree: TImage;
+    ImageRock: TImage;
+    ImageRomanHouse: TImage;
+
     FMapSettings: TMapSetup;
     FTiles: TTiles;
     FOnChange: TOnChangeEvent;
 
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
+    procedure LoadImages;
 
   public
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
+    destructor Destroy;
     procedure Clear;
 
     procedure Generate; overload;
     procedure Generate(AMapSettings: TMapSetup);
-    procedure DrawToCanvas(ACanvas: TCanvas; AImageList: TImageList);
+    procedure DrawToCanvas(ACanvas: TCanvas);
     function ToText: TStringList;
 
     property MapSettings: TMapSetup read FMapSettings write FMapSettings;
@@ -86,14 +93,34 @@ implementation
 
 constructor TMap.Create;
 begin
+  LoadImages;
   Randomize;
   SetLength(FTiles, 0, 0);
 end;
 
 constructor TMap.Create(AMapSettings: TMapSetup);
 begin
+  LoadImages;
   Randomize;
   Generate;
+end;
+
+destructor TMap.Destroy;
+begin
+  ImageGrass.Free;
+  ImageTree.Free;
+  ImageRock.Free;
+end;
+
+procedure TMap.LoadImages;
+begin
+
+  ImageGrass := TImage.Create(nil);
+  ImageGrass.Picture.LoadFromFile('../gfx/tiles/8x8/grass.png');
+  ImageTree := TImage.Create(nil);
+  ImageTree.Picture.LoadFromFile('../gfx/tiles/8x8/tree.png');
+  ImageRock := TImage.Create(nil);
+  ImageRock.Picture.LoadFromFile('../gfx/tiles/8x8/rock.png');
 end;
 
 procedure TMap.Clear;
@@ -231,27 +258,29 @@ begin
   end;
 end;
 
-procedure TMap.DrawToCanvas(ACanvas: TCanvas; AImageList: TImageList);
+procedure TMap.DrawToCanvas(ACanvas: TCanvas);
 var
   x, y: integer;
   img: TImage;
 begin
-  img := TImage.Create(nil);
   ACanvas.Brush.Color := clBlack;
   ACanvas.FillRect(0,0,ACanvas.Width, ACanvas.Height);
+
   with FMapSettings do
   begin
     for y := 0 to FMapSettings.Height - 1 do
     begin
       for x := 0 to FMapSettings.Width - 1 do
       begin
-        img.Picture.Bitmap.Clear;
-        AImageList.GetBitmap(integer(FTiles[x, y]), img.Picture.Bitmap);
+        case (FTiles[x, y])  of
+          ttGrass: img := ImageGrass;
+          ttTree: img := ImageTree;
+          ttRock: img := ImageRock;
+				end;
         ACanvas.Draw(x * TileSize, y * TileSize, img.Picture.Bitmap);
-      end;
+			end;
     end;
   end;
-  img.Free;
 end;
 
 

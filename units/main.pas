@@ -67,8 +67,8 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.3';
-  VersionDate = '25.09.2014';
+  ProgrammeVersion = '0.0.4';
+  VersionDate = '06.10.2014';
 
 {$R *.lfm}
 

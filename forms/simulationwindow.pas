@@ -20,7 +20,6 @@ type
 		Edit1: TEdit;
 		Image1: TImage;
 		Image2: TImage;
-		ImageList1: TImageList;
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
@@ -88,7 +87,7 @@ begin
   FSim.Map.MapSettings := tmp;
   FSim.Map.Generate;
 
-  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas, ImageList1);
+  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas);
   GenerateButton.Enabled := True;
 
 end;
@@ -149,7 +148,7 @@ end;
 
 procedure TForm2.DrawMap(Sender: TObject);
 begin
-  FSim.Map.DrawToCanvas(Image1.Canvas, ImageList1);
+  FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 end.

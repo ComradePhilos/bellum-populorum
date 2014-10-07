@@ -43,14 +43,10 @@ type
   private
     { private declarations }
     FSimSetup: TSimSetup;
-    FSim: TSimulation;
-    FSimForm: TForm2;
     FOnApply: TOnApplyEvent;
   public
     { public declarations }
     property SimSetup: TSimSetup read FSimSetup write FSimSetup;
-    property Sim: TSimulation read FSim write FSim;
-    property SimForm: TForm2 read FSimForm write FSimForm;
     property OnApply: TOnApplyEvent read FOnApply write FOnApply;
   end;
 
@@ -73,22 +69,13 @@ begin
   FSimSetup.MapSetup.ProbForest := StrToInt(LabeledEdit3.Text);
   FSimSetup.MapSetup.ProbRocks := StrToInt(LabeledEdit4.Text);
   FSimSetup.MapSetup.TileSize := 8;
-  {
-  FSim.Name := LabeledEdit5.Text;
-  FSim.Map.Generate(FSimSetup.MapSetup);
-  FSimForm.Caption := FSim.Name;
-  }
+
   self.Visible := False;
 
   if Assigned(FOnApply) then
   begin
     FOnApply(self);
 	end;
-  {
-  if (CheckBox1.Checked) then
-  begin
-    FSimForm.Show;
-	end;   }
 end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);

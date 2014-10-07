@@ -25,7 +25,6 @@ type
     CloseButton: TBitBtn;
     StartButton: TBitBtn;
     BitBtn4: TBitBtn;
-    SetupButton: TBitBtn;
     MainMenu1: TMainMenu;
     MenuItem1: TMenuItem;
     MenuItem2: TMenuItem;
@@ -66,7 +65,7 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.4';
+  ProgrammeVersion = '0.0.5';
   VersionDate = '07.10.2014';
 
 {$R *.lfm}
@@ -75,14 +74,12 @@ const
 
 procedure TForm1.NewClick(Sender: TObject);
 begin
+  // Create Setup window
   FSimSetupList.Add(TForm3.Create(nil));
-  //FSimSetupList[FSimSetupList.Count - 1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
-  //FSimSetupList[FSimSetupList.Count - 1].SimForm := FSimFormList[FSimFormList.Count - 1];
   FSimSetupList[FSimSetupList.Count - 1].LabeledEdit5.Text :=
     'Simulation ' + IntToStr(FSimCounter+1);
   FSimSetupList[FSimSetupList.Count - 1].OnApply := @SetupDone;
   FSimSetupList[FSimSetupList.Count - 1].Show;
-  //TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
 end;
 
 procedure TForm1.ShowButtonClick(Sender: TObject);
@@ -130,7 +127,6 @@ procedure TForm1.UpdateWindow;
 begin
   ShowButton.Enabled := (FSimFormList.Count > 0);
   CloseButton.Enabled := (FSimFormList.Count > 0);
-  SetupButton.Enabled := (FSimFormList.Count > 0);
   SimFormListToTabs(TabControl1, FSimFormList);
 end;
 
@@ -161,11 +157,12 @@ end;
 
 procedure TForm1.SetupDone(Sender: TObject);
 begin
+  // Create simulation window | load values from setup
   Inc(FSimCounter);
 
   FSimFormList.Add(TForm2.Create(nil));
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
-  FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text; //:= 'Simulation ' + IntToStr(FSimCounter);
+  FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text;
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
 
   FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;

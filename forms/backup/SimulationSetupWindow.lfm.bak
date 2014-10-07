@@ -1,11 +1,11 @@
 object Form3: TForm3
-  Left = 347
+  Left = 497
   Height = 470
-  Top = 149
+  Top = 214
   Width = 431
   Caption = 'Simulation Setup'
-  ClientHeight = 0
-  ClientWidth = 0
+  ClientHeight = 470
+  ClientWidth = 431
   Font.CharSet = ANSI_CHARSET
   Font.Height = -12
   Font.Name = 'Ubuntu'
@@ -57,11 +57,11 @@ object Form3: TForm3
     Left = 7
     Height = 129
     Top = 56
-    Width = 0
+    Width = 418
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Map Settings'
     ClientHeight = 111
-    ClientWidth = 0
+    ClientWidth = 414
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
       Left = 16
@@ -171,9 +171,9 @@ object Form3: TForm3
     Text = '4'
   end
   object ButtonApply: TBitBtn
-    Left = -87
+    Left = 344
     Height = 30
-    Top = -38
+    Top = 432
     Width = 80
     Anchors = [akRight, akBottom]
     Caption = 'Apply'
@@ -260,11 +260,11 @@ object Form3: TForm3
     Left = 7
     Height = 232
     Top = 192
-    Width = 0
+    Width = 417
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Peoples'
     ClientHeight = 214
-    ClientWidth = 0
+    ClientWidth = 413
     TabOrder = 4
     object ButtonColor: TColorButton
       Left = 320
@@ -638,7 +638,7 @@ object Form3: TForm3
     Left = 8
     Height = 24
     Top = 24
-    Width = 0
+    Width = 416
     Anchors = [akTop, akLeft, akRight]
     EditLabel.AnchorSideLeft.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Control = LabeledEdit5
@@ -647,7 +647,7 @@ object Form3: TForm3
     EditLabel.Left = 8
     EditLabel.Height = 16
     EditLabel.Top = 5
-    EditLabel.Width = 0
+    EditLabel.Width = 416
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
     TabOrder = 7

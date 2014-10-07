@@ -67,7 +67,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.4';
-  VersionDate = '06.10.2014';
+  VersionDate = '07.10.2014';
 
 {$R *.lfm}
 
@@ -75,20 +75,14 @@ const
 
 procedure TForm1.NewClick(Sender: TObject);
 begin
-  Inc(FSimCounter);
-  FSimFormList.Add(TForm2.Create(nil));
-  FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
-  FSimFormList[FSimFormList.Count - 1].Caption := 'Simulation ' + IntToStr(FSimCounter);
-  FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
-
   FSimSetupList.Add(TForm3.Create(nil));
-  FSimSetupList[FSimSetupList.Count - 1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
-  FSimSetupList[FSimSetupList.Count - 1].SimForm := FSimFormList[FSimFormList.Count - 1];
+  //FSimSetupList[FSimSetupList.Count - 1].Sim := FSimFormList[FSimFormList.Count - 1].Sim;
+  //FSimSetupList[FSimSetupList.Count - 1].SimForm := FSimFormList[FSimFormList.Count - 1];
   FSimSetupList[FSimSetupList.Count - 1].LabeledEdit5.Text :=
-    'Simulation ' + IntToStr(FSimCounter);
+    'Simulation ' + IntToStr(FSimCounter+1);
   FSimSetupList[FSimSetupList.Count - 1].OnApply := @SetupDone;
   FSimSetupList[FSimSetupList.Count - 1].Show;
-  TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
+  //TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
 end;
 
 procedure TForm1.ShowButtonClick(Sender: TObject);
@@ -167,9 +161,23 @@ end;
 
 procedure TForm1.SetupDone(Sender: TObject);
 begin
-  //SimFormListToTabs(TabControl1, FSimFormList);
+  Inc(FSimCounter);
+
+  FSimFormList.Add(TForm2.Create(nil));
+  FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
+  FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text; //:= 'Simulation ' + IntToStr(FSimCounter);
+  FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
+
+  FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;
+  FSimFormList[FSimFormList.Count - 1].Sim.Map.MapSettings := TForm3(Sender).SimSetup.MapSetup;
+  FSimFormList[FSimFormList.Count - 1].Sim.Map.Generate;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;
+
+  if TForm3(Sender).CheckBox1.Checked then
+  begin
+    FSimFormList[FSimFormList.Count - 1].Show;
+	end;
 end;
 
 end.

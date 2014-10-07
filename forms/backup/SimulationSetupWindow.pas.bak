@@ -67,6 +67,7 @@ implementation
 
 procedure TForm3.ButtonApplyClick(Sender: TObject);
 begin
+  {
   FSimSetup.MapSetup.Width := StrToInt(LabeledEdit1.Text);
   FSimSetup.MapSetup.Height := StrToInt(LabeledEdit2.Text);
   FSimSetup.MapSetup.ProbForest := StrToInt(LabeledEdit3.Text);
@@ -76,16 +77,18 @@ begin
   FSim.Name := LabeledEdit5.Text;
   FSim.Map.Generate(FSimSetup.MapSetup);
   FSimForm.Caption := FSim.Name;
+  }
   self.Visible := False;
 
   if Assigned(FOnApply) then
   begin
     FOnApply(self);
 	end;
+  {
   if (CheckBox1.Checked) then
   begin
     FSimForm.Show;
-	end;
+	end;   }
 end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);

@@ -1,3 +1,4 @@
+// this unit will contain all classes related to the world/map
 unit world;
 
 {$mode objfpc}{$H+}
@@ -70,7 +71,7 @@ type
     procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    procedure
+    //procedure
 
   public
     constructor Create;

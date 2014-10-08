@@ -11,9 +11,9 @@ uses
   sim, SimulationWindow, SimulationSetupWindow;
 
 // Todo:
-// * delete tabs when simulation settings are aborted
-// * try a class based version of the map and its objects? -> instead of tiles
+// * try a class based version of the map and its objects? -> objects will be no tiles anymore
 // * maybe add manipulable growing-rate for each people
+// * summer and winter -> scalable, see how dem People gonna survive =P
 
 
 type
@@ -34,6 +34,7 @@ type
     MenuItem6: TMenuItem;
     MenuItem7: TMenuItem;
     TabControl1: TTabControl;
+		procedure MenuItem2Click(Sender: TObject);
     procedure ShowButtonClick(Sender: TObject);
     procedure SetupButtonClick(Sender: TObject);
     procedure NewClick(Sender: TObject);
@@ -66,7 +67,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.5';
-  VersionDate = '07.10.2014';
+  VersionDate = '08.10.2014';
 
 {$R *.lfm}
 
@@ -88,6 +89,10 @@ begin
   begin
     FSimFormList[TabControl1.TabIndex].Show;
   end;
+end;
+
+procedure TForm1.MenuItem2Click(Sender: TObject);
+begin
 end;
 
 procedure TForm1.SetupButtonClick(Sender: TObject);

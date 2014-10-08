@@ -1,3 +1,4 @@
+// this unit will contain all classes related to the world/map
 unit world;
 
 {$mode objfpc}{$H+}

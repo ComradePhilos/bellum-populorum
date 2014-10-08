@@ -11,6 +11,11 @@ uses
 
 type
 
+  IName = interface
+    ['{13F8ADEE-FC73-4FA0-B21E-51C23A733D12}']
+    function test: String;
+	end;
+
   TRessources = record
     Wood: Integer;
     Iron: Integer;

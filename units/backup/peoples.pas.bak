@@ -11,6 +11,12 @@ uses
 
 type
 
+  type
+  IName = interface
+    ['{13F8ADEE-FC73-4FA0-B21E-51C23A733D12}']
+    function test: String;
+	end;
+
   TRessources = record
     Wood: Integer;
     Iron: Integer;
@@ -29,7 +35,6 @@ type
   TPeople = Class
     private
       FName: String;
-      FCityX, FCityY
       FPeopleType: TPeopleType;
       FColor: TColor;
       FStrengthBonus: Integer;
@@ -45,7 +50,7 @@ type
       constructor Create;
       destructor Destroy;
 
-      //property PeopleType: TPeopleType read FPeopleType write FPeopleType;
+      property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;

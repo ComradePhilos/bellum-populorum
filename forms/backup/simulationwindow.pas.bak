@@ -22,7 +22,7 @@ type
 		Image2: TImage;
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
-		LabeledEdit2: TLabeledEdit;
+		LabeledEdit2: TLabeledEd it;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
 		MenuItem2: TMenuItem;
@@ -148,7 +148,7 @@ end;
 
 procedure TForm2.DrawMap(Sender: TObject);
 begin
-  FSim.Map.DrawToCanvas(Image1.Canvas, ImageList1);
+  FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 end.

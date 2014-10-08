@@ -53,4 +53,12 @@ able to outnumber their opponents. They grow fast and stick together.
 The Germans will have both bonuses that Romans and Slavonics have. They are not as well equipped as Romans and
 not as many as the Slavonics.
 
+<p>
+multiple window support:
+<img style="float:left" src="https://dl.dropboxusercontent.com/u/76923843/08102014.png">
+</p>
+
+<p>
+single window:
 <img style="float:left" src="https://dl.dropboxusercontent.com/u/76923843/18092014.png">
+</p>

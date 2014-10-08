@@ -60,14 +60,17 @@ type
     ImageTree: TImage;
     ImageRock: TImage;
     ImageRomanHouse: TImage;
+    ImageGermanHouse: TImage;
+    ImageSlavonicHouse: TImage;
 
     FMapSettings: TMapSetup;
     FTiles: TTiles;
     FOnChange: TOnChangeEvent;
 
+    procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    procedure LoadImages;
+    //procedure
 
   public
     constructor Create;
@@ -121,6 +124,12 @@ begin
   ImageTree.Picture.LoadFromFile('../gfx/tiles/8x8/tree.png');
   ImageRock := TImage.Create(nil);
   ImageRock.Picture.LoadFromFile('../gfx/tiles/8x8/rock.png');
+  ImageRomanHouse := TImage.Create(nil);
+  ImageRomanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/roman house.png');
+  ImageGermanHouse := TImage.Create(nil);
+  ImageGermanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/german house.png');
+  ImageSlavonicHouse := TImage.Create(nil);
+  ImageSlavonicHouse.Picture.LoadFromFile('../gfx/tiles/8x8/slavonic house.png');
 end;
 
 procedure TMap.Clear;

@@ -23,10 +23,11 @@ type
     ProbRocks: integer;
   end;
 
+  // If every object had its own image variable (200 Bytes), on a 200x200 map, we would end up with 5MB of
+  // Images for more than 26.000 Objects -> seems ok?
   TMapObject = class
   private
     FX, FY: integer;
-    // Position on Map ( like tiles )
     FHP: integer;
 
   public
@@ -36,7 +37,6 @@ type
     destructor Destroy;
 
     procedure place(posx, posy: integer);
-    // tries to place the object -> maybe function?
 
     property x: integer read FX write FX;
     property y: integer read FY write FY;

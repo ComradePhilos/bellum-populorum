@@ -23,6 +23,8 @@ type
     ProbRocks: integer;
   end;
 
+  // If every object had its own image variable (200 Bytes), on a 200x200 map, we would end up with 5MB of
+  // Images for more than 26.000 Objects -> seems ok?
   TMapObject = class
   private
     FX, FY: integer;

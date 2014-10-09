@@ -10,11 +10,12 @@ uses
   {own units}
   sim, SimulationWindow, SimulationSetupWindow;
 
-// Todo:
+// Todo and to think about:
 // * try a class based version of the map and its objects? -> objects will be no tiles anymore
 // * maybe add manipulable growing-rate for each people
 // * summer and winter -> scalable, see how dem People gonna survive =P
 // * implement the thoughts shown by the class diagramme
+// * make extra classes inheriting from TPeople -> each people has its own implementation
 
 
 type
@@ -22,6 +23,7 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+	  Label1: TLabel;
     ShowButton: TBitBtn;
     CloseButton: TBitBtn;
     StartButton: TBitBtn;
@@ -68,7 +70,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.5';
-  VersionDate = '08.10.2014';
+  VersionDate = '09.10.2014';
 
 {$R *.lfm}
 
@@ -94,6 +96,7 @@ end;
 
 procedure TForm1.MenuItem2Click(Sender: TObject);
 begin
+  Application.Terminate;
 end;
 
 procedure TForm1.SetupButtonClick(Sender: TObject);

@@ -381,6 +381,24 @@ object Form1: TForm1
     OnClick = NewClick
     TabOrder = 1
   end
+  object Label1: TLabel
+    Left = 216
+    Height = 16
+    Top = 565
+    Width = 464
+    Caption = 'Warning: This programme is still work in progress. Functionality is not granted! '
+    Color = clDefault
+    Font.CharSet = ANSI_CHARSET
+    Font.Color = clRed
+    Font.Height = -12
+    Font.Name = 'Ubuntu'
+    Font.Pitch = fpVariable
+    Font.Quality = fqDraft
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    Transparent = False
+  end
   object MainMenu1: TMainMenu
     left = 16
     object MenuItem1: TMenuItem

@@ -43,8 +43,6 @@ type
   private
     { private declarations }
     FSimSetup: TSimSetup;
-    FSim: TSimulation;
-    FSimForm: TForm2;
     FOnApply: TOnApplyEvent;
   public
     { public declarations }

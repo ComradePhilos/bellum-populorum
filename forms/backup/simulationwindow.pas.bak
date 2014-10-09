@@ -22,7 +22,7 @@ type
 		Image2: TImage;
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
-		LabeledEdit2: TLabeledEd it;
+		LabeledEdit2: TLabeledEdit;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
 		MenuItem2: TMenuItem;

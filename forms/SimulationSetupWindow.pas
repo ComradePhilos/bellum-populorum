@@ -21,6 +21,9 @@ type
 		ButtonRandomize: TBitBtn;
 		CheckBox1: TCheckBox;
 		ButtonColor: TColorButton;
+		Image3: TImage;
+		LabeledEdit6: TLabeledEdit;
+		LabeledEdit7: TLabeledEdit;
 		PeopleBox: TComboBox;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;

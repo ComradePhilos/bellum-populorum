@@ -16,6 +16,7 @@ uses
 // * summer and winter -> scalable, see how dem People gonna survive =P
 // * implement the thoughts shown by the class diagramme
 // * make extra classes inheriting from TPeople -> each people has its own implementation
+// * different units/soldiers?
 
 
 type

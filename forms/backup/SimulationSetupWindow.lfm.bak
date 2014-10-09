@@ -64,7 +64,7 @@ object Form3: TForm3
     ClientWidth = 840
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
-      Left = 16
+      Left = 24
       Height = 24
       Top = 24
       Width = 80
@@ -72,7 +72,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = LabeledEdit1
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit1
-      EditLabel.Left = 16
+      EditLabel.Left = 24
       EditLabel.Height = 16
       EditLabel.Top = 5
       EditLabel.Width = 80
@@ -82,7 +82,7 @@ object Form3: TForm3
       Text = '50'
     end
     object LabeledEdit3: TLabeledEdit
-      Left = 312
+      Left = 248
       Height = 24
       Hint = 'the higher the value, the more probable it gets. e.g. 50/1000'
       Top = 24
@@ -91,7 +91,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = LabeledEdit3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit3
-      EditLabel.Left = 312
+      EditLabel.Left = 248
       EditLabel.Height = 16
       EditLabel.Top = 5
       EditLabel.Width = 104
@@ -103,7 +103,7 @@ object Form3: TForm3
       Text = '50'
     end
     object Image1: TImage
-      Left = 288
+      Left = 224
       Height = 20
       Top = 24
       Width = 20
@@ -120,7 +120,7 @@ object Form3: TForm3
       Stretch = True
     end
     object Image2: TImage
-      Left = 440
+      Left = 360
       Height = 20
       Top = 24
       Width = 20
@@ -136,45 +136,162 @@ object Form3: TForm3
       }
       Stretch = True
     end
-  end
-  object LabeledEdit2: TLabeledEdit
-    Left = 119
-    Height = 24
-    Top = 96
-    Width = 80
-    EditLabel.AnchorSideLeft.Control = LabeledEdit2
-    EditLabel.AnchorSideRight.Control = LabeledEdit2
-    EditLabel.AnchorSideRight.Side = asrBottom
-    EditLabel.AnchorSideBottom.Control = LabeledEdit2
-    EditLabel.Left = 119
-    EditLabel.Height = 16
-    EditLabel.Top = 77
-    EditLabel.Width = 80
-    EditLabel.Caption = 'Height'
-    EditLabel.ParentColor = False
-    TabOrder = 1
-    Text = '50'
-  end
-  object LabeledEdit4: TLabeledEdit
-    Left = 472
-    Height = 24
-    Hint = 'the higher the value, the more probable it gets. e.g. 50/1000'
-    Top = 96
-    Width = 104
-    EditLabel.AnchorSideLeft.Control = LabeledEdit4
-    EditLabel.AnchorSideRight.Control = LabeledEdit4
-    EditLabel.AnchorSideRight.Side = asrBottom
-    EditLabel.AnchorSideBottom.Control = LabeledEdit4
-    EditLabel.Left = 472
-    EditLabel.Height = 16
-    EditLabel.Top = 77
-    EditLabel.Width = 104
-    EditLabel.Caption = 'Probability Rocks'
-    EditLabel.ParentColor = False
-    ParentShowHint = False
-    ShowHint = True
-    TabOrder = 2
-    Text = '4'
+    object LabeledEdit6: TLabeledEdit
+      Left = 24
+      Height = 24
+      Hint = 'The length of 1 year in rounds'
+      Top = 72
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit6
+      EditLabel.AnchorSideRight.Control = LabeledEdit6
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit6
+      EditLabel.Left = 24
+      EditLabel.Height = 16
+      EditLabel.Top = 53
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Rounds/Year'
+      EditLabel.ParentColor = False
+      TabOrder = 2
+      Text = '3600'
+    end
+    object LabeledEdit7: TLabeledEdit
+      Left = 136
+      Height = 24
+      Hint = 'The length of 1 winter in rounds'
+      Top = 72
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit7
+      EditLabel.AnchorSideRight.Control = LabeledEdit7
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit7
+      EditLabel.Left = 136
+      EditLabel.Height = 16
+      EditLabel.Top = 53
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Rounds Winter'
+      EditLabel.ParentColor = False
+      TabOrder = 3
+      Text = '1200'
+    end
+    object LabeledEdit2: TLabeledEdit
+      Left = 136
+      Height = 24
+      Top = 24
+      Width = 80
+      EditLabel.AnchorSideLeft.Control = LabeledEdit2
+      EditLabel.AnchorSideRight.Control = LabeledEdit2
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit2
+      EditLabel.Left = 136
+      EditLabel.Height = 16
+      EditLabel.Top = 5
+      EditLabel.Width = 80
+      EditLabel.Caption = 'Height'
+      EditLabel.ParentColor = False
+      TabOrder = 4
+      Text = '50'
+    end
+    object LabeledEdit4: TLabeledEdit
+      Left = 384
+      Height = 24
+      Hint = 'the higher the value, the more probable it gets. e.g. 4/1000'
+      Top = 24
+      Width = 104
+      EditLabel.AnchorSideLeft.Control = LabeledEdit4
+      EditLabel.AnchorSideRight.Control = LabeledEdit4
+      EditLabel.AnchorSideRight.Side = asrBottom
+      EditLabel.AnchorSideBottom.Control = LabeledEdit4
+      EditLabel.Left = 384
+      EditLabel.Height = 16
+      EditLabel.Top = 5
+      EditLabel.Width = 104
+      EditLabel.Caption = 'Probability Rocks'
+      EditLabel.ParentColor = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 5
+      Text = '4'
+    end
+    object Image3: TImage
+      Left = 109
+      Height = 24
+      Top = 72
+      Width = 24
+      Picture.Data = {
+        1754506F727461626C654E6574776F726B477261706869638A08000089504E47
+        0D0A1A0A0000000D4948445200000018000000180806000000E0773DF8000000
+        06624B4744000000000000F943BB7F0000000970485973000000480000004800
+        46C96B3E0000000976704167000000180000001800784CA5A6000006A8494441
+        5448C785557B6C9D6519FFBDDFF77EE7FE9DD3AEED594FD7EEF4B25ED6D17673
+        34B22D4C112F933F4C880521048C2889648D11C10D87836E2EED34380821A069
+        8821EA8C311A099800BA880605E66E4E85ADAB676DCFE965BD9EEF76BEDB7BF1
+        8F6D851AC4F7CFE7C9FBFBBDBFE77D9EDF43F07FCE9706BF82FEAE4D30172A59
+        10741042E200990B0276311E8B068F1F1CFAC8FBE4BF03477F7004AD2D6DB863
+        E02E107235FDFD278F6E5F9FCD3E5253537B8B4248DAB4ACB1B9B9D9E346D9F8
+        51D7E62E7369690996654130E0C08103FF9BE0F0E1C7E1338F66F4EA9DC96472
+        4051D5F58C8585BADAECEEDE9EBE9DF5F5F59052627E611EE3E397AC4BE39786
+        A5E027C230B06CC799D2D3E9CAFE473E82E0C8F786D4442A71475B5BFBF0D6BE
+        6DCD7A3A4DE6AF5CE100D47CBE198084699A302D0BB665A2582A7A524AD7B48C
+        606579E525DB768E72C12F1F7CEC89554C0A00C78E1D03973E2CC368DC9CEFFE
+        7AF7E62D2DF30BF3989E9946229150B375594829C158082E0482C087AEEBE8EF
+        FF78CCF7BD986118285C2E7C757272825B96F51D00C67502050038F1512A1563
+        5CCACDD168ACB7345302E70C9A46512C4E6162F2327CDF03E71CD14804C94412
+        89640A9452104240A98A6C5D9D5A5555759B10A26578E4D0FB0AF6ED7B089C89
+        86DEBE6D0FA592A93B4DD3ACCAE51AD0D1DE015555A1EB199C3A7D12C55211D1
+        4804F98DCD4867322897572084C0F2F2223CCF432412452C16CB45A3916D81EB
+        9E07200040DDB56B47B469637EEFC7B66E7F78C74DBB6A9B1A9BC8BA75EB904C
+        A6C03947E0FBC8D537A039DF0CC6392E4F14108D44E1541C4C4F9700008C3198
+        A6817822A172C63A4316FE6DCF9ECF4EBFFEFA1FA0EEFEE4CD0D3D37F40E7675
+        767551AA42A5147A2A0D4200DFF710862192A914544A4140B0B8B88862690AA6
+        69A0BDBD13BD3D5BD1B8A1119665A2383505C6798D10A2CA65FE894FDF7A8B4B
+        63B178138036CE393CCF83AEEBE09CC3716CF8BE0F45516059267CDF876DDB70
+        1C07F5F53974B477A2A6B616B1580CAEE7A2BE7E0332996A284421FF2E8CDF5E
+        2C4D5E701C7B84B6B4B4DDDBD2D2DAA2EB6904818F200CE1B92E2A950A28A5E0
+        9CC3752B701C079EE7229D49C3711C504D839ED201009C73C4E37164EBEAC018
+        43C8425A36CA038E53F92D4D2412B735E436A8420818A60121041863705D17D1
+        68148C31388E03C642288A826C5D16C5E214C220809402B66DC3F73C2884C030
+        0D044180200CC039CB13603D752B9573D3D3C58DE9F4D59709C12125108601C2
+        308410024270288A02291504BE07420888A2C0300C542A15689A06CE396CDB46
+        A55241C571108DC422C964EA6E3A333B3D72E69C92A95957B3530841B9E0E08C
+        830B4E38E7E09C434AB966EC6B6BEBA0AA2A56CA2B088300914814AEE7AE2AD5
+        340DF97C9EFABE37407D619E2C4C14EE1F1F1FCB8788249992D035E959547A1E
+        40AE199EDCD8D2DAF95863BEB535A21044B4AB1FCF18431886A0D4BB3AE59C5D
+        1B3C8A200820A4F42955E242D36285E1A67D13FB1263DF5D97D2EE5B72C25FFC
+        98770C3D5818E600B09CE9CF2E47335F947E4D6B2202AC57CAF08C1530C6C118
+        0363EC9A520180404A81B2519E731CFBE955B3FBF2336FD7ECECAA7DE7735B73
+        6DAF9D9B9B7CF3DD851B7FFACD9B16016070F4CCCD9FEAA97BE5337DF5E9B385
+        259C78F39D3FC68D7FFCE943DC1E1220AAA27042C8BB4C88DFD355CFA0C45EB2
+        829FBD7A76F6BE652BF8B9A62AD6AA611119845CBA961BA60306DB4F6D7A315E
+        3EFF22C8FB04EFB51E88B58AB1BD54455F39509EAE9DFDCD19420856098AF38A
+        CFB93922049EA58A62FD7976CABF9E8B28E4EF174AE6C1B119EB7629E54930FE
+        F2A3FB0F02008686248686080647F7F46FB9217BA823A7275F3E35AD7DFB5BFB
+        EF5EB56B00E868E288D1A8BFB5B9DABF67771ECFBD5A8DBDD765ABC46BCD2547
+        EFDDDD322AA5C413BFFC171E78FE146EEDCDE2AE3BFF42A494F21B2F9C5958B2
+        82F72E4AAB937179EE4317CEC33F39ABA713DA83AA426E7402FED4C83DBD6F01
+        C0D06B1751B8544E4A21633145334607B7B3BDA367486D4AFB04A5CA2000D30F
+        F80F8D0AE392C83A4D51CE3F75FF36638D0200E042F66C69CA3CDADE90AAFEDD
+        E9590EE02D005829390D7D1B334FC623EAF6B915EF1080E3B61B66BA1BF5239F
+        DF96DBE5F80C2F9D9C1691B8F89AE3900B52C8B51BED032DB0B064FB17E48CEC
+        614C9C5F0D4BB9A9359BFC42775326F9EBB78B03008E0B291585105D8FD36BCD
+        83D4F3CF44C8EC1BDDF283906B08148514FE39557E404AE4344A4EAFD6919042
+        E18AF3C65CD9DBE186E2150048C73573D9F69FFBD55F8B8785449971F90240D6
+        8003C07F00830A7AD8AAD39B7D00000025744558746372656174652D64617465
+        00323030392D31312D31305431393A33383A32342D30373A30307432A9E20000
+        002574455874646174653A63726561746500323031302D30322D32305432333A
+        32363A32362D30373A3030B95C41FF0000002574455874646174653A6D6F6469
+        667900323031302D30312D31315430383A35363A35322D30373A303047B3F678
+        00000032744558744C6963656E736500687474703A2F2F656E2E77696B697065
+        6469612E6F72672F77696B692F5075626C69635F646F6D61696E3FFDEACF0000
+        0025744558746D6F646966792D6461746500323030392D31312D31305431393A
+        33383A32342D30373A30302B83DFD60000001974455874536F75726365005461
+        6E676F2049636F6E204C69627261727954CFED820000003A74455874536F7572
+        63655F55524C00687474703A2F2F74616E676F2E667265656465736B746F702E
+        6F72672F54616E676F5F49636F6E5F4C696272617279BCC8ADD6000000004945
+        4E44AE426082
+      }
+      Stretch = True
+    end
   end
   object ButtonApply: TBitBtn
     Left = 770
@@ -260,18 +377,18 @@ object Form3: TForm3
       0000000000000000000000000000000000000000000000000000
     }
     OnClick = ButtonApplyClick
-    TabOrder = 3
+    TabOrder = 1
   end
   object GroupBox2: TGroupBox
-    Left = 8
+    Left = 7
     Height = 232
-    Top = 184
+    Top = 192
     Width = 843
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Peoples'
     ClientHeight = 214
     ClientWidth = 839
-    TabOrder = 4
+    TabOrder = 2
     object ButtonColor: TColorButton
       Left = 728
       Height = 29
@@ -282,9 +399,9 @@ object Form3: TForm3
       ButtonColor = clBlack
     end
     object PeopleGrid: TStringGrid
-      Left = 7
+      Left = 8
       Height = 200
-      Top = 9
+      Top = 8
       Width = 513
       ColCount = 6
       Columns = <      
@@ -681,7 +798,7 @@ object Form3: TForm3
     EditLabel.Width = 842
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
-    TabOrder = 5
+    TabOrder = 3
     Text = 'Simulation'
   end
   object CheckBox1: TCheckBox
@@ -692,6 +809,6 @@ object Form3: TForm3
     Caption = 'Show when finished'
     Checked = True
     State = cbChecked
-    TabOrder = 6
+    TabOrder = 4
   end
 end

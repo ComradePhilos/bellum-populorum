@@ -36,8 +36,6 @@ type
     procedure GenerateSlavonics(AColor: TColor);
     procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
 
-    //procedure
-
     property Map: TMap read FMap write FMap;
     property Name: String read FName write FName;
     property TimePerRound: Integer read FTimePerRound write FTimePerRound;

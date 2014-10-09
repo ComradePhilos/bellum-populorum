@@ -14,6 +14,7 @@ uses
 // * try a class based version of the map and its objects? -> objects will be no tiles anymore
 // * maybe add manipulable growing-rate for each people
 // * summer and winter -> scalable, see how dem People gonna survive =P
+// * implement the thoughts shown by the class diagramme
 
 
 type

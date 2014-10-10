@@ -152,6 +152,7 @@ object Form3: TForm3
       EditLabel.Width = 80
       EditLabel.Caption = 'Rounds/Year'
       EditLabel.ParentColor = False
+      Enabled = False
       TabOrder = 2
       Text = '3600'
     end
@@ -171,6 +172,7 @@ object Form3: TForm3
       EditLabel.Width = 80
       EditLabel.Caption = 'Winter'
       EditLabel.ParentColor = False
+      Enabled = False
       TabOrder = 3
       Text = '1200'
     end
@@ -419,13 +421,13 @@ object Form3: TForm3
           Title.Caption = 'Citizens'
         end      
         item
-          Title.Caption = 'W'
+          Title.Caption = 'Wood'
         end      
         item
-          Title.Caption = 'F'
+          Title.Caption = 'Food'
         end      
         item
-          Title.Caption = 'I'
+          Title.Caption = 'Iron'
         end>
       FixedCols = 0
       RowCount = 1

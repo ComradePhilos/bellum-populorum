@@ -11,11 +11,6 @@ uses
 
 type
 
-  IName = interface
-    ['{13F8ADEE-FC73-4FA0-B21E-51C23A733D12}']
-    function test: String;
-	end;
-
   TRessources = record
     Wood: Integer;
     Iron: Integer;
@@ -27,6 +22,7 @@ type
   TPeopleSetup = record
     Peoples: array of TPeopleType;
     Names: TStringList;
+    CitizenCounts: array of Integer;
     Colors: array of TColor;
     Ressources: array of TRessources;
 	end;
@@ -55,6 +51,9 @@ type
 	end;
 
   TPeoplesList = specialize TFPGObjectList<TPeople>;
+
+var
+  txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
 
 implementation
 

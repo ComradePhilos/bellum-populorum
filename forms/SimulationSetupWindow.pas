@@ -47,6 +47,7 @@ type
     { private declarations }
     FSimSetup: TSimSetup;
     FOnApply: TOnApplyEvent;
+
   public
     { public declarations }
     property SimSetup: TSimSetup read FSimSetup write FSimSetup;

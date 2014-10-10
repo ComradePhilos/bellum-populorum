@@ -21,6 +21,7 @@ type
 		ButtonRandomize: TBitBtn;
 		CheckBox1: TCheckBox;
 		ButtonColor: TColorButton;
+		GroupBox3: TGroupBox;
 		Image3: TImage;
 		LabeledEdit6: TLabeledEdit;
 		LabeledEdit7: TLabeledEdit;
@@ -84,9 +85,12 @@ end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
 begin
+  {
   PeopleGrid.RowCount := PeopleGrid.RowCount + 1;
   PeopleGrid.Cells[0,PeopleGrid.RowCount-1] := IntToStr(PeopleGrid.RowCount-1);
   PeopleGrid.Cells[1,PeopleGrid.RowCount-1] := PeopleBox.Items[PeopleBox.ItemIndex];
+  }
+  PeoplesToStringGrid(StringGrid1, FPeopleSetup);
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);

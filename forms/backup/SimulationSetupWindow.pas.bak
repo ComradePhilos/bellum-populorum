@@ -21,6 +21,7 @@ type
 		ButtonRandomize: TBitBtn;
 		CheckBox1: TCheckBox;
 		ButtonColor: TColorButton;
+		GroupBox3: TGroupBox;
 		Image3: TImage;
 		LabeledEdit6: TLabeledEdit;
 		LabeledEdit7: TLabeledEdit;
@@ -47,6 +48,7 @@ type
     { private declarations }
     FSimSetup: TSimSetup;
     FOnApply: TOnApplyEvent;
+
   public
     { public declarations }
     property SimSetup: TSimSetup read FSimSetup write FSimSetup;
@@ -83,6 +85,7 @@ end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
 begin
+  {}
   PeopleGrid.RowCount := PeopleGrid.RowCount + 1;
   PeopleGrid.Cells[0,PeopleGrid.RowCount-1] := IntToStr(PeopleGrid.RowCount-1);
   PeopleGrid.Cells[1,PeopleGrid.RowCount-1] := PeopleBox.Items[PeopleBox.ItemIndex];

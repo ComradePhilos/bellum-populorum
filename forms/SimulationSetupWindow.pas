@@ -90,7 +90,7 @@ begin
   PeopleGrid.Cells[0,PeopleGrid.RowCount-1] := IntToStr(PeopleGrid.RowCount-1);
   PeopleGrid.Cells[1,PeopleGrid.RowCount-1] := PeopleBox.Items[PeopleBox.ItemIndex];
   }
-  PeoplesToStringGrid(StringGrid1, FPeopleSetup);
+  //PeoplesToStringGrid(StringGrid1, FPeopleSetup);
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);

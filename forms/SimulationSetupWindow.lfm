@@ -52,7 +52,7 @@ object Form3: TForm3
   }
   OnCreate = FormCreate
   Position = poMainFormCenter
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object GroupBox1: TGroupBox
     Left = 7
     Height = 129

@@ -15,7 +15,7 @@ procedure PeoplesToStringGrid(AGrid: TStringGrid; APeopleSetup: TPeopleSetup);
 var
   I: integer;
 begin
-  AGrid.Clear;
+  AGrid.RowCount := 1;
 
   with APeopleSetup do
   begin

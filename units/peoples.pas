@@ -27,6 +27,11 @@ type
     Ressources: array of TRessources;
 	end;
 
+  // ToDo: Setup stands for 1 people. implement a List of Setups later
+  TPeopleSetup2 = class
+   // FPeoples:
+	end;
+
   TPeople = Class
     private
       FName: String;

@@ -15,10 +15,11 @@ procedure PeoplesToStringGrid(AGrid: TStringGrid; APeopleSetup: TPeopleSetup);
 var
   I: integer;
 begin
-  AGrid.Clear;
-  AGrid.RowCount := High(Peoples);
+  AGrid.RowCount := 0;
+
   with APeopleSetup do
   begin
+    AGrid.RowCount := High(Peoples);
     for I := 0 to High(Peoples) - 1 do
     begin
       AGrid.Cells[0, I+1] := IntToStr(I + 1);

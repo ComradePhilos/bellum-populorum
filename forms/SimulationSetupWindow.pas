@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   StdCtrls, Buttons, Grids, fgl,
-  world, peoples, sim, SimulationWindow;
+  world, peoples, sim, funcs, SimulationWindow;
 
 type
 
@@ -85,12 +85,11 @@ end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
 begin
-  {
-  PeopleGrid.RowCount := PeopleGrid.RowCount + 1;
-  PeopleGrid.Cells[0,PeopleGrid.RowCount-1] := IntToStr(PeopleGrid.RowCount-1);
-  PeopleGrid.Cells[1,PeopleGrid.RowCount-1] := PeopleBox.Items[PeopleBox.ItemIndex];
-  }
-  //PeoplesToStringGrid(StringGrid1, FPeopleSetup);
+  with FSimSetup do
+  begin
+    PeoplesToStringGrid(PeopleGrid, PeopleSetup);
+	end;
+
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);

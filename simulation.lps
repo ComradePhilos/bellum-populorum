@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="16">
+    <Units Count="17">
       <Unit0>
         <Filename Value="simulation.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -12,7 +12,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="32" Y="5"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="195"/>
       </Unit0>
       <Unit1>
         <Filename Value="units\main.pas"/>
@@ -21,12 +21,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="main"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="49" Y="18"/>
-        <UsageCount Value="185"/>
+        <TopLine Value="49"/>
+        <CursorPos X="105" Y="15"/>
+        <UsageCount Value="195"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -38,7 +37,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="77" Y="28"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="195"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -48,7 +47,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="18" Y="10"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="195"/>
       </Unit3>
       <Unit4>
         <Filename Value="units\funcs.pas"/>
@@ -58,7 +57,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="66" Y="19"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="195"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -68,8 +67,8 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="6" Y="32"/>
-        <UsageCount Value="184"/>
+        <CursorPos X="4" Y="32"/>
+        <UsageCount Value="194"/>
         <Loaded Value="True"/>
       </Unit5>
       <Unit6>
@@ -80,7 +79,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="43"/>
-        <UsageCount Value="183"/>
+        <UsageCount Value="193"/>
         <Loaded Value="True"/>
       </Unit6>
       <Unit7>
@@ -91,7 +90,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="26" Y="18"/>
-        <UsageCount Value="181"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -105,7 +104,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="60" Y="14"/>
-        <UsageCount Value="180"/>
+        <UsageCount Value="190"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit8>
@@ -117,7 +116,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="148"/>
         <CursorPos X="106" Y="131"/>
-        <UsageCount Value="174"/>
+        <UsageCount Value="184"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -128,7 +127,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="8" Y="36"/>
-        <UsageCount Value="144"/>
+        <UsageCount Value="154"/>
         <Loaded Value="True"/>
       </Unit10>
       <Unit11>
@@ -141,8 +140,8 @@
         <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
         <TopLine Value="54"/>
-        <CursorPos X="54" Y="84"/>
-        <UsageCount Value="117"/>
+        <CursorPos X="63" Y="86"/>
+        <UsageCount Value="127"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit11>
@@ -150,11 +149,12 @@
         <Filename Value="units\cities.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cities"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="55" Y="13"/>
-        <UsageCount Value="83"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -163,7 +163,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="11"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit13>
       <Unit14>
         <Filename Value="C:\lazarus\lcl\forms.pp"/>
@@ -171,7 +171,7 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1796"/>
         <CursorPos X="14" Y="764"/>
-        <UsageCount Value="2"/>
+        <UsageCount Value="1"/>
       </Unit14>
       <Unit15>
         <Filename Value="forms\mapsetupform.pas"/>
@@ -181,8 +181,16 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="37" Y="30"/>
-        <UsageCount Value="15"/>
+        <UsageCount Value="14"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="C:\Delphi-Components\Outlook\GX_Outlook.pas"/>
+        <UnitName Value="GX_Outlook"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="1" Y="1"/>
+        <UsageCount Value="10"/>
+      </Unit16>
     </Units>
     <General>
       <ActiveWindowIndexAtStart Value="0"/>

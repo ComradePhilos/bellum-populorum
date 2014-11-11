@@ -91,7 +91,7 @@ var
 begin
   with ASimSetup do
   begin
-    FMap.MapSettings := MapSetup;
+    //FMap.MapSettings := MapSetup;
     for I := 0 to High(PeopleSetup.Peoples) - 1 do
     begin
       case PeopleSetup.Peoples[I] of

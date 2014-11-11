@@ -5,9 +5,8 @@ unit SimulationWindow;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls, Buttons, ComCtrls, Menus, fgl,
-  world, sim;
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
+	Dialogs, StdCtrls, ExtCtrls, Buttons, ComCtrls, Menus, fgl, world, sim;
 
 type
 
@@ -78,14 +77,14 @@ var
 begin
   GenerateButton.Enabled := False;
   Application.ProcessMessages;
-  tmp := FSim.Map.MapSettings;
+
+  tmp := FSim.Map.getParameters;
 
   x := StrToInt(LabeledEdit1.Text);
   y := StrToInt(LabeledEdit2.Text);
   tmp.Width := x;
   tmp.Height := y;
-  FSim.Map.MapSettings := tmp;
-  FSim.Map.Generate;
+  FSim.Map.Generate(tmp);
 
   FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas);
   GenerateButton.Enabled := True;

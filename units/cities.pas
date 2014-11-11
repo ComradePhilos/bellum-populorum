@@ -20,7 +20,6 @@ type
     constructor Create;
     destructor Destroy;
 
-
     procedure Expand(AMap: TMap);               // Tries to Build a house
   end;
 

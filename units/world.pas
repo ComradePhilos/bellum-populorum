@@ -23,37 +23,6 @@ type
     ProbRocks: integer;
   end;
 
-  // If every object had its own image variable (200 Bytes), on a 200x200 map, we would end up with 5MB of
-  // Images for more than 26.000 Objects -> seems ok?
-  TMapObject = class
-  private
-    FX, FY: integer;
-    FHP: integer;
-
-  public
-    constructor Create; overload;                                 // normal constructor
-    constructor Create(AMapObject: TMapObject);                   // Copy-Constructor
-    procedure Assign(AMapObject: TMapObject);
-    destructor Destroy;
-
-    procedure place(posx, posy: integer);
-
-    property x: integer read FX write FX;
-    property y: integer read FY write FY;
-    property HP: integer read FHP write FHP;
-
-  end;
-
-  TMapTree = class(TMapObject)
-  private
-    FPossessedBy: TObject;
-    // Holds a reference to the owner(people)
-  public
-    procedure Spore;
-    // will create a new tree in the area.
-
-    property PossessedBy: TObject read FPossessedBy write FPossessedBy;
-  end;
 
   TMap = class
   private
@@ -64,14 +33,17 @@ type
     ImageGermanHouse: TImage;
     ImageSlavonicHouse: TImage;
 
-    FMapSettings: TMapSetup;
+    // World
+    FWidth, FHeight: integer;
+    FTileSize: integer;
+    FProbForest, FProbRocks: integer;
+
     FTiles: TTiles;
     FOnChange: TOnChangeEvent;
 
     procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    //procedure
 
   public
     constructor Create;
@@ -80,11 +52,12 @@ type
     procedure Clear;
 
     procedure Generate; overload;
-    procedure Generate(AMapSettings: TMapSetup);
+    procedure Generate(AMepSetup: TMapSetup);
+    procedure SetParameters(AMapSetup: TMapSetup);
+    function getParameters: TMapSetup;
     procedure DrawToCanvas(ACanvas: TCanvas);
     function ToText: TStringList;
 
-    property MapSettings: TMapSetup read FMapSettings write FMapSettings;
     property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Tiles: TTiles read FTiles write FTiles;
   end;
@@ -118,7 +91,6 @@ end;
 
 procedure TMap.LoadImages;
 begin
-
   ImageGrass := TImage.Create(nil);
   ImageGrass.Picture.LoadFromFile('../gfx/tiles/8x8/grass.png');
   ImageTree := TImage.Create(nil);
@@ -136,33 +108,27 @@ end;
 procedure TMap.Clear;
 begin
   SetLength(FTiles, 0, 0);
-  with FMapSettings do
-  begin
-    Width := 0;
-    Height := 0;
-    TileSize := 0;
-    ProbForest := 0;
-    ProbRocks := 0;
-  end;
+  FWidth := 0;
+  FHeight := 0;
+  FTileSize := 0;
+  FProbForest := 0;
+  FProbRocks := 0;
 end;
 
 procedure TMap.Generate;
 var
   x, y: integer;
 begin
-  with FMapSettings do
+  SetLength(FTiles, FWidth, FHeight);
+  for y := 0 to FHeight - 1 do
   begin
-    SetLength(FTiles, Width, Height);
-    for y := 0 to Height - 1 do
+    for x := 0 to FWidth - 1 do
     begin
-      for x := 0 to Width - 1 do
-      begin
-        FTiles[x, y] := TTileType.ttGrass;
-        if (Random(1000) > (1000 - ProbRocks)) then
-          GenerateRocks(x, y);
-        if (Random(1000) > (1000 - ProbForest)) then
-          GenerateForest(x, y);
-      end;
+      FTiles[x, y] := TTileType.ttGrass;
+      if (Random(1000) > (1000 - FProbRocks)) then
+        GenerateRocks(x, y);
+      if (Random(1000) > (1000 - FProbForest)) then
+        GenerateForest(x, y);
     end;
   end;
 
@@ -172,12 +138,30 @@ begin
   end;
 end;
 
-procedure TMap.Generate(AMapSettings: TMapSetup);
+procedure TMap.Generate(AMepSetup: TMapSetup);
 begin
-  FMapSettings := AMapSettings;
+  //FMapSettings := AMapSettings;
+  SetParameters(AMepSetup);
   Generate;
 end;
 
+procedure TMap.SetParameters(AMapSetup: TMapSetup);
+begin
+  self.FWidth := AMapSetup.Width;
+  self.FHeight := AMapSetup.Height;
+  self.FTileSize := AMapSetup.TileSize;
+  self.FProbForest := AMapSetup.ProbForest;
+  self.FProbRocks := AMapSetup.ProbRocks;
+end;
+
+function TMap.getParameters: TMapSetup;
+begin
+  Result.Width := self.FWidth;
+  Result.Height := self.FHeight;
+  Result.TileSize := self.FTileSize;
+  Result.ProbForest := self.FProbForest;
+  Result.ProbRocks := self.FProbRocks;
+end;
 
 procedure TMap.GenerateForest(x, y: integer);
 var
@@ -191,28 +175,26 @@ begin
   Count := Random(80) + 15;
   FTiles[x, y] := TTileType.ttTree;
 
-  with FMapSettings do
+  for I := 0 to Count - 1 do
   begin
-    for I := 0 to Count - 1 do
+    newx := x + Random(extent) - 5;
+    newy := y + Random(extent) - 5;
+    if (newx < FWidth) and (newy < FHeight) then
     begin
-      newx := x + Random(extent) - 5;
-      newy := y + Random(extent) - 5;
-      if (newx < Width) and (newy < Height) then
+      if (newx >= 0) and (newy >= 0) then
       begin
-        if (newx >= 0) and (newy >= 0) then
+        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
+        if (dist <= extent) then
         begin
-          dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
-          if (dist <= extent) then
+          if (FTiles[newx, newy] = TTileType.ttGrass) then
           begin
-            if (FTiles[newx, newy] = TTileType.ttGrass) then
-            begin
-              FTiles[newx, newy] := TTileType.ttTree;
-            end;
+            FTiles[newx, newy] := TTileType.ttTree;
           end;
         end;
       end;
     end;
   end;
+
 end;
 
 procedure TMap.GenerateRocks(x, y: integer);
@@ -227,28 +209,27 @@ begin
   Count := Random(28) + 6;
   FTiles[x, y] := TTileType.ttRock;
 
-  with FMapSettings do
+
+  for I := 0 to Count - 1 do
   begin
-    for I := 0 to Count - 1 do
+    newx := x + Random(extent) - 3;
+    newy := y + Random(extent) - 3;
+    if (newx < FWidth) and (newy < FHeight) then
     begin
-      newx := x + Random(extent) - 3;
-      newy := y + Random(extent) - 3;
-      if (newx < Width) and (newy < Height) then
+      if (newx >= 0) and (newy >= 0) then
       begin
-        if (newx >= 0) and (newy >= 0) then
+        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
+        if (dist <= extent) then
         begin
-          dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
-          if (dist <= extent) then
+          if (FTiles[newx, newy] = TTileType.ttGrass) then
           begin
-            if (FTiles[newx, newy] = TTileType.ttGrass) then
-            begin
-              FTiles[newx, newy] := TTileType.ttRock;
-            end;
+            FTiles[newx, newy] := TTileType.ttRock;
           end;
         end;
       end;
     end;
   end;
+
 end;
 
 function TMap.ToText: TStringList;
@@ -257,10 +238,10 @@ var
   line: string;
 begin
   Result := TStringList.Create;
-  for y := 0 to FMapSettings.Height - 1 do
+  for y := 0 to FHeight - 1 do
   begin
     line := '';
-    for x := 0 to FMapSettings.Width - 1 do
+    for x := 0 to FWidth - 1 do
     begin
       line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
     end;
@@ -273,56 +254,20 @@ var
   x, y: integer;
 begin
   ACanvas.Brush.Color := clBlack;
-  ACanvas.FillRect(0,0,ACanvas.Width, ACanvas.Height);
+  ACanvas.FillRect(0, 0, ACanvas.Width, ACanvas.Height);
 
-  with FMapSettings do
+  for y := 0 to FHeight - 1 do
   begin
-    for y := 0 to FMapSettings.Height - 1 do
+    for x := 0 to FWidth - 1 do
     begin
-      for x := 0 to FMapSettings.Width - 1 do
-      begin
-        case (FTiles[x, y])  of
-          ttGrass: ACanvas.Draw(x * TileSize, y * TileSize, ImageGrass.Picture.Bitmap);
-          ttTree: ACanvas.Draw(x * TileSize, y * TileSize, ImageTree.Picture.Bitmap);
-          ttRock: ACanvas.Draw(x * TileSize, y * TileSize, ImageRock.Picture.Bitmap);
-				end;
-			end;
+      case (FTiles[x, y]) of
+        ttGrass: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
+        ttTree: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
+        ttRock: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
+      end;
     end;
   end;
 end;
 
-
-// ################################################# TMapObject ########################################################
-constructor TMapObject.Create;
-begin
-
-end;
-
-constructor TMapObject.Create(AMapObject: TMapObject);
-begin
-  Assign(AMapObject);
-end;
-
-destructor TMapObject.Destroy;
-begin
-
-end;
-
-procedure TMapObject.Assign(AMapObject: TMapObject);
-begin
-  self.FX := AMapObject.FX;
-  self.FY := AMapObject.FY;
-end;
-
-procedure TMapObject.place(posx, posy: integer);
-begin
-
-end;
-
-
-procedure TMapTree.Spore;
-begin
-
-end;
 
 end.

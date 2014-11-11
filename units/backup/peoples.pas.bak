@@ -28,9 +28,6 @@ type
 	end;
 
   // ToDo: Setup stands for 1 people. implement a List of Setups later
-  TPeopleSetup2 = class
-    FPeoples:
-	end;
 
   TPeople = Class
     private
@@ -45,16 +42,15 @@ type
 
       procedure BuildHouse(x,y: Integer);        // This is only the method to set a house on the map
                                                                     // actually a house must be created by 2 citizens
-
     public
       constructor Create;
-      destructor Destroy;
 
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;
 
+  //TPeopleSetupList = specialize TFPGObjectList<TPeopleSetup>;     // for starting the sim
   TPeoplesList = specialize TFPGObjectList<TPeople>;
 
 var
@@ -69,15 +65,9 @@ const
 
 constructor TPeople.Create;
 begin
-  FCitizens := TCitizenList.Create;
   FRessources.Wood := StartWood;
   FRessources.Iron := StartIron;
   FRessources.Food := StartFood;
-end;
-
-destructor TPeople.Destroy;
-begin
-  FCitizens.Free;
 end;
 
 procedure TPeople.BuildHouse(x,y: Integer);

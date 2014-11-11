@@ -176,7 +176,7 @@ begin
   FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
 
   FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;
-  FSimFormList[FSimFormList.Count - 1].Sim.Map.MapSettings := TForm3(Sender).SimSetup.MapSetup;
+  FSimFormList[FSimFormList.Count - 1].Sim.Map.SetParameters(TForm3(Sender).SimSetup.MapSetup);
   FSimFormList[FSimFormList.Count - 1].Sim.Map.Generate;
   UpdateWindow;
   TabControl1.TabIndex := TabControl1.Tabs.Count - 1;

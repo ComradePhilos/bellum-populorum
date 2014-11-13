@@ -87,7 +87,6 @@ procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
 begin
   with FSimSetup do
   begin
-    //PeopleSetup.
     PeoplesToStringGrid(PeopleGrid, PeopleSetup);
 	end;
 

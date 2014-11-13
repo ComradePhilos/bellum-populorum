@@ -12,7 +12,7 @@ type
 
   TOnChangeEvent = procedure(Sender: TObject) of object;
 
-  TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse);
+  TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse, ttBerries);
   TTiles = array of array of TTileType;
 
   TMapSetup = record
@@ -29,6 +29,7 @@ type
     ImageGrass: TImage;
     ImageTree: TImage;
     ImageRock: TImage;
+    ImageBerries: TImage;
     ImageRomanHouse: TImage;
     ImageGermanHouse: TImage;
     ImageSlavonicHouse: TImage;
@@ -44,6 +45,7 @@ type
     procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
+    procedure GenerateBerries(x, y: Integer);
 
   public
     constructor Create;
@@ -97,6 +99,8 @@ begin
   ImageTree.Picture.LoadFromFile('../gfx/tiles/8x8/tree.png');
   ImageRock := TImage.Create(nil);
   ImageRock.Picture.LoadFromFile('../gfx/tiles/8x8/rock.png');
+  ImageBerries := TImage.Create(nil);
+  ImageBerries.Picture.LoadFromFile('../gfx/tiles/8x8/berries2.png');
   ImageRomanHouse := TImage.Create(nil);
   ImageRomanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/roman house.png');
   ImageGermanHouse := TImage.Create(nil);
@@ -129,6 +133,8 @@ begin
         GenerateRocks(x, y);
       if (Random(1000) > (1000 - FProbForest)) then
         GenerateForest(x, y);
+      //if (Random(1000) > (995)) then
+        //GenerateBerries(x, y);
     end;
   end;
 
@@ -194,7 +200,6 @@ begin
       end;
     end;
   end;
-
 end;
 
 procedure TMap.GenerateRocks(x, y: integer);
@@ -229,7 +234,11 @@ begin
       end;
     end;
   end;
+end;
 
+procedure TMap.GenerateBerries(x, y: Integer);
+begin
+  FTiles[x,y] := TTileType.ttBerries
 end;
 
 function TMap.ToText: TStringList;
@@ -264,6 +273,7 @@ begin
         ttGrass: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
         ttTree: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
         ttRock: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
+        ttBerries: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageBerries.Picture.Bitmap);
       end;
     end;
   end;

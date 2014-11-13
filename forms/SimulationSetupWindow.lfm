@@ -173,7 +173,7 @@ object Form3: TForm3
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
-      Text = '4'
+      Text = '2'
     end
   end
   object ButtonApply: TBitBtn

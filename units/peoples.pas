@@ -50,7 +50,6 @@ type
       property Color: TColor read FColor write FColor;
 	end;
 
-  TPeopleSetupList = specialize TFPGObjectList<TPeopleSetup>;     // for starting the sim
   TPeoplesList = specialize TFPGObjectList<TPeople>;
 
 var

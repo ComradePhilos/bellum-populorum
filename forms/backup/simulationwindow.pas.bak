@@ -5,7 +5,7 @@ unit SimulationWindow;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics,
+  Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics,
 	Dialogs, StdCtrls, ExtCtrls, Buttons, ComCtrls, Menus, fgl, world, sim;
 
 type
@@ -15,10 +15,12 @@ type
   { TForm2 }
 
   TForm2 = class(TForm)
-    GenerateButton: TBitBtn;
-		Edit1: TEdit;
-		Image1: TImage;
+				ComboBox1: TComboBox;
+				GenerateButton: TBitBtn;
+				Edit1: TEdit;
+				Image1: TImage;
 		Image2: TImage;
+		ImageList1: TImageList;
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
@@ -33,8 +35,9 @@ type
 		StatusBar1: TStatusBar;
 		Timer1: TTimer;
 		Timer2: TTimer;
+		ToolBar1: TToolBar;
 		TrackBar1: TTrackBar;
-		procedure FormResize(Sender: TObject);
+  procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
 		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -77,6 +80,8 @@ var
 begin
   GenerateButton.Enabled := False;
   Application.ProcessMessages;
+
+  tmp := FSim.Map.getParameters;
 
   x := StrToInt(LabeledEdit1.Text);
   y := StrToInt(LabeledEdit2.Text);

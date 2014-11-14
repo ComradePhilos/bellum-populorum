@@ -125,27 +125,6 @@ object Form2: TForm2
     HotImages = ImageList1
     Images = ImageList1
     TabOrder = 1
-    object ComboBox1: TComboBox
-      Left = 1
-      Height = 21
-      Top = 2
-      Width = 127
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        '- nothing -'
-        'Grass'
-        'Tree'
-        'Rock'
-        'Roman House'
-        'German House'
-        'Slavonic House'
-      )
-      ReadOnly = True
-      Style = csOwnerDrawVariable
-      TabOrder = 0
-      Text = '- nothing -'
-    end
   end
   object Image1: TImage
     Left = 0
@@ -153,6 +132,8 @@ object Form2: TForm2
     Top = 24
     Width = 415
     Anchors = [akTop, akLeft, akRight, akBottom]
+    OnMouseDown = Image1MouseDown
+    OnMouseMove = Image1MouseMove
     OnResize = Image1Resize
   end
   object GroupBox1: TGroupBox
@@ -182,7 +163,7 @@ object Form2: TForm2
       EditLabel.Caption = 'width'
       EditLabel.ParentColor = False
       TabOrder = 0
-      Text = '50'
+      Text = '180'
     end
     object LabeledEdit2: TLabeledEdit
       Left = 104
@@ -201,7 +182,7 @@ object Form2: TForm2
       EditLabel.Caption = 'height'
       EditLabel.ParentColor = False
       TabOrder = 1
-      Text = '50'
+      Text = '140'
     end
     object GenerateButton: TBitBtn
       Left = 200

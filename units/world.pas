@@ -58,11 +58,18 @@ type
     procedure SetParameters(AMapSetup: TMapSetup);
     function getParameters: TMapSetup;
     procedure DrawToCanvas(ACanvas: TCanvas);
+    procedure SetTile(x,y,tile: Integer);
     function ToText: TStringList;
 
     property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Tiles: TTiles read FTiles write FTiles;
   end;
+
+  TMapObject = Class
+    private
+      FX, FY: Integer;
+      FHealth: Integer;
+	end;
 
 
 implementation
@@ -273,11 +280,16 @@ begin
         ttGrass: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
         ttTree: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
         ttRock: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
+        ttRomanHouse: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRomanHouse.Picture.Bitmap);
         ttBerries: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageBerries.Picture.Bitmap);
       end;
     end;
   end;
 end;
 
+procedure TMap.SetTile(x,y,tile: Integer);
+begin
+  FTiles[round(x/FTileSize),round(y/FTileSize)] := TTileType(tile-1);
+end;
 
 end.

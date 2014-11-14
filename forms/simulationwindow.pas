@@ -15,7 +15,6 @@ type
   { TForm2 }
 
   TForm2 = class(TForm)
-				ComboBox1: TComboBox;
 				GenerateButton: TBitBtn;
 				Edit1: TEdit;
 				GroupBox1: TGroupBox;

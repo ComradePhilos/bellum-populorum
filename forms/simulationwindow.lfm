@@ -125,27 +125,6 @@ object Form2: TForm2
     HotImages = ImageList1
     Images = ImageList1
     TabOrder = 1
-    object ComboBox1: TComboBox
-      Left = 1
-      Height = 21
-      Top = 2
-      Width = 127
-      ItemHeight = 15
-      ItemIndex = 0
-      Items.Strings = (
-        '- nothing -'
-        'Grass'
-        'Tree'
-        'Rock'
-        'Roman House'
-        'German House'
-        'Slavonic House'
-      )
-      ReadOnly = True
-      Style = csOwnerDrawVariable
-      TabOrder = 0
-      Text = '- nothing -'
-    end
   end
   object Image1: TImage
     Left = 0

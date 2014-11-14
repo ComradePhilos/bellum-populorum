@@ -18,6 +18,7 @@ type
 				ComboBox1: TComboBox;
 				GenerateButton: TBitBtn;
 				Edit1: TEdit;
+				GroupBox1: TGroupBox;
 				Image1: TImage;
 		Image2: TImage;
 		ImageList1: TImageList;

@@ -11,7 +11,7 @@ uses
 
 type
 
-  TRessources = record
+  TResources = record
     Wood: Integer;
     Iron: Integer;
     Food: Integer;
@@ -24,20 +24,21 @@ type
     Names: TStringList;
     CitizenCounts: array of Integer;
     Colors: array of TColor;
-    Ressources: array of TRessources;
+    Ressources: array of TResources;
 	end;
 
   // ToDo: Setup stands for 1 people. implement a List of Setups later
 
   TPeople = Class
     private
+      FInitCitizens: Integer;    // Start number of citizens
       FName: String;
       FPeopleType: TPeopleType;
       FColor: TColor;
       FStrengthBonus: Integer;
       FPopulationBonus: Integer;
       FCitizens: TCitizenList;
-      FRessources: TRessources;
+      FResources: TResources;
       FMap: TMap;                                                               // reference to the map of the sim.
 
       procedure BuildHouse(x,y: Integer);        // This is only the method to set a house on the map
@@ -46,6 +47,9 @@ type
       constructor Create;
 
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
+      property Resources: TResources read FResources write FResources;
+      property Citizens: TCitizenList read FCitizens write FCitizens;
+      property InitCitizens: Integer read FInitCitizens write FInitCitizens;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;
@@ -58,20 +62,20 @@ var
 implementation
 
 const
-  StartWood = 100;
-  StartFood = 100;
+  StartWood = 0;
+  StartFood = 0;
   StartIron = 0;
 
 constructor TPeople.Create;
 begin
-  FRessources.Wood := StartWood;
-  FRessources.Iron := StartIron;
-  FRessources.Food := StartFood;
+  FResources.Wood := StartWood;
+  FResources.Iron := StartIron;
+  FResources.Food := StartFood;
 end;
 
 procedure TPeople.BuildHouse(x,y: Integer);
 begin
-  if (FRessources.Wood >= 100) then
+  if (FResources.Wood >= 100) then
   begin
     if (FMap.Tiles[x,y] = TTileType.ttGrass) then
     begin
@@ -80,7 +84,7 @@ begin
         ptGerman: FMap.Tiles[x,y] := TTileType.ttGermanHouse;
         ptSlavonic: FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
       end;
-      FRessources.Wood -= 100;
+      FResources.Wood -= 100;
 		end;
 	end;
 end;

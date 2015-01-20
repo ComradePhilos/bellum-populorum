@@ -1,11 +1,11 @@
 object Form3: TForm3
-  Left = 497
+  Left = 357
   Height = 617
-  Top = 214
-  Width = 744
+  Top = 120
+  Width = 794
   Caption = 'Simulation Setup'
   ClientHeight = 617
-  ClientWidth = 744
+  ClientWidth = 794
   Font.CharSet = ANSI_CHARSET
   Font.Height = -12
   Font.Name = 'Ubuntu'
@@ -51,17 +51,18 @@ object Form3: TForm3
     0000
   }
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   Position = poMainFormCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.4.0'
   object GroupBox1: TGroupBox
     Left = 7
     Height = 129
     Top = 56
-    Width = 731
+    Width = 781
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Map Settings'
     ClientHeight = 111
-    ClientWidth = 727
+    ClientWidth = 777
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
       Left = 24
@@ -177,7 +178,7 @@ object Form3: TForm3
     end
   end
   object ButtonApply: TBitBtn
-    Left = 657
+    Left = 707
     Height = 30
     Top = 579
     Width = 80
@@ -266,32 +267,32 @@ object Form3: TForm3
     Left = 7
     Height = 232
     Top = 336
-    Width = 730
+    Width = 780
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Peoples'
     ClientHeight = 214
-    ClientWidth = 726
+    ClientWidth = 776
     TabOrder = 2
     object ButtonColor: TColorButton
-      Left = 632
+      Left = 672
       Height = 29
       Top = 19
       Width = 80
       BorderWidth = 2
       ButtonColorSize = 16
-      ButtonColor = clBlack
+      ButtonColor = clBlue
     end
     object PeopleGrid: TStringGrid
       Left = 8
       Height = 200
       Top = 8
-      Width = 416
-      ColCount = 6
+      Width = 456
+      ColCount = 7
       Columns = <      
         item
           Title.Alignment = taCenter
           Title.Caption = '#'
-          Width = 50
+          Width = 32
         end      
         item
           Title.Alignment = taCenter
@@ -301,7 +302,7 @@ object Form3: TForm3
         item
           Title.Alignment = taCenter
           Title.Caption = 'Citizens'
-          Width = 60
+          Width = 58
         end      
         item
           Title.Alignment = taCenter
@@ -314,28 +315,42 @@ object Form3: TForm3
         item
           Title.Alignment = taCenter
           Title.Caption = 'Iron'
+        end      
+        item
+          Title.Alignment = taCenter
+          Title.Caption = 'Color'
+          Width = 68
         end>
       FixedCols = 0
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -12
+      Font.Name = 'Ubuntu Condensed'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold]
+      ParentFont = False
       RowCount = 1
       ScrollBars = ssNone
       TabOrder = 0
       TitleFont.CharSet = ANSI_CHARSET
       TitleFont.Height = -12
-      TitleFont.Name = 'Ubuntu'
+      TitleFont.Name = 'Ubuntu Condensed'
       TitleFont.Pitch = fpVariable
       TitleFont.Quality = fqDraft
+      TitleFont.Style = [fsBold]
       TitleStyle = tsNative
       ColWidths = (
-        50
+        32
         105
-        60
+        58
         64
         64
         64
+        68
       )
     end
     object EditCitizens: TLabeledEdit
-      Left = 536
+      Left = 584
       Height = 24
       Top = 24
       Width = 80
@@ -343,7 +358,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = EditCitizens
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditCitizens
-      EditLabel.Left = 536
+      EditLabel.Left = 584
       EditLabel.Height = 16
       EditLabel.Top = 5
       EditLabel.Width = 80
@@ -352,7 +367,7 @@ object Form3: TForm3
       TabOrder = 1
     end
     object PeopleBox: TComboBox
-      Left = 440
+      Left = 496
       Height = 24
       Top = 24
       Width = 80
@@ -367,7 +382,7 @@ object Form3: TForm3
       Text = 'Romans'
     end
     object EditWood: TLabeledEdit
-      Left = 440
+      Left = 496
       Height = 24
       Top = 80
       Width = 80
@@ -375,7 +390,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = EditWood
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditWood
-      EditLabel.Left = 440
+      EditLabel.Left = 496
       EditLabel.Height = 16
       EditLabel.Top = 61
       EditLabel.Width = 80
@@ -384,7 +399,7 @@ object Form3: TForm3
       TabOrder = 3
     end
     object EditFood: TLabeledEdit
-      Left = 536
+      Left = 584
       Height = 24
       Top = 80
       Width = 80
@@ -392,7 +407,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = EditFood
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditFood
-      EditLabel.Left = 536
+      EditLabel.Left = 584
       EditLabel.Height = 16
       EditLabel.Top = 61
       EditLabel.Width = 80
@@ -401,7 +416,7 @@ object Form3: TForm3
       TabOrder = 4
     end
     object EditIron: TLabeledEdit
-      Left = 632
+      Left = 672
       Height = 24
       Top = 80
       Width = 80
@@ -409,7 +424,7 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Control = EditIron
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditIron
-      EditLabel.Left = 632
+      EditLabel.Left = 672
       EditLabel.Height = 16
       EditLabel.Top = 61
       EditLabel.Width = 80
@@ -418,7 +433,7 @@ object Form3: TForm3
       TabOrder = 5
     end
     object ButtonRandomize: TBitBtn
-      Left = 528
+      Left = 576
       Height = 30
       Top = 176
       Width = 112
@@ -493,7 +508,7 @@ object Form3: TForm3
       TabOrder = 6
     end
     object ButtonAddPeople: TBitBtn
-      Left = 640
+      Left = 688
       Height = 30
       Hint = 'Adds one people with the current settings'
       Top = 176
@@ -582,7 +597,7 @@ object Form3: TForm3
       TabOrder = 7
     end
     object ButtonRemovePeople: TBitBtn
-      Left = 432
+      Left = 480
       Height = 30
       Hint = 'Removes the selected people'
       Top = 176
@@ -664,6 +679,7 @@ object Form3: TForm3
         0000000000000000000000000000000000000000000000000000000000000000
         0000000000000000000000000000000000000000000000000000
       }
+      OnClick = ButtonRemovePeopleClick
       ParentShowHint = False
       ShowHint = True
       Spacing = 0
@@ -674,7 +690,7 @@ object Form3: TForm3
     Left = 8
     Height = 24
     Top = 24
-    Width = 729
+    Width = 779
     Anchors = [akTop, akLeft, akRight]
     EditLabel.AnchorSideLeft.Control = LabeledEdit5
     EditLabel.AnchorSideRight.Control = LabeledEdit5
@@ -683,7 +699,7 @@ object Form3: TForm3
     EditLabel.Left = 8
     EditLabel.Height = 16
     EditLabel.Top = 5
-    EditLabel.Width = 729
+    EditLabel.Width = 779
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
     TabOrder = 3

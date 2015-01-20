@@ -10,14 +10,13 @@ uses
   {own units}
   sim, SimulationWindow, SimulationSetupWindow;
 
+
 // Todo and to think about:
 // * try a class based version of the map and its objects? -> objects will be no tiles anymore
 // * maybe add manipulable growing-rate for each people
 // * summer and winter -> scalable, see how dem People gonna survive =P
 // * implement the thoughts shown by the class diagramme
 // * make extra classes inheriting from TPeople? -> each people has its own implementation
-// * different units/soldiers?
-
 
 type
 
@@ -53,6 +52,7 @@ type
     FSimFormList: TSimFormList;
     FSimSetupList: TSimSetupList;
     FSimCounter: integer;
+    FOSName: String;
     procedure UpdateWindow;
     procedure SetupDone(Sender: TObject);
     procedure RemoveSim(Sender: TObject);
@@ -70,8 +70,8 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.7';
-  VersionDate = '14.11.2014';
+  ProgrammeVersion = '0.0.8';
+  VersionDate = '20.01.2015';
 
 {$R *.lfm}
 

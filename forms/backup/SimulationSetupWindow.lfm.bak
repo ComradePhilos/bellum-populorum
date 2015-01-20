@@ -297,7 +297,7 @@ object Form3: TForm3
         item
           Title.Alignment = taCenter
           Title.Caption = 'Type'
-          Width = 105
+          Width = 80
         end      
         item
           Title.Alignment = taCenter
@@ -317,6 +317,7 @@ object Form3: TForm3
           Title.Caption = 'Iron'
         end      
         item
+          Title.Alignment = taCenter
           Title.Caption = 'Color'
           Width = 68
         end>
@@ -327,9 +328,10 @@ object Form3: TForm3
       Font.Pitch = fpVariable
       Font.Quality = fqDraft
       Font.Style = [fsBold]
+      Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goThumbTracking, goSmoothScroll]
       ParentFont = False
       RowCount = 1
-      ScrollBars = ssNone
+      ScrollBars = ssAutoVertical
       TabOrder = 0
       TitleFont.CharSet = ANSI_CHARSET
       TitleFont.Height = -12
@@ -338,9 +340,10 @@ object Form3: TForm3
       TitleFont.Quality = fqDraft
       TitleFont.Style = [fsBold]
       TitleStyle = tsNative
+      OnDrawCell = PeopleGridDrawCell
       ColWidths = (
         32
-        105
+        80
         58
         64
         64
@@ -602,6 +605,7 @@ object Form3: TForm3
       Top = 176
       Width = 96
       Caption = 'Remove'
+      Enabled = False
       Glyph.Data = {
         36090000424D3609000000000000360000002800000018000000180000000100
         2000000000000009000064000000640000000000000000000000000000000000

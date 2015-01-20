@@ -46,11 +46,15 @@ type
 		procedure FormCreate(Sender: TObject);
 		procedure ButtonRandomizeClick(Sender: TObject);
 		procedure FormDestroy(Sender: TObject);
+		procedure PeopleGridDrawCell(Sender: TObject; aCol, aRow: Integer;
+					aRect: TRect; aState: TGridDrawState);
   private
     { private declarations }
     FSimSetup: TSimSetup;
     FOnApply: TOnApplyEvent;
     FPeoplesList: TPeoplesList;
+
+    procedure EnableButtons;
 
   public
     { public declarations }
@@ -88,7 +92,12 @@ end;
 
 procedure TForm3.ButtonRemovePeopleClick(Sender: TObject);
 begin
-
+  if (FPeoplesList.Count > 0) then
+  begin
+    FPeoplesList.Delete(PeopleGrid.Row-1);
+    PeoplesToStringGrid(PeopleGrid, FPeoplesList);
+	end;
+  EnableButtons;
 end;
 
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
@@ -107,6 +116,7 @@ begin
   FPeoplesList[I].Resources := locRes;
 
   PeoplesToStringGrid(PeopleGrid, FPeoplesList);
+  EnableButtons;
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
@@ -130,6 +140,26 @@ end;
 procedure TForm3.FormDestroy(Sender: TObject);
 begin
   FPeoplesList.Free;
+end;
+
+procedure TForm3.PeopleGridDrawCell(Sender: TObject; aCol, aRow: Integer;
+			aRect: TRect; aState: TGridDrawState);
+begin
+  if (aRow > 0) and (aCol = 6) then
+  begin
+    with PeopleGrid do
+    begin
+    Canvas.Brush.Color:= StrToInt(PeopleGrid.Cells[ACol, ARow]);
+    Canvas.FillRect(aRect);
+    Canvas.TextOut(aRect.Left+2, aRect.Top+2, Cells[ACol, ARow]);
+		end;
+	end;
+end;
+
+procedure TForm3.EnableButtons;
+begin
+  ButtonRemovePeople.Enabled := (FPeoplesList.Count > 0);
+  ButtonApply.Enabled := (FPeoplesList.Count > 0);
 end;
 
 end.

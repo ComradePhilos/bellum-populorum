@@ -64,7 +64,6 @@ type
 
 var
   Form1: TForm1;
-  OSName: string;
 
 implementation
 
@@ -116,6 +115,18 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
+  FOSName := 'unknown';
+  // detectable OS
+  {$IFDEF macos}
+  FOSName := 'MacOS';
+  {$ENDIF}
+  {$IFDEF mswindows}
+  FOSName := 'Windows';
+  {$ENDIF}
+  {$IFDEF linux}
+  FOSName := 'Linux';
+  {$ENDIF}
+
   Caption := ProgrammeName + '  ' + ProgrammeVersion;
   FSimFormList := TSimFormList.Create(True);
   FSimSetupList := TSimSetupList.Create(True);

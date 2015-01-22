@@ -103,17 +103,14 @@ end;
 procedure TForm3.ButtonAddPeopleClick(Sender: TObject);
 var
   I: Integer;
-  locWood, locFood, locIron: Integer;
-  locRes: TResources;
 begin
   I := FPeoplesList.Add(TPeople.Create);
   FPeoplesList[I].InitCitizens := StrToInt(EditCitizens.Text);
   FPeoplesList[I].PeopleType := TPeopleType(PeopleBox.ItemIndex);
   FPeoplesList[I].Color := ButtonColor.ButtonColor;
-  locRes.Wood := StrToInt(EditWood.Text);
-  locRes.Food := StrToInt(EditFood.Text);
-  locRes.Iron := StrToInt(EditIron.Text);
-  FPeoplesList[I].Resources := locRes;
+  FPeoplesList[I].Resources[0] := StrToInt(EditWood.Text);
+  FPeoplesList[I].Resources[1] := StrToInt(EditFood.Text);
+  FPeoplesList[I].Resources[2] := StrToInt(EditIron.Text);
 
   PeoplesToStringGrid(PeopleGrid, FPeoplesList);
   EnableButtons;

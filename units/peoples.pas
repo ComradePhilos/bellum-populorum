@@ -11,21 +11,24 @@ uses
 
 type
 
+  {
   TResources = record
     Wood: Integer;
     Iron: Integer;
     Food: Integer;
-	end;
+	end;     }
+
+  TResources = array[0..2] of Integer;
 
   TPeopleType = (ptRoman, ptGerman, ptSlavonic);
 
-  TPeopleSetup = record
+  {TPeopleSetup = record
     Peoples: array of TPeopleType;
     Names: TStringList;
     CitizenCounts: array of Integer;
     Colors: array of TColor;
     Ressources: array of TResources;
-	end;
+	end;   }
 
   // ToDo: Setup stands for 1 people. implement a List of Setups later
 
@@ -68,14 +71,14 @@ const
 
 constructor TPeople.Create;
 begin
-  FResources.Wood := StartWood;
-  FResources.Iron := StartIron;
-  FResources.Food := StartFood;
+  FResources[0] := StartWood;
+  FResources[1] := StartIron;
+  FResources[2] := StartFood;
 end;
 
 procedure TPeople.BuildHouse(x,y: Integer);
 begin
-  if (FResources.Wood >= 100) then
+  if (FResources[0] >= 100) then
   begin
     if (FMap.Tiles[x,y] = TTileType.ttGrass) then
     begin
@@ -84,7 +87,7 @@ begin
         ptGerman: FMap.Tiles[x,y] := TTileType.ttGermanHouse;
         ptSlavonic: FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
       end;
-      FResources.Wood -= 100;
+      FResources[0] -= 100;
 		end;
 	end;
 end;

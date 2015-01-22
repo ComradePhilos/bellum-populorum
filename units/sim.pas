@@ -13,7 +13,7 @@ type
 
   TSimSetup = record
     MapSetup: TMapSetup;
-    PeopleSetup: TPeopleSetup;
+    PeopleSetup: TPeoplesList;
   end;
 
   TSimulation = class
@@ -23,7 +23,7 @@ type
     FRound: integer;                        // Round-Counter
     FRoundLimit: integer;                   // optional round limit
     FMap: TMap;
-    FPeoples: TPeoplesList;
+    FPeoplesList: TPeoplesList;
     FTimePerRound: Integer;
 
   public
@@ -47,13 +47,13 @@ implementation
 
 constructor TSimulation.Create;
 begin
-  FPeoples := TPeoplesList.Create;
+  FPeoplesList := TPeoplesList.Create;
   FMap := TMap.Create;
 end;
 
 destructor TSimulation.Destroy;
 begin
-  FPeoples.Free;
+  FPeoplesList.Free;
   FMap.Free;
 end;
 
@@ -64,25 +64,25 @@ begin
   FRound := 0;
   FRoundLimit := 0;
   FTimePerRound := 0;
-  FPeoples.Clear;
+  FPeoplesList.Clear;
 end;
 
 procedure TSimulation.GenerateRomans(AColor: TColor);
 begin
-  FPeoples.Add(TPeople.Create);
-  FPeoples[FPeoples.Count - 1].Color := AColor;
+  FPeoplesList.Add(TPeople.Create);
+  FPeoplesList[FPeoplesList.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.GenerateGermans(AColor: TColor);
 begin
-  FPeoples.Add(TPeople.Create);
-  FPeoples[FPeoples.Count - 1].Color := AColor;
+  FPeoplesList.Add(TPeople.Create);
+  FPeoplesList[FPeoplesList.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.GenerateSlavonics(AColor: TColor);
 begin
-  FPeoples.Add(TPeople.Create);
-  FPeoples[FPeoples.Count - 1].Color := AColor;
+  FPeoplesList.Add(TPeople.Create);
+  FPeoplesList[FPeoplesList.Count - 1].Color := AColor;
 end;
 
 procedure TSimulation.Initialize(ASimSetup: TSimSetup);
@@ -92,13 +92,13 @@ begin
   with ASimSetup do
   begin
     //FMap.MapSettings := MapSetup;
-    for I := 0 to High(PeopleSetup.Peoples) - 1 do
+    for I := 0 to FPeoplesList.Count - 1 do
     begin
-      case PeopleSetup.Peoples[I] of
-        ptRoman: GenerateRomans(PeopleSetup.Colors[I]);
-        ptGerman: GenerateGermans(PeopleSetup.Colors[I]);
-        ptSlavonic: GenerateSlavonics(PeopleSetup.Colors[I]);
-      end;
+      //case FPeoplesList[I].PeopleType of
+        //ptRoman: GenerateRomans(FPeoplesList[I].Colors[I]);
+        //ptGerman: GenerateGermans(PeopleSetup.Colors[I]);
+        //ptSlavonic: GenerateSlavonics(PeopleSetup.Colors[I]);
+      //end;
     end;
   end;
 

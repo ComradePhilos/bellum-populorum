@@ -70,7 +70,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.8';
-  VersionDate = '20.01.2015';
+  VersionDate = '22.01.2015';
 
 {$R *.lfm}
 
@@ -116,7 +116,7 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   FOSName := 'unknown';
-  // detectable OS
+  // OS detection and special OS-based operations
   {$IFDEF macos}
   FOSName := 'MacOS';
   {$ENDIF}

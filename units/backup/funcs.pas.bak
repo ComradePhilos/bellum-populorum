@@ -17,7 +17,7 @@ var
 begin
   AGrid.RowCount := 1;
 
-    //AGrid.RowCount := APeoplesList.Count+1;
+    AGrid.RowCount := APeoplesList.Count+1;
     for I := 0 to APeoplesList.Count - 1 do
     begin
       AGrid.Cells[0, I+1] := IntToStr(I + 1);

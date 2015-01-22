@@ -174,7 +174,7 @@ object Form3: TForm3
       ParentShowHint = False
       ShowHint = True
       TabOrder = 3
-      Text = '2'
+      Text = '3'
     end
   end
   object ButtonApply: TBitBtn
@@ -184,6 +184,7 @@ object Form3: TForm3
     Width = 80
     Anchors = [akRight, akBottom]
     Caption = 'Apply'
+    Enabled = False
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
       2000000000000009000064000000640000000000000000000000000000000000

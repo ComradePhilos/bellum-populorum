@@ -17,6 +17,7 @@ uses
 // * summer and winter -> scalable, see how dem People gonna survive =P
 // * implement the thoughts shown by the class diagramme
 // * make extra classes inheriting from TPeople? -> each people has its own implementation
+// * Implement a Graphics Buffer using TBitmap for visual output
 
 type
 
@@ -70,7 +71,7 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.8';
-  VersionDate = '22.01.2015';
+  VersionDate = '04.02.2015';
 
 {$R *.lfm}
 

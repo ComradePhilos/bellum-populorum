@@ -2,7 +2,6 @@
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
-    <PathDelim Value="\"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
@@ -49,7 +48,7 @@
         <UnitName Value="simulation"/>
       </Unit0>
       <Unit1>
-        <Filename Value="units\main.pas"/>
+        <Filename Value="units/main.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form1"/>
         <HasResources Value="True"/>
@@ -57,37 +56,37 @@
         <UnitName Value="main"/>
       </Unit1>
       <Unit2>
-        <Filename Value="units\sim.pas"/>
+        <Filename Value="units/sim.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="sim"/>
       </Unit2>
       <Unit3>
-        <Filename Value="units\class_dec.pas"/>
+        <Filename Value="units/class_dec.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="class_dec"/>
       </Unit3>
       <Unit4>
-        <Filename Value="units\funcs.pas"/>
+        <Filename Value="units/funcs.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="funcs"/>
       </Unit4>
       <Unit5>
-        <Filename Value="units\peoples.pas"/>
+        <Filename Value="units/peoples.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="peoples"/>
       </Unit5>
       <Unit6>
-        <Filename Value="units\citizens.pas"/>
+        <Filename Value="units/citizens.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="citizens"/>
       </Unit6>
       <Unit7>
-        <Filename Value="units\tasks.pas"/>
+        <Filename Value="units/tasks.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="tasks"/>
       </Unit7>
       <Unit8>
-        <Filename Value="forms\simulationwindow.pas"/>
+        <Filename Value="forms/simulationwindow.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form2"/>
         <HasResources Value="True"/>
@@ -95,17 +94,17 @@
         <UnitName Value="SimulationWindow"/>
       </Unit8>
       <Unit9>
-        <Filename Value="units\world.pas"/>
+        <Filename Value="units/world.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="world"/>
       </Unit9>
       <Unit10>
-        <Filename Value="units\houses.pas"/>
+        <Filename Value="units/houses.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="houses"/>
       </Unit10>
       <Unit11>
-        <Filename Value="forms\SimulationSetupWindow.pas"/>
+        <Filename Value="forms/SimulationSetupWindow.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form3"/>
         <HasResources Value="True"/>
@@ -113,7 +112,7 @@
         <UnitName Value="SimulationSetupWindow"/>
       </Unit11>
       <Unit12>
-        <Filename Value="units\cities.pas"/>
+        <Filename Value="units/cities.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="cities"/>
       </Unit12>

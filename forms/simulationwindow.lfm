@@ -4,7 +4,7 @@ object Form2: TForm2
   Top = 187
   Width = 715
   Caption = 'Simulation'
-  ClientHeight = 430
+  ClientHeight = 450
   ClientWidth = 715
   Icon.Data = {
     2608000000000100010016160000010020001008000016000000280000001600
@@ -75,12 +75,11 @@ object Form2: TForm2
     00000000000000000000
   }
   Menu = MainMenu1
-  OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.4.0'
   object Image2: TImage
     Left = 1128
     Height = 8
@@ -99,8 +98,8 @@ object Form2: TForm2
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 23
-    Top = 407
+    Height = 21
+    Top = 429
     Width = 715
     Panels = <    
       item
@@ -128,7 +127,7 @@ object Form2: TForm2
   end
   object Image1: TImage
     Left = 0
-    Height = 384
+    Height = 404
     Top = 24
     Width = 415
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -136,17 +135,17 @@ object Form2: TForm2
   end
   object GroupBox1: TGroupBox
     Left = 416
-    Height = 387
+    Height = 407
     Top = 17
     Width = 297
     Anchors = [akTop, akRight, akBottom]
     Caption = 'Controls'
-    ClientHeight = 369
+    ClientHeight = 388
     ClientWidth = 293
     TabOrder = 2
     object LabeledEdit1: TLabeledEdit
       Left = 14
-      Height = 23
+      Height = 27
       Top = 24
       Width = 80
       Anchors = [akTop, akRight]
@@ -155,8 +154,8 @@ object Form2: TForm2
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit1
       EditLabel.Left = 14
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 17
+      EditLabel.Top = 4
       EditLabel.Width = 80
       EditLabel.Caption = 'width'
       EditLabel.ParentColor = False
@@ -165,7 +164,7 @@ object Form2: TForm2
     end
     object LabeledEdit2: TLabeledEdit
       Left = 104
-      Height = 23
+      Height = 27
       Top = 24
       Width = 80
       Anchors = [akTop, akRight]
@@ -174,8 +173,8 @@ object Form2: TForm2
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit2
       EditLabel.Left = 104
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 17
+      EditLabel.Top = 4
       EditLabel.Width = 80
       EditLabel.Caption = 'height'
       EditLabel.ParentColor = False
@@ -206,7 +205,7 @@ object Form2: TForm2
     end
     object Edit1: TEdit
       Left = 232
-      Height = 23
+      Height = 27
       Top = 80
       Width = 56
       TabOrder = 4
@@ -214,9 +213,9 @@ object Form2: TForm2
     end
     object Label1: TLabel
       Left = 16
-      Height = 15
+      Height = 17
       Top = 66
-      Width = 116
+      Width = 143
       Caption = 'Round Duration in ms'
       ParentColor = False
     end

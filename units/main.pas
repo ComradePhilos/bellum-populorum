@@ -75,7 +75,26 @@ const
 
 {$R *.lfm}
 
-{ TForm1 }
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  FOSName := 'unknown';
+  // OS detection and special OS-based operations
+  {$IFDEF macos}
+  FOSName := 'MacOS';
+  {$ENDIF}
+  {$IFDEF mswindows}
+  FOSName := 'Windows';
+  {$ENDIF}
+  {$IFDEF linux}
+  FOSName := 'Linux';
+  {$ENDIF}
+
+  Caption := ProgrammeName + '  ' + ProgrammeVersion;
+  FSimFormList := TSimFormList.Create(True);
+  FSimSetupList := TSimSetupList.Create(True);
+  FSimCounter := 0;
+  UpdateWindow;
+end;
 
 procedure TForm1.NewClick(Sender: TObject);
 begin
@@ -111,27 +130,6 @@ begin
   begin
     FSimFormList.Delete(TabControl1.TabIndex);
   end;
-  UpdateWindow;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  FOSName := 'unknown';
-  // OS detection and special OS-based operations
-  {$IFDEF macos}
-  FOSName := 'MacOS';
-  {$ENDIF}
-  {$IFDEF mswindows}
-  FOSName := 'Windows';
-  {$ENDIF}
-  {$IFDEF linux}
-  FOSName := 'Linux';
-  {$ENDIF}
-
-  Caption := ProgrammeName + '  ' + ProgrammeVersion;
-  FSimFormList := TSimFormList.Create(True);
-  FSimSetupList := TSimSetupList.Create(True);
-  FSimCounter := 0;
   UpdateWindow;
 end;
 
@@ -185,7 +183,7 @@ begin
   FSimFormList.Add(TForm2.Create(nil));
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
   FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text;
-  FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
+  //FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
 
   FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;
   FSimFormList[FSimFormList.Count - 1].Sim.Map.SetParameters(TForm3(Sender).SimSetup.MapSetup);

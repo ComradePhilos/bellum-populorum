@@ -10,15 +10,13 @@ uses
 
 type
 
-  TMyOnDestroyEvent = procedure(Sender: TObject) of object;
-
   { TForm2 }
 
   TForm2 = class(TForm)
-				GenerateButton: TBitBtn;
-				Edit1: TEdit;
-				GroupBox1: TGroupBox;
-				Image1: TImage;
+    GenerateButton: TBitBtn;
+		Edit1: TEdit;
+		GroupBox1: TGroupBox;
+	  Image1: TImage;
 		Image2: TImage;
 		ImageList1: TImageList;
 		Label1: TLabel;
@@ -40,7 +38,7 @@ type
   procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
-		procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
+		//procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
 		procedure Timer2Timer(Sender: TObject);
@@ -51,14 +49,11 @@ type
     FSim: TSimulation;
     FID: Integer;
 
-    FMyOnDestroy: TMyOnDestroyEvent;
-
     procedure DrawMap(Sender: TObject);
 
   public
     property Sim: TSimulation read FSim write FSim;
     property ID: Integer read FID write FID;
-    property MyOnDestroy: TMyOnDestroyEvent read FMyOnDestroy write FMyOnDestroy;
 
   end;
 
@@ -71,7 +66,19 @@ implementation
 
 {$R *.lfm}
 
-{ TForm2 }
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+  self.DoubleBuffered := True;
+  FSim := TSimulation.Create;
+  FDuration := 3000;
+  Trackbar1.Position := FDuration;
+  Edit1.Text := IntToStr(FDuration);
+  FSim.Map.OnChange := @DrawMap;
+  Image1.Picture.Bitmap.Width := Image1.Width;
+  Image1.Picture.Bitmap.Height := Image1.Height;
+  self.Constraints.MinHeight := self.Height;
+  self.Constraints.MinWidth := self.Width;
+end;
 
 procedure TForm2.GenerateButtonClick(Sender: TObject);
 var
@@ -108,26 +115,6 @@ begin
     Trackbar1.Position := FDuration;
     Timer1.Interval := FDuration;
 	end;
-end;
-
-procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
-begin
-  if Assigned(FMyOnDestroy) then
-  begin
-    //FMyOnDestroy(self);
-	end;
-end;
-
-procedure TForm2.FormCreate(Sender: TObject);
-begin
-  self.DoubleBuffered := True;
-  FSim := TSimulation.Create;
-  FDuration := 3000;
-  Trackbar1.Position := FDuration;
-  Edit1.Text := IntToStr(FDuration);
-  FSim.Map.OnChange := @DrawMap;
-  Image1.Picture.Bitmap.Width := Image1.Width;
-  Image1.Picture.Bitmap.Height := Image1.Height;
 end;
 
 procedure TForm2.Image1Resize(Sender: TObject);

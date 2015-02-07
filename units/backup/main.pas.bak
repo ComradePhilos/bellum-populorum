@@ -71,11 +71,30 @@ implementation
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.8';
-  VersionDate = '03.02.2015';
+  VersionDate = '04.02.2015';
 
 {$R *.lfm}
 
-{ TForm1 }
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+  FOSName := 'unknown';
+  // OS detection and special OS-based operations
+  {$IFDEF macos}
+  FOSName := 'MacOS';
+  {$ENDIF}
+  {$IFDEF mswindows}
+  FOSName := 'Windows';
+  {$ENDIF}
+  {$IFDEF linux}
+  FOSName := 'Linux';
+  {$ENDIF}
+
+  Caption := ProgrammeName + '  ' + ProgrammeVersion;
+  FSimFormList := TSimFormList.Create(True);
+  FSimSetupList := TSimSetupList.Create(True);
+  FSimCounter := 0;
+  UpdateWindow;
+end;
 
 procedure TForm1.NewClick(Sender: TObject);
 begin
@@ -111,27 +130,6 @@ begin
   begin
     FSimFormList.Delete(TabControl1.TabIndex);
   end;
-  UpdateWindow;
-end;
-
-procedure TForm1.FormCreate(Sender: TObject);
-begin
-  FOSName := 'unknown';
-  // OS detection and special OS-based operations
-  {$IFDEF macos}
-  FOSName := 'MacOS';
-  {$ENDIF}
-  {$IFDEF mswindows}
-  FOSName := 'Windows';
-  {$ENDIF}
-  {$IFDEF linux}
-  FOSName := 'Linux';
-  {$ENDIF}
-
-  Caption := ProgrammeName + '  ' + ProgrammeVersion;
-  FSimFormList := TSimFormList.Create(True);
-  FSimSetupList := TSimSetupList.Create(True);
-  FSimCounter := 0;
   UpdateWindow;
 end;
 

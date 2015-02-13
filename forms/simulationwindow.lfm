@@ -131,6 +131,7 @@ object Form2: TForm2
     Top = 24
     Width = 415
     Anchors = [akTop, akLeft, akRight, akBottom]
+    OnPaint = Image1Paint
     OnResize = Image1Resize
   end
   object GroupBox1: TGroupBox

@@ -40,6 +40,7 @@ type
 		procedure Edit1Change(Sender: TObject);
 		//procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure Image1Paint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
 		procedure Timer2Timer(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
@@ -78,6 +79,11 @@ begin
   Image1.Picture.Bitmap.Height := Image1.Height;
   self.Constraints.MinHeight := self.Height;
   self.Constraints.MinWidth := self.Width;
+end;
+
+procedure TForm2.Image1Paint(Sender: TObject);
+begin
+  FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.GenerateButtonClick(Sender: TObject);
@@ -126,7 +132,7 @@ end;
 procedure TForm2.Timer2Timer(Sender: TObject);
 begin
   Image1.Visible := True;
-  DrawMap(nil);
+  //DrawMap(nil);
   Timer2.Enabled := False;
 end;
 

@@ -140,8 +140,6 @@ begin
         GenerateRocks(x, y);
       if (Random(1000) > (1000 - FProbForest)) then
         GenerateForest(x, y);
-      //if (Random(1000) > (995)) then
-        //GenerateBerries(x, y);
     end;
   end;
 
@@ -258,9 +256,7 @@ begin
   begin
     line := '';
     for x := 0 to FWidth - 1 do
-    begin
       line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
-    end;
     Result.Add(line);
   end;
 end;
@@ -268,22 +264,31 @@ end;
 procedure TMap.DrawToCanvas(ACanvas: TCanvas);
 var
   x, y: integer;
+  tmpbmp: TBitMap;
 begin
-  ACanvas.Brush.Color := clBlack;
-  ACanvas.FillRect(0, 0, ACanvas.Width, ACanvas.Height);
+  tmpbmp := TBitMap.Create;
+  try
+  tmpbmp.PixelFormat := pf32Bit;
+  tmpbmp.Width := ACanvas.Width;
+  tmpbmp.Height := ACanvas.Height;
+  tmpbmp.Canvas.Brush.Color := clBlack;
+  tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
 
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
     begin
       case (FTiles[x, y]) of
-        ttGrass: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
-        ttTree: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
-        ttRock: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
-        ttRomanHouse: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageRomanHouse.Picture.Bitmap);
-        ttBerries: ACanvas.Draw(x * FTileSize, y * FTileSize, ImageBerries.Picture.Bitmap);
+        ttGrass: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
+        ttTree: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
+        ttRock: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
+        ttRomanHouse: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageRomanHouse.Picture.Bitmap);
       end;
     end;
+  end;
+  ACanvas.Draw(0,0, tmpbmp);
+  finally
+    tmpbmp.Free;
   end;
 end;
 

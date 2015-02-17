@@ -43,6 +43,8 @@ type
 
   TSimulationList = specialize TFPGObjectList<TSimulation>;
 
+  TFaction = (fRoman, fGerman, FSlavonic);
+
 implementation
 
 constructor TSimulation.Create;

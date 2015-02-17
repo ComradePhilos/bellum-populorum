@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Graphics, fgl,
   {own units}
-  peoples, world;
+  peoples, world, definitions;
 
 type
 

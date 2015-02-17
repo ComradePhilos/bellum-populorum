@@ -17,7 +17,6 @@ uses
 // * summer and winter -> scalable, see how dem People gonna survive =P
 // * implement the thoughts shown by the class diagramme
 // * make extra classes inheriting from TPeople? -> each people has its own implementation
-// * Implement a Graphics Buffer using TBitmap for visual output
 
 type
 
@@ -65,18 +64,23 @@ type
 
 var
   Form1: TForm1;
+  BuildDate: TDateTime;
 
 implementation
 
 const
   ProgrammeName = 'bellum populorum';
   ProgrammeVersion = '0.0.9';
-  VersionDate = '17.02.2015';
 
 {$R *.lfm}
 
 procedure TForm1.FormCreate(Sender: TObject);
+var
+  fs: TFormatSettings;
 begin
+  fs.DateSeparator := '/';
+  fs.ShortDateFormat:='yyyy/mm/dd';
+  BuildDate := StrToDate({$I %DATE%},fs);
   FOSName := 'unknown';
   // OS detection and special OS-based operations
   {$IFDEF macos}
@@ -89,7 +93,7 @@ begin
   FOSName := 'Linux';
   {$ENDIF}
 
-  Caption := ProgrammeName + '  ' + ProgrammeVersion;
+  Caption := ProgrammeName + '  ' + ProgrammeVersion + '  (' + DateToStr(BuildDate) +')';
   FSimFormList := TSimFormList.Create(True);
   FSimSetupList := TSimSetupList.Create(True);
   FSimCounter := 0;
@@ -183,8 +187,6 @@ begin
   FSimFormList.Add(TForm2.Create(nil));
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
   FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text;
-  //FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
-
   FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;
   FSimFormList[FSimFormList.Count - 1].Sim.Map.SetParameters(TForm3(Sender).SimSetup.MapSetup);
   FSimFormList[FSimFormList.Count - 1].Sim.Map.Generate;

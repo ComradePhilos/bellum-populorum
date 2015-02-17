@@ -7,28 +7,10 @@ interface
 uses
       Classes, SysUtils, fgl, Graphics,
       {own units}
-      citizens, world;
+      citizens, world, definitions;
 
 type
 
-  {
-  TResources = record
-    Wood: Integer;
-    Iron: Integer;
-    Food: Integer;
-	end;     }
-
-  TResources = array[0..2] of Integer;
-
-  TPeopleType = (ptRoman, ptGerman, ptSlavonic);
-
-  {TPeopleSetup = record
-    Peoples: array of TPeopleType;
-    Names: TStringList;
-    CitizenCounts: array of Integer;
-    Colors: array of TColor;
-    Ressources: array of TResources;
-	end;   }
 
   // ToDo: Setup stands for 1 people. implement a List of Setups later
 
@@ -56,11 +38,7 @@ type
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;
-
   TPeoplesList = specialize TFPGObjectList<TPeople>;
-
-var
-  txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
 
 implementation
 

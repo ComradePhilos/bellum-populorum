@@ -6,14 +6,11 @@ unit world;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math, TypInfo;
+  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math, TypInfo, definitions;
 
 type
 
   TOnChangeEvent = procedure(Sender: TObject) of object;
-
-  TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse, ttBerries);
-  TTiles = array of array of TTileType;
 
   TMapSetup = record
     Width: integer;
@@ -74,11 +71,17 @@ type
     private
       FX, FY: Integer;
       FHealth: Integer;
+      FBitmap: TBitmap;
 	end;
 
+  TBuilding = Class(TMapObject)
+    private
+    FFaction: TFaction;
+    public
+    constructor Create;
+	end;
 
 implementation
-
 
 // #################################################### TMAP ###########################################################
 
@@ -325,6 +328,13 @@ end;
 procedure TMap.ScrollDown;
 begin
   FScrolly -= 1;
+end;
+
+
+// ####################################### BUILDINGS ####################################################
+constructor TBuilding.Create;
+begin
+
 end;
 
 end.

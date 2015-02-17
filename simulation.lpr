@@ -16,7 +16,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   SimulationSetupWindow,
   world,
   houses,
-  cities;
+  cities, definitions;
 
 {$R *.res}
 

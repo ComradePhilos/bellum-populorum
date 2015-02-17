@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils,
-  peoples, houses, world;
+  peoples, houses, world, definitions;
 
 type
   TCity = class

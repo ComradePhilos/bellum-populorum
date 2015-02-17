@@ -23,9 +23,9 @@ begin
       AGrid.Cells[0, I+1] := IntToStr(I + 1);
       AGrid.Cells[1, I+1] := txtPeoples[APeoplesList[I].PeopleType];
       AGrid.Cells[2, I+1] := IntToStr(APeoplesList[I].InitCitizens);
-      AGrid.Cells[3, I+1] := IntToStr(APeoplesList[I].Resources.Wood);
-      AGrid.Cells[4, I+1] := IntToStr(APeoplesList[I].Resources.Food);
-      AGrid.Cells[5, I+1] := IntToStr(APeoplesList[I].Resources.Iron);
+      AGrid.Cells[3, I+1] := IntToStr(APeoplesList[I].Resources[0]);
+      AGrid.Cells[4, I+1] := IntToStr(APeoplesList[I].Resources[1]);
+      AGrid.Cells[5, I+1] := IntToStr(APeoplesList[I].Resources[2]);
       AGrid.Cells[6, I+1] := IntToStr(APeoplesList[I].Color);
     end;
 

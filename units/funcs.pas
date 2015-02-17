@@ -5,7 +5,7 @@ unit funcs;
 interface
 
 uses
-  Classes, SysUtils, Grids, peoples;
+  Classes, SysUtils, Grids, peoples, definitions;
 
 procedure PeoplesToStringGrid(AGrid: TStringGrid; APeoplesList: TPeoplesList);
 

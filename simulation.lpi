@@ -41,7 +41,7 @@
         <PackageName Value="LCL"/>
       </Item4>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="14">
       <Unit0>
         <Filename Value="simulation.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -116,6 +116,11 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="cities"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="units/definitions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="definitions"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

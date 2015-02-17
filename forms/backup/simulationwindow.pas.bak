@@ -43,6 +43,8 @@ type
 		ToolBar1: TToolBar;
 		TrackBar1: TTrackBar;
 	procedure BitBtn1Click(Sender: TObject);
+	procedure BitBtn2Click(Sender: TObject);
+	procedure BitBtn3Click(Sender: TObject);
 	procedure BitBtn4Click(Sender: TObject);
   procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
@@ -126,6 +128,18 @@ end;
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   FSim.Map.ScrollRight;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
+end;
+
+procedure TForm2.BitBtn2Click(Sender: TObject);
+begin
+  FSim.Map.ScrollDown;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
+end;
+
+procedure TForm2.BitBtn3Click(Sender: TObject);
+begin
+  FSim.Map.ScrollUp;
   FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 

@@ -42,6 +42,7 @@ type
 
     procedure LoadImages;
     procedure GenerateForest(x, y: integer);
+    procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
 
   public
@@ -150,7 +151,7 @@ begin
       if (Random(1000) > (1000 - FProbRocks)) then
         GenerateRocks(x, y);
       if (Random(1000) > (1000 - FProbForest)) then
-        GenerateForest(x, y);
+        GenerateForest_ALT(x, y);
     end;
   end;
 
@@ -201,6 +202,39 @@ begin
   begin
     newx := x + Random(extent) - 5;
     newy := y + Random(extent) - 5;
+    if (newx < FWidth) and (newy < FHeight) then
+    begin
+      if (newx >= 0) and (newy >= 0) then
+      begin
+        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
+        if (dist <= extent) then
+        begin
+          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          begin
+            FTiles[newx, newy] := TTileType.ttTree;
+          end;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TMap.GenerateForest_ALT(x, y: integer);
+var
+  extent: integer;    // extent of the forest
+  Count: integer;     // number of trees
+  I: integer;
+  newx, newy: integer;
+  dist: integer;
+begin
+  extent := random(30) + 10;
+  Count := Random(600) + 35;
+  FTiles[x, y] := TTileType.ttTree;
+
+  for I := 0 to Count - 1 do
+  begin
+    newx := x + Random(extent) - 20;
+    newy := y + Random(extent) - 20;
     if (newx < FWidth) and (newy < FHeight) then
     begin
       if (newx >= 0) and (newy >= 0) then

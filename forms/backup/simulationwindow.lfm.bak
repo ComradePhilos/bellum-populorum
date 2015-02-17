@@ -181,11 +181,11 @@ object Form2: TForm2
       Text = '150'
     end
     object GenerateButton: TBitBtn
-      Left = 200
+      Left = 192
       Height = 30
-      Top = 16
-      Width = 88
-      Caption = 'Genrate'
+      Top = 17
+      Width = 96
+      Caption = 'Genrate New'
       OnClick = GenerateButtonClick
       TabOrder = 2
     end
@@ -274,6 +274,7 @@ object Form2: TForm2
       Height = 32
       Top = 144
       Width = 64
+      OnClick = BitBtn2Click
       TabOrder = 6
     end
     object BitBtn3: TBitBtn
@@ -281,6 +282,7 @@ object Form2: TForm2
       Height = 32
       Top = 175
       Width = 64
+      OnClick = BitBtn3Click
       TabOrder = 7
     end
     object BitBtn4: TBitBtn

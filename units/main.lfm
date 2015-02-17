@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 432
+  Left = 823
   Height = 619
-  Top = 364
+  Top = 448
   Width = 725
   Caption = 'bellum populorum'
   ClientHeight = 599
@@ -629,5 +629,9 @@ object Form1: TForm1
         }
       end
     end
+  end
+  object ActionList1: TActionList
+    left = 640
+    top = 432
   end
 end

@@ -6,19 +6,26 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics,
-	Dialogs, StdCtrls, ExtCtrls, Buttons, ComCtrls, Menus, fgl, world, sim;
+	Dialogs, StdCtrls, ExtCtrls, Buttons, ComCtrls, Menus, Arrow, fgl, world, sim;
 
 type
 
   { TForm2 }
 
   TForm2 = class(TForm)
+				Arrow1: TArrow;
+				Arrow2: TArrow;
+				Arrow3: TArrow;
+				Arrow4: TArrow;
+				BitBtn1: TBitBtn;
+				BitBtn2: TBitBtn;
+				BitBtn3: TBitBtn;
+				BitBtn4: TBitBtn;
     GenerateButton: TBitBtn;
 		Edit1: TEdit;
 		GroupBox1: TGroupBox;
 	  Image1: TImage;
 		Image2: TImage;
-		ImageList1: TImageList;
 		Label1: TLabel;
 		LabeledEdit1: TLabeledEdit;
 		LabeledEdit2: TLabeledEdit;
@@ -35,6 +42,10 @@ type
 		Timer2: TTimer;
 		ToolBar1: TToolBar;
 		TrackBar1: TTrackBar;
+	procedure BitBtn1Click(Sender: TObject);
+	procedure BitBtn2Click(Sender: TObject);
+	procedure BitBtn3Click(Sender: TObject);
+	procedure BitBtn4Click(Sender: TObject);
   procedure FormResize(Sender: TObject);
     procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
@@ -112,6 +123,30 @@ begin
   Image1.Visible := False;
   Timer2.Enabled := False;
   Timer2.Enabled := True;
+end;
+
+procedure TForm2.BitBtn1Click(Sender: TObject);
+begin
+  FSim.Map.ScrollRight;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
+end;
+
+procedure TForm2.BitBtn2Click(Sender: TObject);
+begin
+  FSim.Map.ScrollDown;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
+end;
+
+procedure TForm2.BitBtn3Click(Sender: TObject);
+begin
+  FSim.Map.ScrollUp;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
+end;
+
+procedure TForm2.BitBtn4Click(Sender: TObject);
+begin
+   FSim.Map.ScrollLeft;
+  FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);

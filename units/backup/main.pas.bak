@@ -183,7 +183,7 @@ begin
   FSimFormList.Add(TForm2.Create(nil));
   FSimFormList[FSimFormList.Count - 1].ID := FSimCounter;
   FSimFormList[FSimFormList.Count - 1].Caption := TForm3(Sender).LabeledEdit5.Text;
-  FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
+  //FSimFormList[FSimFormList.Count - 1].MyOnDestroy := @RemoveSim;
 
   FSimFormList[FSimFormList.Count - 1].Sim.Name := TForm3(Sender).LabeledEdit5.Text;
   FSimFormList[FSimFormList.Count - 1].Sim.Map.SetParameters(TForm3(Sender).SimSetup.MapSetup);

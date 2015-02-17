@@ -101,7 +101,7 @@ object Form3: TForm3
       ParentShowHint = False
       ShowHint = True
       TabOrder = 1
-      Text = '50'
+      Text = '70'
     end
     object Image1: TImage
       Left = 224
@@ -711,7 +711,7 @@ object Form3: TForm3
     Left = 8
     Height = 24
     Top = 589
-    Width = 154
+    Width = 133
     Caption = 'Start when finished'
     Checked = True
     State = cbChecked

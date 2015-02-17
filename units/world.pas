@@ -6,7 +6,7 @@ unit world;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math;
+  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math, TypInfo;
 
 type
 
@@ -38,6 +38,7 @@ type
     FWidth, FHeight: integer;
     FTileSize: integer;
     FProbForest, FProbRocks: integer;
+    FScrollX, FScrollY: Integer;
 
     FTiles: TTiles;
     FOnChange: TOnChangeEvent;
@@ -45,7 +46,6 @@ type
     procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    procedure GenerateBerries(x, y: Integer);
 
   public
     constructor Create;
@@ -60,6 +60,11 @@ type
     procedure DrawToCanvas(ACanvas: TCanvas);
     procedure SetTile(x,y,tile: Integer);
     function ToText: TStringList;
+
+    procedure ScrollLeft;
+    procedure ScrollRight;
+    procedure ScrollUp;
+    procedure ScrollDown;
 
     property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Tiles: TTiles read FTiles write FTiles;
@@ -106,14 +111,17 @@ begin
   ImageTree.Picture.LoadFromFile('../gfx/tiles/8x8/tree.png');
   ImageRock := TImage.Create(nil);
   ImageRock.Picture.LoadFromFile('../gfx/tiles/8x8/rock.png');
-  ImageBerries := TImage.Create(nil);
-  ImageBerries.Picture.LoadFromFile('../gfx/tiles/8x8/berries2.png');
+
   ImageRomanHouse := TImage.Create(nil);
   ImageRomanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/roman house.png');
+
+  {ImageBerries := TImage.Create(nil);
+  ImageBerries.Picture.LoadFromFile('../gfx/tiles/8x8/berries2.png');
+
   ImageGermanHouse := TImage.Create(nil);
   ImageGermanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/german house.png');
   ImageSlavonicHouse := TImage.Create(nil);
-  ImageSlavonicHouse.Picture.LoadFromFile('../gfx/tiles/8x8/slavonic house.png');
+  ImageSlavonicHouse.Picture.LoadFromFile('../gfx/tiles/8x8/slavonic house.png');  }
 end;
 
 procedure TMap.Clear;
@@ -241,11 +249,6 @@ begin
   end;
 end;
 
-procedure TMap.GenerateBerries(x, y: Integer);
-begin
-  FTiles[x,y] := TTileType.ttBerries
-end;
-
 function TMap.ToText: TStringList;
 var
   x, y: integer;
@@ -256,7 +259,8 @@ begin
   begin
     line := '';
     for x := 0 to FWidth - 1 do
-      line := line + IntToStr(integer(FTiles[x, y])) + ',  ';
+      line := line + GetEnumName(TypeInfo(TTileType),ord(FTiles[x, y]));
+      //line := line + IntToStr(Integer(FTiles[x, y])) + ',  ';
     Result.Add(line);
   end;
 end;
@@ -265,6 +269,7 @@ procedure TMap.DrawToCanvas(ACanvas: TCanvas);
 var
   x, y: integer;
   tmpbmp: TBitMap;
+  posx, posy: Integer;
 begin
   tmpbmp := TBitMap.Create;
   try
@@ -273,19 +278,24 @@ begin
   tmpbmp.Height := ACanvas.Height;
   tmpbmp.Canvas.Brush.Color := clBlack;
   tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
+  ACanvas.Clear;
+  ACanvas.Brush.Color := clBlack;
+  ACanvas.FillRect(0, 0, ACanvas.Width, ACanvas.Height);
 
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
     begin
+      posx := (x - FScrollx)*FTileSize;
+      posy := (y - FScrolly)*FTileSize;
       case (FTiles[x, y]) of
-        ttGrass: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageGrass.Picture.Bitmap);
-        ttTree: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageTree.Picture.Bitmap);
-        ttRock: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageRock.Picture.Bitmap);
-        ttRomanHouse: tmpbmp.Canvas.Draw(x * FTileSize, y * FTileSize, ImageRomanHouse.Picture.Bitmap);
+        ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
+        ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+        ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
       end;
     end;
   end;
+
   ACanvas.Draw(0,0, tmpbmp);
   finally
     tmpbmp.Free;
@@ -295,6 +305,26 @@ end;
 procedure TMap.SetTile(x,y,tile: Integer);
 begin
   FTiles[round(x/FTileSize),round(y/FTileSize)] := TTileType(tile-1);
+end;
+
+procedure TMap.ScrollLeft;
+begin
+  FScrollx += 1;
+end;
+
+procedure TMap.ScrollRight;
+begin
+  FScrollx -= 1;
+end;
+
+procedure TMap.ScrollUp;
+begin
+  FScrolly += 1;
+end;
+
+procedure TMap.ScrollDown;
+begin
+  FScrolly -= 1;
 end;
 
 end.

@@ -21,10 +21,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="main"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="131"/>
-        <CursorPos X="53" Y="134"/>
+        <TopLine Value="144"/>
+        <CursorPos X="31" Y="164"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,7 +37,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="30" Y="10"/>
+        <CursorPos X="83" Y="1"/>
         <UsageCount Value="205"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -78,7 +79,7 @@
         <EditorIndex Value="6"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
-        <CursorPos X="1" Y="43"/>
+        <CursorPos X="34" Y="17"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -102,8 +103,8 @@
         <UnitName Value="SimulationWindow"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="128"/>
-        <CursorPos X="3" Y="142"/>
+        <TopLine Value="176"/>
+        <CursorPos X="47" Y="207"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -112,11 +113,10 @@
         <Filename Value="units\world.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="world"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="205"/>
-        <CursorPos X="22" Y="230"/>
+        <TopLine Value="10"/>
+        <CursorPos X="10" Y="25"/>
         <UsageCount Value="204"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -140,8 +140,8 @@
         <UnitName Value="SimulationSetupWindow"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="32" Y="10"/>
+        <TopLine Value="10"/>
+        <CursorPos X="53" Y="40"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -154,18 +154,29 @@
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="38" Y="9"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="171"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
+        <Filename Value="units\definitions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="definitions"/>
+        <EditorIndex Value="11"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="1"/>
+        <CursorPos X="23" Y="16"/>
+        <UsageCount Value="26"/>
+        <Loaded Value="True"/>
+      </Unit13>
+      <Unit14>
         <Filename Value="units\map.pas"/>
         <UnitName Value="map"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="11"/>
         <UsageCount Value="3"/>
-      </Unit13>
-      <Unit14>
+      </Unit14>
+      <Unit15>
         <Filename Value="forms\mapsetupform.pas"/>
         <ComponentName Value="Form3"/>
         <ResourceBaseClass Value="Form"/>
@@ -174,16 +185,16 @@
         <TopLine Value="1"/>
         <CursorPos X="37" Y="30"/>
         <UsageCount Value="8"/>
-      </Unit14>
-      <Unit15>
+      </Unit15>
+      <Unit16>
         <Filename Value="C:\Delphi-Components\Outlook\GX_Outlook.pas"/>
         <UnitName Value="GX_Outlook"/>
         <WindowIndex Value="0"/>
         <TopLine Value="1"/>
         <CursorPos X="1" Y="1"/>
         <UsageCount Value="4"/>
-      </Unit15>
-      <Unit16>
+      </Unit16>
+      <Unit17>
         <Filename Value="..\..\..\Desktop\Materialcenter\DataModules\ProjectsDM.pas"/>
         <HasResources Value="True"/>
         <UnitName Value="ProjectsDM"/>
@@ -191,17 +202,6 @@
         <TopLine Value="1"/>
         <CursorPos X="26" Y="30"/>
         <UsageCount Value="5"/>
-      </Unit16>
-      <Unit17>
-        <Filename Value="units\definitions.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="definitions"/>
-        <EditorIndex Value="11"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="1"/>
-        <CursorPos X="49" Y="17"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
       </Unit17>
     </Units>
     <General>
@@ -209,124 +209,124 @@
     </General>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="133" Column="3" TopLine="106"/>
-      </Position1>
-      <Position2>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="134" Column="3" TopLine="107"/>
-      </Position2>
-      <Position3>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="133" Column="3" TopLine="106"/>
-      </Position3>
-      <Position4>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="135" Column="3" TopLine="108"/>
-      </Position4>
-      <Position5>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="142" Column="43" TopLine="122"/>
-      </Position5>
-      <Position6>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="126" Column="5" TopLine="115"/>
-      </Position6>
-      <Position7>
-        <Filename Value="forms\simulationwindow.pas"/>
-        <Caret Line="136" Column="22" TopLine="122"/>
-      </Position7>
-      <Position8>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="93" Column="83" TopLine="52"/>
-      </Position8>
-      <Position9>
         <Filename Value="units\world.pas"/>
         <Caret Line="11" Column="22" TopLine="1"/>
-      </Position9>
-      <Position10>
+      </Position1>
+      <Position2>
         <Filename Value="units\world.pas"/>
         <Caret Line="81" Column="5" TopLine="50"/>
+      </Position2>
+      <Position3>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="9" Column="74" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="88" Column="14" TopLine="49"/>
+      </Position4>
+      <Position5>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="66" Column="25" TopLine="47"/>
+      </Position5>
+      <Position6>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="81" Column="12" TopLine="50"/>
+      </Position6>
+      <Position7>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="86" Column="16" TopLine="50"/>
+      </Position7>
+      <Position8>
+        <Filename Value="units\world.pas"/>
+        <Caret Line="9" Column="65" TopLine="1"/>
+      </Position8>
+      <Position9>
+        <Filename Value="units\definitions.pas"/>
+        <Caret Line="19" Column="3" TopLine="1"/>
+      </Position9>
+      <Position10>
+        <Filename Value="units\definitions.pas"/>
+        <Caret Line="8" Column="29" TopLine="1"/>
       </Position10>
       <Position11>
         <Filename Value="units\world.pas"/>
-        <Caret Line="9" Column="74" TopLine="1"/>
+        <Caret Line="76" Column="19" TopLine="45"/>
       </Position11>
       <Position12>
         <Filename Value="units\world.pas"/>
-        <Caret Line="88" Column="14" TopLine="49"/>
+        <Caret Line="74" Column="24" TopLine="45"/>
       </Position12>
       <Position13>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="66" Column="25" TopLine="47"/>
-      </Position13>
-      <Position14>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="81" Column="12" TopLine="50"/>
-      </Position14>
-      <Position15>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="86" Column="16" TopLine="50"/>
-      </Position15>
-      <Position16>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="9" Column="65" TopLine="1"/>
-      </Position16>
-      <Position17>
-        <Filename Value="units\definitions.pas"/>
-        <Caret Line="19" Column="3" TopLine="1"/>
-      </Position17>
-      <Position18>
-        <Filename Value="units\definitions.pas"/>
-        <Caret Line="8" Column="29" TopLine="1"/>
-      </Position18>
-      <Position19>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="9" Column="78" TopLine="49"/>
-      </Position19>
-      <Position20>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="76" Column="19" TopLine="45"/>
-      </Position20>
-      <Position21>
-        <Filename Value="units\world.pas"/>
-        <Caret Line="74" Column="24" TopLine="45"/>
-      </Position21>
-      <Position22>
         <Filename Value="units\funcs.pas"/>
         <Caret Line="19" Column="43" TopLine="1"/>
-      </Position22>
-      <Position23>
-        <Filename Value="forms\SimulationSetupWindow.pas"/>
-        <Caret Line="29" Column="63" TopLine="105"/>
-      </Position23>
-      <Position24>
+      </Position13>
+      <Position14>
         <Filename Value="units\cities.pas"/>
         <Caret Line="21" Column="24" TopLine="1"/>
-      </Position24>
-      <Position25>
+      </Position14>
+      <Position15>
         <Filename Value="units\main.pas"/>
         <Caret Line="182" Column="59" TopLine="82"/>
+      </Position15>
+      <Position16>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="183" Column="59" TopLine="122"/>
+      </Position16>
+      <Position17>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="184" Column="59" TopLine="123"/>
+      </Position17>
+      <Position18>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="183" Column="59" TopLine="122"/>
+      </Position18>
+      <Position19>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="184" Column="59" TopLine="123"/>
+      </Position19>
+      <Position20>
+        <Filename Value="units\main.pas"/>
+        <Caret Line="183" Column="59" TopLine="122"/>
+      </Position20>
+      <Position21>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="64" Column="15" TopLine="27"/>
+      </Position21>
+      <Position22>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="203" Column="48" TopLine="157"/>
+      </Position22>
+      <Position23>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="177" Column="23" TopLine="39"/>
+      </Position23>
+      <Position24>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="180" Column="4" TopLine="150"/>
+      </Position24>
+      <Position25>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="203" Column="27" TopLine="166"/>
       </Position25>
       <Position26>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="183" Column="59" TopLine="122"/>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="202" Column="25" TopLine="160"/>
       </Position26>
       <Position27>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="184" Column="59" TopLine="123"/>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="200" Column="38" TopLine="172"/>
       </Position27>
       <Position28>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="183" Column="59" TopLine="122"/>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="206" Column="11" TopLine="176"/>
       </Position28>
       <Position29>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="184" Column="59" TopLine="123"/>
+        <Filename Value="forms\simulationwindow.pas"/>
+        <Caret Line="9" Column="92" TopLine="2"/>
       </Position29>
       <Position30>
-        <Filename Value="units\main.pas"/>
-        <Caret Line="183" Column="59" TopLine="122"/>
+        <Filename Value="units\definitions.pas"/>
+        <Caret Line="21" Column="53" TopLine="1"/>
       </Position30>
     </JumpHistory>
   </ProjectSession>

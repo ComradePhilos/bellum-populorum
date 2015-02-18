@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Graphics, fgl,
   {own units}
-  peoples, world;
+  peoples, world, definitions;
 
 type
 
@@ -42,8 +42,6 @@ type
   end;
 
   TSimulationList = specialize TFPGObjectList<TSimulation>;
-
-  TFaction = (fRoman, fGerman, FSlavonic);
 
 implementation
 

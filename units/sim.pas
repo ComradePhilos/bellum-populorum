@@ -31,10 +31,10 @@ type
     destructor Destroy;
     procedure Clear;
 
-    procedure GenerateRomans(AColor: TColor);                          // Generating People
+    procedure GenerateRomans(AColor: TColor);  // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
-    procedure Initialize(ASimSetup: TSimSetup);                         // Generates the start situation
+    procedure Initialize(ASimSetup: TSimSetup);  // Generates the start situation
 
     property Map: TMap read FMap write FMap;
     property Name: String read FName write FName;

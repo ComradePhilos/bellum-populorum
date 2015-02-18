@@ -79,7 +79,7 @@ object Form2: TForm2
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object Image2: TImage
     Left = 1128
     Height = 8
@@ -135,7 +135,7 @@ object Form2: TForm2
   object GroupBox1: TGroupBox
     Left = 416
     Height = 387
-    Top = 17
+    Top = 24
     Width = 297
     Anchors = [akTop, akRight, akBottom]
     Caption = 'Controls'

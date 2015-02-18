@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, TAGraph, Forms, Controls, Graphics, Dialogs,
 	ExtCtrls, StdCtrls, Buttons, Grids, EditBtn, fgl, world, peoples, sim, funcs,
-	SimulationWindow;
+	SimulationWindow, definitions;
 
 type
 

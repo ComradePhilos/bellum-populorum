@@ -5,7 +5,7 @@ unit definitions;
 interface
 
 uses
-      Classes, SysUtils, fgl;
+      Classes, SysUtils, fgl, ExtCtrls;
 
 type
   TFaction = (fRoman, fGerman, FSlavonic);
@@ -16,10 +16,15 @@ type
   TResources = array[0..2] of Integer;
   TPeopleType = (ptRoman, ptGerman, ptSlavonic);
 
-  TPeoplesList = specialize TFPGObjectList<TPeople>;
-
 var
   txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
+  ImageGrass: TImage;
+  ImageTree: TImage;
+  ImageRock: TImage;
+  ImageBerries: TImage;
+  ImageRomanHouse: TImage;
+  ImageGermanHouse: TImage;
+  ImageSlavonicHouse: TImage;
 
 implementation
 

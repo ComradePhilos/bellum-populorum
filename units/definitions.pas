@@ -5,7 +5,7 @@ unit definitions;
 interface
 
 uses
-      Classes, SysUtils, fgl;
+  Classes, SysUtils, fgl, ExtCtrls;
 
 type
   TFaction = (fRoman, fGerman, FSlavonic);
@@ -18,6 +18,13 @@ type
 
 var
   txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
+  ImageGrass: TImage;
+  ImageTree: TImage;
+  ImageRock: TImage;
+  ImageBerries: TImage;
+  ImageRomanHouse: TImage;
+  ImageGermanHouse: TImage;
+  ImageSlavonicHouse: TImage;
 
 implementation
 

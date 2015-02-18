@@ -23,7 +23,7 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
-				ActionList1: TActionList;
+    ActionList1: TActionList;
 	  Label1: TLabel;
     ShowButton: TBitBtn;
     CloseButton: TBitBtn;

@@ -23,13 +23,6 @@ type
 
   TMap = class
   private
-    ImageGrass: TImage;
-    ImageTree: TImage;
-    ImageRock: TImage;
-    ImageBerries: TImage;
-    ImageRomanHouse: TImage;
-    ImageGermanHouse: TImage;
-    ImageSlavonicHouse: TImage;
 
     // World
     FWidth, FHeight: integer;
@@ -65,7 +58,10 @@ type
     procedure ScrollDown;
 
     property OnChange: TOnChangeEvent read FOnChange write FOnChange;
+    property Scrollx: Integer read FScrollx write FScrollx;
+    property Scrolly: Integer read FScrolly write FScrolly;
     property Tiles: TTiles read FTiles write FTiles;
+    property Tilesize: Integer read FTileSize write FTileSize;
   end;
 
   TMapObject = Class
@@ -227,14 +223,14 @@ var
   newx, newy: integer;
   dist: integer;
 begin
-  extent := random(30) + 10;
-  Count := Random(600) + 35;
+  extent := random(40) + 10;
+  Count := Random(1600) + 300;
   FTiles[x, y] := TTileType.ttTree;
 
   for I := 0 to Count - 1 do
   begin
-    newx := x + Random(extent) - 20;
-    newy := y + Random(extent) - 20;
+    newx := x + Random(extent) - 25;
+    newy := y + Random(extent) - 25;
     if (newx < FWidth) and (newy < FHeight) then
     begin
       if (newx >= 0) and (newy >= 0) then

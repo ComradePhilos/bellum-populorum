@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Menus, StdCtrls, ComCtrls, Buttons,
+  Menus, StdCtrls, ComCtrls, Buttons, ActnList,
   {own units}
   sim, SimulationWindow, SimulationSetupWindow;
 
@@ -23,6 +23,7 @@ type
   { TForm1 }
 
   TForm1 = class(TForm)
+				ActionList1: TActionList;
 	  Label1: TLabel;
     ShowButton: TBitBtn;
     CloseButton: TBitBtn;

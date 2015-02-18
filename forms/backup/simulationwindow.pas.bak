@@ -13,22 +13,15 @@ type
   { TForm2 }
 
   TForm2 = class(TForm)
-    Arrow1: TArrow;
-		Arrow2: TArrow;
-		Arrow3: TArrow;
-		Arrow4: TArrow;
 		BitBtn1: TBitBtn;
 		BitBtn2: TBitBtn;
 		BitBtn3: TBitBtn;
 		BitBtn4: TBitBtn;
-    GenerateButton: TBitBtn;
 		Edit1: TEdit;
 		GroupBox1: TGroupBox;
 	  Image1: TImage;
 		Image2: TImage;
 		Label1: TLabel;
-		LabeledEdit1: TLabeledEdit;
-		LabeledEdit2: TLabeledEdit;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
 		MenuItem2: TMenuItem;
@@ -47,7 +40,6 @@ type
 	  procedure BitBtn3Click(Sender: TObject);
 	  procedure BitBtn4Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Paint(Sender: TObject);

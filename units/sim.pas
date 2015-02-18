@@ -86,21 +86,8 @@ begin
 end;
 
 procedure TSimulation.Initialize(ASimSetup: TSimSetup);
-var
-  I: integer;
 begin
-  with ASimSetup do
-  begin
-    //FMap.MapSettings := MapSetup;
-    for I := 0 to FPeoplesList.Count - 1 do
-    begin
-      //case FPeoplesList[I].PeopleType of
-        //ptRoman: GenerateRomans(FPeoplesList[I].Colors[I]);
-        //ptGerman: GenerateGermans(PeopleSetup.Colors[I]);
-        //ptSlavonic: GenerateSlavonics(PeopleSetup.Colors[I]);
-      //end;
-    end;
-  end;
+
 
 end;
 

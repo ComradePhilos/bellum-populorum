@@ -6,7 +6,7 @@ unit world;
 interface
 
 uses
-  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math, TypInfo, definitions;
+  Classes, SysUtils, ExtCtrls, Controls, Graphics, Math, TypInfo, fgl, definitions;
 
 type
 
@@ -20,6 +20,22 @@ type
     ProbRocks: integer;
   end;
 
+  TMapObject = Class
+    private
+      FX, FY: Integer;
+      FHealth: Integer;
+      FBitmap: TBitmap;
+      FAge: Integer;
+    public
+      constructor Create(x,y: Integer);
+	end;
+
+  TMapTree = class(TMapObject)
+    private
+      FFrameList: TImageList;
+  end;
+
+  TMapObjectList = specialize TFPGObjectList<TMapObject>;
 
   TMap = class
   private
@@ -29,6 +45,7 @@ type
     FScrollX, FScrollY: Integer;
 
     FTiles: TTiles;
+    FObjects: TMapObjectList;
     FOnChange: TOnChangeEvent;
 
     procedure GenerateForest(x, y: integer);
@@ -38,6 +55,7 @@ type
   public
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
+    destructor Destroy;
     procedure Clear;
 
     procedure Generate; overload;
@@ -60,20 +78,6 @@ type
     property Tilesize: Integer read FTileSize write FTileSize;
   end;
 
-  TMapObject = Class
-    private
-      FX, FY: Integer;
-      FHealth: Integer;
-      FBitmap: TBitmap;
-	end;
-
-  TBuilding = Class(TMapObject)
-    private
-    FFaction: TFaction;
-    public
-    constructor Create;
-	end;
-
 implementation
 
 // #################################################### TMAP ###########################################################
@@ -82,12 +86,19 @@ constructor TMap.Create;
 begin
   Randomize;
   SetLength(FTiles, 0, 0);
+  FObjects := TMapObjectList.Create(True);
 end;
 
 constructor TMap.Create(AMapSettings: TMapSetup);
 begin
   Randomize;
   Generate;
+  FObjects := TMapObjectList.Create(True);
+end;
+
+destructor TMap.Destroy;
+begin
+  FObjects.Free;
 end;
 
 procedure TMap.Clear;
@@ -325,11 +336,13 @@ begin
   FScrolly -= 1;
 end;
 
-
-// ####################################### BUILDINGS ####################################################
-constructor TBuilding.Create;
+// ###################################### MAPOBJECTS ####################################################
+constructor TMapObject.Create(x, y: Integer);
 begin
-
+  FX := x;
+  FY := y;
+  FAge := 0;
 end;
+
 
 end.

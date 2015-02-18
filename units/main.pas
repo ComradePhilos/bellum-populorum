@@ -105,7 +105,6 @@ end;
 
 procedure TForm1.NewClick(Sender: TObject);
 begin
-  // Create Setup window
   FSimSetupList.Add(TForm3.Create(nil));
   FSimSetupList[FSimSetupList.Count - 1].LabeledEdit5.Text :=
     'Simulation ' + IntToStr(FSimCounter+1);

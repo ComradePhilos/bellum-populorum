@@ -131,7 +131,7 @@ begin
   EditWood.Text := IntToStr(Random(400)+100);
   EditFood.Text := IntToStr(Random(400)+100);
   EditIron.Text := IntToStr(Random(400)+100);
-  ButtonColor.ButtonColor := Random(clWhite);      // Good thing Colors are Integers
+  ButtonColor.ButtonColor := Random(clWhite);
 end;
 
 procedure TForm3.FormDestroy(Sender: TObject);

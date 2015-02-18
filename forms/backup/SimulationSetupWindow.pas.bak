@@ -131,7 +131,7 @@ begin
   EditWood.Text := IntToStr(Random(400)+100);
   EditFood.Text := IntToStr(Random(400)+100);
   EditIron.Text := IntToStr(Random(400)+100);
-  ButtonColor.ButtonColor := Random(clWhite);      // Good thing Colors are Integers
+  ButtonColor.ButtonColor := Random(clWhite);
 end;
 
 procedure TForm3.FormDestroy(Sender: TObject);
@@ -148,7 +148,7 @@ begin
     begin
     Canvas.Brush.Color:= StrToInt(PeopleGrid.Cells[ACol, ARow]);
     Canvas.FillRect(aRect);
-    Canvas.TextOut(aRect.Left+2, aRect.Top+2, Cells[ACol, ARow]);
+    //Canvas.TextOut(aRect.Left+2, aRect.Top+2, Cells[ACol, ARow]);
 		end;
 	end;
 end;

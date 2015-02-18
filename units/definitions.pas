@@ -16,6 +16,8 @@ type
   TResources = array[0..2] of Integer;
   TPeopleType = (ptRoman, ptGerman, ptSlavonic);
 
+  procedure LoadImages;
+  procedure InitImages;
 var
   txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
   ImageGrass: TImage;
@@ -28,7 +30,21 @@ var
 
 implementation
 
+const cTilePath = '../gfx/tiles/8x8/';
 
+procedure InitImages;
+begin
+  ImageGrass := TImage.Create(nil);
+  ImageTree := TImage.Create(nil);
+  ImageRock := TImage.Create(nil);
+end;
+
+procedure LoadImages;
+begin
+  ImageGrass.Picture.LoadFromFile(cTilePath + 'grass.png');
+  ImageTree.Picture.LoadFromFile(cTilePath + 'tree.png');
+  ImageRock.Picture.LoadFromFile(cTilePath + 'rock.png');
+end;
 
 end.
 

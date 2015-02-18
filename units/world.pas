@@ -23,8 +23,6 @@ type
 
   TMap = class
   private
-
-    // World
     FWidth, FHeight: integer;
     FTileSize: integer;
     FProbForest, FProbRocks: integer;
@@ -33,7 +31,6 @@ type
     FTiles: TTiles;
     FOnChange: TOnChangeEvent;
 
-    procedure LoadImages;
     procedure GenerateForest(x, y: integer);
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
@@ -41,7 +38,6 @@ type
   public
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
-    destructor Destroy;
     procedure Clear;
 
     procedure Generate; overload;
@@ -84,44 +80,14 @@ implementation
 
 constructor TMap.Create;
 begin
-  LoadImages;
   Randomize;
   SetLength(FTiles, 0, 0);
 end;
 
 constructor TMap.Create(AMapSettings: TMapSetup);
 begin
-  LoadImages;
   Randomize;
   Generate;
-end;
-
-destructor TMap.Destroy;
-begin
-  ImageGrass.Free;
-  ImageTree.Free;
-  ImageRock.Free;
-end;
-
-procedure TMap.LoadImages;
-begin
-  ImageGrass := TImage.Create(nil);
-  ImageGrass.Picture.LoadFromFile('../gfx/tiles/8x8/grass.png');
-  ImageTree := TImage.Create(nil);
-  ImageTree.Picture.LoadFromFile('../gfx/tiles/8x8/tree.png');
-  ImageRock := TImage.Create(nil);
-  ImageRock.Picture.LoadFromFile('../gfx/tiles/8x8/rock.png');
-
-  ImageRomanHouse := TImage.Create(nil);
-  ImageRomanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/roman house.png');
-
-  {ImageBerries := TImage.Create(nil);
-  ImageBerries.Picture.LoadFromFile('../gfx/tiles/8x8/berries2.png');
-
-  ImageGermanHouse := TImage.Create(nil);
-  ImageGermanHouse.Picture.LoadFromFile('../gfx/tiles/8x8/german house.png');
-  ImageSlavonicHouse := TImage.Create(nil);
-  ImageSlavonicHouse.Picture.LoadFromFile('../gfx/tiles/8x8/slavonic house.png');  }
 end;
 
 procedure TMap.Clear;
@@ -159,7 +125,6 @@ end;
 
 procedure TMap.Generate(AMepSetup: TMapSetup);
 begin
-  //FMapSettings := AMapSettings;
   SetParameters(AMepSetup);
   Generate;
 end;

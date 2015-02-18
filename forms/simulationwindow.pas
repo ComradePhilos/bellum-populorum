@@ -47,7 +47,6 @@ type
 	  procedure BitBtn3Click(Sender: TObject);
 	  procedure BitBtn4Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
-    procedure GenerateButtonClick(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Paint(Sender: TObject);
@@ -95,27 +94,6 @@ end;
 procedure TForm2.Image1Paint(Sender: TObject);
 begin
   FSim.Map.DrawToCanvas(Image1.Canvas);
-end;
-
-procedure TForm2.GenerateButtonClick(Sender: TObject);
-var
-  x,y: Integer;
-  tmp: TMapSetup;
-begin
-  GenerateButton.Enabled := False;
-  Application.ProcessMessages;
-
-  tmp := FSim.Map.getParameters;
-
-  x := StrToInt(LabeledEdit1.Text);
-  y := StrToInt(LabeledEdit2.Text);
-  tmp.Width := x;
-  tmp.Height := y;
-  FSim.Map.Generate(tmp);
-
-  FSim.Map.DrawToCanvas(Image1.Picture.Bitmap.Canvas);
-  GenerateButton.Enabled := True;
-
 end;
 
 procedure TForm2.FormResize(Sender: TObject);
@@ -167,7 +145,6 @@ end;
 procedure TForm2.Timer2Timer(Sender: TObject);
 begin
   Image1.Visible := True;
-  //DrawMap(nil);
   Timer2.Enabled := False;
 end;
 
@@ -182,41 +159,41 @@ x, y: integer;
 tmpbmp: TBitMap;
 posx, posy: Integer;
 begin
-tmpbmp := TBitMap.Create;
-try
-tmpbmp.PixelFormat := pf32Bit;
-tmpbmp.Width := Image1.Canvas.Width;
-tmpbmp.Height := Image1.Canvas.Height;
-tmpbmp.Canvas.Brush.Color := clBlack;
-tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
-Image1.Canvas.Clear;
-Image1.Canvas.Brush.Color := clBlack;
-Image1.Canvas.FillRect(0, 0, Image1.Canvas.Width, Image1.Canvas.Height);
+  tmpbmp := TBitMap.Create;
+  try
+  tmpbmp.PixelFormat := pf32Bit;
+  tmpbmp.Width := Image1.Canvas.Width;
+  tmpbmp.Height := Image1.Canvas.Height;
+  tmpbmp.Canvas.Brush.Color := clBlack;
+  tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
+  Image1.Canvas.Clear;
+  Image1.Canvas.Brush.Color := clBlack;
+  Image1.Canvas.FillRect(0, 0, Image1.Canvas.Width, Image1.Canvas.Height);
 
-with FSim.Map do
-begin
-for y := 0 to Height - 1 do
-begin
-  for x := 0 to Width - 1 do
+  with FSim.Map do
   begin
-    posx := (x - Scrollx)*TileSize;
-    posy := (y - Scrolly)*TileSize;
-    if IsInbounds(tmpbmp.Canvas, posx, posy) then
+    for y := 0 to Height - 1 do
     begin
-    case (Tiles[x, y]) of
-      ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-      ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-      ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
-    end;
+      for x := 0 to Width - 1 do
+      begin
+        posx := (x - Scrollx)*TileSize;
+        posy := (y - Scrolly)*TileSize;
+        if IsInbounds(tmpbmp.Canvas, posx, posy) then
+        begin
+          case (Tiles[x, y]) of
+            ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
+            ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+            ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
+          end;
+        end;
+      end;
     end;
   end;
-  end;
-end;
 
-Image1.Canvas.Draw(0,0, tmpbmp);
-finally
-  tmpbmp.Free;
-end;
+  Image1.Canvas.Draw(0,0, tmpbmp);
+  finally
+    tmpbmp.Free;
+  end;
 end;
 
 function TForm2.IsInbounds(ACanvas: TCanvas; x, y: Integer): Boolean;

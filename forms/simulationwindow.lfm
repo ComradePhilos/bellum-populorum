@@ -186,7 +186,6 @@ object Form2: TForm2
       Top = 17
       Width = 96
       Caption = 'Genrate New'
-      OnClick = GenerateButtonClick
       TabOrder = 2
     end
     object TrackBar1: TTrackBar

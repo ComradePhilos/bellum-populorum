@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
   Menus, StdCtrls, ComCtrls, Buttons, ActnList,
   {own units}
-  sim, SimulationWindow, SimulationSetupWindow;
+  sim, SimulationWindow, SimulationSetupWindow, definitions;
 
 
 // Todo and to think about:
@@ -71,7 +71,7 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.9';
+  ProgrammeVersion = '0.0.10';
 
 {$R *.lfm}
 
@@ -98,6 +98,8 @@ begin
   FSimFormList := TSimFormList.Create(True);
   FSimSetupList := TSimSetupList.Create(True);
   FSimCounter := 0;
+  InitImages;
+  LoadImages;
   UpdateWindow;
 end;
 
@@ -146,6 +148,9 @@ begin
   FSimSetupList.Free;
   FForm.Free;
   FSetupForm.Free;
+  ImageGrass.Free;
+  ImageTree.Free;
+  ImageRock.Free;
 end;
 
 procedure TForm1.UpdateWindow;
@@ -199,5 +204,6 @@ begin
     FSimFormList[FSimFormList.Count - 1].Show;
 	end;
 end;
+
 
 end.

@@ -58,7 +58,6 @@ type
     procedure GenerateForest(x, y: integer);
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
-    function IsInbounds(ACanvas: TCanvas; x, y: Integer): Boolean;
     function Occupied(x,y: Integer):Boolean;
     procedure UpdateView;
 
@@ -73,7 +72,6 @@ type
     procedure SetParameters(AMapSetup: TMapSetup);
     function getParameters: TMapSetup;
     procedure SetTile(x,y,tile: Integer);
-    function ToText: TStringList;
 
     procedure ScrollLeft;
     procedure ScrollRight;
@@ -119,6 +117,7 @@ begin
   FTileSize := 0;
   FProbForest := 0;
   FProbRocks := 0;
+  FObjects.Clear;
 end;
 
 procedure TMap.Generate;
@@ -126,7 +125,6 @@ var
   x, y: integer;
 begin
   SetLength(FTiles, FWidth, FHeight);
-  FObjects.Clear;
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
@@ -262,22 +260,6 @@ begin
         end;
       end;
     end;
-  end;
-end;
-
-function TMap.ToText: TStringList;
-var
-  x, y: integer;
-  line: string;
-begin
-  Result := TStringList.Create;
-  for y := 0 to FHeight - 1 do
-  begin
-    line := '';
-    for x := 0 to FWidth - 1 do
-      line := line + GetEnumName(TypeInfo(TTileType),ord(FTiles[x, y]));
-      //line := line + IntToStr(Integer(FTiles[x, y])) + ',  ';
-    Result.Add(line);
   end;
 end;
 

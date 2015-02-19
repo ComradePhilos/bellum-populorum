@@ -85,7 +85,6 @@ end;
 
 procedure TForm2.Image1Paint(Sender: TObject);
 begin
-  //FSim.Map.DrawToCanvas(Image1.Canvas);
   DrawMap(nil);
 end;
 
@@ -99,25 +98,21 @@ end;
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   FSim.Map.ScrollRight;
-  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);
 begin
   FSim.Map.ScrollDown;
-  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn3Click(Sender: TObject);
 begin
   FSim.Map.ScrollUp;
-  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn4Click(Sender: TObject);
 begin
    FSim.Map.ScrollLeft;
-  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -156,38 +151,39 @@ begin
   tmpbmp := TBitMap.Create;
   try
   tmpbmp.PixelFormat := pf32Bit;
-  tmpbmp.Width := Image1.Canvas.Width;
-  tmpbmp.Height := Image1.Canvas.Height;
+  tmpbmp.Width := Image1.Width;
+  tmpbmp.Height := Image1.Height;
   tmpbmp.Canvas.Brush.Color := clBlack;
   tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
   Image1.Canvas.Clear;
   Image1.Canvas.Brush.Color := clBlack;
   Image1.Canvas.FillRect(0, 0, Image1.Canvas.Width, Image1.Canvas.Height);
 
-  with FSim.Map do
+  with FSim do
   begin
-    for y := 0 to Height - 1 do
+
+    for y := 0 to Map.Height - 1 do
     begin
-      for x := 0 to Width - 1 do
+      for x := 0 to Map.Width - 1 do
       begin
-        posx := (x - Scrollx)*TileSize;
-        posy := (y - Scrolly)*TileSize;
+        posx := (x - Map.Scrollx)*Map.TileSize;
+        posy := (y - Map.Scrolly)*Map.TileSize;
         if IsInbounds(tmpbmp.Canvas, posx, posy) then
         begin
           tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-          {case (Tiles[x, y]) of
-            ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
+          //case (Tiles[x, y]) of
+            //tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
             //ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-            ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
-          end; }
+            //ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
+          //end;
         end;
       end;
     end;
 
-    for I := 0 to MapObjects.Count - 1 do
+    for I := 0 to Map.MapObjects.Count - 1 do
     begin
-      posx := (MapObjects[I].x - Scrollx)*TileSize;
-      posy := (MapObjects[I].y - Scrolly)*TileSize;
+      posx := (Map.MapObjects[I].x - Map.Scrollx)*Map.TileSize;
+      posy := (Map.MapObjects[I].y - Map.Scrolly)*Map.TileSize;
       //tmpbmp.Canvas.Draw(posx, posy, MapObjects[I].Picture.Bitmap);
       tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
 		end;

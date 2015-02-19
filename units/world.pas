@@ -72,19 +72,20 @@ type
     procedure SetParameters(AMapSetup: TMapSetup);
     function getParameters: TMapSetup;
     procedure SetTile(x,y,tile: Integer);
-    function ToText: TStringList;
 
     procedure ScrollLeft;
     procedure ScrollRight;
     procedure ScrollUp;
     procedure ScrollDown;
 
+    property Height: Integer read FHeight write FHeight;
+    property MapObjects: TMapObjectList read FObjects write FObjects;
     property OnChange: TOnChangeEvent read FOnChange write FOnChange;
     property Scrollx: Integer read FScrollx write FScrollx;
     property Scrolly: Integer read FScrolly write FScrolly;
     property Tiles: TTiles read FTiles write FTiles;
-    property MapObjects: TMapObjectList read FObjects write FObjects;
     property Tilesize: Integer read FTileSize write FTileSize;
+    property Width: Integer read FWidth write FWidth;
   end;
 
 implementation
@@ -118,6 +119,7 @@ begin
   FTileSize := 0;
   FProbForest := 0;
   FProbRocks := 0;
+  FObjects.Clear;
 end;
 
 procedure TMap.Generate;
@@ -125,7 +127,6 @@ var
   x, y: integer;
 begin
   SetLength(FTiles, FWidth, FHeight);
-  FObjects.Clear;
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
@@ -261,22 +262,6 @@ begin
         end;
       end;
     end;
-  end;
-end;
-
-function TMap.ToText: TStringList;
-var
-  x, y: integer;
-  line: string;
-begin
-  Result := TStringList.Create;
-  for y := 0 to FHeight - 1 do
-  begin
-    line := '';
-    for x := 0 to FWidth - 1 do
-      line := line + GetEnumName(TypeInfo(TTileType),ord(FTiles[x, y]));
-      //line := line + IntToStr(Integer(FTiles[x, y])) + ',  ';
-    Result.Add(line);
   end;
 end;
 

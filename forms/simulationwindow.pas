@@ -173,8 +173,6 @@ begin
           tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
           //case (Tiles[x, y]) of
             //tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-            //ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-            //ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
           //end;
         end;
       end;
@@ -184,8 +182,12 @@ begin
     begin
       posx := (Map.MapObjects[I].x - Map.Scrollx)*Map.TileSize;
       posy := (Map.MapObjects[I].y - Map.Scrolly)*Map.TileSize;
-      //tmpbmp.Canvas.Draw(posx, posy, MapObjects[I].Picture.Bitmap);
-      tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+      if IsInbounds(tmpbmp.Canvas, posx, posy) then
+        tmpbmp.Canvas.Draw(posx, posy, Map.MapObjects[I].Picture.Bitmap);
+        //case Map.MapObjects[I].ClassName of
+			   // 'TMapTree': tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+				//end;
+
 		end;
 	end;
 

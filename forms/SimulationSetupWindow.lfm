@@ -53,7 +53,7 @@ object Form3: TForm3
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.4.0'
   object GroupBox1: TGroupBox
     Left = 7
     Height = 129
@@ -66,7 +66,7 @@ object Form3: TForm3
     TabOrder = 0
     object LabeledEdit1: TLabeledEdit
       Left = 24
-      Height = 23
+      Height = 24
       Top = 24
       Width = 80
       EditLabel.AnchorSideLeft.Control = LabeledEdit1
@@ -74,17 +74,17 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit1
       EditLabel.Left = 24
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Width'
       EditLabel.ParentColor = False
       TabOrder = 0
-      Text = '150'
+      Text = '100'
     end
     object LabeledEdit3: TLabeledEdit
       Left = 248
-      Height = 23
+      Height = 24
       Hint = 'the higher the value, the more probable it gets. e.g. 50/1000'
       Top = 24
       Width = 80
@@ -93,8 +93,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit3
       EditLabel.Left = 248
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Prob. Forest'
       EditLabel.ParentColor = False
@@ -139,7 +139,7 @@ object Form3: TForm3
     end
     object LabeledEdit2: TLabeledEdit
       Left = 136
-      Height = 23
+      Height = 24
       Top = 24
       Width = 80
       EditLabel.AnchorSideLeft.Control = LabeledEdit2
@@ -147,17 +147,17 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit2
       EditLabel.Left = 136
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Height'
       EditLabel.ParentColor = False
       TabOrder = 2
-      Text = '150'
+      Text = '100'
     end
     object LabeledEdit4: TLabeledEdit
       Left = 376
-      Height = 23
+      Height = 24
       Hint = 'the higher the value, the more probable it gets. e.g. 4/1000'
       Top = 24
       Width = 80
@@ -166,8 +166,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit4
       EditLabel.Left = 376
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Prob. Rocks'
       EditLabel.ParentColor = False
@@ -352,7 +352,7 @@ object Form3: TForm3
     end
     object EditCitizens: TLabeledEdit
       Left = 584
-      Height = 23
+      Height = 24
       Top = 24
       Width = 80
       EditLabel.AnchorSideLeft.Control = EditCitizens
@@ -360,8 +360,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditCitizens
       EditLabel.Left = 584
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Citizens'
       EditLabel.ParentColor = False
@@ -369,10 +369,10 @@ object Form3: TForm3
     end
     object PeopleBox: TComboBox
       Left = 496
-      Height = 23
+      Height = 24
       Top = 24
       Width = 80
-      ItemHeight = 15
+      ItemHeight = 16
       ItemIndex = 0
       Items.Strings = (
         'Romans'
@@ -384,7 +384,7 @@ object Form3: TForm3
     end
     object EditWood: TLabeledEdit
       Left = 496
-      Height = 23
+      Height = 24
       Top = 80
       Width = 80
       EditLabel.AnchorSideLeft.Control = EditWood
@@ -392,8 +392,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditWood
       EditLabel.Left = 496
-      EditLabel.Height = 15
-      EditLabel.Top = 62
+      EditLabel.Height = 16
+      EditLabel.Top = 61
       EditLabel.Width = 80
       EditLabel.Caption = 'Wood'
       EditLabel.ParentColor = False
@@ -401,7 +401,7 @@ object Form3: TForm3
     end
     object EditFood: TLabeledEdit
       Left = 584
-      Height = 23
+      Height = 24
       Top = 80
       Width = 80
       EditLabel.AnchorSideLeft.Control = EditFood
@@ -409,8 +409,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditFood
       EditLabel.Left = 584
-      EditLabel.Height = 15
-      EditLabel.Top = 62
+      EditLabel.Height = 16
+      EditLabel.Top = 61
       EditLabel.Width = 80
       EditLabel.Caption = 'Food'
       EditLabel.ParentColor = False
@@ -418,7 +418,7 @@ object Form3: TForm3
     end
     object EditIron: TLabeledEdit
       Left = 672
-      Height = 23
+      Height = 24
       Top = 80
       Width = 80
       EditLabel.AnchorSideLeft.Control = EditIron
@@ -426,8 +426,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = EditIron
       EditLabel.Left = 672
-      EditLabel.Height = 15
-      EditLabel.Top = 62
+      EditLabel.Height = 16
+      EditLabel.Top = 61
       EditLabel.Width = 80
       EditLabel.Caption = 'Iron'
       EditLabel.ParentColor = False
@@ -690,7 +690,7 @@ object Form3: TForm3
   end
   object LabeledEdit5: TLabeledEdit
     Left = 8
-    Height = 23
+    Height = 24
     Top = 24
     Width = 779
     Anchors = [akTop, akLeft, akRight]
@@ -699,8 +699,8 @@ object Form3: TForm3
     EditLabel.AnchorSideRight.Side = asrBottom
     EditLabel.AnchorSideBottom.Control = LabeledEdit5
     EditLabel.Left = 8
-    EditLabel.Height = 15
-    EditLabel.Top = 6
+    EditLabel.Height = 16
+    EditLabel.Top = 5
     EditLabel.Width = 779
     EditLabel.Caption = 'Title'
     EditLabel.ParentColor = False
@@ -709,9 +709,9 @@ object Form3: TForm3
   end
   object CheckBox1: TCheckBox
     Left = 8
-    Height = 19
+    Height = 20
     Top = 589
-    Width = 125
+    Width = 130
     Caption = 'Start when finished'
     Checked = True
     State = cbChecked
@@ -728,7 +728,7 @@ object Form3: TForm3
     TabOrder = 5
     object LabeledEdit6: TLabeledEdit
       Left = 8
-      Height = 23
+      Height = 24
       Hint = 'The length of 1 year in rounds'
       Top = 24
       Width = 80
@@ -737,8 +737,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit6
       EditLabel.Left = 8
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Rounds/Year'
       EditLabel.ParentColor = False
@@ -748,7 +748,7 @@ object Form3: TForm3
     end
     object LabeledEdit7: TLabeledEdit
       Left = 128
-      Height = 23
+      Height = 24
       Hint = 'The length of 1 winter in rounds'
       Top = 24
       Width = 80
@@ -757,8 +757,8 @@ object Form3: TForm3
       EditLabel.AnchorSideRight.Side = asrBottom
       EditLabel.AnchorSideBottom.Control = LabeledEdit7
       EditLabel.Left = 128
-      EditLabel.Height = 15
-      EditLabel.Top = 6
+      EditLabel.Height = 16
+      EditLabel.Top = 5
       EditLabel.Width = 80
       EditLabel.Caption = 'Winter'
       EditLabel.ParentColor = False

@@ -28,8 +28,10 @@ type
       FAge: Integer;
     public
       constructor Create;
+      destructor Destroy;
       procedure SetPos(x,y: Integer);
 
+      property Age: Integer read FAge write FAge;
       property Picture: TPicture read FPicture write FPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
@@ -38,6 +40,11 @@ type
   TMapTree = class(TMapObject)
     private
       FFrameList: TImageList;
+    public
+      constructor Create;
+  end;
+
+  TMapRock = class(TMapObject)
     public
       constructor Create;
   end;
@@ -241,8 +248,6 @@ var
 begin
   extent := random(5) + 2;
   Count := Random(28) + 6;
-  FTiles[x, y] := TTileType.ttRock;
-
 
   for I := 0 to Count - 1 do
   begin
@@ -255,9 +260,10 @@ begin
         dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
         begin
-          if (FTiles[newx, newy] = TTileType.ttGrass) then
+         if not Occupied(newx,newy) then
           begin
-            FTiles[newx, newy] := TTileType.ttRock;
+            FObjects.Add(TMapRock.Create);
+            FObjects[FObjects.Count-1].SetPos(newx,newy);
           end;
         end;
       end;
@@ -325,6 +331,11 @@ begin
   FPicture := TPicture.Create;
 end;
 
+destructor TMapObject.Destroy;
+begin
+  FPicture.Free;
+end;
+
 procedure TMapObject.SetPos(x,y: Integer);
 begin
   FX := x;
@@ -334,9 +345,13 @@ end;
 constructor TMapTree.Create;
 begin
   inherited;
-  FPicture.LoadFromFile('../gfx/objects/tree.png');
-  FPicture.Bitmap.Transparent := True;
-  FPicture.Bitmap.TransparentColor := clFuchsia;
+  FPicture.LoadFromFile('../gfx/objects/tree2.png');
+end;
+
+constructor TMapRock.Create;
+begin
+  inherited;
+  FPicture.LoadFromFile('../gfx/objects/rock.png');
 end;
 
 end.

@@ -29,10 +29,11 @@ type
     public
       constructor Create;
       destructor Destroy;
+      function GetPicture: TPicture; virtual;
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
-      property Picture: TPicture read FPicture write FPicture;
+      property Picture: TPicture read GetPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
 	end;
@@ -42,6 +43,7 @@ type
       FFrameList: TImageList;
     public
       constructor Create;
+      function GetPicture: TPicture; override;
   end;
 
   TMapRock = class(TMapObject)
@@ -336,6 +338,11 @@ begin
   FPicture.Free;
 end;
 
+function TMapObject.GetPicture: TPicture;
+begin
+  Result := FPicture;
+end;
+
 procedure TMapObject.SetPos(x,y: Integer);
 begin
   FX := x;
@@ -345,7 +352,17 @@ end;
 constructor TMapTree.Create;
 begin
   inherited;
-  FPicture.LoadFromFile('../gfx/objects/tree2.png');
+  //FPicture.LoadFromFile('../gfx/objects/tree2.png');
+end;
+
+function TMapTree.GetPicture: TPicture;
+begin
+  if FAge < 2000 then
+    Result.Bitmap.LoadFromFile('../gfx/objects/tree_small2.png');
+  if (FAge >= 2000) and (FAge < 6000) then
+    Result.Bitmap.LoadFromFile('../gfx/objects/tree_medium2.png');
+  if (FAge >= 6000) then
+    Result.Bitmap.LoadFromFile('../gfx/objects/tree2.png');
 end;
 
 constructor TMapRock.Create;

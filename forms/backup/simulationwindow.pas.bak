@@ -21,6 +21,7 @@ type
 		GroupBox1: TGroupBox;
 	  Image1: TImage;
 		Image2: TImage;
+		TreeImageList: TImageList;
 		Label1: TLabel;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
@@ -183,11 +184,11 @@ begin
       posx := (Map.MapObjects[I].x - Map.Scrollx)*Map.TileSize;
       posy := (Map.MapObjects[I].y - Map.Scrolly)*Map.TileSize;
       if IsInbounds(tmpbmp.Canvas, posx, posy) then
-      begin
-        case Map.MapObjects[I].ClassName of
-			    'TMapTree': tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-				end;
-			end;
+        tmpbmp.Canvas.Draw(posx, posy, Map.MapObjects[I].Picture.Bitmap);
+        //case Map.MapObjects[I].ClassName of
+			   // 'TMapTree': tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+				//end;
+
 		end;
 	end;
 

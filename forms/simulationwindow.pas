@@ -72,7 +72,6 @@ implementation
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
-  self.DoubleBuffered := True;
   FSim := TSimulation.Create;
   FDuration := 3000;
   Trackbar1.Position := FDuration;
@@ -86,7 +85,8 @@ end;
 
 procedure TForm2.Image1Paint(Sender: TObject);
 begin
-  FSim.Map.DrawToCanvas(Image1.Canvas);
+  //FSim.Map.DrawToCanvas(Image1.Canvas);
+  DrawMap(nil);
 end;
 
 procedure TForm2.FormResize(Sender: TObject);
@@ -99,25 +99,25 @@ end;
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   FSim.Map.ScrollRight;
-  FSim.Map.DrawToCanvas(Image1.Canvas);
+  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn2Click(Sender: TObject);
 begin
   FSim.Map.ScrollDown;
-  FSim.Map.DrawToCanvas(Image1.Canvas);
+  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn3Click(Sender: TObject);
 begin
   FSim.Map.ScrollUp;
-  FSim.Map.DrawToCanvas(Image1.Canvas);
+  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.BitBtn4Click(Sender: TObject);
 begin
    FSim.Map.ScrollLeft;
-  FSim.Map.DrawToCanvas(Image1.Canvas);
+  //FSim.Map.DrawToCanvas(Image1.Canvas);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -148,9 +148,10 @@ end;
 
 procedure TForm2.DrawMap(Sender: TObject);
 var
-x, y: integer;
-tmpbmp: TBitMap;
-posx, posy: Integer;
+  I: Integer;
+  x, y: integer;
+  tmpbmp: TBitMap;
+  posx, posy: Integer;
 begin
   tmpbmp := TBitMap.Create;
   try
@@ -173,15 +174,24 @@ begin
         posy := (y - Scrolly)*TileSize;
         if IsInbounds(tmpbmp.Canvas, posx, posy) then
         begin
-          case (Tiles[x, y]) of
+          tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
+          {case (Tiles[x, y]) of
             ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-            ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+            //ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
             ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
-          end;
+          end; }
         end;
       end;
     end;
-  end;
+
+    for I := 0 to MapObjects.Count - 1 do
+    begin
+      posx := (MapObjects[I].x - Scrollx)*TileSize;
+      posy := (MapObjects[I].y - Scrolly)*TileSize;
+      //tmpbmp.Canvas.Draw(posx, posy, MapObjects[I].Picture.Bitmap);
+      tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
+		end;
+	end;
 
   Image1.Canvas.Draw(0,0, tmpbmp);
   finally
@@ -192,9 +202,9 @@ end;
 function TForm2.IsInbounds(ACanvas: TCanvas; x, y: Integer): Boolean;
 begin
   Result := False;
-  if (x > 0) and (x < ACanvas.Width) then
+  if (x >= 0) and (x < ACanvas.Width) then
   begin
-    if (y > 0) and (y < ACanvas.Height) then
+    if (y >= 0) and (y < ACanvas.Height) then
     begin
       Result := True;
     end;

@@ -24,15 +24,22 @@ type
     private
       FX, FY: Integer;
       FHealth: Integer;
-      FBitmap: TBitmap;
+      FPicture: TPicture;
       FAge: Integer;
     public
-      constructor Create(x,y: Integer);
+      constructor Create;
+      procedure SetPos(x,y: Integer);
+
+      property Picture: TPicture read FPicture write FPicture;
+      property x: Integer read FX write FX;
+      property y: Integer read FY write FY;
 	end;
 
   TMapTree = class(TMapObject)
     private
       FFrameList: TImageList;
+    public
+      constructor Create;
   end;
 
   TMapObjectList = specialize TFPGObjectList<TMapObject>;
@@ -51,6 +58,8 @@ type
     procedure GenerateForest(x, y: integer);
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
+    function Occupied(x,y: Integer):Boolean;
+    procedure UpdateView;
 
   public
     constructor Create;
@@ -62,7 +71,6 @@ type
     procedure Generate(AMepSetup: TMapSetup);
     procedure SetParameters(AMapSetup: TMapSetup);
     function getParameters: TMapSetup;
-    procedure DrawToCanvas(ACanvas: TCanvas);
     procedure SetTile(x,y,tile: Integer);
     function ToText: TStringList;
 
@@ -75,6 +83,7 @@ type
     property Scrollx: Integer read FScrollx write FScrollx;
     property Scrolly: Integer read FScrolly write FScrolly;
     property Tiles: TTiles read FTiles write FTiles;
+    property MapObjects: TMapObjectList read FObjects write FObjects;
     property Tilesize: Integer read FTileSize write FTileSize;
   end;
 
@@ -92,8 +101,8 @@ end;
 constructor TMap.Create(AMapSettings: TMapSetup);
 begin
   Randomize;
-  Generate;
   FObjects := TMapObjectList.Create(True);
+  Generate;
 end;
 
 destructor TMap.Destroy;
@@ -116,6 +125,7 @@ var
   x, y: integer;
 begin
   SetLength(FTiles, FWidth, FHeight);
+  FObjects.Clear;
   for y := 0 to FHeight - 1 do
   begin
     for x := 0 to FWidth - 1 do
@@ -127,11 +137,7 @@ begin
         GenerateForest_ALT(x, y);
     end;
   end;
-
-  if Assigned(FOnChange) then
-  begin
-    FOnChange(self);
-  end;
+  UpdateView;
 end;
 
 procedure TMap.Generate(AMepSetup: TMapSetup);
@@ -200,8 +206,7 @@ var
   dist: integer;
 begin
   extent := random(40) + 10;
-  Count := Random(1600) + 300;
-  FTiles[x, y] := TTileType.ttTree;
+  Count := Random(1300) + 300;
 
   for I := 0 to Count - 1 do
   begin
@@ -214,9 +219,10 @@ begin
         dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
         begin
-          if (FTiles[newx, newy] = TTileType.ttGrass) then
+          if not Occupied(newx,newy) then
           begin
-            FTiles[newx, newy] := TTileType.ttTree;
+            FObjects.Add(TMapTree.Create);
+            FObjects[FObjects.Count-1].SetPos(newx,newy);
           end;
         end;
       end;
@@ -274,43 +280,6 @@ begin
   end;
 end;
 
-procedure TMap.DrawToCanvas(ACanvas: TCanvas);
-var
-  x, y: integer;
-  tmpbmp: TBitMap;
-  posx, posy: Integer;
-begin
-  tmpbmp := TBitMap.Create;
-  try
-  tmpbmp.PixelFormat := pf32Bit;
-  tmpbmp.Width := ACanvas.Width;
-  tmpbmp.Height := ACanvas.Height;
-  tmpbmp.Canvas.Brush.Color := clBlack;
-  tmpbmp.Canvas.FillRect(0, 0, tmpbmp.Width, tmpbmp.Height);
-  ACanvas.Clear;
-  ACanvas.Brush.Color := clBlack;
-  ACanvas.FillRect(0, 0, ACanvas.Width, ACanvas.Height);
-
-  for y := 0 to FHeight - 1 do
-  begin
-    for x := 0 to FWidth - 1 do
-    begin
-      posx := (x - FScrollx)*FTileSize;
-      posy := (y - FScrolly)*FTileSize;
-      case (FTiles[x, y]) of
-        ttGrass: tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-        ttTree: tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-        ttRock: tmpbmp.Canvas.Draw(posx ,posy, ImageRock.Picture.Bitmap);
-      end;
-    end;
-  end;
-
-  ACanvas.Draw(0,0, tmpbmp);
-  finally
-    tmpbmp.Free;
-  end;
-end;
-
 procedure TMap.SetTile(x,y,tile: Integer);
 begin
   FTiles[round(x/FTileSize),round(y/FTileSize)] := TTileType(tile-1);
@@ -319,30 +288,70 @@ end;
 procedure TMap.ScrollLeft;
 begin
   FScrollx += 1;
+  UpdateView;
 end;
 
 procedure TMap.ScrollRight;
 begin
   FScrollx -= 1;
+  UpdateView;
 end;
 
 procedure TMap.ScrollUp;
 begin
   FScrolly += 1;
+  UpdateView;
 end;
 
 procedure TMap.ScrollDown;
 begin
   FScrolly -= 1;
+  UpdateView;
+end;
+
+function TMap.Occupied(x,y: Integer):Boolean;
+var
+  I: Integer;
+begin
+  Result := False;
+  for I := 0 to FObjects.Count - 1 do
+  begin
+    if (x = FObjects[I].x) and (y = FObjects[I].y) then
+    begin
+      Result := True;
+      break;
+		end;
+	end;
+end;
+
+procedure TMap.UpdateView;
+begin
+  if Assigned(FOnChange) then
+  begin
+    FOnChange(self);
+  end;
 end;
 
 // ###################################### MAPOBJECTS ####################################################
-constructor TMapObject.Create(x, y: Integer);
+constructor TMapObject.Create;
+begin
+  SetPos(0,0);
+  FAge := 0;
+  FPicture := TPicture.Create;
+end;
+
+procedure TMapObject.SetPos(x,y: Integer);
 begin
   FX := x;
   FY := y;
-  FAge := 0;
 end;
 
+constructor TMapTree.Create;
+begin
+  inherited;
+  FPicture.LoadFromFile('../gfx/objects/tree.png');
+  FPicture.Bitmap.Transparent := True;
+  FPicture.Bitmap.TransparentColor := clFuchsia;
+end;
 
 end.

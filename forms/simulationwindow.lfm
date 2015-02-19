@@ -79,7 +79,7 @@ object Form2: TForm2
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.4.0'
   object Image2: TImage
     Left = 1128
     Height = 8

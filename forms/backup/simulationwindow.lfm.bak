@@ -79,7 +79,7 @@ object Form2: TForm2
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.2.4.0'
   object Image2: TImage
     Left = 1128
     Height = 8
@@ -145,7 +145,7 @@ object Form2: TForm2
     object TrackBar1: TTrackBar
       Left = 8
       Height = 46
-      Top = 102
+      Top = 320
       Width = 224
       Frequency = 1000
       Max = 8000
@@ -158,15 +158,15 @@ object Form2: TForm2
     object Edit1: TEdit
       Left = 232
       Height = 23
-      Top = 102
+      Top = 320
       Width = 56
       TabOrder = 1
       Text = 'Edit1'
     end
     object Label1: TLabel
-      Left = 16
+      Left = 8
       Height = 15
-      Top = 78
+      Top = 304
       Width = 116
       Caption = 'Round Duration in ms'
       ParentColor = False

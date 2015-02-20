@@ -31,6 +31,7 @@ type
     destructor Destroy;
     procedure Clear;
 
+    procedure DoStep;
     procedure GenerateRomans(AColor: TColor);  // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
@@ -38,6 +39,7 @@ type
 
     property Map: TMap read FMap write FMap;
     property Name: String read FName write FName;
+    property Round: Integer read FRound;
     property TimePerRound: Integer read FTimePerRound write FTimePerRound;
   end;
 
@@ -65,6 +67,12 @@ begin
   FRoundLimit := 0;
   FTimePerRound := 0;
   FPeoplesList.Clear;
+end;
+
+procedure TSimulation.DoStep;
+begin
+  FMap.DoStep;
+  Inc(FRound);
 end;
 
 procedure TSimulation.GenerateRomans(AColor: TColor);

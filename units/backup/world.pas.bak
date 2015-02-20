@@ -30,10 +30,11 @@ type
       constructor Create;
       destructor Destroy;
       function GetPicture: TPicture; virtual;
+      procedure GrowOlder; virtual;
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
-      property Picture: TPicture read GetPicture;
+      property Picture: TPicture read FPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
 	end;
@@ -43,7 +44,8 @@ type
       FFrameList: TImageList;
     public
       constructor Create;
-      function GetPicture: TPicture; override;
+      procedure GrowOlder; override;
+      procedure UpdatePicture;
   end;
 
   TMapRock = class(TMapObject)
@@ -64,6 +66,7 @@ type
     FObjects: TMapObjectList;
     FOnChange: TOnChangeEvent;
 
+    procedure DeleteOldTrees;
     procedure GenerateForest(x, y: integer);
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
@@ -76,6 +79,7 @@ type
     destructor Destroy;
     procedure Clear;
 
+    procedure DoStep;
     procedure Generate; overload;
     procedure Generate(AMepSetup: TMapSetup);
     procedure SetParameters(AMapSetup: TMapSetup);
@@ -129,6 +133,44 @@ begin
   FProbForest := 0;
   FProbRocks := 0;
   FObjects.Clear;
+end;
+
+procedure TMap.DeleteOldTrees;
+var
+  I: Integer;
+  index: Integer;
+begin
+  index := -1;
+  for I := 0 to FObjects.Count - 1 do
+  begin
+    if FObjects[I].ClassNameIs('TMapTree') then
+    begin
+      if FObjects[I].Age > 1200 then
+      begin
+        index := I;
+        break;
+			end;
+		end;
+  end;
+
+  if (index <> -1) then
+  begin
+    FObjects.Delete(index);
+    DeleteOldTrees;
+	end;
+
+end;
+
+procedure TMap.DoStep;
+var
+  I: Integer;
+begin
+  for I := 0 to FObjects.Count - 1 do
+  begin
+    FObjects[I].GrowOlder;
+	end;
+  DeleteOldTrees;
+  UpdateView;
 end;
 
 procedure TMap.Generate;
@@ -329,13 +371,18 @@ end;
 constructor TMapObject.Create;
 begin
   SetPos(0,0);
-  FAge := 0;
+  FAge := Random(1200);
   FPicture := TPicture.Create;
 end;
 
 destructor TMapObject.Destroy;
 begin
   FPicture.Free;
+end;
+
+procedure TMapObject.GrowOlder;
+begin
+  FAge += 1;
 end;
 
 function TMapObject.GetPicture: TPicture;
@@ -352,12 +399,25 @@ end;
 constructor TMapTree.Create;
 begin
   inherited;
-  FPicture.LoadFromFile('../gfx/objects/tree2.png');
+  UpdatePicture;
+  //FPicture.LoadFromFile('../gfx/objects/tree2.png');
 end;
 
-function TMapTree.GetPicture: TPicture;
+procedure TMapTree.GrowOlder;
 begin
+  inherited;
+  UpdatePicture;
 end;
+
+procedure TMapTree.UpdatePicture;
+begin
+  if (FAge < 300) then
+    FPicture := ImageTreeMedium.Picture;
+  if (FAge >= 300) then
+    FPicture := ImageTree.Picture;
+end;
+
+
 
 constructor TMapRock.Create;
 begin

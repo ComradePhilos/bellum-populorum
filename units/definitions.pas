@@ -22,6 +22,8 @@ var
   txtPeoples: array[TPeopleType] of String = ('Roman', 'German', 'Slavonic');
   ImageGrass: TImage;
   ImageTree: TImage;
+  ImageTreeMedium: TImage;
+  ImageTreeSmall: TImage;
   ImageRock: TImage;
   ImageBerries: TImage;
   ImageRomanHouse: TImage;
@@ -31,19 +33,25 @@ var
 implementation
 
 const cTilePath = '../gfx/tiles/8x8/';
+const cObjectPath = '../gfx/objects/';
 
 procedure InitImages;
 begin
   ImageGrass := TImage.Create(nil);
   ImageTree := TImage.Create(nil);
+  ImageTreeMedium := TImage.Create(nil);
+  ImageTreeSmall := TImage.Create(nil);
   ImageRock := TImage.Create(nil);
 end;
 
 procedure LoadImages;
 begin
   ImageGrass.Picture.LoadFromFile(cTilePath + 'grass.png');
-  ImageTree.Picture.LoadFromFile(cTilePath + 'tree.png');
   ImageRock.Picture.LoadFromFile(cTilePath + 'rock.png');
+
+  ImageTree.Picture.LoadFromFile(cObjectPath + 'tree2.png');
+  ImageTreeMedium.Picture.LoadFromFile(cObjectPath + 'tree_medium2.png');
+  ImageTreeSmall.Picture.LoadFromFile(cObjectPath + 'tree_small2.png');
 end;
 
 end.

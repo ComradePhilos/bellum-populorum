@@ -32,13 +32,19 @@ implementation
 
 const cTilePath = '../gfx/tiles/8x8/';
 
+procedure InitImages;
+begin
+  ImageGrass := TImage.Create(nil);
+  ImageTree := TImage.Create(nil);
+  ImageRock := TImage.Create(nil);
+end;
+
 procedure LoadImages;
 begin
   ImageGrass.Picture.LoadFromFile(cTilePath + 'grass.png');
   ImageTree.Picture.LoadFromFile(cTilePath + 'tree.png');
   ImageRock.Picture.LoadFromFile(cTilePath + 'rock.png');
 end;
-
 
 end.
 

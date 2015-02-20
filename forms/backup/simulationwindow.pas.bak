@@ -17,12 +17,14 @@ type
 		BitBtn2: TBitBtn;
 		BitBtn3: TBitBtn;
 		BitBtn4: TBitBtn;
+		BitBtn5: TBitBtn;
+		BitBtn6: TBitBtn;
 		Edit1: TEdit;
 		GroupBox1: TGroupBox;
 	  Image1: TImage;
 		Image2: TImage;
-		TreeImageList: TImageList;
 		Label1: TLabel;
+		Label2: TLabel;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
 		MenuItem2: TMenuItem;
@@ -32,7 +34,7 @@ type
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
 		StatusBar1: TStatusBar;
-		Timer1: TTimer;
+		RoundTimer: TTimer;
 		Timer2: TTimer;
 		ToolBar1: TToolBar;
 		TrackBar1: TTrackBar;
@@ -40,11 +42,14 @@ type
 	  procedure BitBtn2Click(Sender: TObject);
 	  procedure BitBtn3Click(Sender: TObject);
 	  procedure BitBtn4Click(Sender: TObject);
+		procedure BitBtn5Click(Sender: TObject);
+		procedure BitBtn6Click(Sender: TObject);
     procedure FormResize(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Image1Paint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
+		procedure RoundTimerTimer(Sender: TObject);
 		procedure Timer2Timer(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
   private
@@ -116,12 +121,23 @@ begin
    FSim.Map.ScrollLeft;
 end;
 
+procedure TForm2.BitBtn5Click(Sender: TObject);
+begin
+   RoundTimer.Interval := StrToInt(Edit1.Text);
+   RoundTimer.Enabled := True;
+end;
+
+procedure TForm2.BitBtn6Click(Sender: TObject);
+begin
+   RoundTimer.Enabled := False;
+end;
+
 procedure TForm2.Edit1Change(Sender: TObject);
 begin
   if TryStrToInt(Edit1.Text, FDuration) then
   begin
     Trackbar1.Position := FDuration;
-    Timer1.Interval := FDuration;
+    RoundTimer.Interval := FDuration;
 	end;
 end;
 
@@ -129,6 +145,12 @@ procedure TForm2.Image1Resize(Sender: TObject);
 begin
   Image1.Picture.Bitmap.Width := Image1.Width;
   Image1.Picture.Bitmap.Height := Image1.Height;
+end;
+
+procedure TForm2.RoundTimerTimer(Sender: TObject);
+begin
+  FSim.DoStep;
+  Label2.Caption := 'Round: ' + IntToStr(FSim.Round);
 end;
 
 procedure TForm2.Timer2Timer(Sender: TObject);

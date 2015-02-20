@@ -71,7 +71,7 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.0.10';
+  ProgrammeVersion = '0.1.0';
 
 {$R *.lfm}
 
@@ -149,6 +149,8 @@ begin
   FSetupForm.Free;
   ImageGrass.Free;
   ImageTree.Free;
+  ImageTreeMedium.Free;
+  ImageTreeSmall.Free;
   ImageRock.Free;
 end;
 

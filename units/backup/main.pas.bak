@@ -149,6 +149,8 @@ begin
   FSetupForm.Free;
   ImageGrass.Free;
   ImageTree.Free;
+  ImageTreeMedium.Free;
+  ImageTreeSmall.Free;
   ImageRock.Free;
 end;
 

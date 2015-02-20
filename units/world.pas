@@ -26,6 +26,7 @@ type
       FHealth: Integer;
       FPicture: TPicture;
       FAge: Integer;
+      FOwner: TObject;
     public
       constructor Create;
       destructor Destroy;
@@ -34,6 +35,7 @@ type
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
+      property Owner: TObject read FOwner write FOwner;
       property Picture: TPicture read FPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
@@ -66,8 +68,8 @@ type
     FObjects: TMapObjectList;
     FOnChange: TOnChangeEvent;
 
+
     procedure DeleteOldTrees;
-    procedure GenerateForest(x, y: integer);
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
     function Occupied(x,y: Integer):Boolean;
@@ -79,6 +81,7 @@ type
     destructor Destroy;
     procedure Clear;
 
+    procedure AddTree(x,y: Integer; AAge: Integer = 0);
     procedure DoStep;
     procedure Generate; overload;
     procedure Generate(AMepSetup: TMapSetup);
@@ -104,6 +107,7 @@ type
 implementation
 
 // #################################################### TMAP ###########################################################
+
 
 constructor TMap.Create;
 begin
@@ -135,6 +139,17 @@ begin
   FObjects.Clear;
 end;
 
+procedure TMap.AddTree(x,y: Integer; AAge: Integer = 0);
+begin
+  if not Occupied(x,y) then
+  begin
+    FObjects.Add(TMapTree.Create);
+    FObjects[FObjects.Count-1].SetPos(x,y);
+    FObjects[FObjects.Count-1].Owner := self;
+    FObjects[FObjects.Count-1].Age := AAge;
+	end;
+end;
+
 procedure TMap.DeleteOldTrees;
 var
   I: Integer;
@@ -158,7 +173,6 @@ begin
     FObjects.Delete(index);
     DeleteOldTrees;
 	end;
-
 end;
 
 procedure TMap.DoStep;
@@ -216,39 +230,6 @@ begin
   Result.ProbRocks := self.FProbRocks;
 end;
 
-procedure TMap.GenerateForest(x, y: integer);
-var
-  extent: integer;    // extent of the forest
-  Count: integer;     // number of trees
-  I: integer;
-  newx, newy: integer;
-  dist: integer;
-begin
-  extent := random(10) + 1;
-  Count := Random(80) + 15;
-  FTiles[x, y] := TTileType.ttTree;
-
-  for I := 0 to Count - 1 do
-  begin
-    newx := x + Random(extent) - 5;
-    newy := y + Random(extent) - 5;
-    if (newx < FWidth) and (newy < FHeight) then
-    begin
-      if (newx >= 0) and (newy >= 0) then
-      begin
-        dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
-        if (dist <= extent) then
-        begin
-          if (FTiles[newx, newy] = TTileType.ttGrass) then
-          begin
-            FTiles[newx, newy] := TTileType.ttTree;
-          end;
-        end;
-      end;
-    end;
-  end;
-end;
-
 procedure TMap.GenerateForest_ALT(x, y: integer);
 var
   extent: integer;    // extent of the forest
@@ -270,13 +251,7 @@ begin
       begin
         dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
-        begin
-          if not Occupied(newx,newy) then
-          begin
-            FObjects.Add(TMapTree.Create);
-            FObjects[FObjects.Count-1].SetPos(newx,newy);
-          end;
-        end;
+          AddTree(newx, newy, Random(1500));
       end;
     end;
   end;
@@ -371,7 +346,7 @@ end;
 constructor TMapObject.Create;
 begin
   SetPos(0,0);
-  FAge := Random(1200);
+  FAge := 0;
   FPicture := TPicture.Create;
 end;
 
@@ -400,13 +375,21 @@ constructor TMapTree.Create;
 begin
   inherited;
   UpdatePicture;
-  //FPicture.LoadFromFile('../gfx/objects/tree2.png');
 end;
 
 procedure TMapTree.GrowOlder;
+var
+  posx,posy: Integer;
 begin
   inherited;
   UpdatePicture;
+  // plant new tree
+  if (self.Age > 300) and (Random(400) = 1) then
+  begin
+    posx := self.x + random(2)-1;
+    posy := self.y + random(2)-1;
+    TMap(Owner).AddTree(posx,posy);
+	end;
 end;
 
 procedure TMapTree.UpdatePicture;
@@ -416,8 +399,6 @@ begin
   if (FAge >= 300) then
     FPicture := ImageTree.Picture;
 end;
-
-
 
 constructor TMapRock.Create;
 begin

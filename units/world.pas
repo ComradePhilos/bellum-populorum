@@ -72,6 +72,7 @@ type
     procedure DeleteOldTrees;
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
+    function IsInbounds(x,y: Integer): Boolean;
     function Occupied(x,y: Integer):Boolean;
     procedure UpdateView;
 
@@ -141,7 +142,7 @@ end;
 
 procedure TMap.AddTree(x,y: Integer; AAge: Integer = 0);
 begin
-  if not Occupied(x,y) then
+  if not Occupied(x,y) and IsInbounds(x,y) then
   begin
     FObjects.Add(TMapTree.Create);
     FObjects[FObjects.Count-1].SetPos(x,y);
@@ -160,7 +161,7 @@ begin
   begin
     if FObjects[I].ClassNameIs('TMapTree') then
     begin
-      if (FObjects[I].Age > 2000) then
+      if (FObjects[I].Age > 4000) then
       begin
         index := I;
         break;
@@ -290,6 +291,14 @@ begin
   end;
 end;
 
+function TMap.IsInbounds(x,y: Integer):Boolean;
+begin
+  Result := False;
+  if (x >= 0) and (x < self.Width) then
+		if (y >= 0) and (y < self.Height) then
+      Result := True;
+end;
+
 procedure TMap.SetTile(x,y,tile: Integer);
 begin
   FTiles[round(x/FTileSize),round(y/FTileSize)] := TTileType(tile-1);
@@ -384,7 +393,7 @@ begin
   inherited;
   UpdatePicture;
   // plant new tree
-  if (self.Age > 300) and (Random(400) = 1) then
+  if (self.Age > 300) and (Random(350) = 1) then
   begin
     posx := self.x + random(2)-1;
     posy := self.y + random(2)-1;

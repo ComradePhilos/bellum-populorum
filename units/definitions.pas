@@ -30,10 +30,13 @@ var
   ImageGermanHouse: TImage;
   ImageSlavonicHouse: TImage;
 
-implementation
-
 const cTilePath = '../gfx/tiles/8x8/';
 const cObjectPath = '../gfx/objects/';
+const cTreeReproductionTime = 300;  // higher means less reproduction
+const cTreeAdolescenceTime = 350; // Time until tree is considered grown
+const cTreeLifeTime = 4000;
+
+implementation
 
 procedure InitImages;
 begin

@@ -5,7 +5,7 @@ unit SimulationWindow;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics,
+  Classes, SysUtils, FileUtil, RTTICtrls, Forms, Controls, Graphics, Math,
 	Dialogs, StdCtrls, ExtCtrls, Buttons, ComCtrls, Menus, Arrow, fgl, world, sim, definitions;
 
 type
@@ -47,6 +47,8 @@ type
     procedure FormResize(Sender: TObject);
 		procedure Edit1Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure Image1MouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
     procedure Image1Paint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
 		procedure RoundTimerTimer(Sender: TObject);
@@ -87,6 +89,16 @@ begin
   Image1.Picture.Bitmap.Height := Image1.Height;
   self.Constraints.MinHeight := self.Height;
   self.Constraints.MinWidth := self.Width;
+end;
+
+procedure TForm2.Image1MouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+var
+  posx, posy: Integer;
+begin
+  posx := round(x/FSim.Map.Tilesize);
+  posy := round(y/FSim.Map.Tilesize);
+  FSim.Map.AddTree(posx,posy);
 end;
 
 procedure TForm2.Image1Paint(Sender: TObject);

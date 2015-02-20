@@ -4,7 +4,7 @@ object Form2: TForm2
   Top = 187
   Width = 715
   Caption = 'Simulation'
-  ClientHeight = 430
+  ClientHeight = 427
   ClientWidth = 715
   Icon.Data = {
     2608000000000100010016160000010020001008000016000000280000001600
@@ -98,8 +98,8 @@ object Form2: TForm2
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 23
-    Top = 407
+    Height = 21
+    Top = 406
     Width = 715
     Panels = <    
       item
@@ -125,21 +125,22 @@ object Form2: TForm2
   end
   object Image1: TImage
     Left = 0
-    Height = 384
+    Height = 381
     Top = 24
     Width = 415
     Anchors = [akTop, akLeft, akRight, akBottom]
+    OnMouseDown = Image1MouseDown
     OnPaint = Image1Paint
     OnResize = Image1Resize
   end
   object GroupBox1: TGroupBox
     Left = 416
-    Height = 176
+    Height = 173
     Top = 24
     Width = 297
     Anchors = [akTop, akRight, akBottom]
     Caption = 'Controls'
-    ClientHeight = 158
+    ClientHeight = 154
     ClientWidth = 293
     TabOrder = 2
     object TrackBar1: TTrackBar
@@ -147,27 +148,27 @@ object Form2: TForm2
       Height = 46
       Top = 112
       Width = 224
-      Frequency = 1000
-      Max = 8000
-      Min = 500
+      Frequency = 100
+      Max = 2000
+      Min = 10
       OnChange = TrackBar1Change
-      Position = 8000
+      Position = 2000
       Reversed = True
       TabOrder = 0
     end
     object Edit1: TEdit
       Left = 232
-      Height = 23
-      Top = 112
+      Height = 27
+      Top = 120
       Width = 56
       TabOrder = 1
       Text = 'Edit1'
     end
     object Label1: TLabel
       Left = 8
-      Height = 15
+      Height = 17
       Top = 88
-      Width = 116
+      Width = 143
       Caption = 'Round Duration in ms'
       ParentColor = False
     end
@@ -619,9 +620,9 @@ object Form2: TForm2
   end
   object Label2: TLabel
     Left = 8
-    Height = 15
+    Height = 17
     Top = 32
-    Width = 38
+    Width = 47
     Caption = 'Round:'
     Font.Color = clWhite
     ParentColor = False

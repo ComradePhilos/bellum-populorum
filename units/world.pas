@@ -108,8 +108,6 @@ type
 implementation
 
 // #################################################### TMAP ###########################################################
-
-
 constructor TMap.Create;
 begin
   Randomize;
@@ -161,7 +159,7 @@ begin
   begin
     if FObjects[I].ClassNameIs('TMapTree') then
     begin
-      if (FObjects[I].Age > 4000) then
+      if (FObjects[I].Age > cTreeLifeTime) then
       begin
         index := I;
         break;
@@ -393,19 +391,19 @@ begin
   inherited;
   UpdatePicture;
   // plant new tree
-  if (self.Age > 300) and (Random(350) = 1) then
+  if (self.Age > cTreeAdolescenceTime) and (Random(cTreeReproductionTime) = 1) then
   begin
-    posx := self.x + random(2)-1;
-    posy := self.y + random(2)-1;
+    posx := self.x + random(3)-1;
+    posy := self.y + random(3)-1;
     TMap(Owner).AddTree(posx,posy);
 	end;
 end;
 
 procedure TMapTree.UpdatePicture;
 begin
-  if (FAge < 300) then
+  if (FAge < cTreeAdolescenceTime) then
     FPicture := ImageTreeMedium.Picture;
-  if (FAge >= 300) then
+  if (FAge >= cTreeAdolescenceTime) then
     FPicture := ImageTree.Picture;
 end;
 

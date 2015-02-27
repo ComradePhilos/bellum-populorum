@@ -410,7 +410,7 @@ end;
 constructor TMapRock.Create;
 begin
   inherited;
-  FPicture.LoadFromFile('../gfx/objects/rock.png');
+  FPicture := ImageRock.Picture;
 end;
 
 end.

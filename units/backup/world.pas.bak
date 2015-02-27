@@ -159,7 +159,7 @@ begin
   begin
     if FObjects[I].ClassNameIs('TMapTree') then
     begin
-      if (FObjects[I].Age > 4000) then
+      if (FObjects[I].Age > cTreeLifeTime) then
       begin
         index := I;
         break;

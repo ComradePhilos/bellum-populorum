@@ -30,8 +30,9 @@ var
   ImageGermanHouse: TImage;
   ImageSlavonicHouse: TImage;
 
-const cTilePath = '../gfx/tiles/8x8/';
-const cObjectPath = '../gfx/objects/';
+const cTilePath = 'tiles/';
+const cObjectPath = 'objects/';
+const cTileSize = 8;
 const cTreeReproductionTime = 300;  // higher means less reproduction
 const cTreeAdolescenceTime = 350; // Time until tree is considered grown
 const cTreeLifeTime = 4000;
@@ -48,13 +49,16 @@ begin
 end;
 
 procedure LoadImages;
+var
+  sizepath: String;
 begin
-  ImageGrass.Picture.LoadFromFile(cTilePath + 'grass.png');
-  ImageRock.Picture.LoadFromFile(cTilePath + 'rock.png');
+  sizePath := '../gfx/' + IntToStr(cTileSize) + 'x' + IntToStr(cTileSize) +'/';
+  ImageGrass.Picture.LoadFromFile(SizePath + cTilePath + 'grass.png');
 
-  ImageTree.Picture.LoadFromFile(cObjectPath + 'tree2.png');
-  ImageTreeMedium.Picture.LoadFromFile(cObjectPath + 'tree_medium2.png');
-  ImageTreeSmall.Picture.LoadFromFile(cObjectPath + 'tree_small2.png');
+  ImageTree.Picture.LoadFromFile(SizePath + cObjectPath + 'tree2.png');
+  ImageTreeMedium.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_medium2.png');
+  ImageTreeSmall.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_small2.png');
+  ImageRock.Picture.LoadFromFile(SizePath + cObjectPath + 'rock.png');
 end;
 
 end.

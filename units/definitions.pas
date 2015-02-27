@@ -32,7 +32,7 @@ var
 
 const cTilePath = 'tiles/';
 const cObjectPath = 'objects/';
-const cTileSize = 8;
+const cTileSize = 16;
 const cTreeReproductionTime = 300;  // higher means less reproduction
 const cTreeAdolescenceTime = 350; // Time until tree is considered grown
 const cTreeLifeTime = 4000;

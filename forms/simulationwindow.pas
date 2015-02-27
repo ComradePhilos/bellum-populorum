@@ -206,9 +206,6 @@ begin
         if IsInbounds(tmpbmp.Canvas, posx, posy) then
         begin
           tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-          //case (Tiles[x, y]) of
-            //tmpbmp.Canvas.Draw(posx, posy, ImageGrass.Picture.Bitmap);
-          //end;
         end;
       end;
     end;
@@ -219,10 +216,6 @@ begin
       posy := (Map.MapObjects[I].y - Map.Scrolly)*Map.TileSize;
       if IsInbounds(tmpbmp.Canvas, posx, posy) then
         tmpbmp.Canvas.Draw(posx, posy, Map.MapObjects[I].Picture.Bitmap);
-        //case Map.MapObjects[I].ClassName of
-			   // 'TMapTree': tmpbmp.Canvas.Draw(posx, posy, ImageTree.Picture.Bitmap);
-				//end;
-
 		end;
 	end;
 

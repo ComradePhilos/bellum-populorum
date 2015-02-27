@@ -29,7 +29,6 @@ var
   ImageRomanHouse: TImage;
   ImageGermanHouse: TImage;
   ImageSlavonicHouse: TImage;
-  gSizePath: String;
 
 const cTilePath = 'tiles/';
 const cObjectPath = 'objects/';
@@ -50,14 +49,16 @@ begin
 end;
 
 procedure LoadImages;
+var
+  sizepath: String;
 begin
-  gSizePath := '../gfx/' + IntToStr(cTileSize) + 'x' + IntToStr(cTileSize) +'/';
-  ImageGrass.Picture.LoadFromFile(gSizePath + cTilePath + 'grass.png');
+  sizePath := '../gfx/' + IntToStr(cTileSize) + 'x' + IntToStr(cTileSize) +'/';
+  ImageGrass.Picture.LoadFromFile(SizePath + cTilePath + 'grass.png');
 
-  ImageTree.Picture.LoadFromFile(gSizePath + cObjectPath + 'tree2.png');
-  ImageTreeMedium.Picture.LoadFromFile(gSizePath + cObjectPath + 'tree_medium2.png');
-  ImageTreeSmall.Picture.LoadFromFile(gSizePath + cObjectPath + 'tree_small2.png');
-  ImageRock.Picture.LoadFromFile(gSizePath + cObjectPath + 'rock.png');
+  ImageTree.Picture.LoadFromFile(SizePath + cObjectPath + 'tree2.png');
+  ImageTreeMedium.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_medium2.png');
+  ImageTreeSmall.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_small2.png');
+  ImageRock.Picture.LoadFromFile(SizePath + cObjectPath + 'rock.png');
 end;
 
 end.

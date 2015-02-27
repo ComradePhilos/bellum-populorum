@@ -68,7 +68,6 @@ type
     FObjects: TMapObjectList;
     FOnChange: TOnChangeEvent;
 
-
     procedure DeleteOldTrees;
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
@@ -146,6 +145,7 @@ begin
     FObjects[FObjects.Count-1].SetPos(x,y);
     FObjects[FObjects.Count-1].Owner := self;
     FObjects[FObjects.Count-1].Age := AAge;
+    TMapTree(FObjects[FObjects.Count-1]).UpdatePicture;
 	end;
 end;
 

@@ -81,7 +81,7 @@ implementation
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   FSim := TSimulation.Create;
-  FDuration := 3000;
+  FDuration := 100;
   Trackbar1.Position := FDuration;
   Edit1.Text := IntToStr(FDuration);
   FSim.Map.OnChange := @DrawMap;

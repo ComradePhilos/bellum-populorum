@@ -80,8 +80,7 @@ begin
   FSimSetup.MapSetup.Height := StrToInt(LabeledEdit2.Text);
   FSimSetup.MapSetup.ProbForest := StrToInt(LabeledEdit3.Text);
   FSimSetup.MapSetup.ProbRocks := StrToInt(LabeledEdit4.Text);
-  FSimSetup.MapSetup.TileSize := 8;
-
+  FSimSetup.MapSetup.TileSize := cTileSize;
   self.Visible := False;
 
   if Assigned(FOnApply) then

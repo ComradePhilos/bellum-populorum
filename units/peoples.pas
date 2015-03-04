@@ -24,10 +24,8 @@ type
       FPopulationBonus: Integer;
       FCitizens: TCitizenList;
       FResources: TResources;
-      FMap: TMap;                                                               // reference to the map of the sim.
+      FMap: TMap;                                        // reference to the map of the sim.
 
-      procedure BuildHouse(x,y: Integer);        // This is only the method to set a house on the map
-                                                                    // actually a house must be created by 2 citizens
     public
       constructor Create;
 
@@ -54,21 +52,6 @@ begin
   FResources[2] := StartFood;
 end;
 
-procedure TPeople.BuildHouse(x,y: Integer);
-begin
-  if (FResources[0] >= 100) then
-  begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      case FPeopleType of
-        ptRoman: FMap.Tiles[x,y] := TTileType.ttRomanHouse;
-        ptGerman: FMap.Tiles[x,y] := TTileType.ttGermanHouse;
-        ptSlavonic: FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
-      end;
-      FResources[0] -= 100;
-		end;
-	end;
-end;
 
 end.
 

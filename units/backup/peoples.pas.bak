@@ -24,10 +24,8 @@ type
       FPopulationBonus: Integer;
       FCitizens: TCitizenList;
       FResources: TResources;
-      FMap: TMap;                                                               // reference to the map of the sim.
+      FMap: TMap;                                        // reference to the map of the sim.
 
-      procedure BuildHouse(x,y: Integer);        // This is only the method to set a house on the map
-                                                                    // actually a house must be created by 2 citizens
     public
       constructor Create;
 
@@ -38,7 +36,7 @@ type
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
 	end;
-
+  TPeoplesList = specialize TFPGObjectList<TPeople>;
 
 implementation
 

@@ -32,10 +32,10 @@ var
 
 const cTilePath = 'tiles/';
 const cObjectPath = 'objects/';
-const cTileSize = 16;
+const cTileSize = 8;
 const cTreeReproductionTime = 300;  // higher means less reproduction
-const cTreeAdolescenceTime = 350; // Time until tree is considered grown
-const cTreeLifeTime = 4000;
+const cTreeAdolescenceTime = 350; // Time until tree is considered fully grown
+const cTreeLifeTime = 4000;    // tree will die after x rounds
 
 implementation
 
@@ -57,7 +57,6 @@ begin
 
   ImageTree.Picture.LoadFromFile(SizePath + cObjectPath + 'tree2.png');
   ImageTreeMedium.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_medium2.png');
-  ImageTreeSmall.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_small2.png');
   ImageRock.Picture.LoadFromFile(SizePath + cObjectPath + 'rock.png');
 end;
 

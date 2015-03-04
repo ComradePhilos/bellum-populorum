@@ -76,23 +76,22 @@ type
     procedure UpdateView;
 
   public
+    procedure AddTree(x,y: Integer; AAge: Integer = 0);
+    procedure Clear;
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
     destructor Destroy;
-    procedure Clear;
-
-    procedure AddTree(x,y: Integer; AAge: Integer = 0);
     procedure DoStep;
     procedure Generate; overload;
     procedure Generate(AMepSetup: TMapSetup);
-    procedure SetParameters(AMapSetup: TMapSetup);
     function getParameters: TMapSetup;
-    procedure SetTile(x,y,tile: Integer);
-
+    function HasSpaceLeft: Boolean;
     procedure ScrollLeft;
     procedure ScrollRight;
     procedure ScrollUp;
     procedure ScrollDown;
+    procedure SetParameters(AMapSetup: TMapSetup);
+    procedure SetTile(x,y,tile: Integer);
 
     property Height: Integer read FHeight write FHeight;
     property MapObjects: TMapObjectList read FObjects write FObjects;
@@ -339,6 +338,23 @@ begin
       break;
 		end;
 	end;
+end;
+
+function TMap.HasSpaceLeft: Boolean;
+var
+  posx, posy: Integer;
+begin
+  Result := False;
+  for posy := 0 to FHeight - 1 do
+  begin
+    for posx := 0 to FWidth - 1 do
+    begin
+      if not Occupied(posx,posy) then
+      begin
+        exit(True);
+      end;
+    end;
+  end;
 end;
 
 procedure TMap.UpdateView;

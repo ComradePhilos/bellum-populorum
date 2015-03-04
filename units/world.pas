@@ -27,6 +27,7 @@ type
       FPicture: TPicture;
       FAge: Integer;
       FOwner: TObject;
+      FIsOccupying: Boolean;
     public
       constructor Create;
       destructor Destroy;
@@ -35,6 +36,7 @@ type
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
+      property IsOccupying: Boolean read FIsOccupying write FIsOccupying;
       property Owner: TObject read FOwner write FOwner;
       property Picture: TPicture read FPicture;
       property x: Integer read FX write FX;
@@ -332,12 +334,12 @@ begin
   Result := False;
   for I := 0 to FObjects.Count - 1 do
   begin
-    if (x = FObjects[I].x) and (y = FObjects[I].y) then
+    if FObjects[I].IsOccupying and (x = FObjects[I].x) and (y = FObjects[I].y) then
     begin
       Result := True;
       break;
 		end;
-	end;
+  end;
 end;
 
 function TMap.HasSpaceLeft: Boolean;
@@ -397,6 +399,7 @@ end;
 constructor TMapTree.Create;
 begin
   inherited;
+  FIsOccupying := True;
   UpdatePicture;
 end;
 
@@ -426,6 +429,7 @@ end;
 constructor TMapRock.Create;
 begin
   inherited;
+  FIsOccupying := True;
   FPicture := ImageRock.Picture;
 end;
 

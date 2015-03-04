@@ -19,8 +19,8 @@ type
     ButtonAddPeople: TBitBtn;
     ButtonRemovePeople: TBitBtn;
 		ButtonRandomize: TBitBtn;
-		CheckBox1: TCheckBox;
 		ButtonColor: TColorButton;
+    CheckBox1: TCheckBox;
 		GroupBox3: TGroupBox;
 		Image3: TImage;
 		LabeledEdit6: TLabeledEdit;
@@ -75,7 +75,6 @@ implementation
 
 procedure TForm3.ButtonApplyClick(Sender: TObject);
 begin
-
   FSimSetup.MapSetup.Width := StrToInt(LabeledEdit1.Text);
   FSimSetup.MapSetup.Height := StrToInt(LabeledEdit2.Text);
   FSimSetup.MapSetup.ProbForest := StrToInt(LabeledEdit3.Text);

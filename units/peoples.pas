@@ -28,7 +28,7 @@ type
 
     public
       constructor Create;
-
+      procedure Settle;
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Resources: TResources read FResources write FResources;
       property Citizens: TCitizenList read FCitizens write FCitizens;
@@ -41,6 +41,7 @@ type
 implementation
 
 const
+  emNoSpaceLeft = 'No space left on map!';
   StartWood = 0;
   StartFood = 0;
   StartIron = 0;
@@ -52,6 +53,17 @@ begin
   FResources[2] := StartFood;
 end;
 
+procedure TPeople.Settle;
+begin
+  if FMap.HasSpaceLeft then
+  begin
+
+  end
+  else
+  begin
+    raise Exception.Create(emNoSpaceLeft);
+  end;
+end;
 
 end.
 

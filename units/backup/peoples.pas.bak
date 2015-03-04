@@ -28,7 +28,7 @@ type
 
     public
       constructor Create;
-
+      procedure Settle;
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Resources: TResources read FResources write FResources;
       property Citizens: TCitizenList read FCitizens write FCitizens;
@@ -41,6 +41,7 @@ type
 implementation
 
 const
+  emNoSpaceLeft = 'No space left on map!';
   StartWood = 0;
   StartFood = 0;
   StartIron = 0;
@@ -52,20 +53,16 @@ begin
   FResources[2] := StartFood;
 end;
 
-procedure TPeople.BuildHouse(x,y: Integer);
+procedure TPeople.Settle;
 begin
-  if (FResources[0] >= 100) then
+  if FMap.HasSpaceLeft then
   begin
-    if (FMap.Tiles[x,y] = TTileType.ttGrass) then
-    begin
-      case FPeopleType of
-        ptRoman: FMap.Tiles[x,y] := TTileType.ttRomanHouse;
-        ptGerman: FMap.Tiles[x,y] := TTileType.ttGermanHouse;
-        ptSlavonic: FMap.Tiles[x,y] := TTileType.ttSlavonicHouse;
-      end;
-      FResources[0] -= 100;
-		end;
-	end;
+
+  end
+  else
+  begin
+    raise Exception.Create;
+  end;
 end;
 
 end.

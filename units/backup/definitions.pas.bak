@@ -35,7 +35,7 @@ const cObjectPath = 'objects/';
 const cTileSize = 8;
 const cTreeReproductionTime = 300;  // higher means less reproduction
 const cTreeAdolescenceTime = 350; // Time until tree is considered fully grown
-const cTreeLifeTime = 4000;
+const cTreeLifeTime = 4000;    // tree will die after x rounds
 
 implementation
 

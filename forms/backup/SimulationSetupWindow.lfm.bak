@@ -53,7 +53,7 @@ object Form3: TForm3
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object GroupBox1: TGroupBox
     Left = 7
     Height = 129
@@ -183,7 +183,7 @@ object Form3: TForm3
     Top = 579
     Width = 80
     Anchors = [akRight, akBottom]
-    Caption = 'Apply'
+    Caption = 'Done'
     Enabled = False
     Glyph.Data = {
       36090000424D3609000000000000360000002800000018000000180000000100
@@ -707,16 +707,6 @@ object Form3: TForm3
     TabOrder = 3
     Text = 'Simulation'
   end
-  object CheckBox1: TCheckBox
-    Left = 8
-    Height = 20
-    Top = 589
-    Width = 130
-    Caption = 'Start when finished'
-    Checked = True
-    State = cbChecked
-    TabOrder = 4
-  end
   object GroupBox3: TGroupBox
     Left = 8
     Height = 137
@@ -725,7 +715,7 @@ object Form3: TForm3
     Caption = 'Climate'
     ClientHeight = 119
     ClientWidth = 388
-    TabOrder = 5
+    TabOrder = 4
     object LabeledEdit6: TLabeledEdit
       Left = 8
       Height = 24
@@ -845,5 +835,15 @@ object Form3: TForm3
       }
       Stretch = True
     end
+  end
+  object CheckBox1: TCheckBox
+    Left = 8
+    Height = 20
+    Top = 584
+    Width = 159
+    Caption = 'Open window when done'
+    Checked = True
+    State = cbChecked
+    TabOrder = 5
   end
 end

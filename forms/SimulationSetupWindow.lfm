@@ -80,7 +80,7 @@ object Form3: TForm3
       EditLabel.Caption = 'Width'
       EditLabel.ParentColor = False
       TabOrder = 0
-      Text = '60'
+      Text = '30'
     end
     object LabeledEdit3: TLabeledEdit
       Left = 248
@@ -153,7 +153,7 @@ object Form3: TForm3
       EditLabel.Caption = 'Height'
       EditLabel.ParentColor = False
       TabOrder = 2
-      Text = '60'
+      Text = '30'
     end
     object LabeledEdit4: TLabeledEdit
       Left = 376

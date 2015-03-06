@@ -137,8 +137,8 @@ end;
 
 procedure TForm3.FormDestroy(Sender: TObject);
 begin
-  FSimSetup.PeopleSetup.Free;
-  FPeoplesList.Free;
+  //FSimSetup.PeopleSetup.Free;
+  //FPeoplesList.Free;
 end;
 
 procedure TForm3.PeopleGridDrawCell(Sender: TObject; aCol, aRow: Integer;

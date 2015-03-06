@@ -25,9 +25,9 @@ type
       FX, FY: Integer;
       FHealth: Integer;
       FPicture: TPicture;
-      FAge: Integer;
       FOwner: TObject;
-      FIsOccupying: Boolean;
+      FAge: Integer;
+      FIsObstacle: Boolean;
     public
       constructor Create;
       destructor Destroy;
@@ -36,7 +36,7 @@ type
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
-      property IsOccupying: Boolean read FIsOccupying write FIsOccupying;
+      property IsObstacle: Boolean read FIsObstacle write FIsObstacle;
       property Owner: TObject read FOwner write FOwner;
       property Picture: TPicture read FPicture;
       property x: Integer read FX write FX;
@@ -50,6 +50,11 @@ type
       constructor Create;
       procedure GrowOlder; override;
       procedure UpdatePicture;
+  end;
+
+  TMapHouse = class(TMapObject)
+    public
+      constructor Create;
   end;
 
   TMapRock = class(TMapObject)
@@ -74,11 +79,11 @@ type
     procedure GenerateForest_ALT(x, y: integer);
     procedure GenerateRocks(x, y: integer);
     function IsInbounds(x,y: Integer): Boolean;
-    function Occupied(x,y: Integer):Boolean;
     procedure UpdateView;
 
   public
     procedure AddTree(x,y: Integer; AAge: Integer = 0);
+    procedure AddHouse(x,y: Integer);
     procedure Clear;
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
@@ -88,6 +93,7 @@ type
     procedure Generate(AMepSetup: TMapSetup);
     function getParameters: TMapSetup;
     function HasSpaceLeft: Boolean;
+    function IsOccupied(x,y: Integer):Boolean;
     procedure ScrollLeft;
     procedure ScrollRight;
     procedure ScrollUp;
@@ -106,6 +112,9 @@ type
   end;
 
 implementation
+
+uses
+  peoples;
 
 // #################################################### TMAP ###########################################################
 constructor TMap.Create;
@@ -138,13 +147,22 @@ begin
   FObjects.Clear;
 end;
 
+procedure TMap.AddHouse(x,y: Integer);
+begin
+  if not IsOccupied(x,y) and IsInbounds(x,y) then
+  begin
+    FObjects.Add(TMapHouse.Create);
+    FObjects[FObjects.Count-1].SetPos(x,y);
+	end;
+end;
+
 procedure TMap.AddTree(x,y: Integer; AAge: Integer = 0);
 begin
-  if not Occupied(x,y) and IsInbounds(x,y) then
+  if not IsOccupied(x,y) and IsInbounds(x,y) then
   begin
     FObjects.Add(TMapTree.Create);
     FObjects[FObjects.Count-1].SetPos(x,y);
-    FObjects[FObjects.Count-1].Owner := self;
+    //FObjects[FObjects.Count-1].Owner := self;
     FObjects[FObjects.Count-1].Age := AAge;
     TMapTree(FObjects[FObjects.Count-1]).UpdatePicture;
 	end;
@@ -279,7 +297,7 @@ begin
         dist := round(power((x - newx), 2)) + round(power((y - newy), 2));
         if (dist <= extent) then
         begin
-         if not Occupied(newx,newy) then
+         if not IsOccupied(newx,newy) then
           begin
             FObjects.Add(TMapRock.Create);
             FObjects[FObjects.Count-1].SetPos(newx,newy);
@@ -327,14 +345,14 @@ begin
   UpdateView;
 end;
 
-function TMap.Occupied(x,y: Integer):Boolean;
+function TMap.IsOccupied(x,y: Integer):Boolean;
 var
   I: Integer;
 begin
   Result := False;
   for I := 0 to FObjects.Count - 1 do
   begin
-    if FObjects[I].IsOccupying and (x = FObjects[I].x) and (y = FObjects[I].y) then
+    if FObjects[I].IsObstacle and (x = FObjects[I].x) and (y = FObjects[I].y) then
     begin
       Result := True;
       break;
@@ -351,7 +369,7 @@ begin
   begin
     for posx := 0 to FWidth - 1 do
     begin
-      if not Occupied(posx,posy) then
+      if not IsOccupied(posx,posy) then
       begin
         exit(True);
       end;
@@ -399,6 +417,7 @@ end;
 constructor TMapTree.Create;
 begin
   inherited;
+  FIsObstacle := True;
   UpdatePicture;
 end;
 
@@ -428,7 +447,15 @@ end;
 constructor TMapRock.Create;
 begin
   inherited;
+  FIsObstacle := True;
   FPicture := ImageRock.Picture;
 end;
+
+constructor TMapHouse.Create;
+begin
+  inherited;
+  FIsObstacle := True;
+end;
+
 
 end.

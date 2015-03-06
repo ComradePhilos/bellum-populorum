@@ -54,14 +54,24 @@ begin
 end;
 
 procedure TPeople.Settle;
+var
+  posx, posy: Integer;
 begin
   if FMap.HasSpaceLeft then
   begin
-
+    while true do
+    begin
+      posx := random(FMap.Width)-1;
+      posy := random(FMap.Height)-1;
+      if not FMap.IsOccupied(posx,posy) then
+      begin
+        break;
+      end;
+    end;
   end
   else
   begin
-    raise Exception.Create;
+    raise Exception.Create(emNoSpaceLeft);
   end;
 end;
 

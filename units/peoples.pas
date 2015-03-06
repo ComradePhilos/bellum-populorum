@@ -26,12 +26,15 @@ type
       FResources: TResources;
       FMap: TMap;                                        // reference to the map of the sim.
 
+      FHouseTexture: TPicture;
+
     public
       constructor Create;
       procedure Settle;
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Resources: TResources read FResources write FResources;
       property Citizens: TCitizenList read FCitizens write FCitizens;
+      property HouseTexture: TPicture read FHouseTexture write FHouseTexture;
       property InitCitizens: Integer read FInitCitizens write FInitCitizens;
       property Map: TMap write FMap;
       property Color: TColor read FColor write FColor;
@@ -54,10 +57,21 @@ begin
 end;
 
 procedure TPeople.Settle;
+var
+  posx, posy: Integer;
 begin
   if FMap.HasSpaceLeft then
   begin
+    while true do
+    begin
+      posx := random(FMap.Width)-1;
+      posy := random(FMap.Height)-1;
+      if not FMap.IsOccupied(posx,posy) then
+      begin
 
+        break;
+      end;
+    end;
   end
   else
   begin

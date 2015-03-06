@@ -152,6 +152,7 @@ begin
   ImageTreeMedium.Free;
   ImageTreeSmall.Free;
   ImageRock.Free;
+  ImageRomanHouse.Free;
 end;
 
 procedure TForm1.UpdateWindow;
@@ -203,6 +204,8 @@ begin
   if TForm3(Sender).CheckBox1.Checked then
   begin
     FSimFormList[FSimFormList.Count - 1].Show;
+    //FSimFormList[FSimFormList.Count - 1].Sim.Initialize(TForm3(Sender).SimSetup);
+    FSimFormList[FSimFormList.Count - 1].Sim.Setup := TForm3(Sender).SimSetup;
 	end;
 end;
 

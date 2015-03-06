@@ -27,12 +27,15 @@ type
 		Label2: TLabel;
 		MainMenu1: TMainMenu;
 		MenuItem1: TMenuItem;
+    MenuItem10: TMenuItem;
 		MenuItem2: TMenuItem;
 		MenuItem3: TMenuItem;
 		MenuItem4: TMenuItem;
 		MenuItem5: TMenuItem;
 		MenuItem6: TMenuItem;
 		MenuItem7: TMenuItem;
+    MenuItem8: TMenuItem;
+    MenuItem9: TMenuItem;
 		StatusBar1: TStatusBar;
 		RoundTimer: TTimer;
 		Timer2: TTimer;
@@ -51,6 +54,7 @@ type
       Shift: TShiftState; X, Y: Integer);
     procedure Image1Paint(Sender: TObject);
 		procedure Image1Resize(Sender: TObject);
+    procedure MenuItem10Click(Sender: TObject);
 		procedure RoundTimerTimer(Sender: TObject);
 		procedure Timer2Timer(Sender: TObject);
 		procedure TrackBar1Change(Sender: TObject);
@@ -159,6 +163,11 @@ begin
   Image1.Picture.Bitmap.Height := Image1.Height;
 end;
 
+procedure TForm2.MenuItem10Click(Sender: TObject);
+begin
+  FSim.Initialize;
+end;
+
 procedure TForm2.RoundTimerTimer(Sender: TObject);
 begin
   FSim.DoStep;
@@ -214,7 +223,7 @@ begin
     begin
       posx := (Map.MapObjects[I].x - Map.Scrollx)*Map.TileSize;
       posy := (Map.MapObjects[I].y - Map.Scrolly)*Map.TileSize;
-      if IsInbounds(tmpbmp.Canvas, posx, posy) then
+      if IsInbounds(tmpbmp.Canvas, posx, posy) and assigned(Map.MapObjects[I].Picture) then
         tmpbmp.Canvas.Draw(posx, posy, Map.MapObjects[I].Picture.Bitmap);
 		end;
 	end;

@@ -83,7 +83,7 @@ type
 
   public
     procedure AddTree(x,y: Integer; AAge: Integer = 0);
-    procedure AddHouse(x,y: Integer);
+    function AddHouse(x,y: Integer): TMapHouse;
     procedure Clear;
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
@@ -111,10 +111,9 @@ type
     property Width: Integer read FWidth write FWidth;
   end;
 
-implementation
+  THouseList = specialize TFPGObjectList<TMapHouse>;
 
-uses
-  peoples;
+implementation
 
 // #################################################### TMAP ###########################################################
 constructor TMap.Create;
@@ -147,12 +146,13 @@ begin
   FObjects.Clear;
 end;
 
-procedure TMap.AddHouse(x,y: Integer);
+function TMap.AddHouse(x,y: Integer): TMapHouse;
 begin
   if not IsOccupied(x,y) and IsInbounds(x,y) then
   begin
     FObjects.Add(TMapHouse.Create);
     FObjects[FObjects.Count-1].SetPos(x,y);
+    Result := TMapHouse(FObjects[FObjects.Count-1]);
 	end;
 end;
 
@@ -162,7 +162,7 @@ begin
   begin
     FObjects.Add(TMapTree.Create);
     FObjects[FObjects.Count-1].SetPos(x,y);
-    //FObjects[FObjects.Count-1].Owner := self;
+    FObjects[FObjects.Count-1].Owner := self;
     FObjects[FObjects.Count-1].Age := AAge;
     TMapTree(FObjects[FObjects.Count-1]).UpdatePicture;
 	end;

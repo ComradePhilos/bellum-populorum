@@ -22,6 +22,7 @@ type
       FColor: TColor;
       FStrengthBonus: Integer;
       FPopulationBonus: Integer;
+      FHouses: THouseList;
       FCitizens: TCitizenList;
       FResources: TResources;
       FMap: TMap;                                        // reference to the map of the sim.
@@ -30,6 +31,7 @@ type
 
     public
       constructor Create;
+      destructor Destroy; override;
       procedure Settle;
       property PeopleType: TPeopleType read FPeopleType write FPeopleType;
       property Resources: TResources read FResources write FResources;
@@ -54,6 +56,12 @@ begin
   FResources[0] := StartWood;
   FResources[1] := StartIron;
   FResources[2] := StartFood;
+  FHouses := THouseList.Create(True);
+end;
+
+destructor TPeople.Destroy;
+begin
+  FHouses.Free;
 end;
 
 procedure TPeople.Settle;
@@ -68,7 +76,8 @@ begin
       posy := random(FMap.Height)-1;
       if not FMap.IsOccupied(posx,posy) then
       begin
-
+        FHouses.Add(FMap.AddHouse(posx,posy));
+        FHouses[FHouses.Count-1].Picture :=  ImageRomanHouse.Picture;
         break;
       end;
     end;

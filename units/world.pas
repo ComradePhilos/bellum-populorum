@@ -38,7 +38,7 @@ type
       property Age: Integer read FAge write FAge;
       property IsObstacle: Boolean read FIsObstacle write FIsObstacle;
       property Owner: TObject read FOwner write FOwner;
-      property Picture: TPicture read FPicture;
+      property Picture: TPicture read FPicture write FPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
 	end;
@@ -83,7 +83,7 @@ type
 
   public
     procedure AddTree(x,y: Integer; AAge: Integer = 0);
-    procedure AddHouse(x,y: Integer);
+    function AddHouse(x,y: Integer): TMapHouse;
     procedure Clear;
     constructor Create;
     constructor Create(AMapSettings: TMapSetup); overload;
@@ -110,6 +110,8 @@ type
     property Tilesize: Integer read FTileSize write FTileSize;
     property Width: Integer read FWidth write FWidth;
   end;
+
+  THouseList = specialize TFPGObjectList<TMapHouse>;
 
 implementation
 
@@ -144,12 +146,13 @@ begin
   FObjects.Clear;
 end;
 
-procedure TMap.AddHouse(x,y: Integer);
+function TMap.AddHouse(x,y: Integer): TMapHouse;
 begin
   if not IsOccupied(x,y) and IsInbounds(x,y) then
   begin
     FObjects.Add(TMapHouse.Create);
     FObjects[FObjects.Count-1].SetPos(x,y);
+    Result := TMapHouse(FObjects[FObjects.Count-1]);
 	end;
 end;
 

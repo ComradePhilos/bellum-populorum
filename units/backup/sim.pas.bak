@@ -25,6 +25,7 @@ type
     FMap: TMap;
     FPeoplesList: TPeoplesList;
     FTimePerRound: Integer;
+    FSetup: TSimSetup;
 
   public
     constructor Create;
@@ -35,12 +36,13 @@ type
     procedure GenerateRomans(AColor: TColor);  // Generating People
     procedure GenerateGermans(AColor: TColor);
     procedure GenerateSlavonics(AColor: TColor);
-    procedure Initialize(ASimSetup: TSimSetup);  // Generates the start situation
+    procedure Initialize;  // Generates the start situation
 
     property Map: TMap read FMap write FMap;
     property Name: String read FName write FName;
     property Round: Integer read FRound;
     property TimePerRound: Integer read FTimePerRound write FTimePerRound;
+    property Setup: TSimSetup read FSetup write FSetup;
   end;
 
   TSimulationList = specialize TFPGObjectList<TSimulation>;
@@ -49,7 +51,7 @@ implementation
 
 constructor TSimulation.Create;
 begin
-  FPeoplesList := TPeoplesList.Create;
+  FPeoplesList := TPeoplesList.Create(True);
   FMap := TMap.Create;
 end;
 
@@ -71,7 +73,7 @@ end;
 
 procedure TSimulation.DoStep;
 begin
-  FMap.DoStep
+  FMap.DoStep;
   Inc(FRound);
 end;
 
@@ -93,11 +95,17 @@ begin
   FPeoplesList[FPeoplesList.Count - 1].Color := AColor;
 end;
 
-procedure TSimulation.Initialize(ASimSetup: TSimSetup);
+procedure TSimulation.Initialize;
+var
+  I: Integer;
 begin
-
-
+  FPeoplesList := FSetup.PeopleSetup;
+  for I := 0 to FPeoplesList.Count - 1 do
+  begin
+    FPeoplesList[I].Settle;
+  end;
 end;
+
 
 end.
 

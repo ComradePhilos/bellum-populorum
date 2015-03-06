@@ -51,6 +51,7 @@ type
   private
     { private declarations }
     FSimSetup: TSimSetup;
+    //FSim: TSimulation;
     FOnApply: TOnApplyEvent;
     FPeoplesList: TPeoplesList;
 
@@ -58,6 +59,7 @@ type
 
   public
     { public declarations }
+    //property SourceSim: TSimulation read FSim write FSim;
     property SimSetup: TSimSetup read FSimSetup write FSimSetup;
     property OnApply: TOnApplyEvent read FOnApply write FOnApply;
   end;
@@ -80,6 +82,7 @@ begin
   FSimSetup.MapSetup.ProbForest := StrToInt(LabeledEdit3.Text);
   FSimSetup.MapSetup.ProbRocks := StrToInt(LabeledEdit4.Text);
   FSimSetup.MapSetup.TileSize := cTileSize;
+  FSimSetup.PeopleSetup := FPeoplesList;
   self.Visible := False;
 
   if Assigned(FOnApply) then
@@ -134,7 +137,8 @@ end;
 
 procedure TForm3.FormDestroy(Sender: TObject);
 begin
-  FPeoplesList.Free;
+  //FSimSetup.PeopleSetup.Free;
+  //FPeoplesList.Free;
 end;
 
 procedure TForm3.PeopleGridDrawCell(Sender: TObject; aCol, aRow: Integer;

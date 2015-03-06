@@ -4,7 +4,7 @@ object Form2: TForm2
   Top = 187
   Width = 715
   Caption = 'Simulation'
-  ClientHeight = 427
+  ClientHeight = 430
   ClientWidth = 715
   Icon.Data = {
     2608000000000100010016160000010020001008000016000000280000001600
@@ -79,7 +79,7 @@ object Form2: TForm2
   OnResize = FormResize
   Position = poMainFormCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object Image2: TImage
     Left = 1128
     Height = 8
@@ -98,8 +98,8 @@ object Form2: TForm2
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 21
-    Top = 406
+    Height = 23
+    Top = 407
     Width = 715
     Panels = <    
       item
@@ -125,7 +125,7 @@ object Form2: TForm2
   end
   object Image1: TImage
     Left = 0
-    Height = 381
+    Height = 384
     Top = 24
     Width = 415
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -135,12 +135,12 @@ object Form2: TForm2
   end
   object GroupBox1: TGroupBox
     Left = 416
-    Height = 173
+    Height = 176
     Top = 24
     Width = 297
     Anchors = [akTop, akRight, akBottom]
     Caption = 'Controls'
-    ClientHeight = 154
+    ClientHeight = 158
     ClientWidth = 293
     TabOrder = 2
     object TrackBar1: TTrackBar
@@ -158,7 +158,7 @@ object Form2: TForm2
     end
     object Edit1: TEdit
       Left = 232
-      Height = 27
+      Height = 23
       Top = 120
       Width = 56
       TabOrder = 1
@@ -166,9 +166,9 @@ object Form2: TForm2
     end
     object Label1: TLabel
       Left = 8
-      Height = 17
+      Height = 15
       Top = 88
-      Width = 143
+      Width = 116
       Caption = 'Round Duration in ms'
       ParentColor = False
     end
@@ -620,9 +620,9 @@ object Form2: TForm2
   end
   object Label2: TLabel
     Left = 8
-    Height = 17
+    Height = 15
     Top = 32
-    Width = 47
+    Width = 38
     Caption = 'Round:'
     Font.Color = clWhite
     ParentColor = False
@@ -645,6 +645,16 @@ object Form2: TForm2
       end
       object MenuItem4: TMenuItem
         Caption = 'Quit Simulation'
+      end
+    end
+    object MenuItem8: TMenuItem
+      Caption = 'Edit'
+      object MenuItem9: TMenuItem
+        Caption = 'Peoples'
+        object MenuItem10: TMenuItem
+          Caption = 'Settle new'
+          OnClick = MenuItem10Click
+        end
       end
     end
     object MenuItem5: TMenuItem

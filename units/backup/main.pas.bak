@@ -71,7 +71,7 @@ implementation
 
 const
   ProgrammeName = 'bellum populorum';
-  ProgrammeVersion = '0.1.1';
+  ProgrammeVersion = '0.1.2';
 
 {$R *.lfm}
 
@@ -152,6 +152,7 @@ begin
   ImageTreeMedium.Free;
   ImageTreeSmall.Free;
   ImageRock.Free;
+  ImageRomanHouse.Free;
 end;
 
 procedure TForm1.UpdateWindow;
@@ -203,6 +204,7 @@ begin
   if TForm3(Sender).CheckBox1.Checked then
   begin
     FSimFormList[FSimFormList.Count - 1].Show;
+    FSimFormList[FSimFormList.Count - 1].Sim.Initialize(TForm3(Sender).SimSetup);
 	end;
 end;
 

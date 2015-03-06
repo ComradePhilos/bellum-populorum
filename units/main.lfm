@@ -4,7 +4,7 @@ object Form1: TForm1
   Top = 257
   Width = 725
   Caption = 'bellum populorum'
-  ClientHeight = 596
+  ClientHeight = 599
   ClientWidth = 725
   Font.CharSet = ANSI_CHARSET
   Font.Height = -12
@@ -83,7 +83,7 @@ object Form1: TForm1
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poScreenCenter
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object TabControl1: TTabControl
     Left = 3
     Height = 544
@@ -383,9 +383,9 @@ object Form1: TForm1
   end
   object Label1: TLabel
     Left = 216
-    Height = 15
+    Height = 16
     Top = 565
-    Width = 447
+    Width = 464
     Caption = 'Warning: This programme is still work in progress. Functionality is not granted! '
     Color = clDefault
     Font.CharSet = ANSI_CHARSET

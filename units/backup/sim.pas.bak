@@ -102,6 +102,7 @@ begin
   FPeoplesList := FSetup.PeopleSetup;
   for I := 0 to FPeoplesList.Count - 1 do
   begin
+    FPeoplesList[I].Map := FMap;
     FPeoplesList[I].Settle;
   end;
 end;

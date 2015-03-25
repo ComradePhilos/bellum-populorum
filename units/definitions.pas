@@ -8,6 +8,10 @@ uses
   Classes, SysUtils, fgl, ExtCtrls;
 
 type
+  TLocation = record
+    x, y: Integer;
+  end;
+
   TFaction = (fRoman, fGerman, FSlavonic);
 
   TTileType = (ttGrass, ttTree, ttRock, ttRomanHouse, ttGermanHouse, ttSlavonicHouse, ttBerries);

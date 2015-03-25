@@ -46,6 +46,7 @@ begin
   ImageTreeMedium := TImage.Create(nil);
   ImageTreeSmall := TImage.Create(nil);
   ImageRock := TImage.Create(nil);
+  ImageRomanHouse := TImage.Create(nil);
 end;
 
 procedure LoadImages;
@@ -58,7 +59,7 @@ begin
   ImageTree.Picture.LoadFromFile(SizePath + cObjectPath + 'tree2.png');
   ImageTreeMedium.Picture.LoadFromFile(SizePath + cObjectPath + 'tree_medium2.png');
   ImageRock.Picture.LoadFromFile(SizePath + cObjectPath + 'rock.png');
-  //ImageRomanHouse.Picture.LoadFromFile(SizePath + cObjectPath + 'roman house.png');
+  ImageRomanHouse.Picture.LoadFromFile(SizePath + cObjectPath + 'roman house.png');
 end;
 
 end.

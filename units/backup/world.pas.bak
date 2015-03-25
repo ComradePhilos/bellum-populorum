@@ -27,18 +27,20 @@ type
       FPicture: TPicture;
       FOwner: TObject;
       FAge: Integer;
+      FFaction: Tobject;
       FIsObstacle: Boolean;
     public
-      constructor Create;
+      constructor Create(AMap: TObject);
       destructor Destroy;
       function GetPicture: TPicture; virtual;
       procedure GrowOlder; virtual;
       procedure SetPos(x,y: Integer);
 
       property Age: Integer read FAge write FAge;
+      property Faction: Tobject read FFaction write FFaction;
       property IsObstacle: Boolean read FIsObstacle write FIsObstacle;
       property Owner: TObject read FOwner write FOwner;
-      property Picture: TPicture read FPicture;
+      property Picture: TPicture read FPicture write FPicture;
       property x: Integer read FX write FX;
       property y: Integer read FY write FY;
 	end;
@@ -55,6 +57,8 @@ type
   TMapHouse = class(TMapObject)
     public
       constructor Create;
+      procedure HasSpace(var xpos,ypos: Integer);
+      procedure TryExpansion;
   end;
 
   TMapRock = class(TMapObject)
@@ -386,10 +390,11 @@ begin
 end;
 
 // ###################################### MAPOBJECTS ####################################################
-constructor TMapObject.Create;
+constructor TMapObject.Create(AMap: TObject);
 begin
   SetPos(0,0);
   FAge := 0;
+  FOwner := AMap;
   FPicture := TPicture.Create;
 end;
 
@@ -457,5 +462,49 @@ begin
   FIsObstacle := True;
 end;
 
+procedure TMapHouse.HasSpace(var xpos,ypos: Integer);
+var
+  a,b: Integer;
+begin
+  xpos := -1;
+  ypos := -1;
+  for a := -1 to 1 do
+  begin
+    for b := -1 to 1 do
+    begin
+      if TMap(FOwner).IsInbounds(self.x + b, self.y + a) then
+      begin
+        if not TMap(FOwner).IsOccupied(self.x + b, self.y + a) then
+        begin
+          xpos := self.x + b;
+          ypos := self.y + a;
+          break;
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TMapHouse.TryExpansion;
+var
+  a,b: Integer;
+  xpos, ypos: Integer;
+begin
+  for a := -1 to 1 do
+  begin
+    for b := -1 to 1 do
+    begin
+      xpos := self.x + b;
+      ypos := self.y + a;
+      if TMap(FOwner).IsInbounds(xpos,ypos) then
+      begin
+        if not TMap(FOwner).IsOccupied(xpos,ypos) then
+        begin
+          TMap(FOwner).AddHouse(xpos,ypos);
+        end;
+      end;
+    end;
+  end;
+end;
 
 end.

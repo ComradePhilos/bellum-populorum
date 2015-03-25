@@ -72,8 +72,14 @@ begin
 end;
 
 procedure TSimulation.DoStep;
+var
+  I: Integer;
 begin
   FMap.DoStep;
+  for I := 0 to FPeoplesList.Count - 1 do
+  begin
+    FPeoplesList[I].Dostep;
+  end;
   Inc(FRound);
 end;
 
